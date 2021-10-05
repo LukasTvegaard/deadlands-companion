@@ -1,3 +1,3 @@
 export enum Skill {
-    Boating = "BOATING"
+  Boating = "BOATING",
 }

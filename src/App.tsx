@@ -6,13 +6,14 @@ function Home() {
 }
 
 function Users() {
-  return <h2>Users</h2>;
+  return <h2>Weapons</h2>;
 }
 
 function App() {
   return (
     <Router>
       <div>
+        DEADLANDS COMPANION V0.0.1
         <nav>
           <ul>
             <li>
@@ -26,7 +27,6 @@ function App() {
             </li>
           </ul>
         </nav>
-
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
