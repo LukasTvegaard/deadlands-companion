@@ -10,6 +10,10 @@ const EdgePageWrapper = styled.div`
   flex-direction: column;
 `;
 
+/*
+ * TODOs:
+ * Search,
+ */
 export const EdgePage = () => {
   const edgeListGroups = groupBy(
     EdgeList,
