@@ -1,3 +1,6 @@
 export enum Skill {
-  Boating = "BOATING",
+  Boating = "Boating",
+  Fighting = "Fighting",
+  Notice = "Notice",
+  Taunt = "Taunt",
 }

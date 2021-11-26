@@ -1,1 +1,1 @@
-export * from "./Edge";
+export * from "./EdgeDetail";
