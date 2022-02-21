@@ -20,6 +20,8 @@ const Tile = styled.div`
 const TileTitle = styled.div`
   font-size: 16px;
   font-weight: 500;
+  font-family: "Rye";
+  margin-bottom: 8px;
 `;
 
 const TileDescription = styled.div`

@@ -20,7 +20,9 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.1",
+    "typeface-arbutus": "^1.1.13",
     "typeface-roboto": "^1.1.13",
+    "typeface-rye": "^1.1.13",
     "typescript": "^4.4.3",
     "web-vitals": "^1.1.2"
   },

@@ -24,7 +24,7 @@ export const EdgeGroup = ({ groupKey, groupEdges }: EdgeGroupProps) => {
   const localStorageKey = `${groupKey}-expanded`;
   const localExpansionState = localStorage.getItem(localStorageKey);
   const [expanded, setExpanded] = useState(
-    localExpansionState ? JSON.parse(localExpansionState) : false
+    localExpansionState ? JSON.parse(localExpansionState) : true
   );
 
   const toggleExpanded = () => {
