@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { EdgeDetail } from "../utils/interfaces";
 
@@ -12,6 +11,9 @@ const Tile = styled.div`
   padding: 8px;
   margin: 8px;
   height: 175px;
+  @media (min-width: 769px) {
+    max-width: 450px;
+  }
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
   }

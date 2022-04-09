@@ -19,6 +19,8 @@ const SearchField = styled.input`
 const ClearButton = styled.button`
   margin-left: -1px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
 
 export const Search = ({ callback, placeholder }: SearchProps) => {

@@ -8,7 +8,8 @@ import { EdgeGroup } from "./EdgeGroup";
 import { PageWrapper } from "./PageStyles.styled";
 
 const EdgeGroupsWrapper = styled.div`
-  height: 100%;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
 `;
 

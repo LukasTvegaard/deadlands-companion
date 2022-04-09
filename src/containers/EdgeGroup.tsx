@@ -17,7 +17,7 @@ const GroupTitle = styled.div`
 
 const GroupContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 `;
 
 export const EdgeGroup = ({ groupKey, groupEdges }: EdgeGroupProps) => {
