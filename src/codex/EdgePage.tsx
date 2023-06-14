@@ -12,6 +12,7 @@ const EdgeGroupsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  padding-right: 12px;
 `;
 
 const edgeFilter = (edge: EdgeDetailType, searchString: string) => {

@@ -10,7 +10,6 @@ const BackButton = styled(StyledLink)`
 const PageHeaderStyle = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 80px;
   align-items: center;
 `;
 

@@ -9,6 +9,7 @@ type SearchProps = {
 
 const SearchWrapper = styled.div`
   display: flex;
+  margin-bottom: 8px;
 `;
 
 const SearchField = styled.input`

@@ -4,10 +4,11 @@ import { Theme } from "./Theme";
 import { Icon } from "./icons/Icon";
 import { Icons } from "./icons/Icons";
 
-const Navigation = styled.nav`
+const FooterStyle = styled.nav`
   display: flex;
   height: 48px;
   justify-content: space-between;
+  border-top: 1px solid ${Theme.Surface[400]};
 `;
 
 const FooterLink = styled(NavLink)`
@@ -26,11 +27,14 @@ const FooterLink = styled(NavLink)`
   &.active {
     color: ${Theme.Primary[100]};
   }
+  &:not(:last-child) {
+    border-right: 2px solid ${Theme.Surface[400]};
+  }
 `;
 
 export const Footer = () => {
   return (
-    <Navigation>
+    <FooterStyle>
       <FooterLink to="/">
         {({ isActive }) => {
           return (
@@ -66,6 +70,6 @@ export const Footer = () => {
           );
         }}
       </FooterLink>
-    </Navigation>
+    </FooterStyle>
   );
 };

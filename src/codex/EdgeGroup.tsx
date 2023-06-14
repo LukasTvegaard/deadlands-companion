@@ -17,6 +17,7 @@ const GroupTitle = styled.div`
 
 const GroupContainer = styled.div`
   display: grid;
+  margin-left: -8px;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 `;
 
