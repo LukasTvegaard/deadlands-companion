@@ -1,51 +1,47 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { EdgeDetailPage } from "./containers/EdgeDetailPage";
-import { EdgePage } from "./containers/EdgePage";
-import { Header } from "./containers/Header";
-import { getEdgeDetailByKey, getEdgeByString } from "./edges/EdgeUtil";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Login } from "./Login";
+import { User, onAuthStateChanged } from "firebase/auth";
+import { auth } from "./utils/firebase/firebase";
+import { CodexRouter } from "./codex/CodexRouter";
+import { Footer } from "./Footer";
+import { styled } from "styled-components";
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function Users() {
-  return <h2>Weapons</h2>;
-}
+const AppContentArranger = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+`;
 
 function App() {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  }, []);
+
+  console.log(user);
+
   return (
-    <Router>
-      <>
-        <Header />
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/edges" exact>
-            <EdgePage />
-          </Route>
-          <Route
-            path="/edges/:id"
-            render={(routeProps) => {
-              console.log(routeProps);
-              const edgeParam = getEdgeByString(routeProps.match.params.id);
-              const edgeDetail = getEdgeDetailByKey(edgeParam);
-              if (edgeDetail !== undefined) {
-                return <EdgeDetailPage edgeDetail={edgeDetail} />;
-              }
-
-              return <div>Edge not found</div>;
-            }}
-          />
-
-          <Route path="/weapons">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </>
-    </Router>
+    <AppContentArranger>
+      {user ? (
+        <>
+          <Router>
+            <Routes>
+              <Route index element={<div>Character</div>} />
+              <Route path="/party/*" element={<div>Party</div>} />
+              <Route path="/codex/*" element={<CodexRouter />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </>
+      ) : (
+        <Login />
+      )}
+    </AppContentArranger>
   );
 }
 

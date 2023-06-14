@@ -3,28 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^27.0.2",
-    "@types/lodash": "^4.14.177",
+    "@types/lodash": "^4.14.195",
     "@types/node": "^16.10.2",
-    "@types/react": "^17.0.27",
-    "@types/react-dom": "^17.0.9",
-    "firebase": "^9.1.1",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
+    "firebase": "^9.22.2",
     "i": "^0.3.7",
     "lodash": "^4.17.21",
     "npm": "^8.1.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
-    "styled-components": "^5.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^5.1.1",
+    "react-router-dom": "^6.12.1",
+    "react-scripts": "^5.0.1",
+    "styled-components": "^6.0.0-rc.3",
     "typeface-arbutus": "^1.1.13",
     "typeface-roboto": "^1.1.13",
     "typeface-rye": "^1.1.13",
-    "typescript": "^4.4.3",
-    "web-vitals": "^1.1.2"
+    "typescript": "^5.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -51,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react-router-dom": "^5.3.0",
     "@types/styled-components": "^5.1.14"
   }

@@ -1,7 +1,7 @@
 import { Rank, Edge, EdgeCategory } from "../enums";
 import { StatRequirement, SkillRequirement } from "../types";
 
-export interface EdgeDetail {
+export interface EdgeDetailType {
   key: Edge;
   name: string;
   category: EdgeCategory;

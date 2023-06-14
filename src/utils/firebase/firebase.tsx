@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { GoogleAuthProvider, getAuth, signInWithRedirect } from "firebase/auth";
+
+import { getDatabase } from "firebase/database";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -12,16 +12,17 @@ const firebaseConfig = {
   storageBucket: "deadlands-companion.appspot.com",
   messagingSenderId: "385116220845",
   appId: "1:385116220845:web:4a7441b2c66ffd886d0524",
+  databaseUrl:
+    "https://deadlands-companion-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore(app);
+export const auth = getAuth();
+const googleAuthProvider = new GoogleAuthProvider();
 
-export const getCollection = async (collectionName: string) => {
-  const column = collection(db, collectionName);
-  const columnSnapshot = await getDocs(column);
-  const columnList = columnSnapshot.docs.map((doc) => doc.data());
-  return columnList;
-};
+export const signInWithGoogle = () =>
+  signInWithRedirect(auth, googleAuthProvider);
+
+const database = getDatabase(app);
