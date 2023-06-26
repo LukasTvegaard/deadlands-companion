@@ -35,12 +35,12 @@ const FooterLink = styled(NavLink)`
 export const Footer = () => {
   return (
     <FooterStyle>
-      <FooterLink to="/">
+      <FooterLink to="/character">
         {({ isActive }) => {
           return (
             <>
               <Icon
-                icon={"Hat"}
+                icon={Icons.Hat}
                 height={36}
                 width={36}
                 color={isActive ? Theme.Primary[100] : "#fff"}
@@ -59,7 +59,7 @@ export const Footer = () => {
           return (
             <>
               <Icon
-                icon={"Codex"}
+                icon={Icons.Codex}
                 height={36}
                 width={36}
                 color={isActive ? Theme.Primary[100] : "#fff"}

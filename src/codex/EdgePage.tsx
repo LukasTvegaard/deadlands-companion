@@ -5,7 +5,6 @@ import { Search } from "../shared/Search";
 import { EdgeList } from "../static/edges/EdgeList";
 import { EdgeDetailType } from "../utils/interfaces";
 import { EdgeGroup } from "./EdgeGroup";
-import { PageWrapper } from "./PageStyles.styled";
 import { PageHeader } from "../shared/PageHeader";
 
 const EdgeGroupsWrapper = styled.div`
@@ -36,7 +35,7 @@ export const EdgePage = () => {
   );
 
   return (
-    <PageWrapper>
+    <>
       <PageHeader
         pageName="Edges"
         prevLocation={{ path: "/codex", name: "Codex" }}
@@ -56,6 +55,6 @@ export const EdgePage = () => {
           );
         })}
       </EdgeGroupsWrapper>
-    </PageWrapper>
+    </>
   );
 };

@@ -1,11 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Login } from "./Login";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./utils/firebase/firebase";
-import { CodexRouter } from "./codex/CodexRouter";
-import { Footer } from "./Footer";
 import { styled } from "styled-components";
+import { DeadlandsCompanion } from "./DeadlandsCompanion";
+import { CharacterSelectRouter } from "./character-select/CharacterSelectRouter";
 
 const AppContentArranger = styled.div`
   display: flex;
@@ -14,30 +13,46 @@ const AppContentArranger = styled.div`
   justify-content: space-between;
 `;
 
+export const selectedCharacterKey = "latest-selected-character-id";
+
 function App() {
   const [user, setUser] = useState<User | null>(null);
+  const [selectedCharacterId, setSelectedCharacterId] = useState<string | null>(
+    localStorage.getItem(selectedCharacterKey)
+  );
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
+
+    return unsubscribe;
   }, []);
 
-  console.log(user);
+  const setSelectedCharacter = (characterId: string | null) => {
+    setSelectedCharacterId(characterId);
+
+    if (characterId) {
+      localStorage.setItem(selectedCharacterKey, characterId);
+    } else {
+      localStorage.removeItem(selectedCharacterKey);
+    }
+  };
 
   return (
     <AppContentArranger>
       {user ? (
-        <>
-          <Router>
-            <Routes>
-              <Route index element={<div>Character</div>} />
-              <Route path="/party/*" element={<div>Party</div>} />
-              <Route path="/codex/*" element={<CodexRouter />} />
-            </Routes>
-            <Footer />
-          </Router>
-        </>
+        selectedCharacterId ? (
+          <DeadlandsCompanion
+            selectedCharacterId={selectedCharacterId}
+            setSelectedCharacter={setSelectedCharacter}
+          />
+        ) : (
+          <CharacterSelectRouter
+            userId={user.uid}
+            setSelectedCharacterId={setSelectedCharacter}
+          />
+        )
       ) : (
         <Login />
       )}

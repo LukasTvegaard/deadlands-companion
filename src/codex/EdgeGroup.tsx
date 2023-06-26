@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { EdgeTile } from "./EdgeTile";
 import { EdgeDetailType } from "../utils/interfaces";
@@ -40,7 +39,7 @@ export const EdgeGroup = ({ groupKey, groupEdges }: EdgeGroupProps) => {
       {expanded && (
         <GroupContainer>
           {groupEdges.map((edge) => (
-            <EdgeTile edge={edge}></EdgeTile>
+            <EdgeTile key={edge.key} edge={edge}></EdgeTile>
           ))}
         </GroupContainer>
       )}

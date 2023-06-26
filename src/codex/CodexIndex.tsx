@@ -1,31 +1,20 @@
-import styled from "styled-components";
-import { StyledLink } from "../shared/StyledLink";
-
-const Navigation = styled.nav`
-  display: flex;
-  flex-direction: column;
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
-
-const NavLink = styled(StyledLink)`
-  height: 48px;
-  display: flex;
-  font-family: "Rye";
-`;
+import { PageHeader } from "../shared/PageHeader";
+import { Index } from "../shared/index/Index";
+import { IndexLink } from "../shared/index/IndexLink";
 
 export const CodexIndex = () => {
   return (
-    <Navigation>
-      <NavLink to="edges">Edges</NavLink>
+    <>
+      <PageHeader pageName="Codex" />
+      <Index>
+        <IndexLink to="edges" label={"Edges"} />
 
-      <NavLink to="hindrances">Hindrances</NavLink>
+        <IndexLink to="hindrances" label={"Hindrances"} />
 
-      <NavLink to="powers">Powers</NavLink>
+        <IndexLink to="powers" label={"Powers"} />
 
-      <NavLink to="weapons">Weapons</NavLink>
-    </Navigation>
+        <IndexLink to="weapons" label={"Weapons"} />
+      </Index>
+    </>
   );
 };

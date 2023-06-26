@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import PropTypes from "prop-types";
 import { Icons } from "./Icons";
 
 const IconWrapper = styled.div`
@@ -21,7 +20,7 @@ type IconProps = {
   height: number;
   width: number;
   color: string;
-  icon: keyof typeof Icons;
+  icon: (typeof Icons)[keyof typeof Icons];
   viewbox: string;
 };
 export const Icon = ({ height, width, icon, color, viewbox }: IconProps) => {
@@ -35,7 +34,7 @@ export const Icon = ({ height, width, icon, color, viewbox }: IconProps) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {Icons[icon]}
+        {icon}
       </Svg>
     </IconWrapper>
   );

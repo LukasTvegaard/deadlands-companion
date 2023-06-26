@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { EdgeDetailType } from "../utils/interfaces";
-import { Link } from "react-router-dom";
 import { StyledLink } from "../shared/StyledLink";
 import { Theme } from "../Theme";
 
