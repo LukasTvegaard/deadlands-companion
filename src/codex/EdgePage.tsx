@@ -6,6 +6,7 @@ import { EdgeList } from "../static/edges/EdgeList";
 import { EdgeDetailType } from "../utils/interfaces";
 import { EdgeGroup } from "./EdgeGroup";
 import { PageHeader } from "../shared/PageHeader";
+import CodexMenu from "./CodexMenu";
 
 const EdgeGroupsWrapper = styled.div`
   display: flex;
@@ -36,10 +37,7 @@ export const EdgePage = () => {
 
   return (
     <>
-      <PageHeader
-        pageName="Edges"
-        prevLocation={{ path: "/codex", name: "Codex" }}
-      />
+      <PageHeader pageName="Edges" prevLocation={CodexMenu.Location} />
       <Search
         callback={(text) => setSearchString(text)}
         placeholder={"Search for an Edge..."}
@@ -58,3 +56,7 @@ export const EdgePage = () => {
     </>
   );
 };
+
+EdgePage.Location = { path: "/codex/edges", name: "Edges" };
+
+export default EdgePage;

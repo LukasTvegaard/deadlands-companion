@@ -1,14 +1,12 @@
 import { PageHeader } from "../shared/PageHeader";
+import CharacterMenu from "./CharacterMenu";
 
 export const CharacterSheet = () => {
   return (
     <>
       <PageHeader
-        pageName="Cornelia"
-        prevLocation={{
-          path: `/character`,
-          name: "Character Menu",
-        }}
+        pageName="Character Sheet"
+        prevLocation={CharacterMenu.Location}
       />
     </>
   );

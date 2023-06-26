@@ -8,9 +8,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import { CharacterIndex } from "./character/CharacterIndex";
+import { CharacterMenu } from "./character/CharacterMenu";
 import { CharacterSheet } from "./character/CharacterSheet";
-import { CodexIndex } from "./codex/CodexIndex";
+import { CodexMenu } from "./codex/CodexMenu";
 import { EdgeDetailPage } from "./codex/EdgeDetailPage";
 import { EdgePage } from "./codex/EdgePage";
 import { Footer } from "./Footer";
@@ -55,7 +55,7 @@ export const DeadlandsCompanion = ({
         }
       >
         <Route path="character/*">
-          <Route index element={<CharacterIndex />} />
+          <Route index element={<CharacterMenu />} />
           <Route path="sheet" element={<CharacterSheet />} />
           <Route
             path="settings"
@@ -66,7 +66,7 @@ export const DeadlandsCompanion = ({
         </Route>
         <Route path="party/*" element={<div>Party</div>} />
         <Route path="codex/*">
-          <Route index element={<CodexIndex />}></Route>
+          <Route index element={<CodexMenu />}></Route>
           <Route path="edges" element={<EdgePage />}></Route>
           <Route path="edges/:id" element={<EdgeDetailPage />} />
           <Route path="hindrances" element={<h2>Hindrances</h2>}></Route>

@@ -1,4 +1,5 @@
 import { PageHeader } from "../shared/PageHeader";
+import CharacterMenu from "./CharacterMenu";
 
 type CharacterSettingsProps = {
   setSelectedCharacter: (characterId: string | null) => void;
@@ -10,10 +11,7 @@ export const CharacterSettings = ({
     <>
       <PageHeader
         pageName="Character Settings"
-        prevLocation={{
-          path: `/character`,
-          name: "Character Menu",
-        }}
+        prevLocation={CharacterMenu.Location}
       />
       <button onClick={() => setSelectedCharacter(null)}>
         Switch Character
