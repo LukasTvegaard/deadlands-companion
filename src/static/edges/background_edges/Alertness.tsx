@@ -1,6 +1,7 @@
-import { Edge, EdgeCategory, Rank } from "../../../utils/enums";
+import { Edge, EdgeCategory, Rank, Skill } from "../../../utils/enums";
 import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [];
 
@@ -15,6 +16,13 @@ export const Alertness: EdgeDetailType = {
   description:
     "Not much gets by your hero. He's very observant and perceptive, and adds +2 to his Notice rolls to hear, see, or otherwise sense the world around him.",
   description_short: "Notice +2",
+  effects: [
+    {
+      target: Skill.Notice,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 2,
+    },
+  ],
   rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,

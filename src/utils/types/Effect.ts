@@ -10,4 +10,5 @@ export type Effect = {
   effectVariant: EffectVariant;
   value: number;
   customCondition?: string; // FIXME: Custom condition should be an enum of all possible custom conditions (e.g. onlyNonCombat, onlyMagic, etc)
+  // FIXME: Figure out how to make duration work
 };

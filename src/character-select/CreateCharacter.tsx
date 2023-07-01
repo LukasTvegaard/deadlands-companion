@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { PageHeader } from "../shared/PageHeader";
-import { auth, database } from "../utils/firebase/firebase";
+import { auth, database } from "../utils/firebase/Firebase";
 import { push, ref, set } from "firebase/database";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import { Attribute, DieType, Rank } from "../utils/enums";
+import { Edge } from "../utils/enums/Edge";
 
 // READ IF SAME PARTY, WRITE IF OWNER OR GM
 type CreateCharacterInput = {
@@ -16,12 +18,38 @@ function createCharacter(
   const db = database;
   const characterListRef = ref(db, "characters");
   const newCharacterRef = push(characterListRef);
-  console.log(db, newCharacterRef.key);
   set(newCharacterRef, {
     ownerId: auth.currentUser?.uid,
     firstName: firstName,
     lastName: lastName,
+    rank: Rank.Novice,
+    pace: 6,
+    currentPowerPoints: 0,
+    wounds: 0,
+    fatigue: 0,
+    shaken: false,
+    currency: 0,
+    attributes: {
+      [Attribute.Agility]: DieType.d6,
+      [Attribute.Smarts]: DieType.d6,
+      [Attribute.Spirit]: DieType.d6,
+      [Attribute.Strength]: DieType.d6,
+      [Attribute.Vigor]: DieType.d6,
+    },
+    skills: {},
+    edges: {
+      [Edge.ArcaneBackgroundMagic]: true,
+      [Edge.PowerPoints_novice]: true,
+      [Edge.PowerPoints_seasoned]: true,
+    },
+    hindrances: {},
+    weapons: {},
+    powers: {},
+    gear: {},
+    effects: {},
   });
+
+  navigate("/character");
 }
 
 export const CreateCharacter = () => {

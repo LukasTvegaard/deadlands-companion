@@ -16,7 +16,7 @@ import { EdgePage } from "./codex/EdgePage";
 import { Footer } from "./Footer";
 import { Character } from "./utils/types/Character";
 import { ref } from "firebase/database";
-import { database } from "./utils/firebase/firebase";
+import { database } from "./utils/firebase/Firebase";
 import { useObjectVal } from "react-firebase-hooks/database";
 import { selectedCharacterKey } from "./App";
 import { PageWrapper } from "./codex/PageStyles.styled";
@@ -35,7 +35,9 @@ export const DeadlandsCompanion = ({
   setSelectedCharacter,
 }: DeadlandsCompanionProps) => {
   const charactersRef = ref(database, `characters/${selectedCharacterId}`);
-  const [character, loading] = useObjectVal<Character>(charactersRef);
+  const [character, loading] = useObjectVal<Character>(charactersRef, {
+    transform: (val) => ({ ...val, id: selectedCharacterId }),
+  });
 
   if (!loading && !character) {
     localStorage.removeItem(selectedCharacterKey);

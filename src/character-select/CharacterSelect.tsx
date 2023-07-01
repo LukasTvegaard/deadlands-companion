@@ -1,7 +1,7 @@
 import { equalTo, orderByChild, query, ref } from "firebase/database";
 import { useList } from "react-firebase-hooks/database";
 import { PageHeader } from "../shared/PageHeader";
-import { database } from "../utils/firebase/firebase";
+import { database } from "../utils/firebase/Firebase";
 import { StyledLink } from "../shared/StyledLink";
 import { PageWrapper } from "../codex/PageStyles.styled";
 
@@ -21,6 +21,7 @@ export const CharacterSelect = ({
     equalTo(userId)
   );
   const [snapshots, loading, error] = useList(charactersRef);
+  console.log(snapshots);
 
   return (
     <PageWrapper>

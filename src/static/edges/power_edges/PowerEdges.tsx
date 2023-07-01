@@ -1,11 +1,21 @@
 import { NewPower } from "./NewPower";
-import { PowerPoints } from "./PowerPoints";
+import {
+  PowerPointsHeroic,
+  PowerPointsLegendary,
+  PowerPointsNovice,
+  PowerPointsSeasoned,
+  PowerPointsVeteran,
+} from "./PowerPoints";
 import { RapidRecharge } from "./RapidRecharge";
 import { RapidRechargeImproved } from "./RapidRechargeImproved";
 
 export const PowerEdges = [
   NewPower,
-  PowerPoints,
+  PowerPointsNovice,
+  PowerPointsSeasoned,
+  PowerPointsVeteran,
+  PowerPointsHeroic,
+  PowerPointsLegendary,
   RapidRecharge,
   RapidRechargeImproved,
 ];

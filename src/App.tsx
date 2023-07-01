@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Login } from "./Login";
 import { User, onAuthStateChanged } from "firebase/auth";
-import { auth } from "./utils/firebase/firebase";
+import { auth } from "./utils/firebase/Firebase";
 import { styled } from "styled-components";
 import { DeadlandsCompanion } from "./DeadlandsCompanion";
 import { CharacterSelectRouter } from "./character-select/CharacterSelectRouter";

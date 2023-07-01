@@ -1,4 +1,4 @@
-import { signInWithGoogle } from "./utils/firebase/firebase";
+import { signInWithGoogle } from "./utils/firebase/Firebase";
 
 export function Login() {
   return (
