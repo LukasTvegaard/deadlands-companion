@@ -1,0 +1,91 @@
+import { ref, set } from "firebase/database";
+import { useContext } from "react";
+
+import { CharacterContext } from "../../DeadlandsCompanion";
+import { DiceButtonRow } from "../../shared/DiceButtonRow";
+import { PageHeader } from "../../shared/PageHeader";
+import { Attribute, DieType } from "../../utils/enums";
+import { database } from "../../utils/firebase/Firebase";
+import CharacterSheet from "./CharacterSheet";
+
+type ChangeAttributeDieTypeInput = {
+  characterKey: string;
+  attribute: Attribute;
+  dieType: DieType;
+};
+const changeAttributeDieType = ({
+  characterKey,
+  attribute,
+  dieType,
+}: ChangeAttributeDieTypeInput) => {
+  const db = database;
+  set(ref(db, `characters/${characterKey}/attributes/${attribute}`), dieType);
+};
+
+type AttributeRowProps = {
+  attribute: Attribute;
+  currentAttributeValue: DieType;
+  changeAttributeDieType: (attribute: Attribute, dieType: DieType) => void;
+};
+const AttributeRow = ({
+  attribute,
+  currentAttributeValue,
+  changeAttributeDieType,
+}: AttributeRowProps) => {
+  const onDiceClick = (dieType: DieType) => {
+    changeAttributeDieType(attribute, dieType);
+  };
+  return (
+    <div style={{ marginBottom: "12px" }}>
+      <div>{attribute}</div>
+      <DiceButtonRow
+        activeDieType={currentAttributeValue}
+        onDiceClick={onDiceClick}
+      />
+    </div>
+  );
+};
+
+export const EditAttributes = () => {
+  const character = useContext(CharacterContext);
+
+  if (!character) return null;
+
+  const changeAttribute = (attribute: Attribute, dieType: DieType) => {
+    changeAttributeDieType({ characterKey: character.id, attribute, dieType });
+  };
+
+  return (
+    <>
+      <PageHeader
+        pageName="Edit Attributes"
+        prevLocation={CharacterSheet.Location}
+      />
+      <AttributeRow
+        attribute={Attribute.Agility}
+        currentAttributeValue={character.attributes.Agility}
+        changeAttributeDieType={changeAttribute}
+      />
+      <AttributeRow
+        attribute={Attribute.Smarts}
+        currentAttributeValue={character.attributes.Smarts}
+        changeAttributeDieType={changeAttribute}
+      />
+      <AttributeRow
+        attribute={Attribute.Spirit}
+        currentAttributeValue={character.attributes.Spirit}
+        changeAttributeDieType={changeAttribute}
+      />
+      <AttributeRow
+        attribute={Attribute.Strength}
+        currentAttributeValue={character.attributes.Strength}
+        changeAttributeDieType={changeAttribute}
+      />
+      <AttributeRow
+        attribute={Attribute.Vigor}
+        currentAttributeValue={character.attributes.Vigor}
+        changeAttributeDieType={changeAttribute}
+      />
+    </>
+  );
+};

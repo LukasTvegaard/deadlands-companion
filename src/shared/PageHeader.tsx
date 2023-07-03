@@ -1,13 +1,7 @@
 import { styled } from "styled-components";
-import { StyledLink } from "./StyledLink";
-import { Theme } from "../Theme";
 import { useContext } from "react";
 import { CharacterContext } from "../DeadlandsCompanion";
-
-const BackButton = styled(StyledLink)`
-  padding: 20px 0;
-  color: ${Theme.Primary[100]};
-`;
+import { BackButton } from "./BackButton";
 
 const PageHeaderStyle = styled.div`
   display: flex;
@@ -44,9 +38,7 @@ export const PageHeader = ({ pageName, prevLocation }: PageHeaderProps) => {
     <PageHeaderStyle>
       {prevLocation ? (
         <HeaderItem>
-          <BackButton
-            to={prevLocation.path}
-          >{`< ${prevLocation.name}`}</BackButton>
+          <BackButton to={prevLocation.path} text={prevLocation.name} />
         </HeaderItem>
       ) : (
         <HeaderItem />

@@ -1,12 +1,14 @@
-import { CharacterContext } from "../DeadlandsCompanion";
-import { PageHeader } from "../shared/PageHeader";
-import CharacterMenu from "./CharacterMenu";
+import { CharacterContext } from "../../DeadlandsCompanion";
+import { PageHeader } from "../../shared/PageHeader";
+import CharacterMenu from "../CharacterMenu";
 import { useContext } from "react";
 import {
   getMaxPowerPoints,
   showPowerPoints,
-} from "./character-logic/PowerPointLogic";
-import { EdgeList } from "../static/edges/EdgeList";
+} from "../character-logic/PowerPointLogic";
+import { EdgeList } from "../../static/edges/EdgeList";
+import { DiceIcon } from "../../icons/DiceIcons";
+import { StyledLink } from "../../shared/StyledLink";
 
 export const CharacterSheet = () => {
   const character = useContext(CharacterContext);
@@ -27,12 +29,15 @@ export const CharacterSheet = () => {
         <div>Power Points: {getMaxPowerPoints(character)}</div>
       ) : null}
       <br />
-      <div>Attributes</div>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        Attributes
+        <StyledLink to={"edit/attribute"}>Edit Attributes</StyledLink>
+      </div>
       {character.attributes
         ? Object.entries(character.attributes).map(([key, val]) => {
             return (
-              <div key={key}>
-                {key}: {val}
+              <div key={key} style={{ display: "flex", alignItems: "center" }}>
+                {key}: <DiceIcon dieType={val} />
               </div>
             );
           })
@@ -63,3 +68,10 @@ export const CharacterSheet = () => {
     </>
   );
 };
+
+CharacterSheet.Location = {
+  path: `/character/sheet`,
+  name: "Character Sheet",
+};
+
+export default CharacterSheet;

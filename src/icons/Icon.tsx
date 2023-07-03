@@ -19,11 +19,17 @@ const Svg = styled.svg`
 type IconProps = {
   height: number;
   width: number;
-  color: string;
+  color?: string;
   icon: (typeof Icons)[keyof typeof Icons];
   viewbox: string;
 };
-export const Icon = ({ height, width, icon, color, viewbox }: IconProps) => {
+export const Icon = ({
+  height,
+  width,
+  icon,
+  color = "#fff",
+  viewbox,
+}: IconProps) => {
   return (
     <IconWrapper>
       <Svg

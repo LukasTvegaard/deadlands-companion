@@ -6,7 +6,6 @@ import { Icons } from "./icons/Icons";
 
 const FooterStyle = styled.nav`
   display: flex;
-  height: 48px;
   justify-content: space-between;
   border-top: 1px solid ${Theme.Surface[400]};
 `;
@@ -17,12 +16,12 @@ const FooterLink = styled(NavLink)`
   display: flex;
   justify-content: center;
   flex: 1;
+  flex-direction: column;
 
-  gap: 8px;
-
+  font-size: 10px;
   height: 48px;
   align-items: center;
-  padding: 0 16px;
+  padding: 4px 16px 16px;
   font-family: "Rye";
   &.active {
     color: ${Theme.Primary[100]};

@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 
 import { CharacterMenu } from "./character/CharacterMenu";
-import { CharacterSheet } from "./character/CharacterSheet";
+import { CharacterSheet } from "./character/character-sheet/CharacterSheet";
 import { CodexMenu } from "./codex/CodexMenu";
 import { EdgeDetailPage } from "./codex/EdgeDetailPage";
 import { EdgePage } from "./codex/EdgePage";
@@ -21,6 +21,7 @@ import { useObjectVal } from "react-firebase-hooks/database";
 import { selectedCharacterKey } from "./App";
 import { PageWrapper } from "./codex/PageStyles.styled";
 import { CharacterSettings } from "./character/CharacterSettings";
+import { EditAttributes } from "./character/character-sheet/EditAttributes";
 
 export const CharacterContext = React.createContext<Character | undefined>(
   undefined
@@ -58,7 +59,11 @@ export const DeadlandsCompanion = ({
       >
         <Route path="character/*">
           <Route index element={<CharacterMenu />} />
-          <Route path="sheet" element={<CharacterSheet />} />
+          <Route path="sheet" element={<CharacterSheet />}></Route>
+          <Route
+            path="sheet/edit/attribute"
+            element={<EditAttributes />}
+          ></Route>
           <Route
             path="settings"
             element={

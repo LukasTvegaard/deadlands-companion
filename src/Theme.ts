@@ -1,5 +1,6 @@
 export const Theme = {
   Primary: {
+    50: "#1177bf",
     100: "#1899f5",
     200: "#4ea4f6",
     300: "#6caff8",
