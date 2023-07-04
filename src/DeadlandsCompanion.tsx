@@ -19,9 +19,9 @@ import { ref } from "firebase/database";
 import { database } from "./utils/firebase/Firebase";
 import { useObjectVal } from "react-firebase-hooks/database";
 import { selectedCharacterKey } from "./App";
-import { PageWrapper } from "./codex/PageStyles.styled";
 import { CharacterSettings } from "./character/CharacterSettings";
 import { EditAttributes } from "./character/character-sheet/EditAttributes";
+import { EditSkills } from "./character/character-sheet/EditSkills";
 
 export const CharacterContext = React.createContext<Character | undefined>(
   undefined
@@ -50,20 +50,16 @@ export const DeadlandsCompanion = ({
         path="/*"
         element={
           <>
-            <PageWrapper>
-              <Outlet />
-            </PageWrapper>
+            <Outlet />
             <Footer />
           </>
         }
       >
         <Route path="character/*">
           <Route index element={<CharacterMenu />} />
-          <Route path="sheet" element={<CharacterSheet />}></Route>
-          <Route
-            path="sheet/edit/attribute"
-            element={<EditAttributes />}
-          ></Route>
+          <Route path="sheet" element={<CharacterSheet />} />
+          <Route path="sheet/edit/attribute" element={<EditAttributes />} />
+          <Route path="sheet/edit/skill" element={<EditSkills />} />
           <Route
             path="settings"
             element={

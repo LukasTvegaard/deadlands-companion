@@ -1,9 +1,8 @@
 import { equalTo, orderByChild, query, ref } from "firebase/database";
 import { useList } from "react-firebase-hooks/database";
-import { PageHeader } from "../shared/PageHeader";
 import { database } from "../utils/firebase/Firebase";
 import { StyledLink } from "../shared/StyledLink";
-import { PageWrapper } from "../codex/PageStyles.styled";
+import Page from "../shared/page/Page";
 
 export const CurrentCharacterStorageKey = "current-character-id";
 
@@ -24,8 +23,7 @@ export const CharacterSelect = ({
   console.log(snapshots);
 
   return (
-    <PageWrapper>
-      <PageHeader pageName={"Character Select"} />
+    <Page pageName={"Character Select"}>
       {snapshots?.map((v) => {
         const character = v.val();
         return (
@@ -37,6 +35,6 @@ export const CharacterSelect = ({
       <StyledLink to={"create"}>
         <button>Create new character</button>
       </StyledLink>
-    </PageWrapper>
+    </Page>
   );
 };

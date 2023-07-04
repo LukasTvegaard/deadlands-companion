@@ -29,3 +29,18 @@ export enum Skill {
   TribalMedicine = "TribalMedicine",
   WeirdScience = "WeirdScience",
 }
+
+export const getSkillName = (skill: Skill): string => {
+  switch (skill) {
+    case Skill.KnowledgeScience:
+      return "Knowledge (Science)";
+    case Skill.KnowledgeOccult:
+      return "Knowledge (Occult)";
+    case Skill.TribalMedicine:
+      return "Tribal Medicine";
+    case Skill.WeirdScience:
+      return "Weird Science";
+    default:
+      return skill;
+  }
+};

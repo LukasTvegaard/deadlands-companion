@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { PageHeader } from "../shared/PageHeader";
 import { auth, database } from "../utils/firebase/Firebase";
 import { push, ref, set } from "firebase/database";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { Attribute, DieType, Rank } from "../utils/enums";
 import { Edge } from "../utils/enums/Edge";
+import Page from "../shared/page/Page";
 
 // READ IF SAME PARTY, WRITE IF OWNER OR GM
 type CreateCharacterInput = {
@@ -67,11 +67,10 @@ export const CreateCharacter = () => {
   };
 
   return (
-    <>
-      <PageHeader
-        pageName={"Create Character"}
-        prevLocation={{ path: "/", name: "Cancel" }}
-      />
+    <Page
+      pageName={"Create Character"}
+      prevLocation={{ path: "/", name: "Cancel" }}
+    >
       <div>Name your character</div>
       <label>
         First name:{" "}
@@ -94,6 +93,6 @@ export const CreateCharacter = () => {
       >
         Create Character
       </button>
-    </>
+    </Page>
   );
 };

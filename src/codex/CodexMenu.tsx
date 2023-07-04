@@ -1,11 +1,10 @@
-import { PageHeader } from "../shared/PageHeader";
 import { Index } from "../shared/index/Index";
 import { IndexLink } from "../shared/index/IndexLink";
+import Page from "../shared/page/Page";
 
 export const CodexMenu = () => {
   return (
-    <>
-      <PageHeader pageName="Codex" />
+    <Page pageName="Codex">
       <Index>
         <IndexLink to="edges" label={"Edges"} />
 
@@ -15,7 +14,7 @@ export const CodexMenu = () => {
 
         <IndexLink to="weapons" label={"Weapons"} />
       </Index>
-    </>
+    </Page>
   );
 };
 

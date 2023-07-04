@@ -4,14 +4,15 @@ import { EdgeDetailType } from "../utils/interfaces";
 import { useContext } from "react";
 import { database } from "../utils/firebase/Firebase";
 import { ref, set } from "firebase/database";
+import { characterHasEdge } from "../utils/EdgeUtil";
 
 const addEdge = (characterKey: string, edgeKey: Edge) => {
   const db = database;
   set(ref(db, `characters/${characterKey}/edges/${edgeKey}`), true);
 };
 
-const removeEdge = (characterKey: string, edgeKey: Edge) => {
-  if (window.confirm("Are you sure you want to remove this edge?")) {
+const removeEdge = (characterKey: string, edgeKey: Edge, edgeName: string) => {
+  if (window.confirm(`Are you sure you want to remove "${edgeName}"?`)) {
     const db = database;
     set(ref(db, `characters/${characterKey}/edges/${edgeKey}`), null);
   }
@@ -27,7 +28,7 @@ export const EdgeDetail = ({ edgeDetail }: EdgeDetailProps) => {
     return <div>Edge not found</div>;
   }
 
-  const hasEdge = character ? edgeDetail.key in character.edges : false;
+  const hasEdge = character && characterHasEdge(edgeDetail.key, character);
   console.log(hasEdge);
 
   const addToCharacterButton = character ? (
@@ -36,7 +37,9 @@ export const EdgeDetail = ({ edgeDetail }: EdgeDetailProps) => {
     </button>
   ) : null;
   const removeFromCharacterButton = character ? (
-    <button onClick={() => removeEdge(character?.id, edgeDetail.key)}>
+    <button
+      onClick={() => removeEdge(character?.id, edgeDetail.key, edgeDetail.name)}
+    >
       Remove edge from character
     </button>
   ) : null;

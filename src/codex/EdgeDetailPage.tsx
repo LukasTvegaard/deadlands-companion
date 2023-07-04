@@ -1,8 +1,8 @@
 import { getEdgeByString, getEdgeDetailByKey } from "../static/edges/EdgeUtil";
 import { useParams } from "react-router-dom";
-import { PageHeader } from "../shared/PageHeader";
 import { EdgeDetail } from "./EdgeDetail";
 import EdgePage from "./EdgePage";
+import Page from "../shared/page/Page";
 
 export const EdgeDetailPage = () => {
   const routeParams = useParams();
@@ -10,12 +10,11 @@ export const EdgeDetailPage = () => {
   const edgeDetail = getEdgeDetailByKey(edgeParam);
 
   return (
-    <>
-      <PageHeader
-        pageName={edgeDetail ? edgeDetail.name : ""}
-        prevLocation={EdgePage.Location}
-      />
+    <Page
+      pageName={edgeDetail ? edgeDetail.name : ""}
+      prevLocation={EdgePage.Location}
+    >
       <EdgeDetail edgeDetail={edgeDetail} />
-    </>
+    </Page>
   );
 };

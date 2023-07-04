@@ -1,14 +1,16 @@
 import { styled } from "styled-components";
 import { useContext } from "react";
-import { CharacterContext } from "../DeadlandsCompanion";
-import { BackButton } from "./BackButton";
+import { CharacterContext } from "../../DeadlandsCompanion";
+import { BackButton } from "../buttons/BackButton";
+import { Theme } from "./../../Theme";
 
 const PageHeaderStyle = styled.div`
   display: flex;
   align-items: center;
   min-height: 60px;
   max-height: 60px; // Clamp
-  margin-right: 24px;
+  padding-right: 12px;
+  border-bottom: 1px solid ${Theme.Surface[300]};
 `;
 
 const HeaderItem = styled.div`

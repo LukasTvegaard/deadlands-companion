@@ -6,6 +6,7 @@ const someKeyInObject = (keys: string[], object: Record<string, any>) => {
 };
 
 export const showPowerPoints = (character: Character): boolean => {
+  if (!character.edges) return false;
   return someKeyInObject(
     [
       Edge.ArcaneBackgroundMagic,
@@ -51,6 +52,7 @@ const getExtraPowerPoints = (edges: Record<Edge, true>): number => {
 };
 
 export const getMaxPowerPoints = (character: Character): number => {
+  if (!character.edges) return 0;
   return (
     getBasePowerPoints(character.edges) + getExtraPowerPoints(character.edges)
   );

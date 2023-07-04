@@ -14,11 +14,11 @@ export type Character = {
   shaken: boolean;
   currency: number;
   attributes: Record<Attribute, DieType>;
-  skills: Record<Skill, DieType>;
-  edges: Record<Edge, true>;
-  hindrances: Record<string, true>;
-  weapons: Record<string, true>; // Should store current ammo as value
-  powers: Record<string, true>; // Should store current power points as value if weird science maybe?
-  gear: Record<string, true>;
-  effects: Effect[];
+  skills: Record<Skill, DieType> | undefined;
+  edges: Record<Edge, true> | undefined;
+  hindrances: Record<string, true> | undefined;
+  weapons: Record<string, true> | undefined; // Should store current ammo as value
+  powers: Record<string, true> | undefined; // Should store current power points as value if weird science maybe?
+  gear: Record<string, true> | undefined;
+  effects: Effect[] | undefined;
 };

@@ -1,4 +1,4 @@
-import { PageHeader } from "../shared/PageHeader";
+import Page from "../shared/page/Page";
 import CharacterMenu from "./CharacterMenu";
 
 type CharacterSettingsProps = {
@@ -8,14 +8,10 @@ export const CharacterSettings = ({
   setSelectedCharacter,
 }: CharacterSettingsProps) => {
   return (
-    <>
-      <PageHeader
-        pageName="Character Settings"
-        prevLocation={CharacterMenu.Location}
-      />
+    <Page pageName="Character Settings" prevLocation={CharacterMenu.Location}>
       <button onClick={() => setSelectedCharacter(null)}>
         Switch Character
       </button>
-    </>
+    </Page>
   );
 };

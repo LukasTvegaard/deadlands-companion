@@ -2,8 +2,8 @@ import { ref, set } from "firebase/database";
 import { useContext } from "react";
 
 import { CharacterContext } from "../../DeadlandsCompanion";
-import { DiceButtonRow } from "../../shared/DiceButtonRow";
-import { PageHeader } from "../../shared/PageHeader";
+import { DiceRow } from "../../shared/rows/DiceRow";
+import Page from "../../shared/page/Page";
 import { Attribute, DieType } from "../../utils/enums";
 import { database } from "../../utils/firebase/Firebase";
 import CharacterSheet from "./CharacterSheet";
@@ -36,13 +36,11 @@ const AttributeRow = ({
     changeAttributeDieType(attribute, dieType);
   };
   return (
-    <div style={{ marginBottom: "12px" }}>
-      <div>{attribute}</div>
-      <DiceButtonRow
-        activeDieType={currentAttributeValue}
-        onDiceClick={onDiceClick}
-      />
-    </div>
+    <DiceRow
+      label={attribute}
+      activeDieType={currentAttributeValue}
+      onDiceClick={onDiceClick}
+    />
   );
 };
 
@@ -56,11 +54,7 @@ export const EditAttributes = () => {
   };
 
   return (
-    <>
-      <PageHeader
-        pageName="Edit Attributes"
-        prevLocation={CharacterSheet.Location}
-      />
+    <Page pageName="Edit Attributes" prevLocation={CharacterSheet.Location}>
       <AttributeRow
         attribute={Attribute.Agility}
         currentAttributeValue={character.attributes.Agility}
@@ -86,6 +80,6 @@ export const EditAttributes = () => {
         currentAttributeValue={character.attributes.Vigor}
         changeAttributeDieType={changeAttribute}
       />
-    </>
+    </Page>
   );
 };
