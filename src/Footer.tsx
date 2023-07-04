@@ -26,9 +26,6 @@ const FooterLink = styled(NavLink)`
   &.active {
     color: ${Theme.Primary[100]};
   }
-  &:not(:last-child) {
-    border-right: 2px solid ${Theme.Surface[400]};
-  }
 `;
 
 export const Footer = () => {
@@ -69,6 +66,7 @@ export const Footer = () => {
           );
         }}
       </FooterLink>
+      <FooterLink to="/settings">Settings</FooterLink>
     </FooterStyle>
   );
 };

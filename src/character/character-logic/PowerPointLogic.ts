@@ -5,7 +5,7 @@ const someKeyInObject = (keys: string[], object: Record<string, any>) => {
   return keys.some((key) => key in object);
 };
 
-export const showPowerPoints = (character: Character): boolean => {
+export const shouldShowPowerPoints = (character: Character): boolean => {
   if (!character.edges) return false;
   return someKeyInObject(
     [

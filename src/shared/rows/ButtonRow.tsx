@@ -12,7 +12,9 @@ export const ButtonRow = ({ label, onClick }: ButtonRowProps) => {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>{label}</div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          {onClick ? <IconButton onClick={onClick} icon={Icons.Add} /> : null}
+          {onClick ? (
+            <IconButton onClick={onClick} icon={Icons.Add} transparent />
+          ) : null}
         </div>
       </div>
     </RowStyle>

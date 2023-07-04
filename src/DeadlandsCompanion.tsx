@@ -19,9 +19,10 @@ import { ref } from "firebase/database";
 import { database } from "./utils/firebase/Firebase";
 import { useObjectVal } from "react-firebase-hooks/database";
 import { selectedCharacterKey } from "./App";
-import { CharacterSettings } from "./character/CharacterSettings";
-import { EditAttributes } from "./character/character-sheet/EditAttributes";
-import { EditSkills } from "./character/character-sheet/EditSkills";
+import { Settings } from "./settings/Settings";
+import { EditAttributes } from "./character/character-sheet/edit/EditAttributes";
+import { EditSkills } from "./character/character-sheet/edit/EditSkills";
+import { EditResources } from "./character/character-sheet/edit/EditResources";
 
 export const CharacterContext = React.createContext<Character | undefined>(
   undefined
@@ -58,14 +59,11 @@ export const DeadlandsCompanion = ({
         <Route path="character/*">
           <Route index element={<CharacterMenu />} />
           <Route path="sheet" element={<CharacterSheet />} />
-          <Route path="sheet/edit/attribute" element={<EditAttributes />} />
-          <Route path="sheet/edit/skill" element={<EditSkills />} />
-          <Route
-            path="settings"
-            element={
-              <CharacterSettings setSelectedCharacter={setSelectedCharacter} />
-            }
-          />
+          <Route path="sheet/edit/*">
+            <Route path="attribute" element={<EditAttributes />} />
+            <Route path="skill" element={<EditSkills />} />
+            <Route path="resource" element={<EditResources />} />
+          </Route>
         </Route>
         <Route path="party/*" element={<div>Party</div>} />
         <Route path="codex/*">
@@ -76,6 +74,10 @@ export const DeadlandsCompanion = ({
           <Route path="powers" element={<h2>Powers</h2>}></Route>
           <Route path="weapons" element={<h2>Weapons</h2>}></Route>
         </Route>
+        <Route
+          path="settings"
+          element={<Settings setSelectedCharacter={setSelectedCharacter} />}
+        />
         <Route index element={<Navigate to={`/character`} />}></Route>
       </Route>
     )

@@ -91,6 +91,7 @@ export const DiceRow = ({
         />
         {onDeleteClick ? (
           <IconButton
+            transparent
             onClick={onDeleteClick}
             color={Theme.Error[100]}
             icon={Icons.TrashCan}

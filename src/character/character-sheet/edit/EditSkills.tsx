@@ -1,14 +1,14 @@
 import { ref, set } from "firebase/database";
 import { useContext } from "react";
 
-import { CharacterContext } from "../../DeadlandsCompanion";
-import { DiceRow } from "../../shared/rows/DiceRow";
-import Page from "../../shared/page/Page";
-import { DieType, Skill, getSkillName } from "../../utils/enums";
-import { database } from "../../utils/firebase/Firebase";
-import CharacterSheet from "./CharacterSheet";
-import { ButtonRow } from "../../shared/rows/ButtonRow";
-import { availableSkillFilter } from "../character-logic/SkillLogic";
+import { CharacterContext } from "../../../DeadlandsCompanion";
+import { DiceRow } from "../../../shared/rows/DiceRow";
+import Page from "../../../shared/page/Page";
+import { DieType, Skill, getSkillName } from "../../../utils/enums";
+import { database } from "../../../utils/firebase/Firebase";
+import CharacterSheet from "../CharacterSheet";
+import { ButtonRow } from "../../../shared/rows/ButtonRow";
+import { availableSkillFilter } from "../../character-logic/SkillLogic";
 
 type ChangeSkillDieTypeInput = {
   characterKey: string;

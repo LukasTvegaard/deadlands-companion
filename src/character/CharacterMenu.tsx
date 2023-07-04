@@ -7,7 +7,10 @@ export const CharacterMenu = () => {
     <Page pageName={"Character Menu"}>
       <Index>
         <IndexLink to="sheet" label={"Character Sheet"} />
-        <IndexLink to="settings" label={"Settings"} />
+        <IndexLink to="edges" label={"Edges & Hindrances"} />
+        <IndexLink to="weapons" label={"Weapons"} />
+        <IndexLink to="powers" label={"Powers"} />
+        <IndexLink to="gear" label={"Gear"} />
       </Index>
     </Page>
   );
