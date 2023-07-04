@@ -28,7 +28,7 @@ export const CharacterSheet = () => {
         <ListTile title="Attributes" editLink="edit/attribute">
           {character.attributes
             ? Object.entries(character.attributes).map(([key, val]) => {
-                return <SingleDiceRow label={key} dieType={val} />;
+                return <SingleDiceRow key={key} label={key} dieType={val} />;
               })
             : null}
         </ListTile>
@@ -37,6 +37,7 @@ export const CharacterSheet = () => {
             ? Object.entries(character.skills).map(([key, val]) => {
                 return (
                   <SingleDiceRow
+                    key={key}
                     label={getSkillName(key as Skill)}
                     dieType={val}
                   />
