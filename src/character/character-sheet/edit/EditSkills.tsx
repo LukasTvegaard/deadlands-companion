@@ -20,7 +20,7 @@ const changeSkillDieType = ({
   skill,
   dieType,
 }: ChangeSkillDieTypeInput) => {
-  const db = database;
+  const db = database();
   set(ref(db, `characters/${characterKey}/skills/${skill}`), dieType);
 };
 
@@ -63,7 +63,7 @@ const UnlearnedSkillRow = ({ skill, addSkill }: UnlearnedSkillRowProps) => {
   const skillName = getSkillName(skill);
 
   return (
-    <ButtonRow label={skillName} onClick={() => addSkill(skill, DieType.d4)} />
+    <ButtonRow label={skillName} onClick={() => addSkill(skill, DieType.D4)} />
   );
 };
 

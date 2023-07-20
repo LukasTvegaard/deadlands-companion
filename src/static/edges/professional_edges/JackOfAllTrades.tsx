@@ -10,7 +10,7 @@ import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [
-  { stat: Attribute.Smarts, dieType: DieType.d10 },
+  { stat: Attribute.Smarts, dieType: DieType.D10 },
 ];
 
 const SkillRequirements: SkillRequirement[] = [];
@@ -29,4 +29,5 @@ export const JackOfAllTrades: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

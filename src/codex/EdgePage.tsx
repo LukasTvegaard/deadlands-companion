@@ -1,4 +1,4 @@
-import { groupBy } from "lodash";
+import groupBy from "lodash/groupBy";
 import { useState } from "react";
 import styled from "styled-components";
 import { Search } from "../shared/Search";
@@ -28,7 +28,7 @@ export const EdgePage = () => {
   const [searchString, setSearchString] = useState<string>("");
   const edges =
     searchString.length > 0
-      ? EdgeList.filter((edge) => edgeFilter(edge, searchString))
+      ? EdgeList.filter((edge) => !!edge && edgeFilter(edge, searchString))
       : EdgeList;
   const edgeListGroups = groupBy(
     edges,

@@ -18,7 +18,7 @@ const changeAttributeDieType = ({
   attribute,
   dieType,
 }: ChangeAttributeDieTypeInput) => {
-  const db = database;
+  const db = database();
   set(ref(db, `characters/${characterKey}/attributes/${attribute}`), dieType);
 };
 

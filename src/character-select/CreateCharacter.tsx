@@ -15,11 +15,11 @@ function createCharacter(
   { firstName, lastName }: CreateCharacterInput,
   navigate: NavigateFunction
 ): void {
-  const db = database;
+  const db = database();
   const characterListRef = ref(db, "characters");
   const newCharacterRef = push(characterListRef);
   set(newCharacterRef, {
-    ownerId: auth.currentUser?.uid,
+    ownerId: auth().currentUser?.uid,
     firstName: firstName,
     lastName: lastName,
     rank: Rank.Novice,
@@ -30,11 +30,11 @@ function createCharacter(
     shaken: false,
     currency: 0,
     attributes: {
-      [Attribute.Agility]: DieType.d6,
-      [Attribute.Smarts]: DieType.d6,
-      [Attribute.Spirit]: DieType.d6,
-      [Attribute.Strength]: DieType.d6,
-      [Attribute.Vigor]: DieType.d6,
+      [Attribute.Agility]: DieType.D6,
+      [Attribute.Smarts]: DieType.D6,
+      [Attribute.Spirit]: DieType.D6,
+      [Attribute.Strength]: DieType.D6,
+      [Attribute.Vigor]: DieType.D6,
     },
     skills: {},
     edges: {

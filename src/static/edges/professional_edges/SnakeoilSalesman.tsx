@@ -10,14 +10,14 @@ import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [
-  { stat: Attribute.Smarts, dieType: DieType.d6 },
-  { stat: Attribute.Spirit, dieType: DieType.d6 },
+  { stat: Attribute.Smarts, dieType: DieType.D6 },
+  { stat: Attribute.Spirit, dieType: DieType.D6 },
 ];
 
 const SkillRequirements: SkillRequirement[] = [
   {
     skill: Skill.Persuasion,
-    dieType: DieType.d8,
+    dieType: DieType.D8,
   },
 ];
 
@@ -35,4 +35,5 @@ export const SnakeoilSalesman: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

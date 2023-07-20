@@ -10,7 +10,7 @@ import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [
-  { stat: Attribute.Spirit, dieType: DieType.d8 },
+  { stat: Attribute.Spirit, dieType: DieType.D8 },
 ];
 
 const SkillRequirements: SkillRequirement[] = [];
@@ -28,4 +28,5 @@ export const Elan: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

@@ -7,7 +7,7 @@ const StatRequirements: StatRequirement[] = [];
 const SkillRequirements: SkillRequirement[] = [
   {
     skill: Skill.Fighting,
-    dieType: DieType.d8,
+    dieType: DieType.D8,
   },
 ];
 
@@ -24,4 +24,5 @@ export const Block: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

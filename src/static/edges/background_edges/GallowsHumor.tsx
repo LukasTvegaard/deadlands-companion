@@ -7,7 +7,7 @@ const StatRequirements: StatRequirement[] = [];
 const SkillRequirements: SkillRequirement[] = [
   {
     skill: Skill.Taunt,
-    dieType: DieType.d6,
+    dieType: DieType.D6,
   },
 ];
 
@@ -25,4 +25,5 @@ export const GallowsHumor: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

@@ -16,6 +16,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-router-dom": "^6.12.1",
     "react-scripts": "^5.0.1",
+    "source-map-explorer": "^2.5.3",
     "styled-components": "^6.0.0-rc.3",
     "typeface-arbutus": "^1.1.13",
     "typeface-roboto": "^1.1.13",
@@ -28,7 +29,8 @@
     "build": "react-scripts build",
     "deploy": "react-scripts build && firebase deploy",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": [

@@ -11,7 +11,7 @@ import { SkillRequirement, StatRequirement } from "../../../utils/types";
 const StatRequirements: StatRequirement[] = [
   {
     stat: Attribute.Agility,
-    dieType: DieType.d8,
+    dieType: DieType.D8,
   },
 ];
 
@@ -30,4 +30,5 @@ export const Quick: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

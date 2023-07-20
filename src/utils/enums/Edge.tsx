@@ -72,12 +72,11 @@ export enum Edge {
   TwoFisted = "TwoFisted",
 
   NewPower = "NewPower",
-  PowerPoints = "PowerPoints",
-  PowerPoints_novice = `${PowerPoints}_novice`,
-  PowerPoints_seasoned = `${PowerPoints}_seasoned`,
-  PowerPoints_veteran = `${PowerPoints}_veteran`,
-  PowerPoints_heroic = `${PowerPoints}_heroic`,
-  PowerPoints_legendary = `${PowerPoints}_legendary`,
+  PowerPoints_novice = `PowerPoints_novice`,
+  PowerPoints_seasoned = `PowerPoints_seasoned`,
+  PowerPoints_veteran = `PowerPoints_veteran`,
+  PowerPoints_heroic = `PowerPoints_heroic`,
+  PowerPoints_legendary = `PowerPoints_legendary`,
   RapidRecharge = "RapidRecharge",
   RapidRechargeImproved = "RapidRechargeImproved",
 

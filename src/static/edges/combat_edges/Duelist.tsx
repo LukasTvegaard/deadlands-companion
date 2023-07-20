@@ -14,7 +14,7 @@ const StatRequirements: StatRequirement[] = [];
 const SkillRequirements: SkillRequirement[] = [
   {
     skill: Skill.Shooting,
-    dieType: DieType.d6,
+    dieType: DieType.D6,
   },
 ];
 
@@ -31,4 +31,5 @@ export const Duelist: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

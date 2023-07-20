@@ -14,14 +14,9 @@ const ListTileHeader = styled.div`
   font-size: 20px;
   justify-content: space-between;
   align-items: center;
-  padding: 4px;
+  padding: 16px 8px;
   padding-left: 8px;
-  margin-bottom: 8px;
   border-bottom: 1px solid ${Theme.Surface[400]};
-`;
-
-const ListWrapper = styled.div`
-  padding: 0 8px;
 `;
 
 type ListTileProps = {
@@ -38,7 +33,7 @@ export const ListTile = ({ title, editLink, children }: ListTileProps) => {
           <IconButton icon={Icons.Pen} />
         </StyledLink>
       </ListTileHeader>
-      <ListWrapper>{children}</ListWrapper>
+      {children}
     </ListTileWrapper>
   );
 };

@@ -30,6 +30,8 @@ export enum Skill {
   WeirdScience = "WeirdScience",
 }
 
+export const Unskilled = "Unskilled";
+
 export const getSkillName = (skill: Skill): string => {
   switch (skill) {
     case Skill.KnowledgeScience:

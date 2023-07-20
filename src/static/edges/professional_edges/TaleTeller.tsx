@@ -14,7 +14,7 @@ const StatRequirements: StatRequirement[] = [];
 const SkillRequirements: SkillRequirement[] = [
   {
     skill: Skill.Persuasion,
-    dieType: DieType.d8,
+    dieType: DieType.D8,
   },
 ];
 
@@ -30,4 +30,5 @@ export const TaleTeller: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

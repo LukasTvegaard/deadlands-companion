@@ -16,6 +16,7 @@ const PowerPoints = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };
 
 export const PowerPointsNovice: EdgeDetailType = {

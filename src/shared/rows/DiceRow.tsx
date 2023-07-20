@@ -6,12 +6,18 @@ import { DieType } from "../../utils/enums";
 import { Icons } from "../../icons/Icons";
 import { IconButton } from "../buttons/IconButton";
 import { RowStyle } from "./Row.styled";
+import { getBaseModifierFromDieType } from "../../character/character-logic/roll-logic/DieLogic";
 
 const DiceButtonStyle = styled.button`
   background-color: transparent;
   padding: 0;
   border: 0;
   cursor: pointer;
+`;
+
+const DiceButtonSeparator = styled.div`
+  border-right: 1px solid ${Theme.Surface[400]};
+  margin: 8px;
 `;
 
 type DiceButtonRowProps = {
@@ -33,6 +39,7 @@ const DiceButton = ({
       <DiceIcon
         size={40}
         dieType={dieType}
+        modifier={getBaseModifierFromDieType(dieType)}
         color={isActive ? Theme.Primary[100] : undefined}
       />
     </DiceButtonStyle>
@@ -45,27 +52,38 @@ const DiceButtonRow = ({ activeDieType, onDiceClick }: DiceButtonRowProps) => {
       <DiceButton
         onDiceClick={onDiceClick}
         activeDieType={activeDieType}
-        dieType={DieType.d4}
+        dieType={DieType.D4}
       />
       <DiceButton
         onDiceClick={onDiceClick}
         activeDieType={activeDieType}
-        dieType={DieType.d6}
+        dieType={DieType.D6}
       />
       <DiceButton
         onDiceClick={onDiceClick}
         activeDieType={activeDieType}
-        dieType={DieType.d8}
+        dieType={DieType.D8}
       />
       <DiceButton
         onDiceClick={onDiceClick}
         activeDieType={activeDieType}
-        dieType={DieType.d10}
+        dieType={DieType.D10}
       />
       <DiceButton
         onDiceClick={onDiceClick}
         activeDieType={activeDieType}
-        dieType={DieType.d12}
+        dieType={DieType.D12}
+      />
+      <DiceButtonSeparator />
+      <DiceButton
+        onDiceClick={onDiceClick}
+        activeDieType={activeDieType}
+        dieType={DieType.D13}
+      />
+      <DiceButton
+        onDiceClick={onDiceClick}
+        activeDieType={activeDieType}
+        dieType={DieType.D14}
       />
     </div>
   );

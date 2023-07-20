@@ -9,7 +9,7 @@ import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [
-  { stat: Attribute.Strength, dieType: DieType.d8 },
+  { stat: Attribute.Strength, dieType: DieType.D8 },
 ];
 
 const SkillRequirements: SkillRequirement[] = [];
@@ -27,4 +27,5 @@ export const Brawler: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

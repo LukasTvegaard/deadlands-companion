@@ -11,7 +11,7 @@ import { SkillRequirement, StatRequirement } from "../../../utils/types";
 const StatRequirements: StatRequirement[] = [
   {
     stat: Attribute.Smarts,
-    dieType: DieType.d6,
+    dieType: DieType.D6,
   },
 ];
 
@@ -31,4 +31,5 @@ export const Linguist: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

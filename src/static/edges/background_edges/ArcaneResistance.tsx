@@ -11,7 +11,7 @@ import { SkillRequirement, StatRequirement } from "../../../utils/types";
 const StatRequirements: StatRequirement[] = [
   {
     stat: Attribute.Spirit,
-    dieType: DieType.d8,
+    dieType: DieType.D8,
   },
 ];
 
@@ -31,4 +31,5 @@ export const ArcaneResistance: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

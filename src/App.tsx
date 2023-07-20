@@ -5,6 +5,7 @@ import { auth } from "./utils/firebase/Firebase";
 import { styled } from "styled-components";
 import { DeadlandsCompanion } from "./DeadlandsCompanion";
 import { CharacterSelectRouter } from "./character-select/CharacterSelectRouter";
+import { Spinner } from "./shared/spinner/Spinner";
 
 const AppContentArranger = styled.div`
   display: flex;
@@ -16,14 +17,16 @@ const AppContentArranger = styled.div`
 export const selectedCharacterKey = "latest-selected-character-id";
 
 function App() {
+  const [appLoading, setAppLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
   const [selectedCharacterId, setSelectedCharacterId] = useState<string | null>(
     localStorage.getItem(selectedCharacterKey)
   );
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth(), (user) => {
       setUser(user);
+      setAppLoading(false);
     });
 
     return unsubscribe;
@@ -41,7 +44,9 @@ function App() {
 
   return (
     <AppContentArranger>
-      {user ? (
+      {appLoading ? (
+        <Spinner />
+      ) : user ? (
         selectedCharacterId ? (
           <DeadlandsCompanion
             selectedCharacterId={selectedCharacterId}

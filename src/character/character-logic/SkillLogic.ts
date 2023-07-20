@@ -1,4 +1,4 @@
-import { characterHasEdge } from "../../utils/EdgeUtil";
+import { characterHasEdge } from "../../static/edges/EdgeUtil";
 import { Edge, Skill } from "../../utils/enums";
 import { Character } from "../../utils/types/Character";
 

@@ -10,15 +10,15 @@ import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [
-  { stat: Attribute.Smarts, dieType: DieType.d8 },
+  { stat: Attribute.Smarts, dieType: DieType.D8 },
 ];
 
 const SkillRequirements: SkillRequirement[] = [
   {
     skill: Skill.Investigation,
-    dieType: DieType.d8,
+    dieType: DieType.D8,
   },
-  { skill: Skill.Streetwise, dieType: DieType.d8 },
+  { skill: Skill.Streetwise, dieType: DieType.D8 },
 ];
 
 const EdgeRequirements: Edge[] = [];
@@ -35,4 +35,5 @@ export const Investigator: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

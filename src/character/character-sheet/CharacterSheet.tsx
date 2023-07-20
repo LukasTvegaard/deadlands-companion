@@ -1,13 +1,13 @@
 import { CharacterContext } from "../../DeadlandsCompanion";
 import CharacterMenu from "../CharacterMenu";
 import { useContext } from "react";
-import { EdgeList } from "../../static/edges/EdgeList";
 import Page from "../../shared/page/Page";
-import { Skill, getSkillName } from "../../utils/enums";
+import { Attribute, Skill, Unskilled, getSkillName } from "../../utils/enums";
 import { Resources } from "./resources/Resources";
 import { ListTile } from "../../shared/tiles/ListTile";
 import { SingleDiceRow } from "../../shared/rows/SingleDiceRow";
 import { styled } from "styled-components";
+import { getRoll } from "../character-logic/roll-logic/RollLogic";
 
 const GroupContainer = styled.div`
   display: grid;
@@ -20,6 +20,8 @@ export const CharacterSheet = () => {
 
   if (!character) return null;
 
+  const unskilledRoll = getRoll(Unskilled, character);
+
   return (
     <Page pageName="Character Sheet" prevLocation={CharacterMenu.Location}>
       <Resources />
@@ -27,37 +29,53 @@ export const CharacterSheet = () => {
       <GroupContainer>
         <ListTile title="Attributes" editLink="edit/attribute">
           {character.attributes
-            ? Object.entries(character.attributes).map(([key, val]) => {
-                return <SingleDiceRow key={key} label={key} dieType={val} />;
-              })
-            : null}
-        </ListTile>
-        <ListTile title="Skills" editLink="edit/skill">
-          {character.skills
-            ? Object.entries(character.skills).map(([key, val]) => {
+            ? Object.keys(character.attributes).map((key) => {
+                const attributeRoll = getRoll(key as Attribute, character);
                 return (
                   <SingleDiceRow
                     key={key}
-                    label={getSkillName(key as Skill)}
-                    dieType={val}
+                    label={key}
+                    dieType={attributeRoll.dice}
+                    modifier={attributeRoll.modifier}
                   />
                 );
               })
             : null}
         </ListTile>
+        <ListTile title="Skills" editLink="edit/skill">
+          {character.skills
+            ? Object.keys(character.skills).map((key) => {
+                const skillRoll = getRoll(key as Skill, character);
+                return (
+                  <SingleDiceRow
+                    key={key}
+                    label={getSkillName(key as Skill)}
+                    dieType={skillRoll.dice}
+                    modifier={skillRoll.modifier}
+                  />
+                );
+              })
+            : null}
+          <SingleDiceRow
+            key={Unskilled}
+            label={Unskilled}
+            dieType={unskilledRoll.dice}
+            modifier={unskilledRoll.modifier}
+          />
+        </ListTile>
       </GroupContainer>
       <br />
-      <div>Edges</div>
-      {character.edges
+      {/*<div>Edges</div>
+      character.edges
         ? Object.keys(character.edges).map((edgeKey) => {
-            const edgeDetail = EdgeList.find((e) => e.key === edgeKey);
+            const edgeDetail = Edges[edgeKey as Edge];
             return (
               <div key={edgeKey}>
                 {edgeDetail?.name}: {edgeDetail?.description_short}
               </div>
             );
           })
-        : null}
+        : null*/}
     </Page>
   );
 };

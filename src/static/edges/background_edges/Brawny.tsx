@@ -11,11 +11,11 @@ import { SkillRequirement, StatRequirement } from "../../../utils/types";
 const StatRequirements: StatRequirement[] = [
   {
     stat: Attribute.Strength,
-    dieType: DieType.d6,
+    dieType: DieType.D6,
   },
   {
     stat: Attribute.Vigor,
-    dieType: DieType.d6,
+    dieType: DieType.D6,
   },
 ];
 
@@ -34,4 +34,5 @@ export const Brawny: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

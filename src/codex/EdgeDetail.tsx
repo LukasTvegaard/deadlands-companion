@@ -4,16 +4,16 @@ import { EdgeDetailType } from "../utils/interfaces";
 import { useContext } from "react";
 import { database } from "../utils/firebase/Firebase";
 import { ref, set } from "firebase/database";
-import { characterHasEdge } from "../utils/EdgeUtil";
+import { characterHasEdge } from "../static/edges/EdgeUtil";
 
 const addEdge = (characterKey: string, edgeKey: Edge) => {
-  const db = database;
+  const db = database();
   set(ref(db, `characters/${characterKey}/edges/${edgeKey}`), true);
 };
 
 const removeEdge = (characterKey: string, edgeKey: Edge, edgeName: string) => {
   if (window.confirm(`Are you sure you want to remove "${edgeName}"?`)) {
-    const db = database;
+    const db = database();
     set(ref(db, `characters/${characterKey}/edges/${edgeKey}`), null);
   }
 };

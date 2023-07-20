@@ -27,12 +27,12 @@ type ChangeResourceInput = {
   resource: number;
 };
 const changeWounds = ({ characterKey, resource }: ChangeResourceInput) => {
-  const db = database;
+  const db = database();
   set(ref(db, `characters/${characterKey}/wounds`), resource);
 };
 
 const changeFatigue = ({ characterKey, resource }: ChangeResourceInput) => {
-  const db = database;
+  const db = database();
   set(ref(db, `characters/${characterKey}/fatigue`), resource);
 };
 
@@ -40,7 +40,7 @@ const changeCurrentPowerPoints = ({
   characterKey,
   resource,
 }: ChangeResourceInput) => {
-  const db = database;
+  const db = database();
   set(ref(db, `characters/${characterKey}/currentPowerPoints`), resource);
 };
 

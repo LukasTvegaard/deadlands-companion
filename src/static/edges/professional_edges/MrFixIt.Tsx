@@ -1,40 +1,40 @@
 import {
+  Attribute,
   DieType,
   Edge,
   EdgeCategory,
   Rank,
   Skill,
-  Stat,
 } from "../../../utils/enums";
-import { EdgeDetail } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 
 const StatRequirements: StatRequirement[] = [
-  { stat: Stat.Smarts, dieType: DieType.d10 },
+  { stat: Attribute.Smarts, dieType: DieType.D10 },
 ];
 
 const SkillRequirements: SkillRequirement[] = [
   {
     skill: Skill.Repair,
-    dieType: DieType.d8,
+    dieType: DieType.D8,
   },
   {
     skill: Skill.WeirdScience,
-    dieType: DieType.d8,
+    dieType: DieType.D8,
   },
   {
     skill: Skill.KnowledgeScience,
-    dieType: DieType.d6,
+    dieType: DieType.D6,
   },
   {
     skill: Skill.KnowledgeScience,
-    dieType: DieType.d6,
+    dieType: DieType.D6,
   },
 ];
 
 const EdgeRequirements: Edge[] = [Edge.ArcaneBackgroundWeirdScience];
 
-export const MrFixIt: EdgeDetail = {
+export const MrFixIt: EdgeDetailType = {
   key: Edge.MrFixIt,
   name: "Mr. Fix It",
   category: EdgeCategory.Professional,
@@ -45,4 +45,5 @@ export const MrFixIt: EdgeDetail = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

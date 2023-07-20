@@ -4,14 +4,16 @@ import {
   EdgeCategory,
   Rank,
   Attribute,
+  Skill,
 } from "../../../utils/enums";
 import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [
   {
     stat: Attribute.Agility,
-    dieType: DieType.d8,
+    dieType: DieType.D8,
   },
 ];
 
@@ -30,4 +32,11 @@ export const Ambidextrous: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [
+    {
+      target: Skill.Driving,
+      effectVariant: EffectVariant.ModifyDie,
+      value: -9,
+    },
+  ],
 };

@@ -10,8 +10,8 @@ import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [
-  { stat: Attribute.Agility, dieType: DieType.d8 },
-  { stat: Attribute.Strength, dieType: DieType.d6 },
+  { stat: Attribute.Agility, dieType: DieType.D8 },
+  { stat: Attribute.Strength, dieType: DieType.D6 },
 ];
 
 const SkillRequirements: SkillRequirement[] = [];
@@ -29,4 +29,5 @@ export const Acrobat: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
+  effects: [],
 };

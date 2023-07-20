@@ -23,6 +23,8 @@ import { Settings } from "./settings/Settings";
 import { EditAttributes } from "./character/character-sheet/edit/EditAttributes";
 import { EditSkills } from "./character/character-sheet/edit/EditSkills";
 import { EditResources } from "./character/character-sheet/edit/EditResources";
+import { Spinner } from "./shared/spinner/Spinner";
+import { RollHelper } from "./character/character-sheet/RollHelper";
 
 export const CharacterContext = React.createContext<Character | undefined>(
   undefined
@@ -36,7 +38,7 @@ export const DeadlandsCompanion = ({
   selectedCharacterId,
   setSelectedCharacter,
 }: DeadlandsCompanionProps) => {
-  const charactersRef = ref(database, `characters/${selectedCharacterId}`);
+  const charactersRef = ref(database(), `characters/${selectedCharacterId}`);
   const [character, loading] = useObjectVal<Character>(charactersRef, {
     transform: (val) => ({ ...val, id: selectedCharacterId }),
   });
@@ -59,11 +61,13 @@ export const DeadlandsCompanion = ({
         <Route path="character/*">
           <Route index element={<CharacterMenu />} />
           <Route path="sheet" element={<CharacterSheet />} />
+          <Route path="sheet/roll/:id" element={<RollHelper />} />
           <Route path="sheet/edit/*">
             <Route path="attribute" element={<EditAttributes />} />
             <Route path="skill" element={<EditSkills />} />
             <Route path="resource" element={<EditResources />} />
           </Route>
+          <Route path="*" element={<div>Under construction...</div>}></Route>
         </Route>
         <Route path="party/*" element={<div>Party</div>} />
         <Route path="codex/*">
@@ -84,7 +88,7 @@ export const DeadlandsCompanion = ({
   );
 
   return !character && loading ? (
-    <div>Loading</div>
+    <Spinner />
   ) : (
     <CharacterContext.Provider value={character}>
       <RouterProvider router={router} />

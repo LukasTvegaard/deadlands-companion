@@ -1,4 +1,4 @@
-import { Attribute, Skill } from "../enums";
+import { Rollable } from "./Rollable";
 
 export enum EffectVariant {
   ModifyDie = "ModifyDie",
@@ -6,9 +6,13 @@ export enum EffectVariant {
 }
 
 export type Effect = {
-  target: Attribute | Skill | "All";
+  target: Rollable | "Damage" | "All";
   effectVariant: EffectVariant;
   value: number;
   customCondition?: string; // FIXME: Custom condition should be an enum of all possible custom conditions (e.g. onlyNonCombat, onlyMagic, etc)
   // FIXME: Figure out how to make duration work
+};
+
+export type Effectable = {
+  effects: Effect[];
 };

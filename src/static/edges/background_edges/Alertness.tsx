@@ -22,6 +22,11 @@ export const Alertness: EdgeDetailType = {
       effectVariant: EffectVariant.ModifyFlat,
       value: 2,
     },
+    {
+      target: Skill.Driving,
+      effectVariant: EffectVariant.ModifyDie,
+      value: 10,
+    },
   ],
   rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,

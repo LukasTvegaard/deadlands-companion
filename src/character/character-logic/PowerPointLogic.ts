@@ -46,8 +46,7 @@ const getBasePowerPoints = (edges: Record<Edge, true>): number => {
 
 const getExtraPowerPoints = (edges: Record<Edge, true>): number => {
   return (
-    Object.keys(edges).filter((edge) => edge.includes(Edge.PowerPoints))
-      .length * 5
+    Object.keys(edges).filter((edge) => edge.includes("PowerPoints")).length * 5
   );
 };
 
