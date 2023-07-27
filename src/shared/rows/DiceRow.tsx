@@ -48,7 +48,7 @@ const DiceButton = ({
 
 const DiceButtonRow = ({ activeDieType, onDiceClick }: DiceButtonRowProps) => {
   return (
-    <div style={{ display: "flex", gap: "6px" }}>
+    <div style={{ display: "flex", gap: "2px" }}>
       <DiceButton
         onDiceClick={onDiceClick}
         activeDieType={activeDieType}

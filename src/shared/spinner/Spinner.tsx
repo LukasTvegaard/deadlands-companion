@@ -17,6 +17,9 @@ const RevolveAnimation = keyframes`
 `;
 
 const RevolverSpinner = styled.div`
+  position: absolute;
+  top: 45%;
+  left: calc(50% - 15px);
   animation: ${RevolveAnimation} 1s infinite;
   animation-delay: 0.25s;
   animation-timing-function: cubic-bezier(0.42, 0.13, 0.745, 1.75);
@@ -84,8 +87,17 @@ export const Spinner = ({ showHeader }: SpinnerProps) => {
               return <Bullet key={index} index={index} />;
             })}
         </RevolverSpinner>
-        <div style={{ marginTop: "48px" }}>Loading...</div>
+        <div style={{ marginTop: "160px" }}>Loading...</div>
       </SpinnerWrapper>
+      {showHeader ? (
+        <div
+          style={{
+            minHeight: "68px",
+            maxHeight: "68px",
+            borderTop: "1px solid #3f3f3f",
+          }}
+        ></div>
+      ) : null}
     </>
   );
 };

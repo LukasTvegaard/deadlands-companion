@@ -21,21 +21,33 @@ async function deleteCharacter({
   setSelectedCharacter(null);
 }
 
-const DeleteModal = styled.div`
+const DeleteModalBackdrop = styled.div`
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  background-color: ${Theme.Surface[300]};
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  margin: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const DeleteModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: ${Theme.Surface[300]};
   width: 80%;
-  height: 130px;
+  max-width: 350px;
+  height: 180px;
   border-radius: 4px;
   padding: 16px;
-  gap: 8px;
+`;
+
+const DeleteTextInput = styled.input`
+  font-size: 16px;
 `;
 
 const ButtonWrapper = styled.div`
@@ -52,12 +64,11 @@ export const DeleteCharacterModal = ({
   setShowDeleteModal,
   setSelectedCharacter,
 }: DeleteCharacterModalProps) => {
-  const [deleteValidationInputValue, setDeleteValidationInputValue] =
-    useState("");
+  const [validationInputValue, setValidationInputValue] = useState("");
   const character = useContext(CharacterContext);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDeleteValidationInputValue(e.target.value);
+    setValidationInputValue(e.target.value);
   };
 
   if (!character) {
@@ -65,27 +76,26 @@ export const DeleteCharacterModal = ({
   }
 
   return (
-    <DeleteModal>
-      <div>{`You are about the PERMANENTLY delete the character "${character?.firstName} ${character?.lastName}"`}</div>
-      <div>Type "delete character" to confirm</div>
-      <input
-        autoFocus
-        placeholder="delete character"
-        onChange={onInputChange}
-      ></input>
-      <ButtonWrapper>
-        <Button text="Cancel" onClick={() => setShowDeleteModal(false)} />
-        <Button
-          text="Delete"
-          negative
-          disabled={
-            deleteValidationInputValue.toLowerCase() !== "delete character"
-          }
-          onClick={() =>
-            deleteCharacter({ characterId: character.id, setSelectedCharacter })
-          }
-        ></Button>
-      </ButtonWrapper>
-    </DeleteModal>
+    <DeleteModalBackdrop>
+      <DeleteModal>
+        <div>{`You are about the PERMANENTLY delete the character "${character?.firstName} ${character?.lastName}."`}</div>
+        <div>Type "delete character" and press delete to confirm.</div>
+        <DeleteTextInput autoFocus onChange={onInputChange}></DeleteTextInput>
+        <ButtonWrapper>
+          <Button text="Cancel" onClick={() => setShowDeleteModal(false)} />
+          <Button
+            text="Delete"
+            negative
+            disabled={validationInputValue.toLowerCase() !== "delete character"}
+            onClick={() =>
+              deleteCharacter({
+                characterId: character.id,
+                setSelectedCharacter,
+              })
+            }
+          ></Button>
+        </ButtonWrapper>
+      </DeleteModal>
+    </DeleteModalBackdrop>
   );
 };
