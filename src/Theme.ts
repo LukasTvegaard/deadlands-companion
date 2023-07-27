@@ -27,5 +27,6 @@ export const Theme = {
   },
   Error: {
     100: "#973146",
+    600: "#8c6b72",
   },
 };

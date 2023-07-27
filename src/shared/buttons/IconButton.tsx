@@ -2,21 +2,10 @@ import { styled } from "styled-components";
 import { Icon } from "../../icons/Icon";
 import { Icons } from "../../icons/Icons";
 import { Theme } from "../../Theme";
+import { SharedButtonStyle } from "./Button";
 
-type IconButtonStyleProps = {
-  $transparent?: boolean;
-};
-const IconButtonStyle = styled.button<IconButtonStyleProps>`
-  display: flex;
-  background-color: ${(props) =>
-    props.$transparent ? "transparent" : Theme.Primary[50]};
-  border-radius: 4px;
-  padding: 4px 8px;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  border: none;
-  cursor: pointer;
+const IconButtonStyle = styled(SharedButtonStyle)`
+  gap: 8px;
   &:active {
     path {
       fill: ${Theme.Primary[400]};
@@ -31,6 +20,7 @@ const IconButtonText = styled.div`
 type IconButtonProps = {
   icon: (typeof Icons)[keyof typeof Icons];
   text?: string;
+  iconSize?: number;
   color?: string;
   transparent?: boolean;
   viewbox?: string;
@@ -39,6 +29,7 @@ type IconButtonProps = {
 export const IconButton = ({
   icon,
   text,
+  iconSize,
   color,
   transparent,
   viewbox,
@@ -47,8 +38,8 @@ export const IconButton = ({
   return (
     <IconButtonStyle $transparent={transparent} onClick={onClick}>
       <Icon
-        height={24}
-        width={24}
+        height={iconSize ?? 24}
+        width={iconSize ?? 24}
         color={color}
         viewbox={viewbox}
         icon={icon}

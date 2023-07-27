@@ -45,7 +45,7 @@ function App() {
   return (
     <AppContentArranger>
       {appLoading ? (
-        <Spinner />
+        <Spinner showHeader />
       ) : user ? (
         selectedCharacterId ? (
           <DeadlandsCompanion

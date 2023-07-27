@@ -66,7 +66,6 @@ export const Footer = () => {
           );
         }}
       </FooterLink>
-      <FooterLink to="/settings">Settings</FooterLink>
     </FooterStyle>
   );
 };

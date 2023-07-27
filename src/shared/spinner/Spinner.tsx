@@ -1,7 +1,8 @@
 import { keyframes, styled } from "styled-components";
+import { PageHeader } from "../page/PageHeader";
 
 const RevolveAnimation = keyframes`
-    30% {
+  30% {
     transform: rotate(-65deg);
   }
   40% {
@@ -68,17 +69,23 @@ const SpinnerWrapper = styled.div`
   align-items: center;
 `;
 
-export const Spinner = () => {
+type SpinnerProps = {
+  showHeader?: boolean;
+};
+export const Spinner = ({ showHeader }: SpinnerProps) => {
   return (
-    <SpinnerWrapper>
-      <RevolverSpinner>
-        {Array(6)
-          .fill(null)
-          .map((_, index) => {
-            return <Bullet key={index} index={index} />;
-          })}
-      </RevolverSpinner>
-      <div style={{ marginTop: "48px" }}>Loading...</div>
-    </SpinnerWrapper>
+    <>
+      {showHeader ? <PageHeader pageName="" /> : null}
+      <SpinnerWrapper>
+        <RevolverSpinner>
+          {Array(6)
+            .fill(null)
+            .map((_, index) => {
+              return <Bullet key={index} index={index} />;
+            })}
+        </RevolverSpinner>
+        <div style={{ marginTop: "48px" }}>Loading...</div>
+      </SpinnerWrapper>
+    </>
   );
 };

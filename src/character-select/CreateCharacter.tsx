@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { auth, database } from "../utils/firebase/Firebase";
 import { push, ref, set } from "firebase/database";
+import { useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { Attribute, DieType, Rank } from "../utils/enums";
-import { Edge } from "../utils/enums/Edge";
+
+import { Button } from "../shared/buttons/Button";
 import Page from "../shared/page/Page";
+import { Attribute, DieType, Rank } from "../utils/enums";
+import { auth, database } from "../utils/firebase/Firebase";
 
 // READ IF SAME PARTY, WRITE IF OWNER OR GM
 type CreateCharacterInput = {
@@ -37,11 +38,7 @@ function createCharacter(
       [Attribute.Vigor]: DieType.D6,
     },
     skills: {},
-    edges: {
-      [Edge.ArcaneBackgroundMagic]: true,
-      [Edge.PowerPoints_novice]: true,
-      [Edge.PowerPoints_seasoned]: true,
-    },
+    edges: {},
     hindrances: {},
     weapons: {},
     powers: {},
@@ -88,11 +85,10 @@ export const CreateCharacter = () => {
           onChange={handleLastNameChange}
         />
       </label>
-      <button
+      <Button
+        text="Create Character"
         onClick={() => createCharacter({ firstName, lastName }, navigate)}
-      >
-        Create Character
-      </button>
+      ></Button>
     </Page>
   );
 };

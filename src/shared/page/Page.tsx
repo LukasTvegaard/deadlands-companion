@@ -1,14 +1,20 @@
 import { styled } from "styled-components";
 import { PageHeader } from "./PageHeader";
 
-export const PageContent = styled.div`
+const PageContent = styled.div`
   padding-top: 8px;
-  padding-right: 4px;
   margin-left: 12px;
   display: flex;
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
+`;
+
+const PageInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 12px;
 `;
 
 type PageProps = {
@@ -23,7 +29,9 @@ const Page = ({ pageName, prevLocation, children }: PageProps) => {
   return (
     <>
       <PageHeader pageName={pageName} prevLocation={prevLocation} />
-      <PageContent>{children}</PageContent>
+      <PageContent>
+        <PageInner>{children}</PageInner>
+      </PageContent>
     </>
   );
 };

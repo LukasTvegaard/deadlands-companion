@@ -1,30 +1,39 @@
 import { styled } from "styled-components";
-import { useContext } from "react";
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { BackButton } from "../buttons/BackButton";
 import { Theme } from "./../../Theme";
+import { IconButton } from "../buttons/IconButton";
+import { Icons } from "../../icons/Icons";
+import { StyledLink } from "../StyledLink";
+import { useContext } from "react";
+import { CharacterContext } from "../../DeadlandsCompanion";
 
 const PageHeaderStyle = styled.div`
   display: flex;
   align-items: center;
   min-height: 60px;
   max-height: 60px; // Clamp
-  padding-right: 12px;
   border-bottom: 1px solid ${Theme.Surface[300]};
 `;
 
 const HeaderItem = styled.div`
+  display: flex;
   flex: 1;
   justify-content: center;
   text-align: center;
   &:first-child {
     margin-right: auto;
     text-align: left;
+    justify-content: flex-start;
   }
   &:last-child {
     margin-left: auto;
     text-align: right;
+    justify-content: flex-end;
   }
+`;
+
+const Flip = styled.div`
+  transform: rotate(-90deg);
 `;
 
 type PageHeaderProps = {
@@ -46,7 +55,20 @@ export const PageHeader = ({ pageName, prevLocation }: PageHeaderProps) => {
         <HeaderItem />
       )}
       <HeaderItem>{pageName}</HeaderItem>
-      <HeaderItem>{character?.firstName}</HeaderItem>
+      <HeaderItem>
+        {character ? (
+          <Flip>
+            <StyledLink to={"/settings"}>
+              <IconButton
+                viewbox="0 0 256 256"
+                icon={Icons.WrenchGear}
+                iconSize={30}
+                transparent
+              />
+            </StyledLink>
+          </Flip>
+        ) : null}
+      </HeaderItem>
     </PageHeaderStyle>
   );
 };
