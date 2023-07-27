@@ -45,6 +45,9 @@ type PageHeaderProps = {
 };
 export const PageHeader = ({ pageName, prevLocation }: PageHeaderProps) => {
   const character = useContext(CharacterContext);
+
+  const onSettingsPage = window.location.href.includes("/settings");
+
   return (
     <PageHeaderStyle>
       {prevLocation ? (
@@ -61,6 +64,7 @@ export const PageHeader = ({ pageName, prevLocation }: PageHeaderProps) => {
             <StyledLink to={"/settings"}>
               <IconButton
                 viewbox="0 0 256 256"
+                color={onSettingsPage ? Theme.Primary[100] : undefined}
                 icon={Icons.WrenchGear}
                 iconSize={30}
                 transparent
