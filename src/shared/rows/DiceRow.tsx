@@ -37,7 +37,7 @@ const DiceButton = ({
   return (
     <DiceButtonStyle onClick={() => onDiceClick(dieType)}>
       <DiceIcon
-        size={40}
+        size={36}
         dieType={dieType}
         modifier={getBaseModifierFromDieType(dieType)}
         color={isActive ? Theme.Primary[100] : undefined}
@@ -48,7 +48,7 @@ const DiceButton = ({
 
 const DiceButtonRow = ({ activeDieType, onDiceClick }: DiceButtonRowProps) => {
   return (
-    <div style={{ display: "flex", gap: "8px" }}>
+    <div style={{ display: "flex", gap: "6px" }}>
       <DiceButton
         onDiceClick={onDiceClick}
         activeDieType={activeDieType}

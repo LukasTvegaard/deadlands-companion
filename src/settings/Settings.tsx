@@ -40,6 +40,10 @@ export const Settings = ({ setSelectedCharacter }: SettingsProps) => {
           negative
           onClick={() => setShowDeleteModal(true)}
         ></Button>
+        <Button
+          text={"Update App"}
+          onClick={() => window.location.reload()}
+        ></Button>
       </SettingsStyle>
     </Page>
   );

@@ -88,7 +88,7 @@ export const DeadlandsCompanion = ({
   );
 
   return !character && loading ? (
-    <Spinner />
+    <Spinner showHeader />
   ) : (
     <CharacterContext.Provider value={character}>
       <RouterProvider router={router} />
