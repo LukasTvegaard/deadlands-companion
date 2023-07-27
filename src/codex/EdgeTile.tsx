@@ -8,29 +8,31 @@ type EdgeTileProps = {
 };
 
 const Tile = styled(StyledLink)`
-  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid ${Theme.Surface[400]};
   border-radius: 4px;
   padding: 8px;
   margin: 8px;
-  height: 175px;
   background-color: ${Theme.Surface[300]};
+  gap: 8px;
   @media (min-width: 769px) {
     max-width: 450px;
-  }
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
   }
 `;
 
 const TileTitle = styled.div`
-  font-size: 16px;
-  font-weight: 500;
-  font-family: "Rye";
-  margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 18px;
+  color: ${Theme.Primary[600]};
 `;
 
 const TileDescription = styled.div`
-  font-size: 13px;
+  font-size: 16px;
+`;
+
+const TileRequirements = styled.div`
+  color: ${Theme.Mixed[600]};
 `;
 
 export const EdgeTile = ({ edge }: EdgeTileProps) => {
@@ -38,6 +40,7 @@ export const EdgeTile = ({ edge }: EdgeTileProps) => {
     <Tile key={edge.key} to={`${edge.key}`}>
       <TileTitle>{edge.name}</TileTitle>
       <TileDescription>{edge.description_short}</TileDescription>
+      <TileRequirements>Requirements</TileRequirements>
     </Tile>
   );
 };

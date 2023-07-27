@@ -23,6 +23,7 @@ const edgeFilter = (edge: EdgeDetailType, searchString: string) => {
 /*
  * TODOs:
  * Search,
+ * Filter by available to character
  */
 export const EdgePage = () => {
   const [searchString, setSearchString] = useState<string>("");

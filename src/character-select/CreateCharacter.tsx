@@ -6,6 +6,7 @@ import { Button } from "../shared/buttons/Button";
 import Page from "../shared/page/Page";
 import { Attribute, DieType, Rank } from "../utils/enums";
 import { auth, database } from "../utils/firebase/Firebase";
+import { styled } from "styled-components";
 
 // READ IF SAME PARTY, WRITE IF OWNER OR GM
 type CreateCharacterInput = {
@@ -49,6 +50,10 @@ function createCharacter(
   navigate("/character");
 }
 
+const CharacterInput = styled.input`
+  font-size: 16px;
+`;
+
 export const CreateCharacter = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -71,15 +76,16 @@ export const CreateCharacter = () => {
       <div>Name your character</div>
       <label>
         First name:{" "}
-        <input
+        <CharacterInput
           name="firstName"
+          autoFocus
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
         Last name:{" "}
-        <input
+        <CharacterInput
           name="lastName"
           value={lastName}
           onChange={handleLastNameChange}
