@@ -8,12 +8,14 @@ import {
 import { Theme } from "../../Theme";
 import { StyledLink, getPrevLocationQuery } from "../../shared/StyledLink";
 import { Locationable } from "../../utils/Location";
+import { ClickableSurface } from "../../shared/ClickableSurface";
 
 const CharacterInfoStyle = styled.div`
+  ${ClickableSurface}
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid ${Theme.Surface[300]};
-  padding-bottom: 8px;
+  padding: 8px 4px;
 `;
 
 const CharacterName = styled.div`

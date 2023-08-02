@@ -44,6 +44,7 @@ export const DeadlandsCompanion = ({
 
   if (!loading && !character) {
     localStorage.removeItem(selectedCharacterKey);
+    window.location.reload();
   }
 
   const router = createBrowserRouter(

@@ -9,12 +9,14 @@ import { css, styled } from "styled-components";
 import { StyledLink, getPrevLocationQuery } from "../../../shared/StyledLink";
 import { Locationable } from "../../../utils/Location";
 import { Theme } from "../../../Theme";
+import { ClickableSurface } from "../../../shared/ClickableSurface";
 
 const ResourcesStyle = styled.div`
+  ${ClickableSurface}
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-bottom: 8px;
+  padding: 8px 4px;
   border-bottom: 1px solid ${Theme.Surface[300]};
 `;
 

@@ -3,17 +3,14 @@ import { StyledLink } from "../StyledLink";
 import { Theme } from "../../Theme";
 import { Icon } from "../../icons/Icon";
 import { Icons } from "../../icons/Icons";
+import { ClickableSurface } from "../ClickableSurface";
 
 const IndexLinkStyle = styled(StyledLink)`
+  ${ClickableSurface}
   display: flex;
   align-items: center;
   padding: 16px 4px;
-  border-radius: 4px;
   border-bottom: 1px solid ${Theme.Surface[300]};
-  &:hover {
-    background-color: ${Theme.Surface[300]};
-    border-color: ${Theme.Surface[400]};
-  }
 `;
 
 const IndexLinkContent = styled.div`
