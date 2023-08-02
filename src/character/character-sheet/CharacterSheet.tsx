@@ -1,13 +1,14 @@
-import { CharacterContext } from "../../DeadlandsCompanion";
-import CharacterMenu from "../CharacterMenu";
 import { useContext } from "react";
-import Page from "../../shared/page/Page";
-import { Attribute, Skill, Unskilled, getSkillName } from "../../utils/enums";
-import { Resources } from "./resources/Resources";
-import { ListTile } from "../../shared/tiles/ListTile";
-import { SingleDiceRow } from "../../shared/rows/SingleDiceRow";
 import { styled } from "styled-components";
+
+import { CharacterContext } from "../../DeadlandsCompanion";
+import Page from "../../shared/page/Page";
+import { SingleDiceRow } from "../../shared/rows/SingleDiceRow";
+import { ListTile } from "../../shared/tiles/ListTile";
+import { Attribute, getSkillName, Skill, Unskilled } from "../../utils/enums";
+import { LocationKey, Locations } from "../../utils/Location";
 import { getRoll } from "../character-logic/roll-logic/RollLogic";
+import { InfoAndResources } from "./InfoAndResources";
 
 const GroupContainer = styled.div`
   display: grid;
@@ -18,14 +19,11 @@ const GroupContainer = styled.div`
 export const CharacterSheet = () => {
   const character = useContext(CharacterContext);
 
-  if (!character) return null;
-
   const unskilledRoll = getRoll(Unskilled, character);
 
   return (
-    <Page pageName="Character Sheet" prevLocation={CharacterMenu.Location}>
-      <Resources />
-      <br />
+    <Page pageName="Character Sheet" prevLocation={Locations.CharacterMenu}>
+      <InfoAndResources locationKey={LocationKey.CharacterSheet} />
       <GroupContainer>
         <ListTile title="Attributes" editLink="edit/attribute">
           {character.attributes
@@ -64,7 +62,6 @@ export const CharacterSheet = () => {
           />
         </ListTile>
       </GroupContainer>
-      <br />
       {/*<div>Edges</div>
       character.edges
         ? Object.keys(character.edges).map((edgeKey) => {
@@ -78,11 +75,6 @@ export const CharacterSheet = () => {
         : null*/}
     </Page>
   );
-};
-
-CharacterSheet.Location = {
-  path: `/character/sheet`,
-  name: "Sheet",
 };
 
 export default CharacterSheet;

@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { PageHeader } from "./PageHeader";
+import { Location } from "../../utils/Location";
 
 const PageContent = styled.div`
   padding-top: 8px;
@@ -8,6 +9,11 @@ const PageContent = styled.div`
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
+  @media (min-width: 800px) {
+    align-self: center;
+    min-width: 800px;
+    max-width: 800px;
+  }
 `;
 
 const PageInner = styled.div`
@@ -19,10 +25,7 @@ const PageInner = styled.div`
 
 type PageProps = {
   pageName: string;
-  prevLocation?: {
-    path: string;
-    name: string;
-  };
+  prevLocation?: Location;
   children: React.ReactNode;
 };
 const Page = ({ pageName, prevLocation, children }: PageProps) => {

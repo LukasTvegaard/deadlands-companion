@@ -69,6 +69,7 @@ const ResourceSegment = styled.div<ResourceSegmentProps>`
 type ResourceTextProps = {
   $lightText?: boolean;
   $leftAlign?: boolean;
+  $rightAlign?: boolean;
 };
 const ResourceText = styled.div<ResourceTextProps>`
   position: absolute;
@@ -82,9 +83,11 @@ const ResourceText = styled.div<ResourceTextProps>`
       ? css`
           left: 4px;
         `
-      : css`
+      : props.$rightAlign
+      ? css`
           right: 4px;
-        `}
+        `
+      : ""}
   ${(props) =>
     props.$lightText &&
     css`
@@ -139,11 +142,13 @@ export const ResourceCounter = ({
                 onClick={() => handleResourceSegmentClick(val)}
               >
                 {showTotalValue ? (
-                  <ResourceText $leftAlign={leftAlign}>
+                  <ResourceText $leftAlign={leftAlign} $rightAlign={!leftAlign}>
                     {remaining} / {total}
                   </ResourceText>
                 ) : showFivePartValue ? (
-                  <ResourceText $lightText>{val}</ResourceText>
+                  <ResourceText $rightAlign $lightText>
+                    {val}
+                  </ResourceText>
                 ) : null}
               </ResourceSegment>
             );

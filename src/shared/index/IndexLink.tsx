@@ -1,10 +1,26 @@
 import { styled } from "styled-components";
 import { StyledLink } from "../StyledLink";
+import { Theme } from "../../Theme";
+import { Icon } from "../../icons/Icon";
+import { Icons } from "../../icons/Icons";
 
-const NavLink = styled(StyledLink)`
-  height: 48px;
+const IndexLinkStyle = styled(StyledLink)`
   display: flex;
-  font-family: "Rye";
+  align-items: center;
+  padding: 16px 4px;
+  border-radius: 4px;
+  border-bottom: 1px solid ${Theme.Surface[300]};
+  &:hover {
+    background-color: ${Theme.Surface[300]};
+    border-color: ${Theme.Surface[400]};
+  }
+`;
+
+const IndexLinkContent = styled.div`
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 type IndexLinkProps = {
@@ -14,8 +30,16 @@ type IndexLinkProps = {
 };
 export const IndexLink = ({ to, label, onLink }: IndexLinkProps) => {
   return (
-    <NavLink to={to} onClick={onLink}>
-      {label}
-    </NavLink>
+    <IndexLinkStyle to={to} onClick={onLink}>
+      <IndexLinkContent>
+        {label}
+        <Icon
+          icon={Icons.ChevronRight}
+          height={24}
+          width={24}
+          color={Theme.Surface[400]}
+        />
+      </IndexLinkContent>
+    </IndexLinkStyle>
   );
 };

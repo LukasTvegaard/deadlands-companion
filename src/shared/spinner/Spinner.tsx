@@ -1,5 +1,4 @@
 import { keyframes, styled } from "styled-components";
-import { PageHeader } from "../page/PageHeader";
 
 const RevolveAnimation = keyframes`
   30% {
@@ -78,7 +77,15 @@ type SpinnerProps = {
 export const Spinner = ({ showHeader }: SpinnerProps) => {
   return (
     <>
-      {showHeader ? <PageHeader pageName="" /> : null}
+      {showHeader ? (
+        <div
+          style={{
+            minHeight: "60px",
+            maxHeight: "60px",
+            borderBottom: "1px solid #3f3f3f",
+          }}
+        ></div>
+      ) : null}
       <SpinnerWrapper>
         <RevolverSpinner>
           {Array(6)

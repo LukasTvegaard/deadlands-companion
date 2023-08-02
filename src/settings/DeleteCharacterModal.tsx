@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { CharacterContext } from "../DeadlandsCompanion";
 import { database } from "../utils/firebase/Firebase";
 import { ref, remove } from "firebase/database";
+import { getCharacterFullName } from "../character/character-logic/InfoLogic";
 
 type DeleteCharacterInput = {
   characterId: string;
@@ -71,14 +72,12 @@ export const DeleteCharacterModal = ({
     setValidationInputValue(e.target.value);
   };
 
-  if (!character) {
-    return null;
-  }
-
   return (
     <DeleteModalBackdrop>
       <DeleteModal>
-        <div>{`You are about the PERMANENTLY delete the character "${character?.firstName} ${character?.lastName}."`}</div>
+        <div>{`You are about the PERMANENTLY delete the character "${getCharacterFullName(
+          character
+        )}."`}</div>
         <div>Type "delete character" and press delete to confirm.</div>
         <DeleteTextInput autoFocus onChange={onInputChange}></DeleteTextInput>
         <ButtonWrapper>

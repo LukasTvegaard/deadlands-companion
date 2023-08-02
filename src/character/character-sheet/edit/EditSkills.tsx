@@ -6,9 +6,9 @@ import { DiceRow } from "../../../shared/rows/DiceRow";
 import Page from "../../../shared/page/Page";
 import { DieType, Skill, getSkillName } from "../../../utils/enums";
 import { database } from "../../../utils/firebase/Firebase";
-import CharacterSheet from "../CharacterSheet";
 import { ButtonRow } from "../../../shared/rows/ButtonRow";
 import { availableSkillFilter } from "../../character-logic/SkillLogic";
+import { Locations } from "../../../utils/Location";
 
 type ChangeSkillDieTypeInput = {
   characterKey: string;
@@ -70,8 +70,6 @@ const UnlearnedSkillRow = ({ skill, addSkill }: UnlearnedSkillRowProps) => {
 export const EditSkills = () => {
   const character = useContext(CharacterContext);
 
-  if (!character) return null;
-
   const changeSkill = (skill: Skill, dieType: DieType) => {
     changeSkillDieType({ characterKey: character.id, skill, dieType });
   };
@@ -85,7 +83,7 @@ export const EditSkills = () => {
   );
 
   return (
-    <Page pageName="Edit Skills" prevLocation={CharacterSheet.Location}>
+    <Page pageName="Edit Skills" prevLocation={Locations.CharacterSheet}>
       {character.skills
         ? Object.entries(character.skills).map(([skill, skillDieType]) => {
             const typedSkill = skill as Skill;

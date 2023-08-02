@@ -18,6 +18,4 @@ export const CodexMenu = () => {
   );
 };
 
-CodexMenu.Location = { path: "/codex", name: "Codex" };
-
 export default CodexMenu;

@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import Page from "../../../shared/page/Page";
-import CharacterSheet from "../CharacterSheet";
 import { ResourceCounter } from "../resources/ResourceCounter";
 import { CharacterContext } from "../../../DeadlandsCompanion";
 import {
@@ -12,6 +11,8 @@ import { database } from "../../../utils/firebase/Firebase";
 import { ref, set } from "firebase/database";
 import { IconButton } from "../../../shared/buttons/IconButton";
 import { Icons } from "../../../icons/Icons";
+import { useSearchParams } from "react-router-dom";
+import { getPrevLocationFromURLParams } from "../../../utils/Location";
 
 const ResourceSegment = styled.div`
   display: flex;
@@ -46,8 +47,9 @@ const changeCurrentPowerPoints = ({
 
 export const EditResources = () => {
   const character = useContext(CharacterContext);
+  const [params] = useSearchParams();
+  const prevLocation = getPrevLocationFromURLParams(params);
 
-  if (!character) return null;
   const { id, wounds, fatigue, currentPowerPoints } = character;
   const maxHealth = 4;
   const maxStamina = 3;
@@ -79,7 +81,7 @@ export const EditResources = () => {
   };
 
   return (
-    <Page pageName="Recharge" prevLocation={CharacterSheet.Location}>
+    <Page pageName="Recharge" prevLocation={prevLocation}>
       <ResourceSegment>
         Health
         <ResourceCounter

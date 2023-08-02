@@ -25,10 +25,9 @@ import { EditSkills } from "./character/character-sheet/edit/EditSkills";
 import { EditResources } from "./character/character-sheet/edit/EditResources";
 import { Spinner } from "./shared/spinner/Spinner";
 import { RollHelper } from "./character/character-sheet/RollHelper";
+import { EditInfo } from "./character/character-sheet/edit/EditInfo";
 
-export const CharacterContext = React.createContext<Character | undefined>(
-  undefined
-);
+export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
 type DeadlandsCompanionProps = {
   selectedCharacterId: string;
@@ -63,6 +62,7 @@ export const DeadlandsCompanion = ({
           <Route path="sheet" element={<CharacterSheet />} />
           <Route path="sheet/roll/:id" element={<RollHelper />} />
           <Route path="sheet/edit/*">
+            <Route path="info" element={<EditInfo />} />
             <Route path="attribute" element={<EditAttributes />} />
             <Route path="skill" element={<EditSkills />} />
             <Route path="resource" element={<EditResources />} />
@@ -87,7 +87,7 @@ export const DeadlandsCompanion = ({
     )
   );
 
-  return !character && loading ? (
+  return !character ? (
     <Spinner showHeader />
   ) : (
     <CharacterContext.Provider value={character}>

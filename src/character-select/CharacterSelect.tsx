@@ -49,6 +49,7 @@ export const CharacterSelect = ({
             const character = v.val() as Character;
             return (
               <CharacterTile
+                key={v.key}
                 characterKey={v.key}
                 character={character}
                 setSelectedCharacterId={setSelectedCharacter}

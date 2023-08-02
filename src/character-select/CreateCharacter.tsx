@@ -50,8 +50,26 @@ function createCharacter(
   navigate("/character");
 }
 
+const CreateCharacterStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const HeaderText = styled.div`
+  font-size: 20px;
+  font-family: Rye;
+`;
+
+const InputLabel = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
 const CharacterInput = styled.input`
   font-size: 16px;
+  padding: 8px 4px;
 `;
 
 export const CreateCharacter = () => {
@@ -73,28 +91,33 @@ export const CreateCharacter = () => {
       pageName={"Create Character"}
       prevLocation={{ path: "/", name: "Cancel" }}
     >
-      <div>Name your character</div>
-      <label>
-        First name:{" "}
-        <CharacterInput
-          name="firstName"
-          autoFocus
-          value={firstName}
-          onChange={handleFirstNameChange}
-        />
-      </label>
-      <label>
-        Last name:{" "}
-        <CharacterInput
-          name="lastName"
-          value={lastName}
-          onChange={handleLastNameChange}
-        />
-      </label>
-      <Button
-        text="Create Character"
-        onClick={() => createCharacter({ firstName, lastName }, navigate)}
-      ></Button>
+      <CreateCharacterStyle>
+        <HeaderText>Name your character</HeaderText>
+        <InputLabel>
+          <label htmlFor="firstName">First name</label>
+          <CharacterInput
+            id="firstName"
+            name="firstName"
+            autoFocus
+            value={firstName}
+            onChange={handleFirstNameChange}
+          />
+        </InputLabel>
+
+        <InputLabel>
+          <label htmlFor="lastName">Last name</label>
+          <CharacterInput
+            id="lastName"
+            name="lastName"
+            value={lastName}
+            onChange={handleLastNameChange}
+          />
+        </InputLabel>
+        <Button
+          text="Create Character"
+          onClick={() => createCharacter({ firstName, lastName }, navigate)}
+        ></Button>
+      </CreateCharacterStyle>
     </Page>
   );
 };

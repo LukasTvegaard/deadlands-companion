@@ -1,28 +1,10 @@
 import { styled } from "styled-components";
 import { Character } from "../utils/types/Character";
 import { Theme } from "../Theme";
-import { Edges } from "../static/edges/EdgeList";
-
-const getCharacterClass = (character: Character): string => {
-  if (character.edges) {
-    for (const edge of Object.keys(character.edges)) {
-      switch (edge) {
-        case Edges.ArcaneBackgroundWeirdScience.key:
-          return "Weird Scientist";
-        case Edges.ArcaneBackgroundMagic.key:
-          return "Huckster";
-        case Edges.ArcaneBackgroundChiMastery.key:
-          return "Martial Artist";
-        case Edges.ArcaneBackgroundShamanism.key:
-          return "Shaman";
-        case Edges.ArcaneBackgroundMiracles.key:
-          return "Blessed";
-      }
-    }
-  }
-
-  return "Gunslinger";
-};
+import {
+  getCharacterClass,
+  getCharacterFullName,
+} from "../character/character-logic/InfoLogic";
 
 const CharacterTileStyle = styled.div`
   display: flex;
@@ -64,7 +46,7 @@ export const CharacterTile = ({
       key={characterKey}
       onClick={() => setSelectedCharacterId(characterKey)}
     >
-      <CharacterName>{`${character.firstName} ${character.lastName}`}</CharacterName>
+      <CharacterName>{getCharacterFullName(character)}</CharacterName>
       <CharacterClass>{`${character.rank.toLowerCase()} ${getCharacterClass(
         character
       )}`}</CharacterClass>

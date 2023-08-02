@@ -5,6 +5,8 @@ import { signOutWithGoogle } from "../utils/firebase/Firebase";
 import { useContext, useState } from "react";
 import { CharacterContext } from "../DeadlandsCompanion";
 import { DeleteCharacterModal } from "./DeleteCharacterModal";
+import { getCharacterFullName } from "../character/character-logic/InfoLogic";
+import { Locations } from "../utils/Location";
 
 const SettingsStyle = styled.div`
   display: flex;
@@ -21,7 +23,7 @@ export const Settings = ({ setSelectedCharacter }: SettingsProps) => {
 
   const character = useContext(CharacterContext);
   return (
-    <Page pageName="Settings">
+    <Page pageName="Settings" prevLocation={Locations.Back}>
       {showDeleteModal ? (
         <DeleteCharacterModal
           setSelectedCharacter={setSelectedCharacter}
@@ -29,20 +31,21 @@ export const Settings = ({ setSelectedCharacter }: SettingsProps) => {
         />
       ) : null}
       <SettingsStyle>
-        {`Current character: ${character?.firstName} ${character?.lastName}`}
+        {`Current character: ${getCharacterFullName(character)}`}
         <Button
           text={"Switch Character"}
           onClick={() => setSelectedCharacter(null)}
         ></Button>
         <Button text={"Sign Out"} onClick={signOutWithGoogle}></Button>
         <Button
+          text={"Update App"}
+          onClick={() => window.location.reload()}
+        ></Button>
+
+        <Button
           text={"Delete Character"}
           negative
           onClick={() => setShowDeleteModal(true)}
-        ></Button>
-        <Button
-          text={"Update App"}
-          onClick={() => window.location.reload()}
         ></Button>
       </SettingsStyle>
     </Page>

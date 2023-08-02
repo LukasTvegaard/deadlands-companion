@@ -3,10 +3,10 @@ import { Attribute, Skill, Unskilled, getSkillName } from "../../utils/enums";
 import { getEnumByString } from "../../utils/enums/EnumUtil";
 import { getRoll } from "../character-logic/roll-logic/RollLogic";
 import Page from "../../shared/page/Page";
-import CharacterSheet from "./CharacterSheet";
 import { useContext } from "react";
 import { CharacterContext } from "../../DeadlandsCompanion";
 import { Rollable, rollableIsSkill } from "../../utils/types/Rollable";
+import { Locations } from "../../utils/Location";
 
 const getRollTarget = (key: string | undefined): Rollable | undefined => {
   if (key === Unskilled) {
@@ -39,7 +39,10 @@ export const RollHelper = () => {
   console.log(roll);
 
   return (
-    <Page pageName={`Roll ${rollLabel}`} prevLocation={CharacterSheet.Location}>
+    <Page
+      pageName={`Roll ${rollLabel}`}
+      prevLocation={Locations.CharacterSheet}
+    >
       <div>hello</div>
     </Page>
   );

@@ -6,7 +6,7 @@ import { DiceRow } from "../../../shared/rows/DiceRow";
 import Page from "../../../shared/page/Page";
 import { Attribute, DieType } from "../../../utils/enums";
 import { database } from "../../../utils/firebase/Firebase";
-import CharacterSheet from "../CharacterSheet";
+import { Locations } from "../../../utils/Location";
 
 type ChangeAttributeDieTypeInput = {
   characterKey: string;
@@ -47,14 +47,12 @@ const AttributeRow = ({
 export const EditAttributes = () => {
   const character = useContext(CharacterContext);
 
-  if (!character) return null;
-
   const changeAttribute = (attribute: Attribute, dieType: DieType) => {
     changeAttributeDieType({ characterKey: character.id, attribute, dieType });
   };
 
   return (
-    <Page pageName="Edit Attributes" prevLocation={CharacterSheet.Location}>
+    <Page pageName="Edit Attributes" prevLocation={Locations.CharacterSheet}>
       <AttributeRow
         attribute={Attribute.Agility}
         currentAttributeValue={character.attributes.Agility}

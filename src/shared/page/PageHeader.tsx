@@ -3,9 +3,9 @@ import { BackButton } from "../buttons/BackButton";
 import { Theme } from "./../../Theme";
 import { IconButton } from "../buttons/IconButton";
 import { Icons } from "../../icons/Icons";
-import { StyledLink } from "../StyledLink";
 import { useContext } from "react";
 import { CharacterContext } from "../../DeadlandsCompanion";
+import { StyledNavLink } from "../StyledLink";
 
 const PageHeaderStyle = styled.div`
   display: flex;
@@ -46,8 +46,6 @@ type PageHeaderProps = {
 export const PageHeader = ({ pageName, prevLocation }: PageHeaderProps) => {
   const character = useContext(CharacterContext);
 
-  const onSettingsPage = window.location.href.includes("/settings");
-
   return (
     <PageHeaderStyle>
       {prevLocation ? (
@@ -61,15 +59,19 @@ export const PageHeader = ({ pageName, prevLocation }: PageHeaderProps) => {
       <HeaderItem>
         {character ? (
           <Flip>
-            <StyledLink to={"/settings"}>
-              <IconButton
-                viewbox="0 0 256 256"
-                color={onSettingsPage ? Theme.Primary[100] : undefined}
-                icon={Icons.WrenchGear}
-                iconSize={30}
-                transparent
-              />
-            </StyledLink>
+            <StyledNavLink to={"/settings"}>
+              {({ isActive }) => {
+                return (
+                  <IconButton
+                    viewbox="0 0 256 256"
+                    color={isActive ? Theme.Primary[100] : undefined}
+                    icon={Icons.WrenchGear}
+                    iconSize={30}
+                    transparent
+                  />
+                );
+              }}
+            </StyledNavLink>
           </Flip>
         ) : null}
       </HeaderItem>

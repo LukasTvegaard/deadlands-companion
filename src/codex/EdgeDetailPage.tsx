@@ -1,10 +1,10 @@
 import { getEdgeDetailByKey } from "../static/edges/EdgeUtil";
 import { useParams } from "react-router-dom";
 import { EdgeDetail } from "./EdgeDetail";
-import EdgePage from "./EdgePage";
 import Page from "../shared/page/Page";
 import { getEnumByString } from "../utils/enums/EnumUtil";
 import { Edge } from "../utils/enums";
+import { Locations } from "../utils/Location";
 
 export const EdgeDetailPage = () => {
   const routeParams = useParams();
@@ -14,7 +14,7 @@ export const EdgeDetailPage = () => {
   return (
     <Page
       pageName={edgeDetail ? edgeDetail.name : ""}
-      prevLocation={EdgePage.Location}
+      prevLocation={Locations.EdgePage}
     >
       <EdgeDetail edgeDetail={edgeDetail} />
     </Page>
