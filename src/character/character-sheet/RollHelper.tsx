@@ -8,6 +8,7 @@ import { CharacterContext } from "../../DeadlandsCompanion";
 import { Rollable, rollableIsSkill } from "../../utils/types/Rollable";
 import { Locations } from "../../utils/Location";
 
+/** DEPRECATED */
 const getRollTarget = (key: string | undefined): Rollable | undefined => {
   if (key === Unskilled) {
     return key;

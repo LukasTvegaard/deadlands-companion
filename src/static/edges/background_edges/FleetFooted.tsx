@@ -5,8 +5,10 @@ import {
   Rank,
   Attribute,
 } from "../../../utils/enums";
+import { DerivedStat } from "../../../utils/enums/DerivedStat";
 import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [
   {
@@ -30,5 +32,16 @@ export const FleetFooted: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [
+    {
+      target: DerivedStat.RunningDie,
+      effectVariant: EffectVariant.ModifyDie,
+      value: 2,
+    },
+    {
+      target: DerivedStat.Pace,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 2,
+    },
+  ],
 };

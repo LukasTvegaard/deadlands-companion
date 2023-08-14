@@ -25,7 +25,6 @@ function createCharacter(
     firstName: firstName,
     lastName: lastName,
     rank: Rank.Novice,
-    pace: 6,
     currentPowerPoints: 0,
     wounds: 0,
     fatigue: 0,

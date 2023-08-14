@@ -21,7 +21,7 @@ const ListTileHeader = styled.div`
 
 type ListTileProps = {
   title: string;
-  editLink: string;
+  editLink?: string;
   children: React.ReactNode;
 };
 export const ListTile = ({ title, editLink, children }: ListTileProps) => {
@@ -29,9 +29,11 @@ export const ListTile = ({ title, editLink, children }: ListTileProps) => {
     <ListTileWrapper>
       <ListTileHeader>
         {title}
-        <StyledLink to={editLink}>
-          <IconButton icon={Icons.Pen} />
-        </StyledLink>
+        {editLink ? (
+          <StyledLink to={editLink}>
+            <IconButton icon={Icons.Pen} />
+          </StyledLink>
+        ) : null}
       </ListTileHeader>
       {children}
     </ListTileWrapper>

@@ -1,31 +1,39 @@
 import { getCharacterEdgeDetails } from "../../../static/edges/EdgeUtil";
 import { Character } from "../../../utils/types/Character";
-import { Effect, Effectable } from "../../../utils/types/Effect";
-import { Rollable } from "../../../utils/types/Rollable";
+import {
+  Effect,
+  EffectVariant,
+  Effectable,
+  Effecting,
+} from "../../../utils/types/Effect";
 
-function getRelevantEffectsFromEffectable<T extends Effectable>(
-  effectable: T[],
-  rollTarget: Rollable
+function getRelevantEffectsFromEffecting<T extends Effecting>(
+  effecting: T[],
+  rollTarget: Effectable
 ): Effect[] {
-  return effectable.reduce((acc, curr) => {
-    const effects = curr.effects;
-    effects.forEach((effect) => {
-      if (effect.target === rollTarget || effect.target === "All") {
-        acc.push(effect);
-      }
-    });
-    return acc;
-  }, [] as Effect[]);
+  return effecting
+    .flatMap((effector) => effector.effects)
+    .filter((effect) => effect.target === rollTarget);
 }
 
-export const getRelevantEffectsForRollTarget = (
-  rollTarget: Rollable,
+export const getRelevantEffectsForEffectable = (
+  rollTarget: Effectable,
   character: Character
 ): Effect[] => {
-  const edgeEffects = getRelevantEffectsFromEffectable(
+  const edgeEffects = getRelevantEffectsFromEffecting(
     getCharacterEdgeDetails(character),
     rollTarget
   );
+  // FIXME: Add additional sources of permanent effects (hindrances, items, etc.)
   const temporaryEffects = character.effects ?? [];
   return [...edgeEffects, ...temporaryEffects];
+};
+
+export const getEffectTotal = (
+  effects: Effect[],
+  effectVariant: EffectVariant
+) => {
+  return effects
+    .filter((effect) => effect.effectVariant === effectVariant)
+    .reduce((acc, effect) => acc + effect.value, 0);
 };

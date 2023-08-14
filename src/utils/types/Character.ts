@@ -7,7 +7,6 @@ export type Character = {
   firstName: string;
   lastName: string;
   rank: Rank;
-  pace: number;
   currentPowerPoints: number;
   wounds: number;
   fatigue: number;

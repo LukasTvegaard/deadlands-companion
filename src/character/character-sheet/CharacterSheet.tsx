@@ -3,17 +3,31 @@ import { styled } from "styled-components";
 
 import { CharacterContext } from "../../DeadlandsCompanion";
 import Page from "../../shared/page/Page";
-import { SingleDiceRow } from "../../shared/rows/SingleDiceRow";
+import { SingleDiceRow, SingleValueRow } from "../../shared/rows/SingleDiceRow";
 import { ListTile } from "../../shared/tiles/ListTile";
 import { Attribute, getSkillName, Skill, Unskilled } from "../../utils/enums";
 import { LocationKey, Locations } from "../../utils/Location";
 import { getRoll } from "../character-logic/roll-logic/RollLogic";
 import { InfoAndResources } from "./InfoAndResources";
+import {
+  getCharisma,
+  getGrit,
+  getPace,
+  getParry,
+  getRunningDie,
+  getToughness,
+} from "../character-logic/DerivedStatLogic";
 
 const GroupContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 24px;
+`;
+
+const DerivedStatsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 0 24px;
 `;
 
 export const CharacterSheet = () => {
@@ -24,6 +38,35 @@ export const CharacterSheet = () => {
   return (
     <Page pageName="Character Sheet" prevLocation={Locations.CharacterMenu}>
       <InfoAndResources locationKey={LocationKey.CharacterSheet} />
+      <ListTile title={"Derived Stats"}>
+        <DerivedStatsContainer>
+          <SingleValueRow
+            label={"Toughness"}
+            value={getToughness(character)}
+          ></SingleValueRow>
+          <SingleValueRow
+            label={"Parry"}
+            value={getParry(character)}
+          ></SingleValueRow>
+          <SingleValueRow
+            label={"Charisma"}
+            value={getCharisma(character)}
+          ></SingleValueRow>
+          <SingleValueRow
+            label={"Grit"}
+            value={getGrit(character)}
+          ></SingleValueRow>
+          <SingleValueRow
+            label={"Pace"}
+            value={getPace(character)}
+          ></SingleValueRow>
+          <SingleDiceRow
+            label={"Running die"}
+            dieType={getRunningDie(character)}
+          ></SingleDiceRow>
+        </DerivedStatsContainer>
+      </ListTile>
+      <br />
       <GroupContainer>
         <ListTile title="Attributes" editLink="edit/attribute">
           {character.attributes
@@ -62,6 +105,7 @@ export const CharacterSheet = () => {
           />
         </ListTile>
       </GroupContainer>
+      <br />
       {/*<div>Edges</div>
       character.edges
         ? Object.keys(character.edges).map((edgeKey) => {

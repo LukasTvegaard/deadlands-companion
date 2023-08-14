@@ -26,8 +26,19 @@ import { EditResources } from "./character/character-sheet/edit/EditResources";
 import { Spinner } from "./shared/spinner/Spinner";
 import { RollHelper } from "./character/character-sheet/RollHelper";
 import { EditInfo } from "./character/character-sheet/edit/EditInfo";
+import { useScrollRestoration } from "./utils/useScrollRestoration";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
+
+const Layout = () => {
+  useScrollRestoration();
+  return (
+    <>
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
 
 type DeadlandsCompanionProps = {
   selectedCharacterId: string;
@@ -51,12 +62,10 @@ export const DeadlandsCompanion = ({
     createRoutesFromElements(
       <Route
         path="/*"
-        element={
-          <>
-            <Outlet />
-            <Footer />
-          </>
-        }
+        loader={async () => {
+          return null;
+        }}
+        element={<Layout />}
       >
         <Route path="character/*">
           <Route index element={<CharacterMenu />} />

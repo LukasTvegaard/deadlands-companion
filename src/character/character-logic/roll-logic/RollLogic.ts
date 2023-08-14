@@ -3,7 +3,10 @@ import { Character } from "../../../utils/types/Character";
 import { Effect, EffectVariant } from "../../../utils/types/Effect";
 import { Rollable } from "../../../utils/types/Rollable";
 import { getBaseDie, stepDieType } from "./DieLogic";
-import { getRelevantEffectsForRollTarget } from "./EffectsLogic";
+import {
+  getEffectTotal,
+  getRelevantEffectsForEffectable,
+} from "./EffectsLogic";
 import { getBaseModifier } from "./ModifierLogic";
 
 const getRollDieType = (
@@ -13,11 +16,9 @@ const getRollDieType = (
 ): DieType => {
   const baseDie = getBaseDie(rollTarget, character);
 
-  const dieTypeStepTotal = effects
-    .filter((effect) => effect.effectVariant === EffectVariant.ModifyDie)
-    .reduce((acc, effect) => acc + effect.value, 0);
+  const effectDie = getEffectTotal(effects, EffectVariant.ModifyDie);
 
-  return stepDieType(baseDie, dieTypeStepTotal);
+  return stepDieType(baseDie, effectDie);
 };
 
 const getModifier = (
@@ -27,9 +28,7 @@ const getModifier = (
 ) => {
   const baseModifier = getBaseModifier(rollDie, character);
 
-  const effectModifier = effects
-    .filter((effect) => effect.effectVariant === EffectVariant.ModifyFlat)
-    .reduce((acc, effect) => acc + effect.value, 0);
+  const effectModifier = getEffectTotal(effects, EffectVariant.ModifyFlat);
 
   return baseModifier + effectModifier;
 };
@@ -42,7 +41,7 @@ export const getRoll = (
   rollTarget: Rollable,
   character: Character
 ): RollResult => {
-  const effects = getRelevantEffectsForRollTarget(rollTarget, character);
+  const effects = getRelevantEffectsForEffectable(rollTarget, character);
   const rollDie = getRollDieType(rollTarget, character, effects);
 
   const rollModifier = getModifier(rollDie, character, effects);

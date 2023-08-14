@@ -5,8 +5,10 @@ import {
   Rank,
   Attribute,
 } from "../../../utils/enums";
+import { DerivedStat } from "../../../utils/enums/DerivedStat";
 import { EdgeDetailType } from "../../../utils/interfaces";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [
   {
@@ -34,5 +36,11 @@ export const Brawny: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [
+    {
+      target: DerivedStat.Toughness,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 1,
+    },
+  ],
 };

@@ -1,8 +1,8 @@
 import { Rank, Edge, EdgeCategory } from "../enums";
 import { StatRequirement, SkillRequirement } from "../types";
-import { Effectable } from "../types/Effect";
+import { Effecting } from "../types/Effect";
 
-export interface EdgeDetailType extends Effectable {
+export interface EdgeDetailType extends Effecting {
   key: Edge;
   name: string;
   category: EdgeCategory;

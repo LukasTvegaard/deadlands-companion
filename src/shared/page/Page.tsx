@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { styled } from "styled-components";
 import { PageHeader } from "./PageHeader";
 import { Location } from "../../utils/Location";
@@ -29,10 +30,12 @@ type PageProps = {
   children: React.ReactNode;
 };
 const Page = ({ pageName, prevLocation, children }: PageProps) => {
+  const pageRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
       <PageHeader pageName={pageName} prevLocation={prevLocation} />
-      <PageContent>
+      <PageContent id={"scrollable-content"} ref={pageRef}>
         <PageInner>{children}</PageInner>
       </PageContent>
     </>
