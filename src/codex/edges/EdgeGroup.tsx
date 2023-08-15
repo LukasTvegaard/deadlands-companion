@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { EdgeTile } from "./EdgeTile";
 import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
+import { Tile } from "../shared/Tile";
 
 type EdgeGroupProps = {
   groupKey: string;
@@ -39,7 +39,12 @@ export const EdgeGroup = ({ groupKey, groupEdges }: EdgeGroupProps) => {
       {expanded && (
         <GroupContainer>
           {groupEdges.map((edge) => (
-            <EdgeTile key={edge.key} edge={edge}></EdgeTile>
+            <Tile
+              key={edge.key}
+              link={edge.key}
+              name={edge.name}
+              description={edge.description_short}
+            />
           ))}
         </GroupContainer>
       )}

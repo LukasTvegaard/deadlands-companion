@@ -28,7 +28,7 @@ import { RollHelper } from "./character/character-sheet/RollHelper";
 import { EditInfo } from "./character/character-sheet/edit/EditInfo";
 import { useScrollRestoration } from "./utils/useScrollRestoration";
 import { EdgesAndHindrances } from "./character/edges-hindrances/EdgesAndHindrances";
-import { HindrancePage } from "./codex/Hindrances/HindrancePage";
+import { HindrancePage } from "./codex/hindrances/HindrancePage";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
