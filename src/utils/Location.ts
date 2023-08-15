@@ -3,8 +3,10 @@ import { NavigateBackRoute } from "../shared/buttons/BackButton";
 export enum LocationKey {
   CharacterMenu = "CharacterMenu",
   CharacterSheet = "CharacterSheet",
+  CharacterEdgeHindrance = "CharacterEdgeHindrance",
   CodexMenu = "CodexMenu",
   EdgePage = "EdgePage",
+  HindrancePage = "HindrancePage",
   Back = "Back",
 }
 
@@ -25,8 +27,13 @@ export const Locations: Record<LocationKey, Location> = {
     path: `/character/sheet`,
     name: "Sheet",
   },
+  [LocationKey.CharacterEdgeHindrance]: {
+    path: `/character/edges`,
+    name: "Edges & Hindrances",
+  },
   [LocationKey.CodexMenu]: { path: "/codex", name: "Codex" },
   [LocationKey.EdgePage]: { path: "/codex/edges", name: "Edges" },
+  [LocationKey.HindrancePage]: { path: "/codex/hindrances", name: "Hindraces" },
   [LocationKey.Back]: { path: NavigateBackRoute, name: "Back" },
 };
 

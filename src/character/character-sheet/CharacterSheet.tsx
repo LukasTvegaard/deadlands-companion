@@ -106,17 +106,6 @@ export const CharacterSheet = () => {
         </ListTile>
       </GroupContainer>
       <br />
-      {/*<div>Edges</div>
-      character.edges
-        ? Object.keys(character.edges).map((edgeKey) => {
-            const edgeDetail = Edges[edgeKey as Edge];
-            return (
-              <div key={edgeKey}>
-                {edgeDetail?.name}: {edgeDetail?.description_short}
-              </div>
-            );
-          })
-        : null*/}
     </Page>
   );
 };

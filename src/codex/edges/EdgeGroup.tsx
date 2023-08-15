@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { EdgeTile } from "./EdgeTile";
-import { EdgeDetailType } from "../utils/interfaces";
+import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
 
 type EdgeGroupProps = {
   groupKey: string;

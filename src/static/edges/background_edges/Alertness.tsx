@@ -1,5 +1,5 @@
 import { Edge, EdgeCategory, Rank, Skill } from "../../../utils/enums";
-import { EdgeDetailType } from "../../../utils/interfaces";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 import { EffectVariant } from "../../../utils/types/Effect";
 

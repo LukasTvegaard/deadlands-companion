@@ -6,7 +6,7 @@ import {
   Skill,
   Attribute,
 } from "../../../utils/enums";
-import { EdgeDetailType } from "../../../utils/interfaces";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [];

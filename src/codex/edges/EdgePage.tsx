@@ -1,12 +1,12 @@
 import groupBy from "lodash/groupBy";
 import { useState } from "react";
 import styled from "styled-components";
-import { Search } from "../shared/Search";
-import { EdgeList } from "../static/edges/EdgeList";
-import { EdgeDetailType } from "../utils/interfaces";
+import { Search } from "../../shared/Search";
+import { EdgeList } from "../../static/edges/EdgeList";
+import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
 import { EdgeGroup } from "./EdgeGroup";
-import Page from "../shared/page/Page";
-import { Locations } from "../utils/Location";
+import Page from "../../shared/page/Page";
+import { Locations } from "../../utils/Location";
 
 const EdgeGroupsWrapper = styled.div`
   display: flex;

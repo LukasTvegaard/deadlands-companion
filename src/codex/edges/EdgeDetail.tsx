@@ -1,10 +1,10 @@
-import { CharacterContext } from "../DeadlandsCompanion";
-import { Edge } from "../utils/enums";
-import { EdgeDetailType } from "../utils/interfaces";
+import { CharacterContext } from "../../DeadlandsCompanion";
+import { Edge } from "../../utils/enums";
+import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
 import { useContext } from "react";
-import { database } from "../utils/firebase/Firebase";
+import { database } from "../../utils/firebase/Firebase";
 import { ref, set } from "firebase/database";
-import { characterHasEdge } from "../static/edges/EdgeUtil";
+import { characterHasEdge } from "../../static/edges/EdgeUtil";
 
 const addEdge = (characterKey: string, edgeKey: Edge) => {
   const db = database();

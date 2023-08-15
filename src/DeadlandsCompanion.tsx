@@ -11,8 +11,8 @@ import {
 import { CharacterMenu } from "./character/CharacterMenu";
 import { CharacterSheet } from "./character/character-sheet/CharacterSheet";
 import { CodexMenu } from "./codex/CodexMenu";
-import { EdgeDetailPage } from "./codex/EdgeDetailPage";
-import { EdgePage } from "./codex/EdgePage";
+import { EdgeDetailPage } from "./codex/edges/EdgeDetailPage";
+import { EdgePage } from "./codex/edges/EdgePage";
 import { Footer } from "./Footer";
 import { Character } from "./utils/types/Character";
 import { ref } from "firebase/database";
@@ -27,6 +27,8 @@ import { Spinner } from "./shared/spinner/Spinner";
 import { RollHelper } from "./character/character-sheet/RollHelper";
 import { EditInfo } from "./character/character-sheet/edit/EditInfo";
 import { useScrollRestoration } from "./utils/useScrollRestoration";
+import { EdgesAndHindrances } from "./character/edges-hindrances/EdgesAndHindrances";
+import { HindrancePage } from "./codex/Hindrances/HindrancePage";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
@@ -77,6 +79,7 @@ export const DeadlandsCompanion = ({
             <Route path="skill" element={<EditSkills />} />
             <Route path="resource" element={<EditResources />} />
           </Route>
+          <Route path="edges" element={<EdgesAndHindrances />} />
           <Route path="*" element={<div>Under construction...</div>}></Route>
         </Route>
         <Route path="party/*" element={<div>Party</div>} />
@@ -84,9 +87,9 @@ export const DeadlandsCompanion = ({
           <Route index element={<CodexMenu />}></Route>
           <Route path="edges" element={<EdgePage />}></Route>
           <Route path="edges/:id" element={<EdgeDetailPage />} />
-          <Route path="hindrances" element={<h2>Hindrances</h2>}></Route>
-          <Route path="powers" element={<h2>Powers</h2>}></Route>
-          <Route path="weapons" element={<h2>Weapons</h2>}></Route>
+          <Route path="hindrances" element={<HindrancePage />} />
+          <Route path="powers" element={<h2>Powers</h2>} />
+          <Route path="weapons" element={<h2>Weapons</h2>} />
         </Route>
         <Route
           path="settings"

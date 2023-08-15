@@ -1,5 +1,5 @@
 import { Edge, EdgeCategory, Rank } from "../../utils/enums";
-import { EdgeDetailType } from "../../utils/interfaces";
+import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
 
 import { Alertness } from "./background_edges/Alertness";
 import { Ambidextrous } from "./background_edges/Ambidextrous";

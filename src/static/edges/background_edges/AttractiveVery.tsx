@@ -1,6 +1,6 @@
 import { Edge, EdgeCategory, Rank } from "../../../utils/enums";
 import { DerivedStat } from "../../../utils/enums/DerivedStat";
-import { EdgeDetailType } from "../../../utils/interfaces";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 import { EffectVariant } from "../../../utils/types/Effect";
 

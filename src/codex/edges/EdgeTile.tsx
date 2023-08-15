@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { EdgeDetailType } from "../utils/interfaces";
-import { StyledLink } from "../shared/StyledLink";
-import { Theme } from "../Theme";
+import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
+import { StyledLink } from "../../shared/StyledLink";
+import { Theme } from "../../Theme";
 
 type EdgeTileProps = {
   edge: EdgeDetailType;

@@ -1,6 +1,6 @@
 import { Edges } from "./EdgeList";
 import { Edge } from "../../utils/enums";
-import { EdgeDetailType } from "../../utils/interfaces";
+import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
 import { Character } from "../../utils/types/Character";
 import { notNullishAndPredicate } from "../../utils/NotNullPredicate";
 

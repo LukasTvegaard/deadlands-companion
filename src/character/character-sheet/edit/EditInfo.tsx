@@ -3,8 +3,7 @@ import { CharacterContext } from "../../../DeadlandsCompanion";
 import Page from "../../../shared/page/Page";
 import { styled } from "styled-components";
 import { Button } from "../../../shared/buttons/Button";
-import { useSearchParams } from "react-router-dom";
-import { getPrevLocationFromURLParams } from "../../../utils/Location";
+import { Locations } from "../../../utils/Location";
 import { database } from "../../../utils/firebase/Firebase";
 import { ref, update } from "firebase/database";
 import { Rank } from "../../../utils/enums";
@@ -58,9 +57,6 @@ export const EditInfo = () => {
   const [_lastName, setLastName] = useState(lastName);
   const [_rank, setRank] = useState(rank);
 
-  const [params] = useSearchParams();
-  const prevLocation = getPrevLocationFromURLParams(params);
-
   const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
   };
@@ -88,7 +84,10 @@ export const EditInfo = () => {
     _firstName !== firstName || _lastName !== lastName || _rank !== rank;
 
   return (
-    <Page pageName={"Edit Character Info"} prevLocation={prevLocation}>
+    <Page
+      pageName={"Edit Character Info"}
+      prevLocation={Locations.CharacterMenu}
+    >
       <EditInfoStyle>
         <InputLabel>
           <label htmlFor="firstName">First name</label>

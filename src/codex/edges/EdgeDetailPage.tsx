@@ -1,10 +1,11 @@
-import { getEdgeDetailByKey } from "../static/edges/EdgeUtil";
 import { useParams } from "react-router-dom";
+
+import Page from "../../shared/page/Page";
+import { getEdgeDetailByKey } from "../../static/edges/EdgeUtil";
+import { Edge } from "../../utils/enums";
+import { getEnumByString } from "../../utils/enums/EnumUtil";
+import { Locations } from "../../utils/Location";
 import { EdgeDetail } from "./EdgeDetail";
-import Page from "../shared/page/Page";
-import { getEnumByString } from "../utils/enums/EnumUtil";
-import { Edge } from "../utils/enums";
-import { Locations } from "../utils/Location";
 
 export const EdgeDetailPage = () => {
   const routeParams = useParams();

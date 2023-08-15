@@ -14,6 +14,7 @@ const AppContentArranger = styled.div`
   justify-content: space-between;
 `;
 
+const latestSessionTSKey = "latest-session-ts";
 export const selectedCharacterKey = "latest-selected-character-id";
 
 function App() {
@@ -24,6 +25,20 @@ function App() {
   );
 
   useEffect(() => {
+    const latestSession = sessionStorage.getItem(latestSessionTSKey);
+    if (latestSession) {
+      const nowTS = Date.now();
+      const latestSessionTS = JSON.parse(latestSession) as number;
+      if (nowTS - latestSessionTS > 86400000) {
+        console.log("Not updated in more than a day, updating app.");
+        sessionStorage.setItem(latestSessionTSKey, JSON.stringify(nowTS));
+        window.location.reload();
+      }
+    } else {
+      const nowTS = Date.now();
+      sessionStorage.setItem(latestSessionTSKey, JSON.stringify(nowTS));
+    }
+
     const unsubscribe = onAuthStateChanged(auth(), (user) => {
       setUser(user);
       setAppLoading(false);

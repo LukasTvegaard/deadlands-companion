@@ -1,18 +1,18 @@
+import { ref, set } from "firebase/database";
 import { useContext } from "react";
-import Page from "../../../shared/page/Page";
-import { ResourceCounter } from "../resources/ResourceCounter";
+import { styled } from "styled-components";
+
 import { CharacterContext } from "../../../DeadlandsCompanion";
+import { Icons } from "../../../icons/Icons";
+import { IconButton } from "../../../shared/buttons/IconButton";
+import Page from "../../../shared/page/Page";
+import { database } from "../../../utils/firebase/Firebase";
+import { Locations } from "../../../utils/Location";
 import {
   getMaxPowerPoints,
   shouldShowPowerPoints,
 } from "../../character-logic/PowerPointLogic";
-import { styled } from "styled-components";
-import { database } from "../../../utils/firebase/Firebase";
-import { ref, set } from "firebase/database";
-import { IconButton } from "../../../shared/buttons/IconButton";
-import { Icons } from "../../../icons/Icons";
-import { useSearchParams } from "react-router-dom";
-import { getPrevLocationFromURLParams } from "../../../utils/Location";
+import { ResourceCounter } from "../resources/ResourceCounter";
 
 const ResourceSegment = styled.div`
   display: flex;
@@ -47,8 +47,6 @@ const changeCurrentPowerPoints = ({
 
 export const EditResources = () => {
   const character = useContext(CharacterContext);
-  const [params] = useSearchParams();
-  const prevLocation = getPrevLocationFromURLParams(params);
 
   const { id, wounds, fatigue, currentPowerPoints } = character;
   const maxHealth = 4;
@@ -81,7 +79,7 @@ export const EditResources = () => {
   };
 
   return (
-    <Page pageName="Recharge" prevLocation={prevLocation}>
+    <Page pageName="Recharge" prevLocation={Locations.CharacterMenu}>
       <ResourceSegment>
         Health
         <ResourceCounter
