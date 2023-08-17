@@ -8,6 +8,8 @@ import { Edges } from "../../static/edges/EdgeList";
 import { Edge } from "../../utils/enums";
 import { EdgeHindranceRow } from "./EdgeHindranceRow";
 import { getPrevLocationQuery } from "../../shared/StyledLink";
+import { Hindrances } from "../../static/hindrances/HindranceList";
+import { Hindrance } from "../../utils/enums/Hindrance";
 
 export const EdgesAndHindrances = () => {
   const character = useContext(CharacterContext);
@@ -40,12 +42,12 @@ export const EdgesAndHindrances = () => {
           LocationKey.CharacterEdgeHindrance
         )}`}
       >
-        {character.edges
-          ? Object.keys(character.edges).map((edgeKey) => {
-              const hindranceDetail = Edges[edgeKey as Edge];
+        {character.hindrances
+          ? Object.keys(character.hindrances).map((hindranceKey) => {
+              const hindranceDetail = Hindrances[hindranceKey as Hindrance];
               return (
                 <EdgeHindranceRow
-                  key={edgeKey}
+                  key={hindranceKey}
                   title={hindranceDetail.name}
                   description={hindranceDetail.description_short}
                 />

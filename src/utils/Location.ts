@@ -33,7 +33,10 @@ export const Locations: Record<LocationKey, Location> = {
   },
   [LocationKey.CodexMenu]: { path: "/codex", name: "Codex" },
   [LocationKey.EdgePage]: { path: "/codex/edges", name: "Edges" },
-  [LocationKey.HindrancePage]: { path: "/codex/hindrances", name: "Hindraces" },
+  [LocationKey.HindrancePage]: {
+    path: "/codex/hindrances",
+    name: "Hindrances",
+  },
   [LocationKey.Back]: { path: NavigateBackRoute, name: "Back" },
 };
 

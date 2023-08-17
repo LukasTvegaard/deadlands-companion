@@ -26,8 +26,8 @@ export const FleetFooted: EdgeDetailType = {
   name: "Fleet-Footed",
   category: EdgeCategory.Background,
   description:
-    "The hero's pace is increased by +2 and he rolls a d10 instead of a d6 when running.",
-  description_short: "+2 pace, d10 instead of d6 when sprinting",
+    "The hero's pace is increased by +2 and Running die is increased by 2.",
+  description_short: "+2 pace, Running die increased by 2",
   rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,

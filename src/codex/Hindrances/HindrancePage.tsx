@@ -22,6 +22,7 @@ export const HindrancePage = () => {
               link={hindrance.key}
               name={hindrance.name}
               description={hindrance.description_short}
+              isNegative
             />
           );
         })}

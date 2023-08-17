@@ -13,12 +13,12 @@ const EdgeHindranceRowStyle = styled.div`
 `;
 
 type TitleProps = {
-  isEdge?: boolean;
+  $isEdge?: boolean;
 };
 const Title = styled.div<TitleProps>`
   font-weight: 400;
   font-size: 18px;
-  color: ${(props) => (props.isEdge ? Theme.Primary[600] : Theme.Error[300])};
+  color: ${(props) => (props.$isEdge ? Theme.Primary[600] : Theme.Error[300])};
 `;
 
 const Description = styled.div`
@@ -38,7 +38,7 @@ export const EdgeHindranceRow = ({
 }: EdgeHindranceRowProps) => {
   return (
     <EdgeHindranceRowStyle>
-      <Title isEdge={isEdge}>{title}</Title>
+      <Title $isEdge={isEdge}>{title}</Title>
       <Description>{description}</Description>
     </EdgeHindranceRowStyle>
   );

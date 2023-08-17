@@ -1,4 +1,5 @@
 import { getCharacterEdgeDetails } from "../../../static/edges/EdgeUtil";
+import { getCharacterHindranceDetails } from "../../../static/hindrances/HindranceUtil";
 import { Character } from "../../../utils/types/Character";
 import {
   Effect,
@@ -24,9 +25,13 @@ export const getRelevantEffectsForEffectable = (
     getCharacterEdgeDetails(character),
     rollTarget
   );
-  // FIXME: Add additional sources of permanent effects (hindrances, items, etc.)
+  const hindranceEffects = getRelevantEffectsFromEffecting(
+    getCharacterHindranceDetails(character),
+    rollTarget
+  );
+  // FIXME: Add additional sources of permanent effects (items, etc.)
   const temporaryEffects = character.effects ?? [];
-  return [...edgeEffects, ...temporaryEffects];
+  return [...edgeEffects, ...hindranceEffects, ...temporaryEffects];
 };
 
 export const getEffectTotal = (

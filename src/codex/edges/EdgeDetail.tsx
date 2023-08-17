@@ -29,8 +29,6 @@ export const EdgeDetail = ({ edgeDetail }: EdgeDetailProps) => {
   }
 
   const hasEdge = character && characterHasEdge(edgeDetail.key, character);
-  console.log(hasEdge);
-
   const addToCharacterButton = character ? (
     <button onClick={() => addEdge(character?.id, edgeDetail.key)}>
       Add edge to character

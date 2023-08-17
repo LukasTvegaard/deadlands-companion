@@ -29,6 +29,7 @@ import { EditInfo } from "./character/character-sheet/edit/EditInfo";
 import { useScrollRestoration } from "./utils/useScrollRestoration";
 import { EdgesAndHindrances } from "./character/edges-hindrances/EdgesAndHindrances";
 import { HindrancePage } from "./codex/hindrances/HindrancePage";
+import { HindranceDetailPage } from "./codex/hindrances/HindranceDetailPage";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
@@ -88,6 +89,7 @@ export const DeadlandsCompanion = ({
           <Route path="edges" element={<EdgePage />}></Route>
           <Route path="edges/:id" element={<EdgeDetailPage />} />
           <Route path="hindrances" element={<HindrancePage />} />
+          <Route path="hindrances/:id" element={<HindranceDetailPage />} />
           <Route path="powers" element={<h2>Powers</h2>} />
           <Route path="weapons" element={<h2>Weapons</h2>} />
         </Route>

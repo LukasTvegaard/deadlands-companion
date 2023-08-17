@@ -16,10 +16,14 @@ const TileStyle = styled(StyledLink)`
   }
 `;
 
-const TileTitle = styled.div`
+type TileTitleProps = {
+  $isNegative?: boolean;
+};
+const TileTitle = styled.div<TileTitleProps>`
   font-weight: 400;
   font-size: 18px;
-  color: ${Theme.Primary[600]};
+  color: ${(props) =>
+    props.$isNegative ? Theme.Error[300] : Theme.Primary[600]};
 `;
 
 const TileDescription = styled.div`
@@ -35,11 +39,18 @@ type TileProps = {
   name: string;
   description: string;
   requirements?: string;
+  isNegative?: boolean;
 };
-export const Tile = ({ link, name, description, requirements }: TileProps) => {
+export const Tile = ({
+  link,
+  name,
+  description,
+  requirements,
+  isNegative,
+}: TileProps) => {
   return (
     <TileStyle to={`${link}`}>
-      <TileTitle>{name}</TileTitle>
+      <TileTitle $isNegative={isNegative}>{name}</TileTitle>
       <TileDescription>{description}</TileDescription>
       {requirements ? <TileRequirements>Requirements</TileRequirements> : null}
     </TileStyle>

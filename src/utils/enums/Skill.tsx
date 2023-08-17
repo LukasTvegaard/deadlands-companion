@@ -9,6 +9,7 @@ export enum Skill {
   Healing = "Healing",
   Intimidation = "Intimidation",
   Investigation = "Investigation",
+  KnowledgeCommon = "KnowledgeCommon",
   KnowledgeScience = "KnowledgeScience",
   KnowledgeOccult = "KnowledgeOccult",
   Lockpicking = "Lockpicking",
