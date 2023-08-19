@@ -1,32 +1,28 @@
-/* import { DieType, Edge, EdgeCategory, Rank, Skill, Attribute } from "../../../utils/enums";
-import { EdgeDetail } from "../../../utils/interfaces";
+import { DieType, Edge, EdgeCategory, Rank, Skill } from "../../../utils/enums";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
-const StatRequirements: StatRequirement[] = [
-    {stat: Attribute.,
-    dieType: DieType.}
-];
+const StatRequirements: StatRequirement[] = [];
 
 const SkillRequirements: SkillRequirement[] = [
   {
-    skill: Skill.,
-    dieType: DieType.,
+    skill: Skill.Shooting,
+    dieType: DieType.D8,
   },
 ];
 
-const EdgeRequirements: Edge[] = [Edge.];
+const EdgeRequirements: Edge[] = [];
 
-export const : EdgeDetail = {
-  key: Edge.,
-  name: "",
+export const HipShooting: EdgeDetailType = {
+  key: Edge.HipShooting,
+  name: "Hip-Shooting",
   category: EdgeCategory.Combat,
   description:
-    "",
-  description_short:
-    "",
-  rank_requirement: Rank.,
+    "Your hero is a natural hip-shooter. They suffer only a -2 to their Shooting rolls when fanning the hammer.",
+  description_short: "Reduce fan the hammer penalty to -2",
+  rank_requirement: Rank.Seasoned,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-}; */
-export {};
+  effects: [], // MISSING: Conditional effect
+};

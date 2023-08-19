@@ -1,11 +1,4 @@
-import {
-  DieType,
-  Edge,
-  EdgeCategory,
-  Rank,
-  Skill,
-  Attribute,
-} from "../../../utils/enums";
+import { Edge, EdgeCategory, Rank } from "../../../utils/enums";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
@@ -26,5 +19,5 @@ export const CombatReflexes: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [], // MISSING: Conditional effect
 };

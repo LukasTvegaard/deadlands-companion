@@ -8,6 +8,7 @@ import {
 } from "../../../utils/enums";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [
   { stat: Attribute.Smarts, dieType: DieType.D8 },
@@ -28,12 +29,22 @@ export const Investigator: EdgeDetailType = {
   name: "Investigator",
   category: EdgeCategory.Professional,
   description:
-    "Investigators have spent a great deal of time researching ancient legends, working the streets, or deducing devilish mysteries. Investigators add +2 to Invstigation and Streetwise rolls, as well as Notice rolls made to search through evidence.",
-  description_short:
-    "+2 to Investigation roll, +2 to Streetwise roll, +2 to Notice rolls when searching through evidence",
+    "Investigators have spent a great deal of time researching ancient legends, working the streets, or deducing devilish mysteries. Investigators add +2 to Invstigation and Streetwise rolls.",
+  description_short: "+2 to Investigation rolls. +2 to Streetwise rolls.",
   rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [
+    {
+      target: Skill.Investigation,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 2,
+    },
+    {
+      target: Skill.Streetwise,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 2,
+    },
+  ],
 };

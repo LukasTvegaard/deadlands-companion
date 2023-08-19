@@ -1,11 +1,4 @@
-import {
-  DieType,
-  Edge,
-  EdgeCategory,
-  Rank,
-  Skill,
-  Attribute,
-} from "../../../utils/enums";
+import { DieType, Edge, EdgeCategory, Rank, Skill } from "../../../utils/enums";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 

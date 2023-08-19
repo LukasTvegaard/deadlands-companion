@@ -1,32 +1,22 @@
-/* import { DieType, Edge, EdgeCategory, Rank, Skill, Attribute } from "../../../utils/enums";
-import { EdgeDetail } from "../../../utils/interfaces";
+import { Edge, EdgeCategory, Rank } from "../../../utils/enums";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EdgeDetailType } from "./../../../utils/interfaces/EdgeDetail";
 
-const StatRequirements: StatRequirement[] = [
-    {stat: Attribute.,
-    dieType: DieType.}
-];
+const StatRequirements: StatRequirement[] = [];
 
-const SkillRequirements: SkillRequirement[] = [
-  {
-    skill: Skill.,
-    dieType: DieType.,
-  },
-];
+const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.];
+const EdgeRequirements: Edge[] = [];
 
-export const : EdgeDetail = {
-  key: Edge.,
-  name: "",
+export const NoMercy: EdgeDetailType = {
+  key: Edge.NoMercy,
+  name: "No Mercy",
   category: EdgeCategory.Combat,
-  description:
-    "",
-  description_short:
-    "",
-  rank_requirement: Rank.,
+  description: "The character may spend a Fate Chip to reroll damage rolls.",
+  description_short: "May spend Fate Chip on damage rolls",
+  rank_requirement: Rank.Seasoned,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-}; */
-export {};
+  effects: [],
+};

@@ -1,32 +1,31 @@
-/* import { DieType, Edge, EdgeCategory, Rank, Skill, Attribute } from "../../../utils/enums";
-import { EdgeDetail } from "../../../utils/interfaces";
+import {
+  DieType,
+  Edge,
+  EdgeCategory,
+  Rank,
+  Attribute,
+} from "../../../utils/enums";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [
-    {stat: Attribute.,
-    dieType: DieType.}
+  { stat: Attribute.Smarts, dieType: DieType.D6 },
 ];
 
-const SkillRequirements: SkillRequirement[] = [
-  {
-    skill: Skill.,
-    dieType: DieType.,
-  },
-];
+const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.];
+const EdgeRequirements: Edge[] = [];
 
-export const : EdgeDetail = {
-  key: Edge.,
-  name: "",
+export const ImprovisationalFighter: EdgeDetailType = {
+  key: Edge.ImprovisationalFighter,
+  name: "Improvisational Fighter",
   category: EdgeCategory.Combat,
   description:
-    "",
-  description_short:
-    "",
-  rank_requirement: Rank.,
+    "Your hero has a knack for using improvised weaponry. They ignore the usual -1 penalty when wielding them.",
+  description_short: "Ignore penalty when using improvised weapons.",
+  rank_requirement: Rank.Seasoned,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-}; */
-export {};
+  effects: [],
+};

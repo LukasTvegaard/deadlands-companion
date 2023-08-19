@@ -15,10 +15,10 @@ export const ArcaneResistanceImproved: EdgeDetailType = {
   description:
     "As Arcane Resistance, but Armor and resistance are increased to 4",
   description_short:
-    "+4 armor vs. magic, +4 trait rolls vs. magic, -4 to friendly magic",
+    "Additional +2 armor vs. magic, +2 trait rolls vs. magic, -2 to friendly magic",
   rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [], // MISSING: Conditional effect
 };

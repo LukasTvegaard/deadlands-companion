@@ -1,32 +1,23 @@
-/* import { DieType, Edge, EdgeCategory, Rank, Skill, Attribute } from "../../../utils/enums";
-import { EdgeDetail } from "../../../utils/interfaces";
+import { Edge, EdgeCategory, Rank } from "../../../utils/enums";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
-const StatRequirements: StatRequirement[] = [
-    {stat: Attribute.,
-    dieType: DieType.}
-];
+const StatRequirements: StatRequirement[] = [];
 
-const SkillRequirements: SkillRequirement[] = [
-  {
-    skill: Skill.,
-    dieType: DieType.,
-  },
-];
+const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.];
+const EdgeRequirements: Edge[] = [Edge.HardToKill];
 
-export const : EdgeDetail = {
-  key: Edge.,
-  name: "",
+export const HarderToKill: EdgeDetailType = {
+  key: Edge.HarderToKill,
+  name: "Harder to Kill",
   category: EdgeCategory.Combat,
   description:
-    "",
-  description_short:
-    "",
-  rank_requirement: Rank.,
+    "Your hero is tougher to kill than Rasputin. If they are ever 'killed', roll a die. On an odd result, they are dead as usual. On an even roll, they are Incapacitated but somehow escape death.",
+  description_short: "50% chance to become Incapacitated instead of dying.",
+  rank_requirement: Rank.Veteran,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-}; */
-export {};
+  effects: [],
+};

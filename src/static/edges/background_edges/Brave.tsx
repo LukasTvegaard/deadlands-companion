@@ -4,9 +4,11 @@ import {
   EdgeCategory,
   Rank,
   Attribute,
+  Skill,
 } from "../../../utils/enums";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [
   {
@@ -30,5 +32,11 @@ export const Brave: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [
+    {
+      target: Skill.Guts,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 2,
+    },
+  ],
 };

@@ -33,7 +33,7 @@ export const EdgePage = () => {
       : EdgeList;
   const edgeListGroups = groupBy(
     edges,
-    (edge: EdgeDetailType) => edge.rank_requirement
+    (edge: EdgeDetailType) => edge.category
   );
 
   return (

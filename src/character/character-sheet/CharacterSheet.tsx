@@ -105,7 +105,6 @@ export const CharacterSheet = () => {
           />
         </ListTile>
       </GroupContainer>
-      <br />
     </Page>
   );
 };

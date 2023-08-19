@@ -1,4 +1,9 @@
-import { DieType } from "../../../utils/enums";
+import {
+  Attribute,
+  DieType,
+  Edge,
+  SkillLinkedAttribute,
+} from "../../../utils/enums";
 import { Character } from "../../../utils/types/Character";
 import { getEnumByString } from "../../../utils/enums/EnumUtil";
 import {
@@ -6,6 +11,7 @@ import {
   rollableIsAttribute,
   rollableIsSkill,
 } from "../../../utils/types/Rollable";
+import { characterHasEdge } from "../../../static/edges/EdgeUtil";
 
 export const getBaseModifierFromDieType = (
   dieType: DieType
@@ -27,6 +33,12 @@ export const getBaseDie = (
   if (rollableIsSkill(rollTarget)) {
     if (character.skills && character.skills[rollTarget]) {
       return character.skills[rollTarget];
+    }
+    if (
+      characterHasEdge(Edge.JackOfAllTrades, character) &&
+      SkillLinkedAttribute[rollTarget] === Attribute.Smarts
+    ) {
+      return DieType.D4;
     }
   }
 

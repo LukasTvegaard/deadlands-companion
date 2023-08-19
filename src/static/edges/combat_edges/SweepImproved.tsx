@@ -1,32 +1,22 @@
-/* import { DieType, Edge, EdgeCategory, Rank, Skill, Attribute } from "../../../utils/enums";
-import { EdgeDetail } from "../../../utils/interfaces";
+import { Edge, EdgeCategory, Rank } from "../../../utils/enums";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
-const StatRequirements: StatRequirement[] = [
-    {stat: Attribute.,
-    dieType: DieType.}
-];
+const StatRequirements: StatRequirement[] = [];
 
-const SkillRequirements: SkillRequirement[] = [
-  {
-    skill: Skill.,
-    dieType: DieType.,
-  },
-];
+const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.];
+const EdgeRequirements: Edge[] = [Edge.Sweep];
 
-export const : EdgeDetail = {
-  key: Edge.,
-  name: "",
+export const SweepImproved: EdgeDetailType = {
+  key: Edge.SweepImproved,
+  name: "Sweep (Improved)",
   category: EdgeCategory.Combat,
-  description:
-    "",
-  description_short:
-    "",
-  rank_requirement: Rank.,
+  description: "Remove the -2 penalty from Sweep.",
+  description_short: "Remove the -2 penalty from Sweep.",
+  rank_requirement: Rank.Veteran,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-}; */
-export {};
+  effects: [],
+};

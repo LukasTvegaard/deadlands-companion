@@ -8,13 +8,13 @@ const SkillRequirements: SkillRequirement[] = [];
 
 const EdgeRequirements: Edge[] = [];
 
-export const Luck: EdgeDetailType = {
-  key: Edge.Luck,
-  name: "Luck",
+export const ArcaneBackgroundShamanism: EdgeDetailType = {
+  key: Edge.ArcaneBackgroundShamanism,
+  name: "Arcane Background (Shamanism)",
   category: EdgeCategory.Background,
   description:
-    "The adventurer seems to be blessed by fate, karma, the gods, or whatever external forces he believes in. He draws one extra Banny at the beginning of each game session, allowing him to succeed at important tasks more often than most, and survive incredible dangers.",
-  description_short: "Draw one extra Fate Chip each session",
+    "Shamans are Indian holy men and women, and keepers of tribal medicine. Their power comes from bargains with the demanding spirits of the natural world. When these medicine men honor the nature spirits, they can accomplish amazing feats that make even the most doubting Thomas tremble. For details on playing a shaman, see page 85.",
+  description_short: "Arcane Background for Shamans",
   rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,

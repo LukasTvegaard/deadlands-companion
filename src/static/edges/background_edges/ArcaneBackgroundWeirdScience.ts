@@ -1,31 +1,19 @@
-import {
-  DieType,
-  Edge,
-  EdgeCategory,
-  Rank,
-  Skill,
-  Attribute,
-} from "../../../utils/enums";
+import { Edge, EdgeCategory, Rank } from "../../../utils/enums";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [];
 
-const SkillRequirements: SkillRequirement[] = [
-  {
-    skill: Skill.Persuasion,
-    dieType: DieType.D8,
-  },
-];
+const SkillRequirements: SkillRequirement[] = [];
 
 const EdgeRequirements: Edge[] = [];
 
-export const TaleTeller: EdgeDetailType = {
-  key: Edge.TaleTeller,
-  name: "Tale Teller",
-  category: EdgeCategory.Professional,
-  description: "TODO",
-  description_short: "TODO",
+export const ArcaneBackgroundWeirdScience: EdgeDetailType = {
+  key: Edge.ArcaneBackgroundWeirdScience,
+  name: "Arcane Background (Weird Science)",
+  category: EdgeCategory.Background,
+  description: "",
+  description_short: "Arcane Background for Weird Scientists",
   rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,

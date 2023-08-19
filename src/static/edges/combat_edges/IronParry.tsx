@@ -1,32 +1,24 @@
-/* import { DieType, Edge, EdgeCategory, Rank, Skill, Attribute } from "../../../utils/enums";
-import { EdgeDetail } from "../../../utils/interfaces";
+import { Edge, EdgeCategory, Rank } from "../../../utils/enums";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 
-const StatRequirements: StatRequirement[] = [
-    {stat: Attribute.,
-    dieType: DieType.}
-];
+const StatRequirements: StatRequirement[] = [];
 
-const SkillRequirements: SkillRequirement[] = [
-  {
-    skill: Skill.,
-    dieType: DieType.,
-  },
-];
+const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.];
+const EdgeRequirements: Edge[] = [Edge.BlockImproved];
 
-export const : EdgeDetail = {
-  key: Edge.,
-  name: "",
+export const IronParry: EdgeDetailType = {
+  key: Edge.IronParry,
+  name: "Iron Parry",
   category: EdgeCategory.Combat,
   description:
-    "",
+    "Some fighters can bust up an opponent pretty bad just by blocking an attack. If an opponent fails a Fighting roll against your character, the opponent suffers the damage instead.",
   description_short:
-    "",
-  rank_requirement: Rank.,
+    "Missing a Fighting roll against you instead deals the damage to the attacker.",
+  rank_requirement: Rank.Heroic,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-}; */
-export {};
+  effects: [],
+};

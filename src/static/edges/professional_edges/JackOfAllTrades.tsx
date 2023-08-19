@@ -3,7 +3,6 @@ import {
   Edge,
   EdgeCategory,
   Rank,
-  Skill,
   Attribute,
 } from "../../../utils/enums";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
@@ -29,5 +28,5 @@ export const JackOfAllTrades: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [], // MISSING: Better handling of this edge (show in character sheet or something)
 };

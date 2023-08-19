@@ -1,32 +1,30 @@
-/* import { DieType, Edge, EdgeCategory, Rank, Skill, Attribute } from "../../../utils/enums";
-import { EdgeDetail } from "../../../utils/interfaces";
+import {
+  DieType,
+  Edge,
+  EdgeCategory,
+  Rank,
+  Attribute,
+} from "../../../utils/enums";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
 const StatRequirements: StatRequirement[] = [
-    {stat: Attribute.,
-    dieType: DieType.}
+  { stat: Attribute.Agility, dieType: DieType.D8 },
 ];
 
-const SkillRequirements: SkillRequirement[] = [
-  {
-    skill: Skill.,
-    dieType: DieType.,
-  },
-];
+const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.];
+const EdgeRequirements: Edge[] = [];
 
-export const : EdgeDetail = {
-  key: Edge.,
-  name: "",
+export const QuickDraw: EdgeDetailType = {
+  key: Edge.QuickDraw,
+  name: "Quick Draw",
   category: EdgeCategory.Combat,
-  description:
-    "",
-  description_short:
-    "",
-  rank_requirement: Rank.,
+  description: "This Edge allows a hero to draw a weapon as a free action.",
+  description_short: "Draw weapons as free actions.",
+  rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-}; */
-export {};
+  effects: [],
+};

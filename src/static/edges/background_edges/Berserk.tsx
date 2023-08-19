@@ -20,5 +20,5 @@ export const Berserk: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [], // MISSING: Add a Berserk buff as temporary effect
 };

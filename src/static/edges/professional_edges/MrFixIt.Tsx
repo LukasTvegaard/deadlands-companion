@@ -8,6 +8,7 @@ import {
 } from "../../../utils/enums";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [
   { stat: Attribute.Smarts, dieType: DieType.D10 },
@@ -45,5 +46,11 @@ export const MrFixIt: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [
+    {
+      target: Skill.Repair,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 2,
+    },
+  ],
 };

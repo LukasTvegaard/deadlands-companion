@@ -6,14 +6,15 @@ const StatRequirements: StatRequirement[] = [];
 
 const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.Counterattack];
+const EdgeRequirements: Edge[] = [Edge.TrademarkWeaponShooting];
 
-export const CounterAttackImproved: EdgeDetailType = {
-  key: Edge.CounterattackImproved,
-  name: "Counterattack (Improved",
+export const TrademarkWeaponShootingImproved: EdgeDetailType = {
+  key: Edge.TrademarkWeaponShootingImproved,
+  name: "Trademark Weapon (Shooting, Improved)",
   category: EdgeCategory.Combat,
-  description: "Remove -2 penalty from Counterattack",
-  description_short: "Remove -2 penalty from Counterattack",
+  description: "The trademark weapon Shooting bonus is increased to +2.",
+  description_short:
+    "The trademark weapon bonus is increased by an additional +1.",
   rank_requirement: Rank.Veteran,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,

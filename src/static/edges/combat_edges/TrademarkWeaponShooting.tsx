@@ -13,16 +13,16 @@ const SkillRequirements: SkillRequirement[] = [
 
 const EdgeRequirements: Edge[] = [];
 
-export const HipShootingImproved: EdgeDetailType = {
-  key: Edge.HipShootingImproved,
-  name: "Hip-Shooting (Improved)",
+export const TrademarkWeaponShooting: EdgeDetailType = {
+  key: Edge.TrademarkWeaponShooting,
+  name: "Trademark Weapon (Shooting)",
   category: EdgeCategory.Combat,
   description:
-    "Your hero has fanning down to a fine art. They suffer no penalty when fanning the hammer.",
-  description_short: "No penalty when fanning the hammer.",
-  rank_requirement: Rank.Heroic,
+    "Your hero knows one unique weapon like the back of their hand. When using that weapon, they add +1 to their Shooting rolls. If a Trademark Weapon is lost, the hero can replace it, but the benefit of the Edge doesn't kick in for two game weeks.",
+  description_short: "+1 Shooting when using designated trademark weapon.",
+  rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [], // MISSING: Conditional effect
+  effects: [], // MISSING: Trademark weapon toggle on weapons.
 };

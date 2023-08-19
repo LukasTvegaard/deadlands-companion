@@ -3,11 +3,12 @@ import {
   Edge,
   EdgeCategory,
   Rank,
-  Skill,
   Attribute,
 } from "../../../utils/enums";
+import { DerivedStat } from "../../../utils/enums/DerivedStat";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [
   { stat: Attribute.Agility, dieType: DieType.D8 },
@@ -29,5 +30,11 @@ export const Acrobat: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [
+    {
+      target: DerivedStat.Parry,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 1,
+    },
+  ], // MISSING: Conditional effect
 };

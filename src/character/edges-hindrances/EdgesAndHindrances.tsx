@@ -55,7 +55,6 @@ export const EdgesAndHindrances = () => {
             })
           : null}
       </ListTile>
-      <br />
     </Page>
   );
 };

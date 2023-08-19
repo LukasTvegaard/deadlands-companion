@@ -6,15 +6,15 @@ const StatRequirements: StatRequirement[] = [];
 
 const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.Counterattack];
+const EdgeRequirements: Edge[] = [];
 
-export const CounterAttackImproved: EdgeDetailType = {
-  key: Edge.CounterattackImproved,
-  name: "Counterattack (Improved",
-  category: EdgeCategory.Combat,
-  description: "Remove -2 penalty from Counterattack",
-  description_short: "Remove -2 penalty from Counterattack",
-  rank_requirement: Rank.Veteran,
+export const ArcaneBackgroundHexslinger: EdgeDetailType = {
+  key: Edge.ArcaneBackgroundHexslinger,
+  name: "Arcane Background (Hexslinger)",
+  category: EdgeCategory.Background,
+  description: "",
+  description_short: "Arcane Background for Hexslingers",
+  rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,

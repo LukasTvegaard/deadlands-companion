@@ -41,5 +41,5 @@ export const Assassin: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [], // MISSING: Add sneak attack action to weapons
 };

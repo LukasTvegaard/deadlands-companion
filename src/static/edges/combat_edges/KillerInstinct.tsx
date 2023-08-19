@@ -1,31 +1,24 @@
-/* import { DieType, Edge, EdgeCategory, Rank, Skill, Attribute } from "../../../utils/enums";
-import { EdgeDetail } from "../../../utils/interfaces";
+import { Edge, EdgeCategory, Rank } from "../../../utils/enums";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
 
-const StatRequirements: StatRequirement[] = [
-    {stat: Attribute.,
-    dieType: DieType.}
-];
+const StatRequirements: StatRequirement[] = [];
 
-const SkillRequirements: SkillRequirement[] = [
-  {
-    skill: Skill.,
-    dieType: DieType.,
-  },
-];
+const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.];
+const EdgeRequirements: Edge[] = [];
 
-export const : EdgeDetail = {
-  key: Edge.,
-  name: "",
+export const KillerInstinct: EdgeDetailType = {
+  key: Edge.KillerInstinct,
+  name: "Killer Instinct",
   category: EdgeCategory.Combat,
   description:
-    "",
+    "This hero hates losing. If they tie on an opposed roll of any sort, they win. In addition, if their skill die on an opposed skill roll is 1, they can reroll the die once.",
   description_short:
-    "",
-  rank_requirement: Rank.,
+    "Win any opposed roll that results in a tie. Reroll 1 on the skill die on an opposed skill roll once.",
+  rank_requirement: Rank.Heroic,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-}; */ export {};
+  effects: [],
+};

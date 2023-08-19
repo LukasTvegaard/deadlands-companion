@@ -22,32 +22,32 @@ const PowerPoints = {
 export const PowerPointsNovice: EdgeDetailType = {
   ...PowerPoints,
   key: Edge.PowerPoints_novice,
-  name: "Power Points (novice)",
+  name: "Power Points (Novice)",
   rank_requirement: Rank.Novice,
 };
 
 export const PowerPointsSeasoned: EdgeDetailType = {
   ...PowerPoints,
   key: Edge.PowerPoints_seasoned,
-  name: "Power Points (seasoned)",
+  name: "Power Points (Seasoned)",
   rank_requirement: Rank.Seasoned,
 };
 export const PowerPointsVeteran: EdgeDetailType = {
   ...PowerPoints,
   key: Edge.PowerPoints_veteran,
-  name: "Power Points (veteran)",
+  name: "Power Points (Veteran)",
   rank_requirement: Rank.Veteran,
 };
 
 export const PowerPointsHeroic: EdgeDetailType = {
   ...PowerPoints,
   key: Edge.PowerPoints_heroic,
-  name: "Power Points (heroic)",
+  name: "Power Points (Heroic)",
   rank_requirement: Rank.Heroic,
 };
 export const PowerPointsLegendary: EdgeDetailType = {
   ...PowerPoints,
   key: Edge.PowerPoints_legendary,
-  name: "Power Points (legendary)",
+  name: "Power Points (Legendary)",
   rank_requirement: Rank.Legendary,
 };

@@ -6,23 +6,23 @@ const StatRequirements: StatRequirement[] = [];
 
 const SkillRequirements: SkillRequirement[] = [
   {
-    skill: Skill.Shooting,
-    dieType: DieType.D6,
+    skill: Skill.Fighting,
+    dieType: DieType.D10,
   },
 ];
 
 const EdgeRequirements: Edge[] = [];
 
-export const Duelist: EdgeDetailType = {
-  key: Edge.Duelist,
-  name: "Duelist",
+export const TrademarkWeaponFighting: EdgeDetailType = {
+  key: Edge.TrademarkWeaponFighting,
+  name: "Trademark Weapon (Fighting)",
   category: EdgeCategory.Combat,
   description:
-    "Your hombre is a deadly gunfighter, and anyone foolish enmough to face him at High Noon winds up in the boneyard by sunset. In a duel, this hero receives an extra hole card for each point of Grit he has. Rules for dueling can be found on page 62 of the Deadlands Player's Guide.",
-  description_short: "Draw extra card per point of Grit when in a duel.",
+    "Your hero knows one unique weapon like the back of their hand. When using that weapon, they add +1 to their Fighting rolls. If a Trademark Weapon is lost, the hero can replace it, but the benefit of the Edge doesn't kick in for two game weeks.",
+  description_short: "+1 Fighting when using designated trademark weapon.",
   rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [], // MISSING: Trademark weapon toggle on weapons.
 };

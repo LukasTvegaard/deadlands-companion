@@ -8,6 +8,7 @@ import {
 } from "../../../utils/enums";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [
   { stat: Attribute.Smarts, dieType: DieType.D6 },
@@ -35,5 +36,11 @@ export const SnakeoilSalesman: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [
+    {
+      target: Skill.Persuasion,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 2,
+    },
+  ],
 };

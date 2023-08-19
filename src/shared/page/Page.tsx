@@ -6,6 +6,7 @@ import { useSearchParams } from "react-router-dom";
 const PageContent = styled.div`
   padding-top: 8px;
   margin-left: 12px;
+  padding-bottom: 12px;
   display: flex;
   flex-direction: column;
   flex: 1;
