@@ -75,7 +75,9 @@ import { TrademarkWeaponFightingImproved } from "./combat_edges/TrademarkWeaponF
 import { TrademarkWeaponShooting } from "./combat_edges/TrademarkWeaponShooting";
 import { TrademarkWeaponShootingImproved } from "./combat_edges/TrademarkWeaponShootingImproved";
 import { TwoFisted } from "./combat_edges/TwoFisted";
+import { Alchemy } from "./power_edges/Alchemy";
 import { BornToKill } from "./power_edges/BornToKill";
+import { Eureka } from "./power_edges/Eureka";
 
 import { NewPower } from "./power_edges/NewPower";
 import {
@@ -277,6 +279,18 @@ export const Edges: EdgeDetails = {
   [Edge.ToughAsNailsImproved]: placeholderEdge,
   [Edge.WeaponMaster]: placeholderEdge,
   [Edge.MasterOfArms]: placeholderEdge,
+
+  [Edge.DealersChoice]: placeholderEdge,
+  [Edge.HighRoller]: placeholderEdge,
+  [Edge.ImprovedHighRoller]: placeholderEdge,
+  [Edge.OldHand]: placeholderEdge,
+  [Edge.WhateleyBlood]: placeholderEdge,
+
+  [Edge.FetishCreator]: placeholderEdge,
+  [Edge.SpiritsFavor]: placeholderEdge,
+
+  [Edge.Alchemy]: Alchemy,
+  [Edge.Eureka]: Eureka,
 };
 
 export const EdgeList = Object.values(Edges);

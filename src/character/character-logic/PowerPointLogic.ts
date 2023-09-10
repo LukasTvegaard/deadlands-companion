@@ -32,13 +32,12 @@ const getBasePowerPoints = (edges: Record<Edge, true>): number => {
     return 15;
   }
 
-  if (
-    someKeyInObject(
-      [Edge.ArcaneBackgroundMagic, Edge.ArcaneBackgroundWeirdScience],
-      edges
-    )
-  ) {
+  if (someKeyInObject([Edge.ArcaneBackgroundMagic], edges)) {
     return 10;
+  }
+
+  if (someKeyInObject([Edge.ArcaneBackgroundWeirdScience], edges)) {
+    return 20;
   }
 
   return 0;

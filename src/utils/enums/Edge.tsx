@@ -146,4 +146,19 @@ export enum Edge {
   ToughAsNailsImproved = "ToughAsNailsImproved",
   WeaponMaster = "WeaponMaster",
   MasterOfArms = "MasterOfArms",
+
+  // Huckster edges
+  DealersChoice = "DealersChoice",
+  HighRoller = "HighRoller",
+  ImprovedHighRoller = "ImprovedHighRoller",
+  OldHand = "OldHand",
+  WhateleyBlood = "WhateleyBlood",
+
+  // Shaman edges
+  FetishCreator = "FetishCreator",
+  SpiritsFavor = "SpiritsFavor",
+
+  // Weird Scientist edges
+  Alchemy = "Alchemy",
+  Eureka = "Eureka",
 }
