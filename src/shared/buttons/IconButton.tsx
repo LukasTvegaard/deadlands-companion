@@ -22,6 +22,7 @@ type IconButtonProps = {
   text?: string;
   iconSize?: number;
   color?: string;
+  secondary?: boolean;
   transparent?: boolean;
   viewbox?: string;
   onClick?: () => void;
@@ -31,12 +32,17 @@ export const IconButton = ({
   text,
   iconSize,
   color,
+  secondary,
   transparent,
   viewbox,
   onClick,
 }: IconButtonProps) => {
   return (
-    <IconButtonStyle $transparent={transparent} onClick={onClick}>
+    <IconButtonStyle
+      $transparent={transparent}
+      $secondary={secondary}
+      onClick={onClick}
+    >
       <Icon
         height={iconSize ?? 24}
         width={iconSize ?? 24}

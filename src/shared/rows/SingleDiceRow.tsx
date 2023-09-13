@@ -41,7 +41,7 @@ export const SingleDiceRow = ({
 
 type SingleValueRowProps = {
   label: string;
-  value: number;
+  value: number | string;
 };
 export const SingleValueRow = ({ label, value }: SingleValueRowProps) => {
   return (

@@ -8,6 +8,9 @@ export const Theme = {
     500: "#9cc5fa",
     600: "#b1d0fc",
   },
+  Secondary: {
+    200: "#79499e",
+  },
   Surface: {
     100: "#121212",
     200: "#282828",

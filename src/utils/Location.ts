@@ -4,9 +4,11 @@ export enum LocationKey {
   CharacterMenu = "CharacterMenu",
   CharacterSheet = "CharacterSheet",
   CharacterEdgeHindrance = "CharacterEdgeHindrance",
+  CharacterWeapon = "CharacterWeapon",
   CodexMenu = "CodexMenu",
   EdgePage = "EdgePage",
   HindrancePage = "HindrancePage",
+  WeaponPage = "WeaponPage",
   Back = "Back",
 }
 
@@ -31,11 +33,19 @@ export const Locations: Record<LocationKey, Location> = {
     path: `/character/edges`,
     name: "Edges & Hindrances",
   },
+  [LocationKey.CharacterWeapon]: {
+    path: `/character/weapons`,
+    name: "Weapons",
+  },
   [LocationKey.CodexMenu]: { path: "/codex", name: "Codex" },
   [LocationKey.EdgePage]: { path: "/codex/edges", name: "Edges" },
   [LocationKey.HindrancePage]: {
     path: "/codex/hindrances",
     name: "Hindrances",
+  },
+  [LocationKey.WeaponPage]: {
+    path: "/codex/weapons",
+    name: "Weapons",
   },
   [LocationKey.Back]: { path: NavigateBackRoute, name: "Back" },
 };

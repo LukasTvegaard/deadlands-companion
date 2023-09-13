@@ -39,9 +39,14 @@ type RollResult = {
 };
 export const getRoll = (
   rollTarget: Rollable,
-  character: Character
+  character: Character,
+  contextEffects: Effect[] = []
 ): RollResult => {
-  const effects = getRelevantEffectsForEffectable(rollTarget, character);
+  const relevantEffects = getRelevantEffectsForEffectable(
+    rollTarget,
+    character
+  );
+  const effects = [...relevantEffects, ...contextEffects];
   const rollDie = getRollDieType(rollTarget, character, effects);
 
   const rollModifier = getModifier(rollDie, character, effects);

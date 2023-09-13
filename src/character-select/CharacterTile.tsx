@@ -47,7 +47,7 @@ export const CharacterTile = ({
       onClick={() => setSelectedCharacterId(characterKey)}
     >
       <CharacterName>{getCharacterFullName(character)}</CharacterName>
-      <CharacterClass>{`${character.rank.toLowerCase()} ${getCharacterClass(
+      <CharacterClass>{`${character.rank?.toLowerCase()} ${getCharacterClass(
         character
       )}`}</CharacterClass>
       <PartyName>Party Name</PartyName> {/* FIXME: Insert party name */}

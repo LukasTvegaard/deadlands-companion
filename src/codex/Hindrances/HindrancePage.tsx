@@ -4,7 +4,7 @@ import { Locations } from "../../utils/Location";
 import { HindranceList } from "../../static/hindrances/HindranceList";
 import { Tile } from "../shared/Tile";
 
-const EdgeGroupsWrapper = styled.div`
+const HindranceGroupsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -14,7 +14,7 @@ const EdgeGroupsWrapper = styled.div`
 export const HindrancePage = () => {
   return (
     <Page pageName="Hindrances" prevLocation={Locations.CodexMenu}>
-      <EdgeGroupsWrapper>
+      <HindranceGroupsWrapper>
         {HindranceList.map((hindrance) => {
           return (
             <Tile
@@ -26,7 +26,7 @@ export const HindrancePage = () => {
             />
           );
         })}
-      </EdgeGroupsWrapper>
+      </HindranceGroupsWrapper>
     </Page>
   );
 };

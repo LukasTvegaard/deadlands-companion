@@ -5,19 +5,38 @@ type ButtonStyleProps = {
   disabled?: boolean;
   $transparent?: boolean;
   $negative?: boolean;
+  $secondary?: boolean;
+};
+const getButtonColor = ({
+  disabled,
+  $transparent,
+  $negative,
+  $secondary,
+}: ButtonStyleProps) => {
+  if ($transparent) {
+    return "transparent";
+  }
+
+  if ($negative) {
+    if (disabled) return Theme.Error[600];
+    return Theme.Error[100];
+  }
+
+  if (disabled) {
+    return Theme.Surface[600];
+  }
+
+  if ($secondary) {
+    return Theme.Secondary[200];
+  }
+
+  return Theme.Primary[50];
 };
 export const SharedButtonStyle = styled.button<ButtonStyleProps>`
   display: flex;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
-  background-color: ${(props) =>
-    props.$transparent
-      ? "transparent"
-      : props.$negative
-      ? props.disabled
-        ? Theme.Error[600]
-        : Theme.Error[100]
-      : Theme.Primary[50]};
+  background-color: ${(props) => getButtonColor(props)};
   border-radius: 4px;
   padding: 8px 12px;
   justify-content: center;
@@ -37,6 +56,7 @@ type ButtonProps = {
   disabled?: boolean;
   transparent?: boolean;
   negative?: boolean;
+  secondary?: boolean;
   onClick?: () => void;
 };
 export const Button = ({
@@ -44,6 +64,7 @@ export const Button = ({
   disabled,
   transparent,
   negative,
+  secondary,
   onClick,
 }: ButtonProps) => {
   return (
@@ -51,6 +72,7 @@ export const Button = ({
       disabled={disabled}
       $transparent={transparent}
       $negative={negative}
+      $secondary={secondary}
       onClick={onClick}
     >
       <ButtonText>{text}</ButtonText>

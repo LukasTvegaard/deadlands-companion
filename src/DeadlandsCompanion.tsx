@@ -30,6 +30,9 @@ import { useScrollRestoration } from "./utils/useScrollRestoration";
 import { EdgesAndHindrances } from "./character/edges-hindrances/EdgesAndHindrances";
 import { HindrancePage } from "./codex/hindrances/HindrancePage";
 import { HindranceDetailPage } from "./codex/hindrances/HindranceDetailPage";
+import { WeaponPage } from "./codex/weapons/WeaponPage";
+import { WeaponDetailPage } from "./codex/weapons/WeaponDetailPage";
+import { Weapons } from "./character/weapons/Weapons";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
@@ -81,6 +84,7 @@ export const DeadlandsCompanion = ({
             <Route path="resource" element={<EditResources />} />
           </Route>
           <Route path="edges" element={<EdgesAndHindrances />} />
+          <Route path="weapons" element={<Weapons />} />
           <Route path="*" element={<div>Under construction...</div>}></Route>
         </Route>
         <Route path="party/*" element={<div>Party</div>} />
@@ -91,7 +95,8 @@ export const DeadlandsCompanion = ({
           <Route path="hindrances" element={<HindrancePage />} />
           <Route path="hindrances/:id" element={<HindranceDetailPage />} />
           <Route path="powers" element={<h2>Powers</h2>} />
-          <Route path="weapons" element={<h2>Weapons</h2>} />
+          <Route path="weapons" element={<WeaponPage />} />
+          <Route path="weapons/:id" element={<WeaponDetailPage />} />
         </Route>
         <Route
           path="settings"

@@ -39,7 +39,7 @@ export const CharacterInfo = ({ locationKey }: CharacterInfoProps) => {
     >
       <CharacterInfoStyle>
         <CharacterName>{getCharacterFullName(character)}</CharacterName>
-        <CharacterClass>{`${character?.rank.toLowerCase()} ${getCharacterClass(
+        <CharacterClass>{`${character?.rank?.toLowerCase()} ${getCharacterClass(
           character
         )}`}</CharacterClass>
       </CharacterInfoStyle>

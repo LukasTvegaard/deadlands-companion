@@ -1,4 +1,5 @@
 import { Attribute, DieType, Edge, Rank, Skill } from "../enums";
+import { Weapon } from "../enums/Weapon";
 import { Effect } from "./Effect";
 
 export type Character = {
@@ -16,7 +17,7 @@ export type Character = {
   skills: Record<Skill, DieType> | undefined;
   edges: Record<Edge, true> | undefined;
   hindrances: Record<string, true> | undefined;
-  weapons: Record<string, true> | undefined; // Should store current ammo as value
+  weapons: Record<Weapon, number> | undefined; // Should store current ammo as value
   powers: Record<string, true> | undefined; // Should store current power points as value if weird science maybe?
   gear: Record<string, true> | undefined;
   effects: Effect[] | undefined;
