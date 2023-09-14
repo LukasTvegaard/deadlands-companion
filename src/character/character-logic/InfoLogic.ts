@@ -4,8 +4,16 @@ import { Character } from "../../utils/types/Character";
 export const getCharacterFullName = (
   character: Character | undefined
 ): string => {
-  if (character?.firstName && character.lastName) {
-    return `${character.firstName} ${character.lastName}`;
+  if (character) {
+    if (character.firstName && character.lastName) {
+      return `${character.firstName} ${character.lastName}`;
+    }
+    if (character.firstName) {
+      return character.firstName;
+    }
+    if (character.lastName) {
+      return character.lastName;
+    }
   }
 
   return "";

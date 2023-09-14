@@ -59,7 +59,7 @@ export const DeadlandsCompanion = ({
     transform: (val) => ({ ...val, id: selectedCharacterId }),
   });
 
-  if (!loading && !character) {
+  if (!loading && !character?.attributes) {
     localStorage.removeItem(selectedCharacterKey);
     window.location.reload();
   }
@@ -107,7 +107,7 @@ export const DeadlandsCompanion = ({
     )
   );
 
-  return !character ? (
+  return !character?.attributes ? (
     <Spinner showHeader />
   ) : (
     <CharacterContext.Provider value={character}>
