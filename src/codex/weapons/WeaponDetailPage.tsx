@@ -15,7 +15,7 @@ export const WeaponDetailPage = () => {
   return (
     <Page
       pageName={weaponDetail ? weaponDetail.name : ""}
-      prevLocation={Locations.HindrancePage}
+      prevLocation={Locations.WeaponPage}
     >
       <WeaponDetail weaponDetail={weaponDetail} />
     </Page>

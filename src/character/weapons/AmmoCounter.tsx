@@ -26,9 +26,8 @@ export const AmmoCounter = ({ ammoWeaponDetail }: AmmoCounterProps) => {
         {[...Array(ammoWeaponDetail.maxAmmo).keys()].map((index) => {
           const isEmpty = index >= ammoWeaponDetail.currentAmmo;
           return (
-            <div style={{ marginLeft: "-22px" }}>
+            <div key={index} style={{ marginLeft: "-22px" }}>
               <Icon
-                key={index}
                 height={32}
                 width={32}
                 viewbox="0 0 463 463"

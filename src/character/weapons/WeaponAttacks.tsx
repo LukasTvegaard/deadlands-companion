@@ -117,7 +117,7 @@ export const WeaponAttacks = ({ weaponDetail }: WeaponAttackProps) => {
         const damageRoll = getDamage(attack.damage, character);
 
         return (
-          <Attack>
+          <Attack key={attack.name}>
             <TitleWrapper>{attack.name}</TitleWrapper>
             <SplitterGrid>
               <SingleDiceRow

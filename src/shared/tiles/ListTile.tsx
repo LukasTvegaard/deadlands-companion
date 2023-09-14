@@ -5,11 +5,11 @@ import { IconButton } from "../buttons/IconButton";
 import { Icons } from "../../icons/Icons";
 
 type ListTileWrapperProps = {
-  dark?: boolean;
+  $dark?: boolean;
 };
 const ListTileWrapper = styled.div<ListTileWrapperProps>`
   background-color: ${(props) =>
-    props.dark ? Theme.Surface[200] : Theme.Surface[250]};
+    props.$dark ? Theme.Surface[200] : Theme.Surface[250]};
   border-radius: 4px;
 `;
 
@@ -21,7 +21,7 @@ const ListTileHeader = styled.div<ListTileWrapperProps>`
   padding: 16px 8px;
   padding-left: 8px;
   border-bottom: ${(props) =>
-    props.dark ? "none" : `1px solid ${Theme.Surface[400]}`};
+    props.$dark ? "none" : `1px solid ${Theme.Surface[400]}`};
 `;
 
 type ListTileProps = {
@@ -37,8 +37,8 @@ export const ListTile = ({
   children,
 }: ListTileProps) => {
   return (
-    <ListTileWrapper dark={dark}>
-      <ListTileHeader dark={dark}>
+    <ListTileWrapper $dark={dark}>
+      <ListTileHeader $dark={dark}>
         {title}
         {editLink ? (
           <StyledLink to={editLink}>

@@ -31,10 +31,13 @@ export const MultiDiceRow = ({
         <div style={{ display: "flex", alignItems: "center" }}>
           {dieTypes.map((dieType, index) => {
             return (
-              <>
+              <div
+                key={index}
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 {index > 0 ? "+" : null}
                 <DiceIcon size={30} dieType={dieType} />
-              </>
+              </div>
             );
           })}
           {modifier && modifier > 0 ? "+" : null}
