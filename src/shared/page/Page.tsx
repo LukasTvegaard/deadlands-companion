@@ -27,7 +27,7 @@ const PageInner = styled.div`
 
 type PageProps = {
   pageName: string;
-  prevLocation?: Location; // Indicate prevLocation unless overwritten by prevLocation from URL
+  prevLocation?: Location;
   children: React.ReactNode;
 };
 const Page = ({ pageName, prevLocation, children }: PageProps) => {
