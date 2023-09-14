@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { BackButton } from "../buttons/BackButton";
+import { BackButton, NavigateBackRoute } from "../buttons/BackButton";
 import { Theme } from "./../../Theme";
 import { IconButton } from "../buttons/IconButton";
 import { Icons } from "../../icons/Icons";
@@ -50,7 +50,7 @@ export const PageHeader = ({ pageName, prevLocation }: PageHeaderProps) => {
     <PageHeaderStyle>
       {prevLocation ? (
         <HeaderItem>
-          <BackButton to={prevLocation.path} text={prevLocation.name} />
+          <BackButton to={NavigateBackRoute} text={"Back"} />
         </HeaderItem>
       ) : (
         <HeaderItem />

@@ -6,7 +6,7 @@ import {
   getCharacterFullName,
 } from "../character-logic/InfoLogic";
 import { Theme } from "../../Theme";
-import { StyledLink, getPrevLocationQuery } from "../../shared/StyledLink";
+import { StyledLink } from "../../shared/StyledLink";
 import { Locationable } from "../../utils/Location";
 import { ClickableSurface } from "../../shared/ClickableSurface";
 
@@ -34,9 +34,7 @@ export const CharacterInfo = ({ locationKey }: CharacterInfoProps) => {
   const character = useContext(CharacterContext);
 
   return (
-    <StyledLink
-      to={`/character/sheet/edit/info${getPrevLocationQuery(locationKey)}`}
-    >
+    <StyledLink to={`/character/sheet/edit/info`}>
       <CharacterInfoStyle>
         <CharacterName>{getCharacterFullName(character)}</CharacterName>
         <CharacterClass>{`${character?.rank?.toLowerCase()} ${getCharacterClass(

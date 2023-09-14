@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
+
+import { Location } from "../../utils/Location";
 import { PageHeader } from "./PageHeader";
-import { Location, getPrevLocationFromURLParams } from "../../utils/Location";
-import { useSearchParams } from "react-router-dom";
 
 const PageContent = styled.div`
   padding-top: 8px;
@@ -31,15 +31,9 @@ type PageProps = {
   children: React.ReactNode;
 };
 const Page = ({ pageName, prevLocation, children }: PageProps) => {
-  const [params] = useSearchParams();
-  const urlPrevLocation = getPrevLocationFromURLParams(params);
-
   return (
     <>
-      <PageHeader
-        pageName={pageName}
-        prevLocation={urlPrevLocation ?? prevLocation}
-      />
+      <PageHeader pageName={pageName} prevLocation={prevLocation} />
       <PageContent id={"scrollable-content"}>
         <PageInner>{children}</PageInner>
       </PageContent>

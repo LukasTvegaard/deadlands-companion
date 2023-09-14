@@ -6,7 +6,7 @@ import {
 } from "../../character-logic/PowerPointLogic";
 import { ResourceCounter } from "./ResourceCounter";
 import { css, styled } from "styled-components";
-import { StyledLink, getPrevLocationQuery } from "../../../shared/StyledLink";
+import { StyledLink } from "../../../shared/StyledLink";
 import { Locationable } from "../../../utils/Location";
 import { Theme } from "../../../Theme";
 import { ClickableSurface } from "../../../shared/ClickableSurface";
@@ -46,9 +46,7 @@ export const Resources = ({ locationKey }: ResourcesProps) => {
   const maxStamina = 3;
 
   return (
-    <StyledLink
-      to={`/character/sheet/edit/resource${getPrevLocationQuery(locationKey)}`}
-    >
+    <StyledLink to={`/character/sheet/edit/resource`}>
       <ResourcesStyle>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <ResourceSegment width={"40%"}>
