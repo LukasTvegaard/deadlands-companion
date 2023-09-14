@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 import { signInWithGoogle } from "./utils/firebase/Firebase";
-import Page from "./shared/page/Page";
 import { IconButton } from "./shared/buttons/IconButton";
 import { Icons } from "./icons/Icons";
 import SkullIcon from "./icons/skulllogo192.png";
 
 const LoginStyle = styled.div`
+  margin-top: 64px;
   display: flex;
   gap: 64px;
   flex-direction: column;
@@ -38,19 +38,17 @@ export function Login() {
     signInWithGoogle();
   };
   return (
-    <Page pageName="">
-      <LoginStyle>
-        <LogoText>
-          <SkullLogo></SkullLogo>
-          <LoginText>Deadlands Companion</LoginText>
-        </LogoText>
-        <IconButton
-          icon={Icons.Google}
-          viewbox="0 0 186.69 190.5"
-          text="Sign in with Google"
-          onClick={signIn}
-        ></IconButton>
-      </LoginStyle>
-    </Page>
+    <LoginStyle>
+      <LogoText>
+        <SkullLogo></SkullLogo>
+        <LoginText>Deadlands Companion</LoginText>
+      </LogoText>
+      <IconButton
+        icon={Icons.Google}
+        viewbox="0 0 186.69 190.5"
+        text="Sign in with Google"
+        onClick={signIn}
+      ></IconButton>
+    </LoginStyle>
   );
 }
