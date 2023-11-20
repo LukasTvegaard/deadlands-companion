@@ -2,13 +2,14 @@ import { ref, set } from "firebase/database";
 import { useContext } from "react";
 
 import { CharacterContext } from "../../../DeadlandsCompanion";
-import { DiceRow } from "../../../shared/rows/DiceRow";
 import Page from "../../../shared/page/Page";
 import { DieType, Skill, getSkillName } from "../../../utils/enums";
 import { database } from "../../../utils/firebase/Firebase";
 import { ButtonRow } from "../../../shared/rows/ButtonRow";
 import { availableSkillFilter } from "../../character-logic/SkillLogic";
 import { Locations } from "../../../utils/Location";
+import { SkillRow } from "./SkillRow";
+import { ListTitle } from "../../../shared/text/ListTitle";
 
 type ChangeSkillDieTypeInput = {
   characterKey: string;
@@ -22,37 +23,6 @@ const changeSkillDieType = ({
 }: ChangeSkillDieTypeInput) => {
   const db = database();
   set(ref(db, `characters/${characterKey}/skills/${skill}`), dieType);
-};
-
-type SkillRowProps = {
-  skill: Skill;
-  currentSkillValue: DieType;
-  changeSkillDieType: (skill: Skill, dieType: DieType) => void;
-  removeSkill: (skill: Skill) => void;
-};
-const SkillRow = ({
-  skill,
-  currentSkillValue,
-  changeSkillDieType,
-  removeSkill,
-}: SkillRowProps) => {
-  const skillName = getSkillName(skill);
-  const onDiceClick = (dieType: DieType) => {
-    changeSkillDieType(skill, dieType);
-  };
-  const onDeleteClick = () => {
-    if (window.confirm(`Are you sure you want to remove "${skillName}"?`)) {
-      removeSkill(skill);
-    }
-  };
-  return (
-    <DiceRow
-      label={skillName}
-      activeDieType={currentSkillValue}
-      onDiceClick={onDiceClick}
-      onDeleteClick={onDeleteClick}
-    />
-  );
 };
 
 type UnlearnedSkillRowProps = {
@@ -98,7 +68,7 @@ export const EditSkills = () => {
             );
           })
         : null}
-      <div>Unlearned Skills</div>
+      <ListTitle>Unlearned Skills</ListTitle>
       {unlearnedSkills.map((skill) => {
         return (
           <UnlearnedSkillRow key={skill} skill={skill} addSkill={changeSkill} />

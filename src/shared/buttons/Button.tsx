@@ -6,13 +6,19 @@ type ButtonStyleProps = {
   $transparent?: boolean;
   $negative?: boolean;
   $secondary?: boolean;
+  $customColor?: string;
 };
 const getButtonColor = ({
   disabled,
   $transparent,
   $negative,
   $secondary,
+  $customColor,
 }: ButtonStyleProps) => {
+  if ($customColor) {
+    return $customColor;
+  }
+
   if ($transparent) {
     return "transparent";
   }
@@ -51,20 +57,22 @@ const ButtonText = styled.div`
   color: #fff;
 `;
 
-type ButtonProps = {
+interface ButtonProps extends ButtonStyleProps {
   text: string;
   disabled?: boolean;
   transparent?: boolean;
   negative?: boolean;
   secondary?: boolean;
+  customcolor?: string;
   onClick?: () => void;
-};
+}
 export const Button = ({
   text,
   disabled,
   transparent,
   negative,
   secondary,
+  customcolor,
   onClick,
 }: ButtonProps) => {
   return (
@@ -73,6 +81,7 @@ export const Button = ({
       $transparent={transparent}
       $negative={negative}
       $secondary={secondary}
+      $customColor={customcolor}
       onClick={onClick}
     >
       <ButtonText>{text}</ButtonText>

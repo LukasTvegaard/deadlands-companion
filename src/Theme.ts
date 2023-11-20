@@ -33,4 +33,7 @@ export const Theme = {
     300: "#f54076",
     600: "#8c6b72",
   },
+  Health: "#9C2542",
+  Stamina: "#319177",
+  PowerPoints: "#2E5894",
 };

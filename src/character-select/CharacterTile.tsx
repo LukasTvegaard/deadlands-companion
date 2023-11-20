@@ -15,12 +15,20 @@ const CharacterTileStyle = styled.div`
   padding: 8px;
   background-color: ${Theme.Surface[300]};
   gap: 8px;
+  cursor: pointer;
 `;
 
 const CharacterName = styled.div`
   font-weight: 400;
   font-size: 18px;
   color: ${Theme.Primary[600]};
+`;
+
+const DMLabel = styled.div`
+  margin-right: auto;
+  background-color: ${Theme.Secondary[200]};
+  padding: 4px;
+  border-radius: 8px;
 `;
 
 const CharacterClass = styled.div`
@@ -47,9 +55,13 @@ export const CharacterTile = ({
       onClick={() => setSelectedCharacterId(characterKey)}
     >
       <CharacterName>{getCharacterFullName(character)}</CharacterName>
-      <CharacterClass>{`${character.rank?.toLowerCase()} ${getCharacterClass(
-        character
-      )}`}</CharacterClass>
+      {character.isDM ? (
+        <DMLabel>DM</DMLabel>
+      ) : (
+        <CharacterClass>{`${character.rank?.toLowerCase()} ${getCharacterClass(
+          character
+        )}`}</CharacterClass>
+      )}
       <PartyName>Party Name</PartyName> {/* FIXME: Insert party name */}
     </CharacterTileStyle>
   );

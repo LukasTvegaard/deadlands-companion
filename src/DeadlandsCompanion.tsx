@@ -33,15 +33,18 @@ import { HindranceDetailPage } from "./codex/hindrances/HindranceDetailPage";
 import { WeaponPage } from "./codex/weapons/WeaponPage";
 import { WeaponDetailPage } from "./codex/weapons/WeaponDetailPage";
 import { Weapons } from "./character/weapons/Weapons";
+import { PartyOverview } from "./party/PartyOverview";
+import { CreateParty } from "./party/CreateParty";
+import { EditParty } from "./party/EditParty";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
-const Layout = () => {
+const Layout = ({ isDM }: { isDM?: boolean }) => {
   useScrollRestoration();
   return (
     <>
       <Outlet />
-      <Footer />
+      <Footer isDM={isDM} />
     </>
   );
 };
@@ -59,6 +62,8 @@ export const DeadlandsCompanion = ({
     transform: (val) => ({ ...val, id: selectedCharacterId }),
   });
 
+  const characterIsDM = character?.isDM;
+
   if (!loading && !character?.attributes) {
     localStorage.removeItem(selectedCharacterKey);
     window.location.reload();
@@ -71,23 +76,30 @@ export const DeadlandsCompanion = ({
         loader={async () => {
           return null;
         }}
-        element={<Layout />}
+        element={<Layout isDM={characterIsDM} />}
       >
-        <Route path="character/*">
-          <Route index element={<CharacterMenu />} />
-          <Route path="sheet" element={<CharacterSheet />} />
-          <Route path="sheet/roll/:id" element={<RollHelper />} />
-          <Route path="sheet/edit/*">
-            <Route path="info" element={<EditInfo />} />
-            <Route path="attribute" element={<EditAttributes />} />
-            <Route path="skill" element={<EditSkills />} />
-            <Route path="resource" element={<EditResources />} />
+        {characterIsDM ? null : (
+          <Route path="character/*">
+            <Route index element={<CharacterMenu />} />
+            <Route path="sheet" element={<CharacterSheet />} />
+            <Route path="sheet/roll/:id" element={<RollHelper />} />
+            <Route path="sheet/edit/*">
+              <Route path="info" element={<EditInfo />} />
+              <Route path="attribute" element={<EditAttributes />} />
+              <Route path="skill" element={<EditSkills />} />
+              <Route path="resource" element={<EditResources />} />
+            </Route>
+            <Route path="edges" element={<EdgesAndHindrances />} />
+            <Route path="weapons" element={<Weapons />} />
+            <Route path="*" element={<div>Under construction...</div>} />
           </Route>
-          <Route path="edges" element={<EdgesAndHindrances />} />
-          <Route path="weapons" element={<Weapons />} />
-          <Route path="*" element={<div>Under construction...</div>}></Route>
+        )}
+        <Route path="party/*">
+          <Route path="create" element={<CreateParty />} />
+          <Route path="edit" element={<EditParty />} />
+          <Route path=":id/resource" element={<EditResources />} />
+          <Route index path="*" element={<PartyOverview />} />
         </Route>
-        <Route path="party/*" element={<div>Party</div>} />
         <Route path="codex/*">
           <Route index element={<CodexMenu />}></Route>
           <Route path="edges" element={<EdgePage />}></Route>
@@ -102,7 +114,11 @@ export const DeadlandsCompanion = ({
           path="settings"
           element={<Settings setSelectedCharacter={setSelectedCharacter} />}
         />
-        <Route index element={<Navigate to={`/character`} />}></Route>
+        <Route
+          index
+          path="*"
+          element={<Navigate to={characterIsDM ? `/party` : `/character`} />}
+        ></Route>
       </Route>
     )
   );

@@ -9,13 +9,23 @@ import { Theme } from "../../Theme";
 import { StyledLink } from "../../shared/StyledLink";
 import { Locationable } from "../../utils/Location";
 import { ClickableSurface } from "../../shared/ClickableSurface";
+import { Icon } from "../../icons/Icon";
+import { Icons } from "../../icons/Icons";
 
-const CharacterInfoStyle = styled.div`
-  ${ClickableSurface}
+const CharacterInfoWrapper = styled.div`
+  ${ClickableSurface};
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid ${Theme.Surface[300]};
   padding: 8px 4px;
+`;
+
+const CharacterInfoStyle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding-right: 8px;
 `;
 
 const CharacterName = styled.div`
@@ -35,12 +45,20 @@ export const CharacterInfo = ({ locationKey }: CharacterInfoProps) => {
 
   return (
     <StyledLink to={`/character/sheet/edit/info`}>
-      <CharacterInfoStyle>
-        <CharacterName>{getCharacterFullName(character)}</CharacterName>
-        <CharacterClass>{`${character?.rank?.toLowerCase()} ${getCharacterClass(
-          character
-        )}`}</CharacterClass>
-      </CharacterInfoStyle>
+      <CharacterInfoWrapper>
+        <CharacterInfoStyle>
+          <CharacterName>{getCharacterFullName(character)}</CharacterName>
+          <CharacterClass>{`${character?.rank?.toLowerCase()} ${getCharacterClass(
+            character
+          )}`}</CharacterClass>
+        </CharacterInfoStyle>
+        <Icon
+          icon={Icons.ChevronRight}
+          height={24}
+          width={24}
+          color={Theme.Surface[400]}
+        />
+      </CharacterInfoWrapper>
     </StyledLink>
   );
 };

@@ -5,6 +5,7 @@ const ResourceCounterWrapper = styled.div`
   display: flex;
   justify-content: center;
   overflow: hidden;
+  flex-grow: 1;
 `;
 
 const ResourceBorder = styled.div`
@@ -23,6 +24,7 @@ type ResourceGridProps = {
 const ResourceGrid = styled.div<ResourceGridProps>`
   display: grid;
   width: 100%;
+  align-items: center;
   grid-template-columns: repeat(
     auto-fit,
     minmax(${(props) => (props.$clickable ? "60px" : "0px")}, 1fr)
@@ -39,7 +41,7 @@ const ResourceSegment = styled.div<ResourceSegmentProps>`
   border: 1px solid ${(props) => props.color};
   background-color: ${(props) => props.color};
   height: 30px;
-  margin-bottom: 4px;
+  margin: 2px 0;
 
   justify-content: flex-end;
   ${(props) =>

@@ -28,25 +28,27 @@ const FooterLink = styled(NavLink)`
   }
 `;
 
-export const Footer = () => {
+export const Footer = ({ isDM }: { isDM?: boolean }) => {
   return (
     <FooterStyle>
-      <FooterLink to="/character">
-        {({ isActive }) => {
-          return (
-            <>
-              <Icon
-                icon={Icons.Hat}
-                height={36}
-                width={36}
-                color={isActive ? Theme.Primary[100] : "#fff"}
-                viewbox="0 0 32 32"
-              />
-              Character
-            </>
-          );
-        }}
-      </FooterLink>
+      {isDM ? null : (
+        <FooterLink to="/character">
+          {({ isActive }) => {
+            return (
+              <>
+                <Icon
+                  icon={Icons.Hat}
+                  height={36}
+                  width={36}
+                  color={isActive ? Theme.Primary[100] : "#fff"}
+                  viewbox="0 0 32 32"
+                />
+                Character
+              </>
+            );
+          }}
+        </FooterLink>
+      )}
 
       <FooterLink to="/party">Party</FooterLink>
 

@@ -13,6 +13,12 @@ import {
   shouldShowPowerPoints,
 } from "../../character-logic/PowerPointLogic";
 import { ResourceCounter } from "../resources/ResourceCounter";
+import { useParams } from "react-router-dom";
+import { Theme } from "../../../Theme";
+import { Character } from "../../../utils/types/Character";
+import { useObject } from "react-firebase-hooks/database";
+import { snapshotToValue } from "../../../utils/firebase/SnapshotFormatter";
+import { Button } from "../../../shared/buttons/Button";
 
 const ResourceSegment = styled.div`
   display: flex;
@@ -21,6 +27,12 @@ const ResourceSegment = styled.div`
   justify-content: center;
   width: 100%;
   margin-bottom: 24px;
+`;
+
+const ButtonCounterWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;
 
 type ChangeResourceInput = {
@@ -46,7 +58,17 @@ const changeCurrentPowerPoints = ({
 };
 
 export const EditResources = () => {
-  const character = useContext(CharacterContext);
+  const loggedInCharacter = useContext(CharacterContext);
+  const routeParams = useParams();
+  const characterQuery =
+    loggedInCharacter.isDM && routeParams.id
+      ? ref(database(), `characters/${routeParams.id}`)
+      : null;
+  const [characterSnapshot, loading] = useObject(characterQuery);
+  const character =
+    characterSnapshot && !loading
+      ? snapshotToValue<Character>(characterSnapshot)
+      : loggedInCharacter;
 
   const { id, wounds, fatigue, currentPowerPoints } = character;
   const maxHealth = 4;
@@ -79,34 +101,58 @@ export const EditResources = () => {
   };
 
   return (
-    <Page pageName="Recharge" prevLocation={Locations.CharacterMenu}>
+    <Page
+      pageName={`Recharge ${character.firstName}`}
+      prevLocation={Locations.CharacterMenu}
+    >
       <ResourceSegment>
         Health
-        <ResourceCounter
-          total={maxHealth}
-          remaining={maxHealth - wounds}
-          color={"#9C2542"}
-          onResourceSegmentClick={updateWounds}
-        />
+        <ButtonCounterWrapper>
+          <Button
+            text="X"
+            customcolor={Theme.Health}
+            onClick={() => updateWounds(0)}
+          />
+          <ResourceCounter
+            total={maxHealth}
+            remaining={maxHealth - wounds}
+            color={Theme.Health}
+            onResourceSegmentClick={updateWounds}
+          />
+        </ButtonCounterWrapper>
       </ResourceSegment>
       <ResourceSegment>
         Stamina
-        <ResourceCounter
-          total={maxStamina}
-          remaining={maxStamina - fatigue}
-          color={"#319177"}
-          onResourceSegmentClick={updateFatigue}
-        />
+        <ButtonCounterWrapper>
+          <Button
+            text="X"
+            customcolor={Theme.Stamina}
+            onClick={() => updateFatigue(0)}
+          />
+          <ResourceCounter
+            total={maxStamina}
+            remaining={maxStamina - fatigue}
+            color={Theme.Stamina}
+            onResourceSegmentClick={updateFatigue}
+          />
+        </ButtonCounterWrapper>
       </ResourceSegment>
       {showPowerPoints ? (
         <ResourceSegment>
           Power Points:
-          <ResourceCounter
-            total={maxPowerPoints}
-            remaining={currentPowerPoints}
-            color={"#2E5894"}
-            onResourceSegmentClick={updatePowerPoints}
-          />
+          <ButtonCounterWrapper>
+            <Button
+              text="X"
+              customcolor={Theme.PowerPoints}
+              onClick={() => updatePowerPoints(0)}
+            />
+            <ResourceCounter
+              total={maxPowerPoints}
+              remaining={currentPowerPoints}
+              color={Theme.PowerPoints}
+              onResourceSegmentClick={updatePowerPoints}
+            />
+          </ButtonCounterWrapper>
         </ResourceSegment>
       ) : null}
       <IconButton

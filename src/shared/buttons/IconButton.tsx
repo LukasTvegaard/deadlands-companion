@@ -23,6 +23,7 @@ type IconButtonProps = {
   iconSize?: number;
   color?: string;
   secondary?: boolean;
+  negative?: boolean;
   transparent?: boolean;
   viewbox?: string;
   onClick?: () => void;
@@ -33,6 +34,7 @@ export const IconButton = ({
   iconSize,
   color,
   secondary,
+  negative,
   transparent,
   viewbox,
   onClick,
@@ -41,6 +43,7 @@ export const IconButton = ({
     <IconButtonStyle
       $transparent={transparent}
       $secondary={secondary}
+      $negative={negative}
       onClick={onClick}
     >
       <Icon

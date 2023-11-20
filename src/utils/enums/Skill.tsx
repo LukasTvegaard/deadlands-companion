@@ -73,6 +73,8 @@ export const SkillLinkedAttribute: LinkedAttributeType = {
 
 export const getSkillName = (skill: Skill): string => {
   switch (skill) {
+    case Skill.KnowledgeCommon:
+      return "Knowledge (Common)";
     case Skill.KnowledgeScience:
       return "Knowledge (Science)";
     case Skill.KnowledgeOccult:
