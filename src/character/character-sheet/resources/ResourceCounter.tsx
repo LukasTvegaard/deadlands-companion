@@ -9,6 +9,7 @@ const ResourceCounterWrapper = styled.div`
 `;
 
 const ResourceBorder = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
