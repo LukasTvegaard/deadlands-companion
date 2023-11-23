@@ -72,11 +72,19 @@ const CheckboxStyle = styled(AriaCheckbox)`
   }
 `;
 
-export function Checkbox({ children, ...props }: CheckboxProps) {
+interface _CheckboxProps extends CheckboxProps {
+  childrenLeft?: boolean;
+}
+export function Checkbox({
+  childrenLeft = false,
+  children,
+  ...props
+}: _CheckboxProps) {
   return (
     <CheckboxStyle {...props}>
       {({ isIndeterminate }) => (
         <>
+          {childrenLeft ? children : null}
           <div className="checkbox">
             <svg viewBox="0 0 18 18" aria-hidden="true">
               {isIndeterminate ? (
@@ -86,7 +94,7 @@ export function Checkbox({ children, ...props }: CheckboxProps) {
               )}
             </svg>
           </div>
-          {children}
+          {!childrenLeft ? children : null}
         </>
       )}
     </CheckboxStyle>

@@ -17,6 +17,7 @@ import { Icons } from "../icons/Icons";
 import styled from "styled-components";
 import { snapshotsToValues } from "../utils/firebase/SnapshotFormatter";
 import { PartyMemberTile } from "./PartyMemberTile";
+import { CampSupplies } from "./CampSupplies";
 
 const GroupContainer = styled.div`
   display: grid;
@@ -62,21 +63,28 @@ export const PartyOverview = () => {
   )?.filter((character) => !character.isDM);
 
   return (
-    <Page pageName={"Party"}>
+    <Page pageName={party?.name ?? "Party"}>
       {loading || partyCharactersLoading ? (
         <Spinner />
       ) : !party ? (
         <PartyEmptyState character={character} />
       ) : (
         <div>
-          <ListTitle>
-            {party.name}
-            {character.isDM ? (
-              <StyledLink to={"edit"}>
-                <IconButton secondary icon={Icons.Pen} />
-              </StyledLink>
-            ) : null}
-          </ListTitle>
+          {character.isDM ? (
+            <ListTitle>
+              {party.name}
+              {character.isDM ? (
+                <StyledLink to={"edit"}>
+                  <IconButton secondary icon={Icons.Pen} />
+                </StyledLink>
+              ) : null}
+            </ListTitle>
+          ) : null}
+          <CampSupplies
+            partyMemberCount={partyCharacters?.length}
+            campSupplies={party.campSupplies}
+            hasCarriage={party.hasCarriage}
+          />
           <GroupContainer>
             {partyCharacters?.map((partyChar) => (
               <PartyMemberTile

@@ -25,6 +25,8 @@ function createParty({ characterId, partyName }: CreatePartyInput): void {
     set<SetPartyInput>(newPartyRef, {
       ownerId: characterId,
       name: partyName,
+      campSupplies: 0,
+      hasCarriage: false,
     });
     set(partyIdRef, newPartyRef.key);
   }

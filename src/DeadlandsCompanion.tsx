@@ -36,6 +36,7 @@ import { Weapons } from "./character/weapons/Weapons";
 import { PartyOverview } from "./party/PartyOverview";
 import { CreateParty } from "./party/CreateParty";
 import { EditParty } from "./party/EditParty";
+import { EditCampSupplies } from "./party/EditCampSupplies";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
@@ -97,6 +98,7 @@ export const DeadlandsCompanion = ({
         <Route path="party/*">
           <Route path="create" element={<CreateParty />} />
           <Route path="edit" element={<EditParty />} />
+          <Route path="camp-supplies/edit" element={<EditCampSupplies />} />
           <Route path=":id/resource" element={<EditResources />} />
           <Route index path="*" element={<PartyOverview />} />
         </Route>
