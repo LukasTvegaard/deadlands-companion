@@ -1,12 +1,12 @@
 import { DieType, Skill } from "../../utils/enums";
 import { Weapon } from "../../utils/enums/Weapon";
 import { Effect } from "../../utils/types/Effect";
+import { StandardRange } from "./Range";
 import {
   AmmoWeaponDetail,
   WeaponAttack,
   WeaponType,
 } from "../../utils/types/WeaponDetailType";
-import { StandardRange } from "./WeaponUtil";
 
 const attacks: WeaponAttack[] = [
   {
@@ -19,9 +19,7 @@ const attacks: WeaponAttack[] = [
       damageModifier: 1,
     },
     ammoCost: 1,
-    rangeShort: 12,
-    rangeMedium: 24,
-    rangeLong: 48,
+    ...StandardRange,
   },
   {
     name: "Double Tap",

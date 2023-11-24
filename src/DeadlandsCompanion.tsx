@@ -1,4 +1,6 @@
+import { ref } from "firebase/database";
 import React from "react";
+import { useObjectVal } from "react-firebase-hooks/database";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -8,35 +10,35 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import { CharacterMenu } from "./character/CharacterMenu";
+import { selectedCharacterKey } from "./App";
 import { CharacterSheet } from "./character/character-sheet/CharacterSheet";
+import { EditAttributes } from "./character/character-sheet/edit/EditAttributes";
+import { EditInfo } from "./character/character-sheet/edit/EditInfo";
+import { EditResources } from "./character/character-sheet/edit/EditResources";
+import { EditSkills } from "./character/character-sheet/edit/EditSkills";
+import { RollHelper } from "./character/character-sheet/RollHelper";
+import { CharacterMenu } from "./character/CharacterMenu";
+import { EdgesAndHindrances } from "./character/edges-hindrances/EdgesAndHindrances";
+import { Gear } from "./character/gear/Gear";
+import { Weapons } from "./character/weapons/Weapons";
 import { CodexMenu } from "./codex/CodexMenu";
 import { EdgeDetailPage } from "./codex/edges/EdgeDetailPage";
 import { EdgePage } from "./codex/edges/EdgePage";
-import { Footer } from "./Footer";
-import { Character } from "./utils/types/Character";
-import { ref } from "firebase/database";
-import { database } from "./utils/firebase/Firebase";
-import { useObjectVal } from "react-firebase-hooks/database";
-import { selectedCharacterKey } from "./App";
-import { Settings } from "./settings/Settings";
-import { EditAttributes } from "./character/character-sheet/edit/EditAttributes";
-import { EditSkills } from "./character/character-sheet/edit/EditSkills";
-import { EditResources } from "./character/character-sheet/edit/EditResources";
-import { Spinner } from "./shared/spinner/Spinner";
-import { RollHelper } from "./character/character-sheet/RollHelper";
-import { EditInfo } from "./character/character-sheet/edit/EditInfo";
-import { useScrollRestoration } from "./utils/useScrollRestoration";
-import { EdgesAndHindrances } from "./character/edges-hindrances/EdgesAndHindrances";
-import { HindrancePage } from "./codex/hindrances/HindrancePage";
 import { HindranceDetailPage } from "./codex/hindrances/HindranceDetailPage";
-import { WeaponPage } from "./codex/weapons/WeaponPage";
+import { HindrancePage } from "./codex/hindrances/HindrancePage";
 import { WeaponDetailPage } from "./codex/weapons/WeaponDetailPage";
-import { Weapons } from "./character/weapons/Weapons";
-import { PartyOverview } from "./party/PartyOverview";
+import { WeaponPage } from "./codex/weapons/WeaponPage";
+import { Footer } from "./Footer";
 import { CreateParty } from "./party/CreateParty";
-import { EditParty } from "./party/EditParty";
 import { EditCampSupplies } from "./party/EditCampSupplies";
+import { EditParty } from "./party/EditParty";
+import { PartyOverview } from "./party/PartyOverview";
+import { Settings } from "./settings/Settings";
+import { Spinner } from "./shared/spinner/Spinner";
+import { database } from "./utils/firebase/Firebase";
+import { Character } from "./utils/types/Character";
+import { useScrollRestoration } from "./utils/useScrollRestoration";
+import { EditMoney } from "./character/gear/EditMoney";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
@@ -92,6 +94,8 @@ export const DeadlandsCompanion = ({
             </Route>
             <Route path="edges" element={<EdgesAndHindrances />} />
             <Route path="weapons" element={<Weapons />} />
+            <Route path="gear" element={<Gear />} />
+            <Route path="gear/money" element={<EditMoney />} />
             <Route path="*" element={<div>Under construction...</div>} />
           </Route>
         )}

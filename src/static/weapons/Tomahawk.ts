@@ -1,7 +1,7 @@
 import { Attribute, DieType, Skill } from "../../utils/enums";
 import { Weapon } from "../../utils/enums/Weapon";
 import { Effect } from "../../utils/types/Effect";
-import { StandardMelee, StandardRangeShort } from "./WeaponUtil";
+import { StandardMelee, StandardRangeShort } from "./Range";
 import {
   NoAmmoWeaponDetail,
   WeaponAttack,

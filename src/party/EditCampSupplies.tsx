@@ -24,17 +24,12 @@ const CampSuppliesStyle = styled.div`
   padding-right: 8px;
 `;
 
-const InputLabel = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 4px;
-`;
-
 const AddInput = styled.input`
   font-size: 16px;
   padding: 8px 4px;
-  width: 73px;
+  width: 175px;
+  border-radius: 4px;
+  border-width: 1px;
 `;
 
 function setHasCarriage(hasCarriage: boolean, partyId?: string) {
@@ -61,12 +56,15 @@ function addCampSupplies(
   return currentCampSupplies + Number(addedCampSupplies);
 }
 
+function getRestCost(partyMemberCount: number = 1) {
+  return CampSupplyCostPerPerson * partyMemberCount;
+}
+
 function restWithCampSupplies(
   currentCampSupplies: number = 0,
   partyMemberCount: number = 1
 ) {
-  const newCampSupplies =
-    currentCampSupplies - CampSupplyCostPerPerson * partyMemberCount;
+  const newCampSupplies = currentCampSupplies - getRestCost(partyMemberCount);
   if (newCampSupplies < 0) {
     const unsatiatedCharacters = Math.ceil(
       Math.abs(newCampSupplies) / CampSupplyCostPerPerson
@@ -120,7 +118,7 @@ export const EditCampSupplies = () => {
     party?.hasCarriage ?? false
   );
 
-  const handlePartyNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAddInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAddCampSuppliesValue(e.target.value ? Number(e.target.value) : "");
   };
 
@@ -168,53 +166,51 @@ export const EditCampSupplies = () => {
             <div>Current Camp Supplies:</div>
             <div>{`${campSupplies} / ${campSupplyCapacity}`}</div>
           </CampSuppliesStyle>
+          {character.isDM ? (
+            <Checkbox
+              childrenLeft
+              isSelected={party.hasCarriage}
+              onChange={(isSelected) => setHasCarriage(isSelected, partyId)}
+            >
+              Party has carriage
+            </Checkbox>
+          ) : null}
           <div
             style={{
               display: "flex",
+              flexDirection: "column",
               marginTop: "16px",
-              justifyContent: "space-between",
-              gap: "8px",
+              gap: "16px",
             }}
           >
-            <InputLabel>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <AddInput
-                  type="number"
-                  id="partyName"
-                  name="partyName"
-                  autoComplete="off"
-                  value={addCampSuppliesValue ?? ""}
-                  onChange={handlePartyNameChange}
-                />
-                {character.isDM ? (
-                  <Checkbox
-                    childrenLeft
-                    isSelected={party.hasCarriage}
-                    onChange={(isSelected) =>
-                      setHasCarriage(isSelected, partyId)
-                    }
-                  >
-                    Party has carriage
-                  </Checkbox>
-                ) : null}
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <Button
-                  text={"Add camp supplies"}
-                  onClick={handleAddCampSupplies}
-                ></Button>
-                <Button
-                  text={"Rest"}
-                  secondary
-                  onClick={handleRestCampSupplies}
-                ></Button>
-                <Button
-                  text={"Decay"}
-                  negative
-                  onClick={handleDecayCampSupplies}
-                ></Button>
-              </div>
-            </InputLabel>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <AddInput
+                type="number"
+                id="addCampSupplies"
+                name="addCampSupplies"
+                autoComplete="off"
+                placeholder="Enter changed value"
+                value={addCampSuppliesValue ?? ""}
+                onChange={handleAddInputChange}
+              />
+              <Button
+                text={"Add camp supplies"}
+                onClick={handleAddCampSupplies}
+              ></Button>
+            </div>
+
+            <Button
+              text={`Rest (-${getRestCost(partyMemberCount)} supplies)`}
+              secondary
+              onClick={handleRestCampSupplies}
+            ></Button>
+            <Button
+              text={`Decay (-${
+                campSupplies - decayCampSupplies(campSupplies)
+              } supplies)`}
+              negative
+              onClick={handleDecayCampSupplies}
+            ></Button>
           </div>
         </div>
       ) : (
