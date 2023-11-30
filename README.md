@@ -1,7 +1,7 @@
 # TODO
 
 - Powers
-- Gear + Money
+- Gear
 - Buffs / Debuffs (effects)
 - Compendium:
   - Edges

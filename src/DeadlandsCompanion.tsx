@@ -39,6 +39,8 @@ import { database } from "./utils/firebase/Firebase";
 import { Character } from "./utils/types/Character";
 import { useScrollRestoration } from "./utils/useScrollRestoration";
 import { EditMoney } from "./character/gear/EditMoney";
+import { Powers } from "./character/powers/Powers";
+import { PowerPage } from "./codex/powers/PowerPage";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
@@ -94,6 +96,7 @@ export const DeadlandsCompanion = ({
             </Route>
             <Route path="edges" element={<EdgesAndHindrances />} />
             <Route path="weapons" element={<Weapons />} />
+            <Route path="powers" element={<Powers />} />
             <Route path="gear" element={<Gear />} />
             <Route path="gear/money" element={<EditMoney />} />
             <Route path="*" element={<div>Under construction...</div>} />
@@ -112,7 +115,7 @@ export const DeadlandsCompanion = ({
           <Route path="edges/:id" element={<EdgeDetailPage />} />
           <Route path="hindrances" element={<HindrancePage />} />
           <Route path="hindrances/:id" element={<HindranceDetailPage />} />
-          <Route path="powers" element={<h2>Powers</h2>} />
+          <Route path="powers" element={<PowerPage />} />
           <Route path="weapons" element={<WeaponPage />} />
           <Route path="weapons/:id" element={<WeaponDetailPage />} />
         </Route>
