@@ -1,4 +1,6 @@
 export enum Edge {
+  Placeholder = "Placeholder",
+
   Alertness = "Alertness",
   Ambidextrous = "Ambidextrous",
   ArcaneBackgroundMagic = "ArcaneBackgroundMagic",
@@ -110,7 +112,7 @@ export enum Edge {
   Conviction = "Conviction",
   BeastBond = "BeastBond",
   BeastMaster = "BeastMaster",
-  Dangersense = "Dangersense",
+  DangerSense = "DangerSense",
   FatesFavored = "FatesFavored",
   Harrowed = "Harrowed",
   Healer = "Healer",

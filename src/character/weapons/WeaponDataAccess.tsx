@@ -8,5 +8,20 @@ export const updateAmmo = (
   newAmmo: number
 ) => {
   const db = database();
-  set(ref(db, `characters/${characterKey}/weapons/${weaponKey}`), newAmmo);
+  set(ref(db, `characters/${characterKey}/weapons/${weaponKey}/ammo`), newAmmo);
+};
+
+export const setTrademarkWeapon = (
+  characterKey: string,
+  weaponKey: Weapon,
+  isTrademarkWeapon: boolean
+) => {
+  const db = database();
+  set(
+    ref(
+      db,
+      `characters/${characterKey}/weapons/${weaponKey}/isTrademarkWeapon`
+    ),
+    isTrademarkWeapon
+  );
 };

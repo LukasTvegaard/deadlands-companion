@@ -2,6 +2,11 @@ import { Attribute, DieType, Edge, Rank, Skill } from "../enums";
 import { Weapon } from "../enums/Weapon";
 import { Effect } from "./Effect";
 
+type WeaponRecord = {
+  ammo: number;
+  isTrademarkWeapon?: boolean;
+};
+
 export type Character = {
   id: string;
   ownerId: string;
@@ -17,10 +22,10 @@ export type Character = {
   currency: number;
   attributes: Record<Attribute, DieType>;
   skills?: Record<Skill, DieType>;
-  edges?: Record<Edge, true> | undefined;
+  edges?: Record<Edge, true>;
   hindrances?: Record<string, true>;
-  weapons?: Record<Weapon, number>; // Should store current ammo as value
-  powers?: Record<string, true>; // Should store current power points as value if weird science maybe?
+  weapons?: Record<Weapon, WeaponRecord>;
+  powers?: Record<string, number>; // Stores current powerpoints as value, but only used for weird scientists.
   gear?: Record<string, true>;
   effects?: Effect[];
 };

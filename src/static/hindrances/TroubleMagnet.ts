@@ -7,6 +7,6 @@ export const TroubleMagnet: HindranceDetailType = {
   description:
     "Things never go smoothly for this hero, no matter how hard they try. At the Marshal's discretion, trouble wanders across this hero's path.",
   description_short:
-    "Attract trouble whereever you go, at the Marshal's discretion.",
+    "Attract trouble wherever you go, at the Marshal's discretion.",
   effects: [],
 };

@@ -26,6 +26,7 @@ interface WeaponDetailBase extends Effecting {
   name: string;
   type: WeaponType;
   armorPen: number;
+  isTrademarkWeapon?: boolean;
   attacks: WeaponAttack[];
 }
 

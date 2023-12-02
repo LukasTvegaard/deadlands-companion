@@ -7,6 +7,7 @@ import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
 import { EdgeGroup } from "./EdgeGroup";
 import Page from "../../shared/page/Page";
 import { Locations } from "../../utils/Location";
+import { Edge } from "../../utils/enums";
 
 const EdgeGroupsWrapper = styled.div`
   display: flex;
@@ -29,12 +30,14 @@ export const EdgePage = () => {
   const [searchString, setSearchString] = useState<string>("");
   const edges =
     searchString.length > 0
-      ? EdgeList.filter((edge) => !!edge && edgeFilter(edge, searchString))
-      : EdgeList;
-  const edgeListGroups = groupBy(
-    edges,
-    (edge: EdgeDetailType) => edge.category
-  );
+      ? EdgeList.filter(
+          (edge) =>
+            !!edge &&
+            edge.key !== Edge.Placeholder &&
+            edgeFilter(edge, searchString)
+        )
+      : EdgeList.filter((edge) => edge.key !== Edge.Placeholder);
+  const edgeListGroups = groupBy(edges, (edge: EdgeDetailType) => "none");
 
   return (
     <Page pageName="Edges" prevLocation={Locations.CodexMenu}>

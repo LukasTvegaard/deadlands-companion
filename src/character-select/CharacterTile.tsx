@@ -35,10 +35,6 @@ const CharacterClass = styled.div`
   text-transform: capitalize;
 `;
 
-const PartyName = styled.div`
-  color: ${Theme.Mixed[600]};
-`;
-
 type CharacterTileProps = {
   characterKey: string | null;
   character: Character;
@@ -62,7 +58,6 @@ export const CharacterTile = ({
           character
         )}`}</CharacterClass>
       )}
-      <PartyName>Party Name</PartyName> {/* FIXME: Insert party name */}
     </CharacterTileStyle>
   );
 };

@@ -9,8 +9,6 @@ import { Theme } from "../../Theme";
 import { StyledLink } from "../../shared/StyledLink";
 import { Locationable } from "../../utils/Location";
 import { ClickableSurface } from "../../shared/ClickableSurface";
-import { Icon } from "../../icons/Icon";
-import { Icons } from "../../icons/Icons";
 
 const CharacterInfoWrapper = styled.div`
   ${ClickableSurface};
@@ -25,7 +23,6 @@ const CharacterInfoStyle = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-grow: 1;
-  padding-right: 8px;
 `;
 
 const CharacterName = styled.div`
@@ -52,12 +49,6 @@ export const CharacterInfo = ({ locationKey }: CharacterInfoProps) => {
             character
           )}`}</CharacterClass>
         </CharacterInfoStyle>
-        <Icon
-          icon={Icons.ChevronRight}
-          height={24}
-          width={24}
-          color={Theme.Surface[400]}
-        />
       </CharacterInfoWrapper>
     </StyledLink>
   );

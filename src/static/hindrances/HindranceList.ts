@@ -1,10 +1,12 @@
 import { Hindrance } from "../../utils/enums/Hindrance";
 import { HindranceDetailType } from "../../utils/interfaces/HindranceDetail";
+import { AbsentMinded } from "./AbsentMinded";
 import { AilinMajor } from "./AilinMajor";
 import { AilinMinor } from "./AilinMinor";
 import { AllThumbs } from "./AllThumbs";
 import { Arrogant } from "./Arrogant";
-import { BadDreams } from "./BadDreams";
+import { BadDreamsMajor } from "./BadDreamsMajor";
+import { BadDreamsMinor } from "./BadDreamsMinor";
 import { BadEyes } from "./BadEyes";
 import { BadLuck } from "./BadLuck";
 import { BigMouth } from "./BigMouth";
@@ -18,6 +20,7 @@ import { Cursed } from "./Cursed";
 import { DeathWIsh } from "./DeathWish";
 import { DelusionalMajor } from "./DelusionalMajor";
 import { DelusionalMinor } from "./DelusionalMinor";
+import { Eccentricity } from "./Eccentricity";
 import { Elderly } from "./Elderly";
 import { EnemyMajor } from "./EnemyMajor";
 import { EnemyMinor } from "./EnemyMinor";
@@ -27,7 +30,7 @@ import { GreedyMajor } from "./GreedyMajor";
 import { GreedyMinor } from "./GreedyMinor";
 import { GrimServant } from "./GrimServant";
 import { HabitMajor } from "./HabitMajor";
-import { habitMinor } from "./HabitMinor";
+import { HabitMinor } from "./HabitMinor";
 import { HardOfHearingMajor } from "./HardOfHearingMajor";
 import { HardOfHearingMinor } from "./HardOfHearingMinor";
 import { HeavySleeper } from "./HeavySleeper";
@@ -71,11 +74,13 @@ export type HindranceDetails = {
 };
 export const Hindrances: HindranceDetails = {
   // Background Edges
+  [Hindrance.AbsentMinded]: AbsentMinded,
   [Hindrance.AilinMajor]: AilinMajor,
   [Hindrance.AilinMinor]: AilinMinor,
   [Hindrance.AllThumbs]: AllThumbs,
   [Hindrance.Arrogant]: Arrogant,
-  [Hindrance.BadDreams]: BadDreams,
+  [Hindrance.BadDreamsMajor]: BadDreamsMajor,
+  [Hindrance.BadDreamsMinor]: BadDreamsMinor,
   [Hindrance.BadEyes]: BadEyes,
   [Hindrance.BadLuck]: BadLuck,
   [Hindrance.BigMouth]: BigMouth,
@@ -86,10 +91,10 @@ export const Hindrances: HindranceDetails = {
   [Hindrance.CodeOfHonor]: CodeOfHonor,
   [Hindrance.Curious]: Curious,
   [Hindrance.Cursed]: Cursed,
-
   [Hindrance.DeathWish]: DeathWIsh,
   [Hindrance.DelusionalMajor]: DelusionalMajor,
   [Hindrance.DelusionalMinor]: DelusionalMinor,
+  [Hindrance.Eccentricity]: Eccentricity,
   [Hindrance.Elderly]: Elderly,
   [Hindrance.EnemyMajor]: EnemyMajor,
   [Hindrance.EnemyMinor]: EnemyMinor,
@@ -99,7 +104,7 @@ export const Hindrances: HindranceDetails = {
   [Hindrance.GreedyMajor]: GreedyMajor,
   [Hindrance.GreedyMinor]: GreedyMinor,
   [Hindrance.HabitMajor]: HabitMajor,
-  [Hindrance.HabitMinor]: habitMinor,
+  [Hindrance.HabitMinor]: HabitMinor,
   [Hindrance.HardOfHearingMajor]: HardOfHearingMajor,
   [Hindrance.HardOfHearingMinor]: HardOfHearingMinor,
   [Hindrance.HeavySleeper]: HeavySleeper,

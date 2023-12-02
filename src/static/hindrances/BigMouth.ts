@@ -7,6 +7,6 @@ export const BigMouth: HindranceDetailType = {
   description:
     "Loose lips sink ships, the saying goes. Your hero's mouth could down an armada. Your character can't keep a secret very well. They reveal plans and gives away things best kept among friends, usually at the worst possible times.",
   description_short:
-    "Terrible at keeping secrets and will often accidentally reveal them at the worst possible times.",
+    "Terrible at keeping secrets. Will often accidentally reveal them at the worst possible time.",
   effects: [],
 };

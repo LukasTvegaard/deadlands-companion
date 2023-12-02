@@ -3,8 +3,12 @@ import { Theme } from "../../Theme";
 import { DieType } from "../../utils/enums";
 import { DiceIcon } from "../../icons/DiceIcons";
 
-const SingleRowWrapper = styled.div`
-  border-top: 1px solid ${Theme.Surface[400]};
+type SingleRowWrapperProps = {
+  $noBorder?: boolean;
+};
+const SingleRowWrapper = styled.div<SingleRowWrapperProps>`
+  border-top: ${({ $noBorder }) =>
+    $noBorder ? "none" : `1px solid ${Theme.Surface[400]}`};
 `;
 
 const SingleDiceRowStyle = styled.div`
@@ -22,15 +26,17 @@ const SingleRowStyle = styled(SingleDiceRowStyle)`
 type SingleDiceRowProps = {
   label: string;
   dieType: DieType;
+  noBorder?: boolean;
   modifier?: number;
 };
 export const SingleDiceRow = ({
   label,
   dieType,
+  noBorder,
   modifier,
 }: SingleDiceRowProps) => {
   return (
-    <SingleRowWrapper key={label}>
+    <SingleRowWrapper key={label} $noBorder={noBorder}>
       <SingleDiceRowStyle>
         {label}:
         <DiceIcon size={30} dieType={dieType} modifier={modifier} />
@@ -42,10 +48,15 @@ export const SingleDiceRow = ({
 type SingleValueRowProps = {
   label: string;
   value: number | string;
+  noBorder?: boolean;
 };
-export const SingleValueRow = ({ label, value }: SingleValueRowProps) => {
+export const SingleValueRow = ({
+  label,
+  value,
+  noBorder,
+}: SingleValueRowProps) => {
   return (
-    <SingleRowWrapper key={label}>
+    <SingleRowWrapper key={label} $noBorder={noBorder}>
       <SingleRowStyle>
         {label}:<div>{value}</div>
       </SingleRowStyle>

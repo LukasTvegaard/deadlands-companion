@@ -8,6 +8,11 @@ import { IconButton } from "../buttons/IconButton";
 import { RowStyle } from "./Row.styled";
 import { getBaseModifierFromDieType } from "../../character/character-logic/roll-logic/DieLogic";
 
+const SecondaryLabel = styled.span`
+  margin-left: 8px;
+  color: ${Theme.Mixed[600]};
+`;
+
 const DiceButtonStyle = styled.button`
   background-color: transparent;
   padding: 0;
@@ -91,17 +96,24 @@ const DiceButtonRow = ({ activeDieType, onDiceClick }: DiceButtonRowProps) => {
 
 interface DiceRowProps extends DiceButtonRowProps {
   label: string;
+  secondaryLabel?: string;
   onDeleteClick?: () => void;
 }
 export const DiceRow = ({
   label,
+  secondaryLabel,
   activeDieType,
   onDiceClick,
   onDeleteClick,
 }: DiceRowProps) => {
   return (
     <RowStyle>
-      <div>{label}</div>
+      <div style={{ display: "flex" }}>
+        {label}
+        {secondaryLabel ? (
+          <SecondaryLabel>{secondaryLabel}</SecondaryLabel>
+        ) : null}
+      </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <DiceButtonRow
           activeDieType={activeDieType}

@@ -41,6 +41,7 @@ import { useScrollRestoration } from "./utils/useScrollRestoration";
 import { EditMoney } from "./character/gear/EditMoney";
 import { Powers } from "./character/powers/Powers";
 import { PowerPage } from "./codex/powers/PowerPage";
+import { PowerDetailPage } from "./codex/powers/PowerDetailPage";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
@@ -116,6 +117,7 @@ export const DeadlandsCompanion = ({
           <Route path="hindrances" element={<HindrancePage />} />
           <Route path="hindrances/:id" element={<HindranceDetailPage />} />
           <Route path="powers" element={<PowerPage />} />
+          <Route path="powers/:id" element={<PowerDetailPage />} />
           <Route path="weapons" element={<WeaponPage />} />
           <Route path="weapons/:id" element={<WeaponDetailPage />} />
         </Route>

@@ -7,6 +7,6 @@ export const GreedyMajor: HindranceDetailType = {
   description:
     "Your miserly hero measures their worth in treasure. They will fight over loot distribution they consider unfair, and may even kill for their 'fair share'",
   description_short:
-    "Your hero will fight or even kill for their 'fair share' of the loot.",
+    "Will fight or even kill for their 'fair share' of the loot.",
   effects: [],
 };

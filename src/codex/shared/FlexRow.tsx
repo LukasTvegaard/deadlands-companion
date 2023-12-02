@@ -1,7 +1,14 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const FlexRow = styled.div`
+type FlexRowProps = {
+  $gap?: number;
+};
+export const FlexRow = styled.div<FlexRowProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${({ $gap }) =>
+    css`
+      gap: ${$gap}px;
+    `}
 `;

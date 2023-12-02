@@ -5,7 +5,13 @@ import { CharacterContext } from "../../DeadlandsCompanion";
 import Page from "../../shared/page/Page";
 import { SingleDiceRow, SingleValueRow } from "../../shared/rows/SingleDiceRow";
 import { ListTile } from "../../shared/tiles/ListTile";
-import { Attribute, getSkillName, Skill, Unskilled } from "../../utils/enums";
+import {
+  Attribute,
+  Edge,
+  getSkillName,
+  Skill,
+  Unskilled,
+} from "../../utils/enums";
 import { LocationKey, Locations } from "../../utils/Location";
 import { getRoll } from "../character-logic/roll-logic/RollLogic";
 import { InfoAndResources } from "./InfoAndResources";
@@ -17,6 +23,7 @@ import {
   getRunningDie,
   getToughness,
 } from "../character-logic/DerivedStatLogic";
+import { characterHasEdge } from "../../static/edges/EdgeUtil";
 
 const GroupContainer = styled.div`
   display: grid;
@@ -97,6 +104,14 @@ export const CharacterSheet = () => {
                 );
               })
             : null}
+          {characterHasEdge(Edge.JackOfAllTrades, character) ? (
+            <SingleDiceRow
+              key={Unskilled + "JackOfAllTrades"}
+              label={Unskilled + " (Smarts)"}
+              dieType={unskilledRoll.dice}
+              modifier={0}
+            />
+          ) : null}
           <SingleDiceRow
             key={Unskilled}
             label={Unskilled}

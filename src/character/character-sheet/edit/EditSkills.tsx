@@ -3,7 +3,12 @@ import { useContext } from "react";
 
 import { CharacterContext } from "../../../DeadlandsCompanion";
 import Page from "../../../shared/page/Page";
-import { DieType, Skill, getSkillName } from "../../../utils/enums";
+import {
+  DieType,
+  Skill,
+  SkillLinkedAttribute,
+  getSkillName,
+} from "../../../utils/enums";
 import { database } from "../../../utils/firebase/Firebase";
 import { ButtonRow } from "../../../shared/rows/ButtonRow";
 import { availableSkillFilter } from "../../character-logic/SkillLogic";
@@ -33,7 +38,11 @@ const UnlearnedSkillRow = ({ skill, addSkill }: UnlearnedSkillRowProps) => {
   const skillName = getSkillName(skill);
 
   return (
-    <ButtonRow label={skillName} onClick={() => addSkill(skill, DieType.D4)} />
+    <ButtonRow
+      label={skillName}
+      secondaryLabel={SkillLinkedAttribute[skill]}
+      onClick={() => addSkill(skill, DieType.D4)}
+    />
   );
 };
 

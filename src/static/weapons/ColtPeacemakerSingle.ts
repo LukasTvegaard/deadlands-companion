@@ -1,7 +1,7 @@
 import { DieType, Skill } from "../../utils/enums";
 import { Weapon } from "../../utils/enums/Weapon";
 import { Effect } from "../../utils/types/Effect";
-import { StandardRange } from "./Range";
+import { StandardRangeMedium } from "./Range";
 import {
   AmmoWeaponDetail,
   WeaponAttack,
@@ -19,7 +19,7 @@ const attacks: WeaponAttack[] = [
       damageModifier: 1,
     },
     ammoCost: 1,
-    ...StandardRange,
+    ...StandardRangeMedium,
   },
   {
     name: "Fan the Hammer",
@@ -31,7 +31,7 @@ const attacks: WeaponAttack[] = [
       damageModifier: 1,
     },
     ammoCost: "all",
-    ...StandardRange,
+    ...StandardRangeMedium,
   },
 ];
 

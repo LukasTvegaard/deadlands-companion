@@ -10,8 +10,6 @@ import { StyledLink } from "../../../shared/StyledLink";
 import { Locationable } from "../../../utils/Location";
 import { Theme } from "../../../Theme";
 import { ClickableSurface } from "../../../shared/ClickableSurface";
-import { Icon } from "../../../icons/Icon";
-import { Icons } from "../../../icons/Icons";
 import { maxHealth, maxStamina } from "../../../shared/Constants";
 
 const ResourcesWrapper = styled.div`
@@ -27,7 +25,6 @@ const ResourcesStyle = styled.div`
   flex-grow: 1;
   flex-direction: column;
   gap: 8px;
-  padding-right: 8px;
 `;
 
 type ResourceSegmentProps = {
@@ -88,12 +85,6 @@ export const Resources = ({ locationKey }: ResourcesProps) => {
             </ResourceSegment>
           ) : null}
         </ResourcesStyle>
-        <Icon
-          icon={Icons.ChevronRight}
-          height={24}
-          width={24}
-          color={Theme.Surface[400]}
-        />
       </ResourcesWrapper>
     </StyledLink>
   );

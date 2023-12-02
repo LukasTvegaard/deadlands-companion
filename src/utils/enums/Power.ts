@@ -1,3 +1,15 @@
 export enum Power {
+  Armor = "Armor",
+  //Barrier = "Barrier",
   Bolt = "Bolt",
+  //BoostLowerTrait = "BoostLowerTrait",
+  // Burst = "Burst",
+  //ElementalManipulation = "ElementalManipulation",
+  Healing = "Healing",
+  //Hunch = "Hunch",
+  //MindReading = "MindReading",
+  //ShapeChange = "ShapeChange",
+  //Shootist = "Shootist",
+  //Slumber = "Slumber",
+  Telekinesis = "Telekinesis",
 }

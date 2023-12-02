@@ -35,17 +35,21 @@ export const EdgeGroup = ({ groupKey, groupEdges }: EdgeGroupProps) => {
 
   return (
     <>
-      <GroupTitle onClick={() => toggleExpanded()}>{groupKey}</GroupTitle>
+      {groupKey === "none" ? null : (
+        <GroupTitle onClick={() => toggleExpanded()}>{groupKey}</GroupTitle>
+      )}
       {expanded && (
         <GroupContainer>
-          {groupEdges.map((edge) => (
-            <Tile
-              key={edge.key}
-              link={edge.key}
-              name={edge.name}
-              description={edge.description_short}
-            />
-          ))}
+          {groupEdges
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((edge) => (
+              <Tile
+                key={edge.key}
+                link={edge.key}
+                name={edge.name}
+                description={edge.description_short}
+              />
+            ))}
         </GroupContainer>
       )}
     </>

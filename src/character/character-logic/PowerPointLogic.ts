@@ -1,5 +1,6 @@
 import { Edge } from "../../utils/enums";
 import { Character } from "../../utils/types/Character";
+import { ArcaneBackground, getArcaneBackground } from "./ArcaneBackgroundLogic";
 
 const someKeyInObject = (keys: string[], object: Record<string, any>) => {
   return keys.some((key) => key in object);
@@ -18,30 +19,21 @@ export const shouldShowPowerPoints = (character: Character): boolean => {
   );
 };
 
-const getBasePowerPoints = (edges: Record<Edge, true>): number => {
-  if (
-    someKeyInObject(
-      [
-        Edge.ArcaneBackgroundChiMastery,
-        Edge.ArcaneBackgroundMiracles,
-        Edge.ArcaneBackgroundShamanism,
-      ],
-      edges
-    )
-  ) {
-    return 15;
+const getBasePowerPoints = (
+  arcaneBackground: ArcaneBackground | null
+): number => {
+  switch (arcaneBackground) {
+    case Edge.ArcaneBackgroundChiMastery:
+    case Edge.ArcaneBackgroundMiracles:
+    case Edge.ArcaneBackgroundShamanism:
+      return 15;
+    case Edge.ArcaneBackgroundMagic:
+    case Edge.ArcaneBackgroundHexslinger:
+    case Edge.ArcaneBackgroundWeirdScience:
+      return 10;
+    default:
+      return 0;
   }
-
-  if (
-    someKeyInObject(
-      [Edge.ArcaneBackgroundMagic, Edge.ArcaneBackgroundWeirdScience],
-      edges
-    )
-  ) {
-    return 10;
-  }
-
-  return 0;
 };
 
 const getExtraPowerPoints = (edges: Record<Edge, true>): number => {
@@ -53,6 +45,7 @@ const getExtraPowerPoints = (edges: Record<Edge, true>): number => {
 export const getMaxPowerPoints = (character: Character): number => {
   if (!character.edges) return 0;
   return (
-    getBasePowerPoints(character.edges) + getExtraPowerPoints(character.edges)
+    getBasePowerPoints(getArcaneBackground(character)) +
+    getExtraPowerPoints(character.edges)
   );
 };

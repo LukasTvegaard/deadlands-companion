@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import Page from "../../shared/page/Page";
 import { Locations } from "../../utils/Location";
 import { Tile } from "../shared/Tile";
-import { PowerList } from "../../static/powers/PowerLIst";
+import { PowerList } from "../../static/powers/PowerList";
 
 const PowerGroupsWrapper = styled.div`
   display: flex;

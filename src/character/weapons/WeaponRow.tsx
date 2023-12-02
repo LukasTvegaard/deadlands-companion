@@ -6,6 +6,11 @@ import {
 } from "../../utils/types/WeaponDetailType";
 import { AmmoCounter } from "./AmmoCounter";
 import { WeaponAttacks } from "./WeaponAttacks";
+import { Checkbox } from "../../shared/buttons/Checkbox";
+import { setTrademarkWeapon } from "./WeaponDataAccess";
+import { useContext } from "react";
+import { CharacterContext } from "../../DeadlandsCompanion";
+import { FlexRow } from "../../codex/shared/FlexRow";
 
 const WeaponRowStyle = styled.div`
   display: flex;
@@ -29,11 +34,33 @@ const Title = styled.div`
 
 type WeaponRowProps = {
   weaponDetail: WeaponDetailType;
+  showTrademarkWeaponCheckbox: boolean;
 };
-export const WeaponRow = ({ weaponDetail }: WeaponRowProps) => {
+export const WeaponRow = ({
+  weaponDetail,
+  showTrademarkWeaponCheckbox,
+}: WeaponRowProps) => {
+  const character = useContext(CharacterContext);
   return (
     <WeaponRowStyle>
-      <Title>{weaponDetail.name}</Title>
+      <FlexRow>
+        <Title>{weaponDetail.name}</Title>
+        {showTrademarkWeaponCheckbox ? (
+          <Checkbox
+            isSelected={weaponDetail.isTrademarkWeapon || false}
+            childrenLeft
+            onChange={() =>
+              setTrademarkWeapon(
+                character.id,
+                weaponDetail.key,
+                !weaponDetail.isTrademarkWeapon
+              )
+            }
+          >
+            Trademark Weapon
+          </Checkbox>
+        ) : null}
+      </FlexRow>
       {weaponDetail.type === WeaponType.Ammo ? (
         <AmmoCounter ammoWeaponDetail={weaponDetail}></AmmoCounter>
       ) : null}

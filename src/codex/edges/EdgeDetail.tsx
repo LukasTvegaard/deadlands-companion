@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { database } from "../../utils/firebase/Firebase";
 import { ref, set } from "firebase/database";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";
+import { Button } from "../../shared/buttons/Button";
 
 const addEdge = (characterKey: string, edgeKey: Edge) => {
   const db = database();
@@ -30,16 +31,17 @@ export const EdgeDetail = ({ edgeDetail }: EdgeDetailProps) => {
 
   const hasEdge = character && characterHasEdge(edgeDetail.key, character);
   const addToCharacterButton = character ? (
-    <button onClick={() => addEdge(character?.id, edgeDetail.key)}>
-      Add edge to character
-    </button>
+    <Button
+      text="Add edge to character"
+      onClick={() => addEdge(character?.id, edgeDetail.key)}
+    />
   ) : null;
   const removeFromCharacterButton = character ? (
-    <button
+    <Button
+      text="Remove edge from character"
+      negative
       onClick={() => removeEdge(character?.id, edgeDetail.key, edgeDetail.name)}
-    >
-      Remove edge from character
-    </button>
+    />
   ) : null;
 
   return (

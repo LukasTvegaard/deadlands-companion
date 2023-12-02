@@ -1,7 +1,7 @@
 import { Attribute, DieType, Skill } from "../../utils/enums";
 import { Weapon } from "../../utils/enums/Weapon";
 import { Effect } from "../../utils/types/Effect";
-import { StandardMelee, StandardRangeShort } from "./Range";
+import { StandardRangeMelee, StandardRangeShort } from "./Range";
 import {
   NoAmmoWeaponDetail,
   WeaponAttack,
@@ -19,7 +19,7 @@ const attacks: WeaponAttack[] = [
       damageModifier: 0,
     },
     ammoCost: 0,
-    ...StandardMelee,
+    ...StandardRangeMelee,
   },
   {
     name: "Throw",

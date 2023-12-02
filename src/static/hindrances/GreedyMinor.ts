@@ -6,7 +6,6 @@ export const GreedyMinor: HindranceDetailType = {
   name: "Greedy (Minor)",
   description:
     "Your hero measures their worth in treasure. They will argue bitterly over loot distribution they consider unfair.",
-  description_short:
-    "Your hero will always argue for their 'fair share' of the loot.",
+  description_short: "Will always argue for their 'fair share' of the loot.",
   effects: [],
 };

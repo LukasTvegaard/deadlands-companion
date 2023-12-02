@@ -5,10 +5,11 @@ import { ref, set } from "firebase/database";
 import { WeaponDetailType } from "../../utils/types/WeaponDetailType";
 import { characterHasWeapon } from "../../static/weapons/WeaponUtil";
 import { Weapon } from "../../utils/enums/Weapon";
+import { Button } from "../../shared/buttons/Button";
 
 const addWeapon = (characterKey: string, weaponKey: Weapon) => {
   const db = database();
-  set(ref(db, `characters/${characterKey}/weapons/${weaponKey}`), 0);
+  set(ref(db, `characters/${characterKey}/weapons/${weaponKey}`), { ammo: 0 });
 };
 
 const removeWeapon = (
@@ -35,18 +36,19 @@ export const WeaponDetail = ({ weaponDetail }: WeaponDetailProps) => {
   const hasWeapon =
     character && characterHasWeapon(weaponDetail.key, character);
   const addToCharacterButton = character ? (
-    <button onClick={() => addWeapon(character.id, weaponDetail.key)}>
-      Add weapon to character
-    </button>
+    <Button
+      text="Add weapon to character"
+      onClick={() => addWeapon(character.id, weaponDetail.key)}
+    />
   ) : null;
   const removeFromCharacterButton = character ? (
-    <button
+    <Button
+      text="Remove weapon from character"
+      negative
       onClick={() =>
         removeWeapon(character?.id, weaponDetail.key, weaponDetail.name)
       }
-    >
-      Remove weapon from character
-    </button>
+    />
   ) : null;
 
   return (

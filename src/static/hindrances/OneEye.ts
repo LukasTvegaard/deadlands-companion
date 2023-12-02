@@ -7,6 +7,6 @@ export const OneEye: HindranceDetailType = {
   description:
     "Your hero lost an eye for some unfortunate reason. If they don't wear a patch or a glass eye, they suffer -1 Charisma for the grotesque wound. They suffer -2 to any Trait roll that requires depth perception, such as Shooting or Throwing.",
   description_short:
-    "Your hero is missing an eye. Suffers -2 to all actions that require depth perception.",
+    "Missing an eye. Suffers -2 to all actions that require depth perception.",
   effects: [], // MISSING: EFFECTS
 };

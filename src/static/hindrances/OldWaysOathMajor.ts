@@ -7,6 +7,6 @@ export const OldWaysOathMajor: HindranceDetailType = {
   description:
     "Your hero has decided to fully forego modern technology to honor the spirits. They will refuse to use smithed weapons and armor (e.g. guns, steel knives, etc.), and refuse to ride anything more modern than a horse-drawn wagon - that means no trains, amigo. Taking an oath of the old ways is most common among native americans and people who have embraced the art of shamanism.",
   description_short:
-    "Your hero refuses to use anything created by modern technology (e.g. guns, steel knives, trains, etc.).",
+    "Refuses to use anything created by modern technology (e.g. guns, steel knives, trains, etc.).",
   effects: [],
 };

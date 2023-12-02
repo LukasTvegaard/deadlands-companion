@@ -5,6 +5,7 @@ import { ref, set } from "firebase/database";
 import { Hindrance } from "../../utils/enums/Hindrance";
 import { HindranceDetailType } from "../../utils/interfaces/HindranceDetail";
 import { characterHasHindrance } from "../../static/hindrances/HindranceUtil";
+import { Button } from "../../shared/buttons/Button";
 
 const addHindrance = (characterKey: string, hindranceKey: Hindrance) => {
   const db = database();
@@ -35,12 +36,15 @@ export const HindranceDetail = ({ hindranceDetail }: HindranceDetailProps) => {
   const hasHindrance =
     character && characterHasHindrance(hindranceDetail.key, character);
   const addToCharacterButton = character ? (
-    <button onClick={() => addHindrance(character?.id, hindranceDetail.key)}>
-      Add hindrance to character
-    </button>
+    <Button
+      text="Add hindrance to character"
+      onClick={() => addHindrance(character?.id, hindranceDetail.key)}
+    />
   ) : null;
   const removeFromCharacterButton = character ? (
-    <button
+    <Button
+      text="Remove hindrance from character"
+      negative
       onClick={() =>
         removeHindrance(
           character?.id,
@@ -48,9 +52,7 @@ export const HindranceDetail = ({ hindranceDetail }: HindranceDetailProps) => {
           hindranceDetail.name
         )
       }
-    >
-      Remove hindrance from character
-    </button>
+    />
   ) : null;
 
   return (

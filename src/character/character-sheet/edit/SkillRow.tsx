@@ -1,5 +1,10 @@
 import { DiceRow } from "../../../shared/rows/DiceRow";
-import { DieType, Skill, getSkillName } from "../../../utils/enums";
+import {
+  DieType,
+  Skill,
+  SkillLinkedAttribute,
+  getSkillName,
+} from "../../../utils/enums";
 
 type SkillRowProps = {
   skill: Skill;
@@ -13,7 +18,7 @@ export const SkillRow = ({
   changeSkillDieType,
   removeSkill,
 }: SkillRowProps) => {
-  const skillName = getSkillName(skill);
+  const skillName = `${getSkillName(skill)}`;
   const onDiceClick = (dieType: DieType) => {
     changeSkillDieType(skill, dieType);
   };
@@ -25,6 +30,7 @@ export const SkillRow = ({
   return (
     <DiceRow
       label={skillName}
+      secondaryLabel={SkillLinkedAttribute[skill]}
       activeDieType={currentSkillValue}
       onDiceClick={onDiceClick}
       onDeleteClick={onDeleteClick}

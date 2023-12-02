@@ -16,6 +16,9 @@ import { SingleDiceRow, SingleValueRow } from "../../shared/rows/SingleDiceRow";
 import { Theme } from "./../../Theme";
 import { MultiDiceRow } from "../../shared/rows/MultiDiceRow";
 import { getDamage } from "../character-logic/roll-logic/DamageLogic";
+import { Character } from "../../utils/types/Character";
+import { characterHasEdge } from "../../static/edges/EdgeUtil";
+import { Edge } from "../../utils/enums";
 
 const Attack = styled.div`
   background-color: ${Theme.Surface[300]};
@@ -50,6 +53,27 @@ const ButtonWrapper = styled.div`
   margin-right: 8px;
   border-top: 1px solid ${Theme.Surface[400]};
 `;
+
+const getTrademarkWeaponModifier = (
+  character: Character,
+  weaponDetail: WeaponDetailType
+) => {
+  if (weaponDetail.isTrademarkWeapon) {
+    if (
+      characterHasEdge(Edge.TrademarkWeaponFightingImproved, character) ||
+      characterHasEdge(Edge.TrademarkWeaponShootingImproved, character)
+    ) {
+      return 2;
+    }
+    if (
+      characterHasEdge(Edge.TrademarkWeaponFighting, character) ||
+      characterHasEdge(Edge.TrademarkWeaponShooting, character)
+    ) {
+      return 1;
+    }
+  }
+  return 0;
+};
 
 const isAmmoWeapon = (
   weaponDetail: WeaponDetailType
@@ -102,6 +126,11 @@ type WeaponAttackProps = {
 export const WeaponAttacks = ({ weaponDetail }: WeaponAttackProps) => {
   const character = useContext(CharacterContext);
 
+  const tradeMarkWeaponAttackModifier = getTrademarkWeaponModifier(
+    character,
+    weaponDetail
+  );
+
   return (
     <GroupContainer>
       {weaponDetail.attacks.map((attack) => {
@@ -111,6 +140,11 @@ export const WeaponAttacks = ({ weaponDetail }: WeaponAttackProps) => {
             target: attack.skill,
             effectVariant: EffectVariant.ModifyFlat,
             value: attack.attackModifier,
+          },
+          {
+            target: attack.skill,
+            effectVariant: EffectVariant.ModifyFlat,
+            value: tradeMarkWeaponAttackModifier,
           },
         ]);
 

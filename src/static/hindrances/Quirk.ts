@@ -6,6 +6,6 @@ export const Quirk: HindranceDetailType = {
   name: "Quirk",
   description:
     "Your hero has some minor foible that is usually humorous, but can occasionally cause them trouble.",
-  description_short: "Your hero has a minor quirk.",
+  description_short: "Has a minor quirk.",
   effects: [],
 };

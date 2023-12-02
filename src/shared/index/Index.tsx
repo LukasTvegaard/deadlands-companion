@@ -10,7 +10,7 @@ const Navigation = styled.nav`
 `;
 
 type IndexProps = {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 };
 export const Index = ({ children }: IndexProps) => {
   return <Navigation>{children}</Navigation>;

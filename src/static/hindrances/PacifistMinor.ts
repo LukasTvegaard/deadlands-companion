@@ -6,6 +6,6 @@ export const PacifistMinor: HindranceDetailType = {
   name: "Pacifist (Minor)",
   description:
     "Your hero absolutely despises violence and will only fight when given no other option.",
-  description_short: "Your hero only fights as a last resort.",
+  description_short: "Only fights as a last resort.",
   effects: [],
 };

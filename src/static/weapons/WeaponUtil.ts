@@ -30,10 +30,14 @@ export const getCharacterWeaponDetails = (
     return [];
   }
   return Object.entries(character.weapons)
-    .flatMap(([weaponKey, currentAmmo]) => {
+    .flatMap(([weaponKey, weaponValue]) => {
       const weaponDetail = getWeaponDetailByKey(weaponKey as Weapon);
       if (weaponDetail) {
-        return { ...weaponDetail, currentAmmo };
+        return {
+          ...weaponDetail,
+          currentAmmo: weaponValue.ammo,
+          isTrademarkWeapon: weaponValue.isTrademarkWeapon,
+        };
       }
       return null;
     })

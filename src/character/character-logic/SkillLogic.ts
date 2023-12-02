@@ -13,7 +13,10 @@ export const availableSkillFilter = (
     return characterHasEdge(Edge.ArcaneBackgroundMiracles, character);
   }
   if (skill === Skill.Spellcasting) {
-    return characterHasEdge(Edge.ArcaneBackgroundMagic, character); // FIXME: Remember to add Hexslinger
+    return (
+      characterHasEdge(Edge.ArcaneBackgroundMagic, character) ||
+      characterHasEdge(Edge.ArcaneBackgroundHexslinger, character)
+    );
   }
   if (skill === Skill.WeirdScience) {
     return characterHasEdge(Edge.ArcaneBackgroundWeirdScience, character);
