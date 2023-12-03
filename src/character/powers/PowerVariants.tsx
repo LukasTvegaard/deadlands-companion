@@ -26,6 +26,7 @@ import { getSpellcastingSkill } from "../character-logic/ArcaneBackgroundLogic";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";
 import { Attribute, Edge } from "../../utils/enums";
 import { dieTypeToValue } from "../../utils/enums/DieType";
+import { rankToValue } from "../../utils/enums/Rank";
 
 const VariantStyle = styled.div`
   background-color: ${Theme.Surface[300]};
@@ -57,7 +58,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 8px;
+  padding: 8px;
   border-top: 1px solid ${Theme.Surface[400]};
 `;
 
@@ -102,16 +103,16 @@ const getCurrentPowerPoints = (
 };
 
 const powerHasPowerPoints = (
-  variant: PowerVariant,
+  powerPointCost: number,
   currentPowerPoints: number
 ): boolean => {
-  return variant.powerPointCost <= currentPowerPoints;
+  return powerPointCost <= currentPowerPoints;
 };
 
 const activatePower = (
   character: Character,
   powerDetail: PowerDetailType,
-  variant: PowerVariant,
+  powerPointCost: number,
   isWeirdScientist: boolean
 ) => {
   const currentPowerPoints = getCurrentPowerPoints(
@@ -119,7 +120,7 @@ const activatePower = (
     powerDetail,
     isWeirdScientist
   );
-  const newPowerPoints = currentPowerPoints - variant.powerPointCost;
+  const newPowerPoints = currentPowerPoints - powerPointCost;
   if (isWeirdScientist) {
     updateWeirdSciencePowerPoints(
       character.id,
@@ -147,6 +148,14 @@ const getHealingModifier = (character: Character, variant: PowerVariant) => {
   return 0;
 };
 
+const filterVariants = (variant: PowerVariant, character: Character) => {
+  if (variant.rankRequirement) {
+    return rankToValue(character.rank) >= rankToValue(variant.rankRequirement);
+  }
+
+  return true;
+};
+
 type PowerVariantProps = {
   powerDetail: PowerDetailType;
   isWeirdScientist: boolean;
@@ -161,108 +170,139 @@ export const PowerVariants = ({
 
   return (
     <GroupContainer>
-      {powerDetail.variants.map((variant) => {
-        const rateOfFire = getRateOfFire(variant);
-        const healingModifier = getHealingModifier(character, variant);
+      {powerDetail.variants
+        .filter((variant) => filterVariants(variant, character))
+        .map((variant) => {
+          const rateOfFire = getRateOfFire(variant);
+          const healingModifier = getHealingModifier(character, variant);
 
-        const activationRoll = getRoll(spellcastingSkill, character, [
-          {
-            target: spellcastingSkill,
-            effectVariant: EffectVariant.ModifyFlat,
-            value: variant.activationModifier,
-          },
-          {
-            target: spellcastingSkill,
-            effectVariant: EffectVariant.ModifyFlat,
-            value: healingModifier,
-          },
-        ]);
+          const activationRoll = getRoll(spellcastingSkill, character, [
+            {
+              target: spellcastingSkill,
+              effectVariant: EffectVariant.ModifyFlat,
+              value: variant.activationModifier,
+            },
+            {
+              target: spellcastingSkill,
+              effectVariant: EffectVariant.ModifyFlat,
+              value: healingModifier,
+            },
+          ]);
 
-        return (
-          <VariantStyle key={variant.name}>
-            {singleVariantPower ? null : (
-              <TitleWrapper>{variant.name}</TitleWrapper>
-            )}
-            <SplitterGrid>
-              <SingleDiceRow
-                label={"Activation Roll"}
-                dieType={activationRoll.dice}
-                modifier={activationRoll.modifier}
-                noBorder={singleVariantPower}
-              />
-              <Separator>
-                <SingleValueRow
-                  label={
-                    isAttackPower(variant)
-                      ? "Rate of Fire"
-                      : isUtilityPower(variant)
-                      ? "Duration"
-                      : "Targets"
-                  }
-                  value={rateOfFire}
-                  noBorder={singleVariantPower}
-                />
-              </Separator>
-            </SplitterGrid>
-            {isAttackPower(variant) ? (
+          return (
+            <VariantStyle key={variant.name}>
+              {singleVariantPower ? null : (
+                <TitleWrapper>{variant.name}</TitleWrapper>
+              )}
               <SplitterGrid>
-                <MultiDiceRow
-                  label={"Damage"}
-                  dieTypes={getDamage(variant.damage, character).dieTypes}
-                  modifier={getDamage(variant.damage, character).modifier}
+                <SingleDiceRow
+                  label={"Activation Roll"}
+                  dieType={activationRoll.dice}
+                  modifier={activationRoll.modifier}
+                  noBorder={singleVariantPower}
                 />
                 <Separator>
                   <SingleValueRow
-                    label={"Armor Pen"}
-                    value={variant.armorPen}
+                    label={
+                      isAttackPower(variant)
+                        ? "Rate of Fire"
+                        : isUtilityPower(variant)
+                        ? "Duration"
+                        : "Targets"
+                    }
+                    value={rateOfFire}
+                    noBorder={singleVariantPower}
                   />
                 </Separator>
               </SplitterGrid>
-            ) : null}
-            <SplitterGrid>
-              <SingleValueRow
-                label={"Range"}
-                value={
-                  variant.rangeLong === 0
-                    ? "Touch"
-                    : typeof variant.rangeLong === "number"
-                    ? `${variant.rangeShort} / ${variant.rangeMedium} / ${variant.rangeLong}`
-                    : getRangeFromAttribute(variant.rangeLong, character)
-                }
-              />
-              <ButtonWrapper>
-                <div>
-                  <Button
-                    text={"Activate"}
-                    onClick={() =>
-                      activatePower(
-                        character,
-                        powerDetail,
-                        variant,
-                        isWeirdScientist
-                      )
-                    }
-                    disabled={
-                      !powerHasPowerPoints(
-                        variant,
-                        getCurrentPowerPoints(
+              {isAttackPower(variant) ? (
+                <SplitterGrid>
+                  <MultiDiceRow
+                    label={"Damage"}
+                    dieTypes={getDamage(variant.damage, character).dieTypes}
+                    modifier={getDamage(variant.damage, character).modifier}
+                  />
+                  <Separator>
+                    <SingleValueRow
+                      label={"Armor Pen"}
+                      value={variant.armorPen}
+                    />
+                  </Separator>
+                </SplitterGrid>
+              ) : null}
+              <SplitterGrid>
+                <SingleValueRow
+                  label={"Range"}
+                  value={
+                    variant.rangeLong === 0
+                      ? "Touch"
+                      : variant.rangeLong === "Cone"
+                      ? "Cone"
+                      : typeof variant.rangeLong === "number"
+                      ? `${variant.rangeShort} / ${variant.rangeMedium} / ${variant.rangeLong}`
+                      : getRangeFromAttribute(variant.rangeLong, character)
+                  }
+                />
+                <ButtonWrapper>
+                  <div>
+                    <Button
+                      text={`Cast (${variant.powerPointCost} PP)`}
+                      onClick={() =>
+                        activatePower(
                           character,
                           powerDetail,
+                          variant.powerPointCost,
                           isWeirdScientist
                         )
-                      )
-                    }
-                  />
-                </div>
-              </ButtonWrapper>
-            </SplitterGrid>
+                      }
+                      disabled={
+                        !powerHasPowerPoints(
+                          variant.powerPointCost,
+                          getCurrentPowerPoints(
+                            character,
+                            powerDetail,
+                            isWeirdScientist
+                          )
+                        )
+                      }
+                    />
+                  </div>
+                </ButtonWrapper>
+              </SplitterGrid>
+              {isUtilityPower(variant) && variant.extensionPowerPointCost ? (
+                <ButtonWrapper>
+                  <div>
+                    <Button
+                      text={`Extend (${variant.extensionPowerPointCost} PP)`}
+                      onClick={() =>
+                        activatePower(
+                          character,
+                          powerDetail,
+                          variant.extensionPowerPointCost ?? 0,
+                          isWeirdScientist
+                        )
+                      }
+                      disabled={
+                        !powerHasPowerPoints(
+                          variant.extensionPowerPointCost,
+                          getCurrentPowerPoints(
+                            character,
+                            powerDetail,
+                            isWeirdScientist
+                          )
+                        )
+                      }
+                    />
+                  </div>
+                </ButtonWrapper>
+              ) : null}
 
-            {variant.notes ? (
-              <NotesWrapper>{variant.notes}</NotesWrapper>
-            ) : null}
-          </VariantStyle>
-        );
-      })}
+              {variant.notes ? (
+                <NotesWrapper>{variant.notes}</NotesWrapper>
+              ) : null}
+            </VariantStyle>
+          );
+        })}
     </GroupContainer>
   );
 };

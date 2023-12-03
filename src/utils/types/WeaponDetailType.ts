@@ -15,9 +15,9 @@ export type WeaponAttack = {
   rateOfFire: number | "all";
   damage: DamageType;
   ammoCost: number | "all";
-  rangeShort: number;
-  rangeMedium: number;
-  rangeLong: number;
+  rangeShort: number | "Cone";
+  rangeMedium: number | "Cone";
+  rangeLong: number | "Cone";
   notes?: string;
 };
 

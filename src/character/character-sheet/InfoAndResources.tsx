@@ -13,8 +13,8 @@ interface InfoAndResourcesProps extends Locationable {}
 export const InfoAndResources = ({ locationKey }: InfoAndResourcesProps) => {
   return (
     <InfoAndResourcesStyle>
-      <CharacterInfo locationKey={locationKey} />
       <Resources locationKey={locationKey} />
+      <CharacterInfo locationKey={locationKey} />
     </InfoAndResourcesStyle>
   );
 };

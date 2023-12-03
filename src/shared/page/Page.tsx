@@ -4,7 +4,7 @@ import { Location } from "../../utils/Location";
 import { PageHeader } from "./PageHeader";
 
 const PageContent = styled.div`
-  padding-top: 8px;
+  margin-top: 8px;
   margin-left: 12px;
   padding-bottom: 12px;
   display: flex;

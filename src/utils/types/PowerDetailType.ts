@@ -1,4 +1,4 @@
-import { Attribute } from "../enums";
+import { Attribute, Rank } from "../enums";
 import { Power } from "../enums/Power";
 import { DamageType } from "./DamageType";
 
@@ -13,10 +13,11 @@ type PowerVariantBase = {
   name: string;
   activationModifier: number;
   powerPointCost: number;
-  rangeShort: number | Attribute;
-  rangeMedium: number | Attribute;
-  rangeLong: number | Attribute;
+  rangeShort: number | Attribute | "Cone";
+  rangeMedium: number | Attribute | "Cone";
+  rangeLong: number | Attribute | "Cone";
   notes?: string;
+  rankRequirement?: Rank;
 };
 
 export interface PowerVariantAttack extends PowerVariantBase {
@@ -30,6 +31,7 @@ export interface PowerVariantUtility extends PowerVariantBase {
   type: PowerType.Utility;
   duration: number;
   extensionPowerPointCost?: number;
+  addTargetPowerPointCost?: number;
   notes: string;
 }
 

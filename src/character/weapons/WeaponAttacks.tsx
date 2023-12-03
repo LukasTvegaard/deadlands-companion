@@ -54,6 +54,12 @@ const ButtonWrapper = styled.div`
   border-top: 1px solid ${Theme.Surface[400]};
 `;
 
+const NotesWrapper = styled.div`
+  padding: 8px;
+  border-top: 1px solid ${Theme.Surface[400]};
+  white-space: pre-line;
+`;
+
 const getTrademarkWeaponModifier = (
   character: Character,
   weaponDetail: WeaponDetailType
@@ -176,13 +182,15 @@ export const WeaponAttacks = ({ weaponDetail }: WeaponAttackProps) => {
                 />
               </Separator>
             </SplitterGrid>
-            {isAmmoWeapon(weaponDetail) ? (
+            {isAmmoWeapon(weaponDetail) && attack.ammoCost !== 0 ? (
               <SplitterGrid>
                 <SingleValueRow
                   label={"Range"}
                   value={
                     attack.rangeLong === 0
                       ? "Melee"
+                      : attack.rangeLong === "Cone"
+                      ? "Cone"
                       : `${attack.rangeShort} / ${attack.rangeMedium} / ${attack.rangeLong}`
                   }
                 />
@@ -204,12 +212,14 @@ export const WeaponAttacks = ({ weaponDetail }: WeaponAttackProps) => {
                 value={
                   attack.rangeLong === 0
                     ? "Melee"
+                    : attack.rangeLong === "Cone"
+                    ? "Cone"
                     : `${attack.rangeShort} / ${attack.rangeMedium} / ${attack.rangeLong}`
                 }
               />
             )}
 
-            {attack.notes}
+            {attack.notes ? <NotesWrapper>{attack.notes}</NotesWrapper> : null}
           </Attack>
         );
       })}
