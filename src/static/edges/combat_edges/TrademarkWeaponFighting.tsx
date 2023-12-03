@@ -24,5 +24,5 @@ export const TrademarkWeaponFighting: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [], // MISSING: Trademark weapon toggle on weapons.
+  effects: [],
 };

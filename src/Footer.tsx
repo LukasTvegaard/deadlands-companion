@@ -50,7 +50,22 @@ export const Footer = ({ isDM }: { isDM?: boolean }) => {
         </FooterLink>
       )}
 
-      <FooterLink to="/party">Party</FooterLink>
+      <FooterLink to="/party">
+        {({ isActive }) => {
+          return (
+            <>
+              <Icon
+                icon={Icons.Campfire}
+                viewbox="0 0 1080 1296"
+                height={36}
+                width={36}
+                color={isActive ? Theme.Primary[100] : "#fff"}
+              ></Icon>
+              Party
+            </>
+          );
+        }}
+      </FooterLink>
 
       <FooterLink to="/codex">
         {({ isActive }) => {

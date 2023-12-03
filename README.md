@@ -1,6 +1,6 @@
 # TODO
 
-- Powers
+- Pinnable Dashboard (Pin your favorite weapon and power, e.g.)
 - Gear
 - Buffs / Debuffs (effects)
 - Compendium:
@@ -9,3 +9,4 @@
   - Weapons
   - Powers
   - Gear
+  - Search, Filter, Group By

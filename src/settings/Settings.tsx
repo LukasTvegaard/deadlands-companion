@@ -36,10 +36,14 @@ export const Settings = ({ setSelectedCharacter }: SettingsProps) => {
           text={"Switch Character"}
           onClick={() => setSelectedCharacter(null)}
         ></Button>
-        <Button text={"Sign Out"} onClick={signOutWithGoogle}></Button>
         <Button
           text={"Update App"}
           onClick={() => window.location.reload()}
+        ></Button>
+        <Button
+          secondary
+          text={"Sign Out"}
+          onClick={signOutWithGoogle}
         ></Button>
 
         <Button

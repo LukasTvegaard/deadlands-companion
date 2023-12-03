@@ -59,7 +59,13 @@ export const CharacterSelect = ({
           <StyledLink to={"create"}>
             <Button text="Create new character"></Button>
           </StyledLink>
-          <Button text="Sign Out" onClick={signOutWithGoogle}></Button>
+          <div>
+            <Button
+              negative
+              text="Sign Out"
+              onClick={signOutWithGoogle}
+            ></Button>
+          </div>
         </CharacterSelectStyle>
       )}
     </Page>
