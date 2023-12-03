@@ -27,7 +27,7 @@ const effects: Effect[] = [];
 
 export const ElectricRapier: NoAmmoWeaponDetail = {
   key: Weapon.ElectricRapier,
-  name: "ElectricRapier",
+  name: "Electric Rapier",
   type: WeaponType.NoAmmo,
   armorPen: 2,
   attacks: attacks,

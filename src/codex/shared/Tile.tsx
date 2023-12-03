@@ -11,9 +11,6 @@ const TileStyle = styled(StyledLink)`
   margin: 8px;
   background-color: ${Theme.Surface[300]};
   gap: 8px;
-  @media (min-width: 769px) {
-    max-width: 450px;
-  }
 `;
 
 type TileTitleProps = {

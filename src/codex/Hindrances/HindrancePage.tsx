@@ -3,6 +3,9 @@ import Page from "../../shared/page/Page";
 import { Locations } from "../../utils/Location";
 import { HindranceList } from "../../static/hindrances/HindranceList";
 import { Tile } from "../shared/Tile";
+import { Search } from "../../shared/Search";
+import { useState } from "react";
+import { HindranceDetailType } from "../../utils/interfaces/HindranceDetail";
 
 const HindranceGroupsWrapper = styled.div`
   display: flex;
@@ -11,11 +14,32 @@ const HindranceGroupsWrapper = styled.div`
   padding-right: 12px;
 `;
 
+const hindranceFilter = (
+  hindrance: HindranceDetailType,
+  searchString: string
+) => {
+  const hindranceText =
+    hindrance.name.toLowerCase() + hindrance.description_short.toLowerCase();
+  return hindranceText.includes(searchString.toLowerCase());
+};
+
 export const HindrancePage = () => {
+  const [searchString, setSearchString] = useState<string>("");
+  const hindrances =
+    searchString.length > 0
+      ? HindranceList.filter((hindrance) =>
+          hindranceFilter(hindrance, searchString)
+        )
+      : HindranceList;
+
   return (
     <Page pageName="Hindrances" prevLocation={Locations.CodexMenu}>
+      <Search
+        callback={(text) => setSearchString(text)}
+        placeholder={"Search for a Hindrance..."}
+      ></Search>
       <HindranceGroupsWrapper>
-        {HindranceList.map((hindrance) => {
+        {hindrances.map((hindrance) => {
           return (
             <Tile
               key={hindrance.key}
