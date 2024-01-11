@@ -11,6 +11,7 @@ export const shouldShowPowerPoints = (character: Character): boolean => {
   return someKeyInObject(
     [
       Edge.ArcaneBackgroundMagic,
+      Edge.ArcaneBackgroundHexslinger,
       Edge.ArcaneBackgroundChiMastery,
       Edge.ArcaneBackgroundMiracles,
       Edge.ArcaneBackgroundShamanism,

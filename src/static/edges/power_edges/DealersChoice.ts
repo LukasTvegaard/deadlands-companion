@@ -12,7 +12,7 @@ const EdgeRequirements: Edge[] = [Edge.ArcaneBackgroundMagic];
 
 export const DealersChoice: EdgeDetailType = {
   key: Edge.DealersChoice,
-  name: "Dealer's CHoice",
+  name: "Dealer's Choice",
   category: EdgeCategory.Powers,
   description:
     "Any time you are dealt a card for any reason, after you have looked at it you can choose to spend a Fate Chip to discard it and draw another card.",

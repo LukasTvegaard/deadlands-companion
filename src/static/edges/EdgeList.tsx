@@ -100,6 +100,7 @@ import { SnakeoilSalesman } from './professional_edges/SnakeoilSalesman';
 import { Thief } from './professional_edges/Thief';
 import { WildernessMan } from './professional_edges/WildernessMan';
 import { Woodsman } from './professional_edges/Woodsman';
+import { CardSharp } from './social_edges/CardSharp';
 import { Charismatic } from './social_edges/Charismatic';
 import { DangerSense } from './weird_edges/DangerSense';
 import { Healer } from './weird_edges/Healer';
@@ -231,7 +232,7 @@ export const Edges: EdgeDetails = {
   [Edge.Woodsman]: Woodsman,
 
   // Social edges
-  [Edge.CardSharp]: placeholderEdge,
+  [Edge.CardSharp]: CardSharp,
   [Edge.Charismatic]: Charismatic,
   [Edge.CommonBond]: placeholderEdge,
   [Edge.StrongWilled]: placeholderEdge,
