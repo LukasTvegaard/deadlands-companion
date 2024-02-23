@@ -9,6 +9,6 @@ export const FlexRow = styled.div<FlexRowProps>`
   align-items: center;
   ${({ $gap }) =>
     css`
-      gap: ${$gap}px;
+      gap: ${$gap ? `${$gap}px` : `0px`};
     `}
 `;

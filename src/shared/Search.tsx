@@ -10,11 +10,7 @@ type SearchProps = {
 
 const SearchWrapper = styled.div`
   display: flex;
-  margin-bottom: 8px;
-  position: sticky;
-  top: 0;
   background-color: ${Theme.Surface[200]};
-  padding-bottom: 8px;
 `;
 
 const SearchField = styled.input`

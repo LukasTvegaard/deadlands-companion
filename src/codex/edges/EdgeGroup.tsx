@@ -2,15 +2,24 @@ import { useState } from "react";
 import styled from "styled-components";
 import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
 import { Tile } from "../shared/Tile";
+import { Icon } from "../../icons/Icon";
+import { Icons } from "../../icons/Icons";
+import { Theme } from "../../Theme";
 
 type EdgeGroupProps = {
   groupKey: string;
   groupEdges: EdgeDetailType[];
 };
 
+const GroupWrapper = styled.div`
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
+`;
+
 const GroupTitle = styled.div`
+  display: flex;
   font-size: 24px;
-  font-weight: 500;
   cursor: pointer;
 `;
 
@@ -34,9 +43,17 @@ export const EdgeGroup = ({ groupKey, groupEdges }: EdgeGroupProps) => {
   };
 
   return (
-    <>
+    <GroupWrapper>
       {groupKey === "none" ? null : (
-        <GroupTitle onClick={() => toggleExpanded()}>{groupKey}</GroupTitle>
+        <GroupTitle onClick={() => toggleExpanded()}>
+          {groupKey}
+          <Icon
+            icon={expanded ? Icons.ChevronUp : Icons.ChevronDown}
+            height={24}
+            width={24}
+            color={Theme.Surface[400]}
+          />
+        </GroupTitle>
       )}
       {expanded && (
         <GroupContainer>
@@ -52,6 +69,6 @@ export const EdgeGroup = ({ groupKey, groupEdges }: EdgeGroupProps) => {
             ))}
         </GroupContainer>
       )}
-    </>
+    </GroupWrapper>
   );
 };
