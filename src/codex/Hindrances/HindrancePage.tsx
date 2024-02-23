@@ -35,6 +35,7 @@ export const HindrancePage = () => {
   return (
     <Page pageName="Hindrances" prevLocation={Locations.CodexMenu}>
       <Header>
+        <div></div>
         <Search
           callback={(text) => setSearchString(text)}
           placeholder={"Search for a Hindrance..."}

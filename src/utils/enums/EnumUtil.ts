@@ -1,5 +1,5 @@
 export function getEnumByString<T>(
-  key: string | undefined,
+  key: string | undefined | null,
   e: T
 ): T[keyof T] | undefined {
   if (key) {

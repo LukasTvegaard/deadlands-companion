@@ -9,6 +9,7 @@ import { ElementalManipulationEarth } from "./ElementalManipulation";
 import { Healing } from "./Healing";
 import { Hunch } from "./Hunch";
 import { MindReading } from "./MindReading";
+import { Quickness } from "./Quickness";
 import { ShapeChange } from "./ShapeChange";
 import { Shootist } from "./Shootist";
 import { Slumber } from "./Slumber";
@@ -28,6 +29,7 @@ export const Powers: PowerDetails = {
   [Power.Healing]: Healing,
   [Power.Hunch]: Hunch,
   [Power.MindReading]: MindReading,
+  [Power.Quickness]: Quickness,
   [Power.ShapeChange]: ShapeChange,
   [Power.Shootist]: Shootist,
   [Power.Slumber]: Slumber,

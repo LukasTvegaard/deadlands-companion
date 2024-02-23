@@ -1,110 +1,126 @@
-import { Edge, EdgeCategory, Rank } from '../../utils/enums';
-import { EdgeDetailType } from '../../utils/interfaces/EdgeDetail';
-import { Alertness } from './background_edges/Alertness';
-import { Ambidextrous } from './background_edges/Ambidextrous';
-import { ArcaneBackgroundChiMastery } from './background_edges/ArcaneBackgroundChiMastery';
-import { ArcaneBackgroundHexslinger } from './background_edges/ArcaneBackgroundHexslinger';
-import { ArcaneBackgroundMagic } from './background_edges/ArcaneBackgroundMagic';
-import { ArcaneBackgroundMiracles } from './background_edges/ArcaneBackgroundMiracles';
-import { ArcaneBackgroundShamanism } from './background_edges/ArcaneBackgroundShamanism';
-import { ArcaneBackgroundWeirdScience } from './background_edges/ArcaneBackgroundWeirdScience';
-import { ArcaneResistance } from './background_edges/ArcaneResistance';
-import { ArcaneResistanceImproved } from './background_edges/ArcaneResistanceImproved';
-import { Attractive } from './background_edges/Attractive';
-import { AttractiveVery } from './background_edges/AttractiveVery';
-import { Berserk } from './background_edges/Berserk';
-import { Brave } from './background_edges/Brave';
-import { Brawny } from './background_edges/Brawny';
-import { FastHealer } from './background_edges/FastHealer';
-import { FleetFooted } from './background_edges/FleetFooted';
-import { GallowsHumor } from './background_edges/GallowsHumor';
-import { Linguist } from './background_edges/Linguist';
-import { Luck } from './background_edges/Luck';
-import { LuckGreat } from './background_edges/LuckGreat';
-import { Quick } from './background_edges/Quick';
-import { Rich } from './background_edges/Rich';
-import { RichFilthy } from './background_edges/RichFilthy';
-import { BlindFighting } from './combat_edges/BlindFighting';
-import { Block } from './combat_edges/Block';
-import { BlockImproved } from './combat_edges/BlockImproved';
-import { Brawler } from './combat_edges/Brawler';
-import { Bruiser } from './combat_edges/Bruiser';
-import { CombatReflexes } from './combat_edges/CombatReflexes';
-import { Counterattack } from './combat_edges/CounterAttack';
-import { CounterAttackImproved } from './combat_edges/CounterAttackImproved';
-import { Dodge } from './combat_edges/Dodge';
-import { DodgeImproved } from './combat_edges/DodgeImproved';
-import { DontGetImRiled } from './combat_edges/DontGetImRiled';
-import { Duelist } from './combat_edges/Duelist';
-import { Elan } from './combat_edges/Elan';
-import { Extraction } from './combat_edges/Extraction';
-import { ExtractionImproved } from './combat_edges/ExtractionImproved';
-import { FirstStrike } from './combat_edges/FirstStrike';
-import { FirstStrikeImproved } from './combat_edges/FirstStrikeImproved';
-import { Florentine } from './combat_edges/Florentine';
-import { Frenzy } from './combat_edges/Frenzy';
-import { FrenzyImproved } from './combat_edges/FrenzyImproved';
-import { GiantKiller } from './combat_edges/GiantKiller';
-import { HarderToKill } from './combat_edges/HarderToKill';
-import { HardToKill } from './combat_edges/HardToKill';
-import { HipShooting } from './combat_edges/HipShooting';
-import { HipShootingImproved } from './combat_edges/HipShootingImproved';
-import { ImprovisationalFighter } from './combat_edges/ImprovisationalFighter';
-import { IronParry } from './combat_edges/IronParry';
-import { KillerInstinct } from './combat_edges/KillerInstinct';
-import { LevelHeaded } from './combat_edges/LevelHeaded';
-import { LevelHeadedImproved } from './combat_edges/LevelHeadedImproved';
-import { Marksman } from './combat_edges/Marksman';
-import { MovementOfTheSerpent } from './combat_edges/MovementOfTheSerpent';
-import { NervesOfSteel } from './combat_edges/NervesOfSteel';
-import { NervesOfSteelImproved } from './combat_edges/NervesOfSteelImproved';
-import { NoMercy } from './combat_edges/NoMercy';
-import { Pistolero } from './combat_edges/Pistolero';
-import { QuickDraw } from './combat_edges/QuickDraw';
-import { RebelYell } from './combat_edges/RebelYell';
-import { RockAndRoll } from './combat_edges/RockAndRoll';
-import { SpeedLoad } from './combat_edges/SpeedLoad';
-import { SteadyHands } from './combat_edges/SteadyHands';
-import { Sweep } from './combat_edges/Sweep';
-import { SweepImproved } from './combat_edges/SweepImproved';
-import { TenTigerPunch } from './combat_edges/TenTigerPunch';
-import { TrademarkWeaponFighting } from './combat_edges/TrademarkWeaponFighting';
-import { TrademarkWeaponFightingImproved } from './combat_edges/TrademarkWeaponFightingImproved';
-import { TrademarkWeaponShooting } from './combat_edges/TrademarkWeaponShooting';
-import { TrademarkWeaponShootingImproved } from './combat_edges/TrademarkWeaponShootingImproved';
-import { TwoFisted } from './combat_edges/TwoFisted';
-import { Alchemy } from './power_edges/Alchemy';
-import { BornToKill } from './power_edges/BornToKill';
-import { DealersChoice } from './power_edges/DealersChoice';
-import { Eureka } from './power_edges/Eureka';
-import { NewPower } from './power_edges/NewPower';
+import { Edge, EdgeCategory, Rank } from "../../utils/enums";
+import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
+import { Alertness } from "./background_edges/Alertness";
+import { Ambidextrous } from "./background_edges/Ambidextrous";
+import { ArcaneBackgroundChiMastery } from "./background_edges/ArcaneBackgroundChiMastery";
+import { ArcaneBackgroundHexslinger } from "./background_edges/ArcaneBackgroundHexslinger";
+import { ArcaneBackgroundMagic } from "./background_edges/ArcaneBackgroundMagic";
+import { ArcaneBackgroundMiracles } from "./background_edges/ArcaneBackgroundMiracles";
+import { ArcaneBackgroundShamanism } from "./background_edges/ArcaneBackgroundShamanism";
+import { ArcaneBackgroundWeirdScience } from "./background_edges/ArcaneBackgroundWeirdScience";
+import { ArcaneResistance } from "./background_edges/ArcaneResistance";
+import { ArcaneResistanceImproved } from "./background_edges/ArcaneResistanceImproved";
+import { Attractive } from "./background_edges/Attractive";
+import { AttractiveVery } from "./background_edges/AttractiveVery";
+import { Berserk } from "./background_edges/Berserk";
+import { Brave } from "./background_edges/Brave";
+import { Brawny } from "./background_edges/Brawny";
+import { FastHealer } from "./background_edges/FastHealer";
+import { FleetFooted } from "./background_edges/FleetFooted";
+import { GallowsHumor } from "./background_edges/GallowsHumor";
+import { Linguist } from "./background_edges/Linguist";
+import { Luck } from "./background_edges/Luck";
+import { LuckGreat } from "./background_edges/LuckGreat";
+import { Quick } from "./background_edges/Quick";
+import { Rich } from "./background_edges/Rich";
+import { RichFilthy } from "./background_edges/RichFilthy";
+import { BlindFighting } from "./combat_edges/BlindFighting";
+import { Block } from "./combat_edges/Block";
+import { BlockImproved } from "./combat_edges/BlockImproved";
+import { Brawler } from "./combat_edges/Brawler";
+import { Bruiser } from "./combat_edges/Bruiser";
+import { CombatReflexes } from "./combat_edges/CombatReflexes";
+import { Counterattack } from "./combat_edges/CounterAttack";
+import { CounterAttackImproved } from "./combat_edges/CounterAttackImproved";
+import { Dodge } from "./combat_edges/Dodge";
+import { DodgeImproved } from "./combat_edges/DodgeImproved";
+import { DontGetImRiled } from "./combat_edges/DontGetImRiled";
+import { Duelist } from "./combat_edges/Duelist";
+import { Elan } from "./combat_edges/Elan";
+import { Extraction } from "./combat_edges/Extraction";
+import { ExtractionImproved } from "./combat_edges/ExtractionImproved";
+import { FirstStrike } from "./combat_edges/FirstStrike";
+import { FirstStrikeImproved } from "./combat_edges/FirstStrikeImproved";
+import { Florentine } from "./combat_edges/Florentine";
+import { Frenzy } from "./combat_edges/Frenzy";
+import { FrenzyImproved } from "./combat_edges/FrenzyImproved";
+import { GiantKiller } from "./combat_edges/GiantKiller";
+import { HarderToKill } from "./combat_edges/HarderToKill";
+import { HardToKill } from "./combat_edges/HardToKill";
+import { HipShooting } from "./combat_edges/HipShooting";
+import { HipShootingImproved } from "./combat_edges/HipShootingImproved";
+import { ImprovisationalFighter } from "./combat_edges/ImprovisationalFighter";
+import { IronParry } from "./combat_edges/IronParry";
+import { KillerInstinct } from "./combat_edges/KillerInstinct";
+import { LevelHeaded } from "./combat_edges/LevelHeaded";
+import { LevelHeadedImproved } from "./combat_edges/LevelHeadedImproved";
+import { Marksman } from "./combat_edges/Marksman";
+import { MovementOfTheSerpent } from "./combat_edges/MovementOfTheSerpent";
+import { NervesOfSteel } from "./combat_edges/NervesOfSteel";
+import { NervesOfSteelImproved } from "./combat_edges/NervesOfSteelImproved";
+import { NoMercy } from "./combat_edges/NoMercy";
+import { Pistolero } from "./combat_edges/Pistolero";
+import { QuickDraw } from "./combat_edges/QuickDraw";
+import { RebelYell } from "./combat_edges/RebelYell";
+import { RockAndRoll } from "./combat_edges/RockAndRoll";
+import { SpeedLoad } from "./combat_edges/SpeedLoad";
+import { SteadyHands } from "./combat_edges/SteadyHands";
+import { Sweep } from "./combat_edges/Sweep";
+import { SweepImproved } from "./combat_edges/SweepImproved";
+import { TenTigerPunch } from "./combat_edges/TenTigerPunch";
+import { TrademarkWeaponFighting } from "./combat_edges/TrademarkWeaponFighting";
+import { TrademarkWeaponFightingImproved } from "./combat_edges/TrademarkWeaponFightingImproved";
+import { TrademarkWeaponShooting } from "./combat_edges/TrademarkWeaponShooting";
+import { TrademarkWeaponShootingImproved } from "./combat_edges/TrademarkWeaponShootingImproved";
+import { TwoFisted } from "./combat_edges/TwoFisted";
+import { Alchemy } from "./power_edges/Alchemy";
+import { BornToKill } from "./power_edges/BornToKill";
+import { DealersChoice } from "./power_edges/DealersChoice";
+import { Eureka } from "./power_edges/Eureka";
+import { FetishCreator } from "./power_edges/FetishCreator";
+import { HighRoller } from "./power_edges/HighRoller";
+import { HighRollerImproved } from "./power_edges/HighRollerImproved";
+import { NewPower } from "./power_edges/NewPower";
 import {
-    PowerPointsHeroic, PowerPointsLegendary, PowerPointsNovice, PowerPointsSeasoned,
-    PowerPointsVeteran
-} from './power_edges/PowerPoints';
-import { RapidRecharge } from './power_edges/RapidRecharge';
-import { RapidRechargeImproved } from './power_edges/RapidRechargeImproved';
-import { Acrobat } from './professional_edges/Acrobat';
-import { Adept } from './professional_edges/Adept';
-import { Assassin } from './professional_edges/Assassin';
-import { BornInTheSaddle } from './professional_edges/BornInTheSaddle';
-import { Champion } from './professional_edges/Champion';
-import { Gadgeteer } from './professional_edges/Gadgeteer';
-import { HolyWarrior } from './professional_edges/HolyWarrior';
-import { Investigator } from './professional_edges/Investigator';
-import { JackOfAllTrades } from './professional_edges/JackOfAllTrades';
-import { McGyver } from './professional_edges/McGyver';
-import { MrFixIt } from './professional_edges/MrFixIt';
-import { SilverTonguedDevil } from './professional_edges/SilverTonguedDevil';
-import { SnakeoilSalesman } from './professional_edges/SnakeoilSalesman';
-import { Thief } from './professional_edges/Thief';
-import { WildernessMan } from './professional_edges/WildernessMan';
-import { Woodsman } from './professional_edges/Woodsman';
-import { CardSharp } from './social_edges/CardSharp';
-import { Charismatic } from './social_edges/Charismatic';
-import { DangerSense } from './weird_edges/DangerSense';
-import { Healer } from './weird_edges/Healer';
-import { KnackBornOnAllHallowsEve } from './weird_edges/KnackBornOnAllHallowsEve';
+  PowerPointsHeroic,
+  PowerPointsLegendary,
+  PowerPointsNovice,
+  PowerPointsSeasoned,
+  PowerPointsVeteran,
+} from "./power_edges/PowerPoints";
+import { RapidRecharge } from "./power_edges/RapidRecharge";
+import { RapidRechargeImproved } from "./power_edges/RapidRechargeImproved";
+import { SpiritsFavor } from "./power_edges/SpiritsFavor";
+import { Acrobat } from "./professional_edges/Acrobat";
+import { Adept } from "./professional_edges/Adept";
+import { Assassin } from "./professional_edges/Assassin";
+import { BornInTheSaddle } from "./professional_edges/BornInTheSaddle";
+import { Champion } from "./professional_edges/Champion";
+import { Gadgeteer } from "./professional_edges/Gadgeteer";
+import { HolyWarrior } from "./professional_edges/HolyWarrior";
+import { Investigator } from "./professional_edges/Investigator";
+import { JackOfAllTrades } from "./professional_edges/JackOfAllTrades";
+import { McGyver } from "./professional_edges/McGyver";
+import { MrFixIt } from "./professional_edges/MrFixIt";
+import { SilverTonguedDevil } from "./professional_edges/SilverTonguedDevil";
+import { SnakeoilSalesman } from "./professional_edges/SnakeoilSalesman";
+import { Thief } from "./professional_edges/Thief";
+import { WildernessMan } from "./professional_edges/WildernessMan";
+import { Woodsman } from "./professional_edges/Woodsman";
+import { CardSharp } from "./social_edges/CardSharp";
+import { Charismatic } from "./social_edges/Charismatic";
+import { CommonBond } from "./social_edges/CommonBond";
+import { Reputation } from "./social_edges/Reputation";
+import { StrongWilled } from "./social_edges/StrongWilled";
+import { TrueGrit } from "./social_edges/TrueGrit";
+import { DangerSense } from "./weird_edges/DangerSense";
+import { Healer } from "./weird_edges/Healer";
+import { KnackBornOnAllHallowsEve } from "./weird_edges/KnackBornOnAllHallowsEve";
+import { DeadShot } from "./wild_card_edges/DeadShot";
+import { MightyBlow } from "./wild_card_edges/MightyBlow";
+import { PowerSurgeSpellcasting } from "./wild_card_edges/PowerSurgeSpellcasting";
+import { PowerSurgeTribalMedicine } from "./wild_card_edges/PowerSurgeTribalMedicine";
+import { PowerSurgeWeirdScience } from "./wild_card_edges/PowerSurgeWeirdScience";
 
 const placeholderEdge = {
   key: Edge.Placeholder,
@@ -184,6 +200,7 @@ export const Edges: EdgeDetails = {
   [Edge.LevelHeaded]: LevelHeaded,
   [Edge.LevelHeadedImproved]: LevelHeadedImproved,
   [Edge.Marksman]: Marksman,
+  [Edge.MartialArtist]: placeholderEdge,
   [Edge.MovementOfTheSerpent]: MovementOfTheSerpent,
   [Edge.NervesOfSteel]: NervesOfSteel,
   [Edge.NervesOfSteelImproved]: NervesOfSteelImproved,
@@ -234,9 +251,10 @@ export const Edges: EdgeDetails = {
   // Social edges
   [Edge.CardSharp]: CardSharp,
   [Edge.Charismatic]: Charismatic,
-  [Edge.CommonBond]: placeholderEdge,
-  [Edge.StrongWilled]: placeholderEdge,
-  [Edge.TrueGrit]: placeholderEdge,
+  [Edge.CommonBond]: CommonBond,
+  [Edge.Reputation]: Reputation,
+  [Edge.StrongWilled]: StrongWilled,
+  [Edge.TrueGrit]: TrueGrit,
 
   // Weird edges
   [Edge.Conviction]: placeholderEdge,
@@ -263,9 +281,11 @@ export const Edges: EdgeDetails = {
   [Edge.TotemSpirit]: placeholderEdge,
 
   // Wild card edegs
-  [Edge.DeadShot]: placeholderEdge,
-  [Edge.MightyBlow]: placeholderEdge,
-  [Edge.PowerSurge]: placeholderEdge,
+  [Edge.DeadShot]: DeadShot,
+  [Edge.MightyBlow]: MightyBlow,
+  [Edge.PowerSurgeSpellcasting]: PowerSurgeSpellcasting,
+  [Edge.PowerSurgeTribalMedicine]: PowerSurgeTribalMedicine,
+  [Edge.PowerSurgeWeirdScience]: PowerSurgeWeirdScience,
 
   // Legendary edges
   [Edge.BeholdAPaleHorse]: placeholderEdge,
@@ -281,14 +301,15 @@ export const Edges: EdgeDetails = {
   [Edge.WeaponMaster]: placeholderEdge,
   [Edge.MasterOfArms]: placeholderEdge,
 
+  // Pile of stuff
   [Edge.DealersChoice]: DealersChoice,
-  [Edge.HighRoller]: placeholderEdge,
-  [Edge.ImprovedHighRoller]: placeholderEdge,
+  [Edge.HighRoller]: HighRoller,
+  [Edge.ImprovedHighRoller]: HighRollerImproved,
   [Edge.OldHand]: placeholderEdge,
   [Edge.WhateleyBlood]: placeholderEdge,
 
-  [Edge.FetishCreator]: placeholderEdge,
-  [Edge.SpiritsFavor]: placeholderEdge,
+  [Edge.FetishCreator]: FetishCreator,
+  [Edge.SpiritsFavor]: SpiritsFavor,
 
   [Edge.Alchemy]: Alchemy,
   [Edge.Eureka]: Eureka,

@@ -13,7 +13,7 @@ export const DodgeImproved: EdgeDetailType = {
   name: "Dodge (Improved)",
   category: EdgeCategory.Combat,
   description:
-    "Attackers must subtract additonal 1 from their ranged attack rolls when targeting your cowpoke. If your cowpoke attempts to evade area effect attacks, he may add an additonal +1 to his Agility roll as well (when allowed)",
+    "Attackers have an additional -1 penalty to ranged attacks against you. If your cowpoke attempts to evade area effect attacks, they may add an additonal +1 to their Agility roll as well (when allowed)",
   description_short:
     "Attackers have an additional -1 penalty to ranged attacks against you, and you gain an additional +1 to evading area effect weapons",
   rank_requirement: Rank.Veteran,

@@ -4,6 +4,8 @@ const SelectStyle = styled.select`
   font-size: 16px;
   height: 36px;
   width: 150px;
+  padding: 8px 4px;
+  border-radius: 4px;
 `;
 
 const Option = styled.option`

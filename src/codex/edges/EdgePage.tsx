@@ -14,6 +14,7 @@ import {
 } from "./EdgeGroupingUtil";
 import { Select } from "../shared/Select";
 import { Header } from "../shared/Header";
+import { getEnumByString } from "../../utils/enums/EnumUtil";
 
 const EdgeGroupsWrapper = styled.div`
   display: flex;
@@ -39,19 +40,28 @@ const getFilteredEdges = (edgeList: EdgeDetailType[], searchString: string) => {
 
   return edgeList.filter((edge) => edge.key !== Edge.Placeholder);
 };
+
+const getEdgeGroupingByFromString = (value: string | null) => {
+  return (
+    getEnumByString(value, EdgeGroupingType) ?? EdgeGroupingType.NoGrouping
+  );
+};
+
 /*
  * TODOs:
- * Search,
  * Filter by available to character
  */
+export const edgeGroupingKey = "edge-grouping-key";
+
 export const EdgePage = () => {
   const [searchString, setSearchString] = useState<string>("");
   const [groupingBy, setGroupingBy] = useState<EdgeGroupingType>(
-    EdgeGroupingType.NoGrouping
+    getEdgeGroupingByFromString(localStorage.getItem(edgeGroupingKey))
   );
 
   const handleGroupingByChange = (value: string) => {
-    setGroupingBy(value as EdgeGroupingType); // FIXME: Dirty typecast
+    localStorage.setItem(edgeGroupingKey, value);
+    setGroupingBy(getEdgeGroupingByFromString(value));
   };
 
   const edges = getFilteredEdges(EdgeList, searchString);
@@ -64,15 +74,15 @@ export const EdgePage = () => {
   return (
     <Page pageName="Edges" prevLocation={Locations.CodexMenu}>
       <Header gap={16}>
-        <Search
-          callback={(text) => setSearchString(text)}
-          placeholder={"Search for an Edge..."}
-        ></Search>
         <Select
           value={groupingBy}
           setValue={handleGroupingByChange}
           options={Object.values(EdgeGroupingType)}
         />
+        <Search
+          callback={(text) => setSearchString(text)}
+          placeholder={"Search for an Edge..."}
+        ></Search>
       </Header>
       <EdgeGroupsWrapper>
         {Object.entries(edgeListGroups).map(([groupKey, groupEdges]) => {

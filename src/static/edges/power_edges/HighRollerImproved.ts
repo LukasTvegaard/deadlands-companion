@@ -6,14 +6,14 @@ const StatRequirements: StatRequirement[] = [];
 
 const SkillRequirements: SkillRequirement[] = [];
 
-const EdgeRequirements: Edge[] = [Edge.Counterattack];
+const EdgeRequirements: Edge[] = [Edge.HighRoller];
 
-export const CounterAttackImproved: EdgeDetailType = {
-  key: Edge.CounterattackImproved,
-  name: "Counterattack (Improved)",
-  category: EdgeCategory.Combat,
-  description: "Remove -2 penalty from Counterattack",
-  description_short: "Remove -2 penalty from Counterattack",
+export const HighRollerImproved: EdgeDetailType = {
+  key: Edge.ImprovedHighRoller,
+  name: "High Roller (Improved)",
+  category: EdgeCategory.Powers,
+  description: `Draw an additional extra card when dealing with the Devil.`,
+  description_short: `Draw an additional extra card when dealing with the Devil`,
   rank_requirement: Rank.Veteran,
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,

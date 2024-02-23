@@ -58,6 +58,7 @@ export enum Edge {
   LevelHeaded = "LevelHeaded",
   LevelHeadedImproved = "LevelHeadedImproved",
   Marksman = "Marksman",
+  MartialArtist = "MartialArtist",
   MovementOfTheSerpent = "MovementOfTheSerpent",
   NervesOfSteel = "NervesOfSteel",
   NervesOfSteelImproved = "NervesOfSteelImproved",
@@ -106,6 +107,7 @@ export enum Edge {
   CardSharp = "CardSharp",
   Charismatic = "Charismatic",
   CommonBond = "CommonBond",
+  Reputation = "Reputation",
   StrongWilled = "StrongWilled",
   TrueGrit = "TrueGrit",
 
@@ -134,7 +136,9 @@ export enum Edge {
 
   DeadShot = "DeadShot",
   MightyBlow = "MightyBlow",
-  PowerSurge = "PowerSurge",
+  PowerSurgeSpellcasting = "PowerSurgeSpellcasting",
+  PowerSurgeTribalMedicine = "PowerSurgeTribalMedicine",
+  PowerSurgeWeirdScience = "PowerSurgeWeirdScience",
 
   BeholdAPaleHorse = "BeholdAPaleHorse",
   Damned = "Damned",

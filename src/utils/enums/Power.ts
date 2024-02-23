@@ -8,6 +8,7 @@ export enum Power {
   Healing = "Healing",
   Hunch = "Hunch",
   MindReading = "MindReading",
+  Quickness = "Quickness",
   ShapeChange = "ShapeChange",
   Shootist = "Shootist",
   Slumber = "Slumber",
