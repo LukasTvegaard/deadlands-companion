@@ -19,7 +19,6 @@ const EdgeGroupsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding-right: 12px;
 `;
 
 const edgeFilter = (edge: EdgeDetailType, searchString: string) => {
@@ -64,7 +63,7 @@ export const EdgePage = () => {
 
   return (
     <Page pageName="Edges" prevLocation={Locations.CodexMenu}>
-      <Header>
+      <Header gap={16}>
         <Search
           callback={(text) => setSearchString(text)}
           placeholder={"Search for an Edge..."}

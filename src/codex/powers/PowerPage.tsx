@@ -8,7 +8,6 @@ const PowerGroupsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding-right: 12px;
 `;
 
 export const PowerPage = () => {
