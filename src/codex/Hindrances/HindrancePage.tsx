@@ -6,6 +6,7 @@ import { Tile } from "../shared/Tile";
 import { Search } from "../../shared/Search";
 import { useState } from "react";
 import { HindranceDetailType } from "../../utils/interfaces/HindranceDetail";
+import { Header } from "../shared/Header";
 
 const HindranceGroupsWrapper = styled.div`
   display: flex;
@@ -34,10 +35,12 @@ export const HindrancePage = () => {
 
   return (
     <Page pageName="Hindrances" prevLocation={Locations.CodexMenu}>
-      <Search
-        callback={(text) => setSearchString(text)}
-        placeholder={"Search for a Hindrance..."}
-      ></Search>
+      <Header>
+        <Search
+          callback={(text) => setSearchString(text)}
+          placeholder={"Search for a Hindrance..."}
+        ></Search>
+      </Header>
       <HindranceGroupsWrapper>
         {hindrances.map((hindrance) => {
           return (
