@@ -14,12 +14,14 @@ const CheckboxStyle = styled(AriaCheckbox)`
 
   display: flex;
   align-items: center;
-  gap: 0.571rem;
-  font-size: 1.143rem;
+  gap: 8px;
+  font-size: 18px;
+  cursor: pointer;
 
   .checkbox {
-    width: 1.143rem;
-    height: 1.143rem;
+    width: 20px;
+    padding-left: 2px;
+    height: 22px;
     border: 2px solid var(--deselected-color);
     border-radius: 4px;
     transition: all 200ms;

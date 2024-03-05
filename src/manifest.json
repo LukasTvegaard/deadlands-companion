@@ -3,17 +3,17 @@
   "name": "Deadlands Companion",
   "icons": [
     {
-      "src": "skullicon.ico",
+      "src": "/skullicon.ico",
       "sizes": "128x128 64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "skulllogo192.png",
+      "src": "/skulllogo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "skulllogo512.png",
+      "src": "/skulllogo512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

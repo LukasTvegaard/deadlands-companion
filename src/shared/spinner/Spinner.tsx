@@ -38,7 +38,7 @@ const RevolverSpinner = styled.div`
 `;
 
 type BulletProps = {
-  index: number;
+  $index: number;
 };
 const Bullet = styled.div<BulletProps>`
   height: 30px;
@@ -48,7 +48,7 @@ const Bullet = styled.div<BulletProps>`
   border: 6px solid #fff;
   box-sizing: border-box;
   position: absolute;
-  transform: ${(props) => `rotate(${props.index * 60}deg) translateY(-25px);`};
+  transform: ${(props) => `rotate(${props.$index * 60}deg) translateY(-25px);`};
 
   &:before {
     content: "";
@@ -91,7 +91,7 @@ export const Spinner = ({ showHeader }: SpinnerProps) => {
           {Array(6)
             .fill(null)
             .map((_, index) => {
-              return <Bullet key={index} index={index} />;
+              return <Bullet key={index} $index={index} />;
             })}
         </RevolverSpinner>
         <div style={{ marginTop: "160px" }}>Loading...</div>

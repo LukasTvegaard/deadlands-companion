@@ -11,6 +11,7 @@ const PageContent = styled.div`
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
+  scrollbar-width: thin;
   @media (min-width: 800px) {
     align-self: center;
     min-width: 800px;

@@ -11,7 +11,6 @@ import { Header } from "../shared/Header";
 const HindranceGroupsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 `;
 
 const hindranceFilter = (
@@ -35,7 +34,6 @@ export const HindrancePage = () => {
   return (
     <Page pageName="Hindrances" prevLocation={Locations.CodexMenu}>
       <Header>
-        <div></div>
         <Search
           callback={(text) => setSearchString(text)}
           placeholder={"Search for a Hindrance..."}

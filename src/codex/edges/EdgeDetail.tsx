@@ -1,5 +1,5 @@
 import { CharacterContext } from "../../DeadlandsCompanion";
-import { Edge, dieTypeToValue, rankToValue } from "../../utils/enums";
+import { Edge } from "../../utils/enums";
 import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
 import { useContext } from "react";
 import { database } from "../../utils/firebase/Firebase";
@@ -12,6 +12,13 @@ import styled from "styled-components";
 import { StyledLink } from "../../shared/StyledLink";
 import { Edges } from "../../static/edges/EdgeList";
 import { Theme } from "../../Theme";
+import {
+  edgeHasRequirements,
+  hasEdgeRequirement,
+  hasRankRequirement,
+  hasSkillRequirement,
+  hasStatRequirement,
+} from "./EdgeRequirementFilterUtil";
 
 const RequirementBlock = styled.div`
   margin-bottom: 12px;
@@ -23,11 +30,11 @@ const BlockTitle = styled.div`
 `;
 
 type RequirementLineProps = {
-  hasRequirement: boolean;
+  $hasRequirement: boolean;
 };
 const RequimentLine = styled.div<RequirementLineProps>`
-  color: ${({ hasRequirement }) =>
-    hasRequirement ? Theme.Stamina : Theme.Error[100]};
+  color: ${({ $hasRequirement }) =>
+    $hasRequirement ? Theme.Stamina : Theme.Error[100]};
 `;
 
 const DieRow = styled.div`
@@ -64,14 +71,15 @@ export const EdgeDetail = ({ edgeDetail }: EdgeDetailProps) => {
     return <div>Edge not found</div>;
   }
 
-  const hasRankRequirement =
-    rankToValue(character.rank) >= rankToValue(edgeDetail.rank_requirement);
+  const hasRank = hasRankRequirement(edgeDetail, character);
 
   const hasEdge = character && characterHasEdge(edgeDetail.key, character);
+  const canAddEdge = edgeHasRequirements(edgeDetail, character);
   const addToCharacterButton = character ? (
     <Button
       text="Add edge to character"
       onClick={() => addEdge(character?.id, edgeDetail.key)}
+      disabled={!canAddEdge}
     />
   ) : null;
   const removeFromCharacterButton = character ? (
@@ -90,11 +98,11 @@ export const EdgeDetail = ({ edgeDetail }: EdgeDetailProps) => {
       <RequirementBlock>
         <BlockTitle>Rank requirement</BlockTitle>
         <RequimentLine
-          hasRequirement={hasRankRequirement}
+          $hasRequirement={hasRank}
           style={{ textTransform: "capitalize" }}
         >
           {edgeDetail.rank_requirement.toLowerCase()}
-          {hasRankRequirement ? " (✓)" : " (X)"}
+          {hasRank ? " (✓)" : " (X)"}
         </RequimentLine>
       </RequirementBlock>
 
@@ -102,15 +110,13 @@ export const EdgeDetail = ({ edgeDetail }: EdgeDetailProps) => {
         <RequirementBlock>
           <BlockTitle>Attribute requirements</BlockTitle>
           {edgeDetail.stat_requirements.map((statRequirement) => {
-            const hasStatRequirement =
-              dieTypeToValue(character.attributes[statRequirement.stat]) >=
-              dieTypeToValue(statRequirement.dieType);
+            const hasStat = hasStatRequirement(statRequirement, character);
             return (
-              <RequimentLine hasRequirement={hasStatRequirement}>
+              <RequimentLine $hasRequirement={hasStat}>
                 <DieRow>
                   {`${statRequirement.stat}:`}
                   <DiceIcon dieType={statRequirement.dieType}></DiceIcon>
-                  {hasStatRequirement ? " (✓)" : " (X)"}
+                  {hasStat ? " (✓)" : " (X)"}
                 </DieRow>
               </RequimentLine>
             );
@@ -122,16 +128,13 @@ export const EdgeDetail = ({ edgeDetail }: EdgeDetailProps) => {
         <RequirementBlock>
           <BlockTitle>Skill requirements</BlockTitle>
           {edgeDetail.skill_requirements.map((skillRequirement) => {
-            const hasSkillRequirement = character.skills
-              ? dieTypeToValue(character.skills[skillRequirement.skill]) >=
-                dieTypeToValue(skillRequirement.dieType)
-              : false;
+            const hasSkill = hasSkillRequirement(skillRequirement, character);
             return (
-              <RequimentLine hasRequirement={hasSkillRequirement}>
+              <RequimentLine $hasRequirement={hasSkill}>
                 <DieRow>
                   {`${skillRequirement.skill}:`}
                   <DiceIcon dieType={skillRequirement.dieType}></DiceIcon>
-                  {hasSkillRequirement ? " (✓)" : " (X)"}
+                  {hasSkill ? " (✓)" : " (X)"}
                 </DieRow>
               </RequimentLine>
             );
@@ -144,18 +147,15 @@ export const EdgeDetail = ({ edgeDetail }: EdgeDetailProps) => {
           <BlockTitle>Edge requirements</BlockTitle>
           {edgeDetail.edge_requirements.map((edgeRequirement) => {
             const requirementEdgeDetail = Edges[edgeRequirement];
-            const hasEdgeRequirement = characterHasEdge(
-              edgeRequirement,
-              character
-            );
+            const hasEdgeReq = hasEdgeRequirement(edgeRequirement, character);
             return (
               <StyledLink to={`/codex/edges/${edgeRequirement}`}>
-                <RequimentLine hasRequirement={hasEdgeRequirement}>
+                <RequimentLine $hasRequirement={hasEdgeReq}>
                   <EdgeLink>
                     {requirementEdgeDetail.key === Edge.Placeholder
                       ? `${edgeRequirement} (placeholder, look up in book)`
                       : requirementEdgeDetail.name}
-                    {hasEdgeRequirement ? " (✓)" : " (X)"}
+                    {hasEdgeReq ? " (✓)" : " (X)"}
                   </EdgeLink>
                 </RequimentLine>
               </StyledLink>

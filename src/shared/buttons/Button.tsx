@@ -49,6 +49,9 @@ export const SharedButtonStyle = styled.button<ButtonStyleProps>`
   align-items: center;
   border: none;
   cursor: pointer;
+  &:disabled {
+    cursor: default;
+  }
 `;
 
 const ButtonStyle = styled(SharedButtonStyle)``;

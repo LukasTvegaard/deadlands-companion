@@ -7,7 +7,6 @@ import { WeaponList } from "../../static/weapons/WeaponList";
 const WeaponGroupsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 `;
 
 export const WeaponPage = () => {

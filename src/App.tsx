@@ -12,6 +12,9 @@ const AppContentArranger = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+
+  scrollbar-width: thin !important;
+  scrollbar-color: #76797e #3f3f3f;
 `;
 
 const latestSessionTSKey = "latest-session-ts";

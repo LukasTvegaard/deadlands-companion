@@ -16,7 +16,7 @@ const SearchWrapper = styled.div`
 const SearchField = styled.input`
   height: 30px;
   font-size: 16px;
-  width: 150px;
+  width: 200px;
 `;
 
 const ClearButton = styled.button`

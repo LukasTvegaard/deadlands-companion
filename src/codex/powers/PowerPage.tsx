@@ -7,7 +7,6 @@ import { PowerList } from "../../static/powers/PowerList";
 const PowerGroupsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
 `;
 
 export const PowerPage = () => {
