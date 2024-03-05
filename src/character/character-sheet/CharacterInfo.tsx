@@ -7,7 +7,6 @@ import {
 } from "../character-logic/InfoLogic";
 import { Theme } from "../../Theme";
 import { StyledLink } from "../../shared/StyledLink";
-import { Locationable } from "../../utils/Location";
 import { ClickableSurface } from "../../shared/ClickableSurface";
 
 const CharacterInfoWrapper = styled.div`
@@ -35,9 +34,7 @@ const CharacterClass = styled.div`
   text-transform: capitalize;
 `;
 
-interface CharacterInfoProps extends Locationable {}
-
-export const CharacterInfo = ({ locationKey }: CharacterInfoProps) => {
+export const CharacterInfo = () => {
   const character = useContext(CharacterContext);
 
   return (

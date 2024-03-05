@@ -2,42 +2,48 @@
   "name": "deadlands-helper",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
-    "@types/lodash": "^4.14.195",
-    "@types/node": "^16.10.2",
-    "@types/react": "^18.2.12",
-    "@types/react-dom": "^18.2.5",
-    "firebase": "^9.22.2",
-    "i": "^0.3.7",
+    "firebase": "^10.8.1",
     "lodash": "^4.17.21",
-    "npm": "^8.1.4",
     "react": "^18.2.0",
-    "react-aria-components": "^1.0.0-rc.0",
+    "react-aria-components": "^1.1.1",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
-    "react-router-dom": "6.15.0",
-    "react-scripts": "^5.0.1",
-    "source-map-explorer": "^2.5.3",
-    "styled-components": "^6.0.0-rc.3",
+    "react-router-dom": "^6.22.2",
+    "styled-components": "^6.1.8",
     "typeface-arbutus": "^1.1.13",
     "typeface-roboto": "^1.1.13",
-    "typeface-rye": "^1.1.13",
-    "typescript": "^5.1.3",
-    "usehooks-ts": "^2.9.1"
+    "typeface-rye": "^1.1.13"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.11.24",
+    "@types/react": "^18.2.63",
+    "@types/react-dom": "^18.2.19",
+    "@types/react-router-dom": "^5.3.0",
+    "@types/styled-components": "^5.1.14",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "typescript": "^5.3.3",
+    "usehooks-ts": "^2.15.1",
+    "vite": "^5.1.5"
   },
   "scripts": {
     "type-check": "tsc",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "deploy": "react-scripts build && firebase deploy",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
+    "start": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "deploy": "npm run build && firebase deploy"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -51,10 +57,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@types/react-router-dom": "^5.3.0",
-    "@types/styled-components": "^5.1.14"
   }
 }

@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CharacterContext } from "../../DeadlandsCompanion";
 import Page from "../../shared/page/Page";
 import { ListTile } from "../../shared/tiles/ListTile";
-import { LocationKey, Locations } from "../../utils/Location";
+import { Locations } from "../../utils/Location";
 import { WeaponRow } from "./WeaponRow";
 import { getCharacterWeaponDetails } from "../../static/weapons/WeaponUtil";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";
@@ -22,7 +22,7 @@ export const Weapons = () => {
   );
   return (
     <Page pageName="Weapons" prevLocation={Locations.CharacterMenu}>
-      <Resources locationKey={LocationKey.CharacterWeapon} />
+      <Resources />
       <ListTile
         title={"Weapons"}
         dark

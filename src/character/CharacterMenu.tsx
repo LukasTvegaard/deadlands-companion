@@ -1,7 +1,6 @@
 import Page from "../shared/page/Page";
 import { Index } from "../shared/index/Index";
 import { IndexLink } from "../shared/index/IndexLink";
-import { LocationKey } from "../utils/Location";
 import { useContext } from "react";
 import { CharacterContext } from "../DeadlandsCompanion";
 import { getArcaneBackground } from "./character-logic/ArcaneBackgroundLogic";
@@ -12,7 +11,7 @@ export const CharacterMenu = () => {
 
   return (
     <Page pageName={"Character Menu"}>
-      <Resources locationKey={LocationKey.CharacterMenu} />
+      <Resources />
       <Index>
         <IndexLink to="sheet" label={"Character Sheet"} />
         <IndexLink to="weapons" label={"Weapons"} />

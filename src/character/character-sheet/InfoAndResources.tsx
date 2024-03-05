@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { Locationable } from "../../utils/Location";
 import { CharacterInfo } from "./CharacterInfo";
 import { Resources } from "./resources/Resources";
 
@@ -9,12 +8,11 @@ const InfoAndResourcesStyle = styled.div`
   margin-bottom: 16px;
 `;
 
-interface InfoAndResourcesProps extends Locationable {}
-export const InfoAndResources = ({ locationKey }: InfoAndResourcesProps) => {
+export const InfoAndResources = () => {
   return (
     <InfoAndResourcesStyle>
-      <Resources locationKey={locationKey} />
-      <CharacterInfo locationKey={locationKey} />
+      <Resources />
+      <CharacterInfo />
     </InfoAndResourcesStyle>
   );
 };

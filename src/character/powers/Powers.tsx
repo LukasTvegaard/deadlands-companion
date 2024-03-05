@@ -7,7 +7,7 @@ import { ListTile } from "../../shared/tiles/ListTile";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";
 import { getCharacterPowerDetails } from "../../static/powers/PowerUtil";
 import { Edge } from "../../utils/enums";
-import { LocationKey, Locations } from "../../utils/Location";
+import { Locations } from "../../utils/Location";
 import { PowerRow } from "./PowerRow";
 import { Theme } from "../../Theme";
 import { ClickableSurface } from "../../shared/ClickableSurface";
@@ -30,7 +30,7 @@ export const Powers = () => {
   return (
     <Page pageName="Powers" prevLocation={Locations.CharacterMenu}>
       <StickyPowerPoints>
-        <Resources locationKey={LocationKey.CharacterPower} />
+        <Resources />
       </StickyPowerPoints>
       <ListTile title={"Powers"} dark editLink={`${Locations.PowerPage.path}`}>
         {character.powers

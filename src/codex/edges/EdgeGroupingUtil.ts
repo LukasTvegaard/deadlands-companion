@@ -8,13 +8,15 @@ export enum EdgeGroupingType {
 
 export function getGroupingFunctionFromGroupingType(
   groupingType: EdgeGroupingType | null
-) {
+): (edgeDetail: EdgeDetailType) => string {
   switch (groupingType) {
     case EdgeGroupingType.Rank:
       return (edgeDetail: EdgeDetailType) => edgeDetail.rank_requirement;
     case EdgeGroupingType.Category:
       return (edgeDetail: EdgeDetailType) => edgeDetail.category;
     case EdgeGroupingType.NoGrouping:
-      return (edgeDetail: EdgeDetailType) => "none";
+    default:
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      return (_: EdgeDetailType) => "none";
   }
 }

@@ -7,7 +7,6 @@ import {
 import { ResourceCounter } from "./ResourceCounter";
 import { css, styled } from "styled-components";
 import { StyledLink } from "../../../shared/StyledLink";
-import { Locationable } from "../../../utils/Location";
 import { Theme } from "../../../Theme";
 import { ClickableSurface } from "../../../shared/ClickableSurface";
 import { maxHealth, maxStamina } from "../../../shared/Constants";
@@ -43,8 +42,7 @@ const ResourceSegment = styled.div<ResourceSegmentProps>`
     `}
 `;
 
-interface ResourcesProps extends Locationable {}
-export const Resources = ({ locationKey }: ResourcesProps) => {
+export const Resources = () => {
   const character = useContext(CharacterContext);
 
   const { wounds, fatigue, currentPowerPoints } = character;

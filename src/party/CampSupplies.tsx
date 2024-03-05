@@ -4,18 +4,7 @@ import { Theme } from "../Theme";
 import { Icon } from "../icons/Icon";
 import { Icons } from "../icons/Icons";
 import { StyledLink } from "../shared/StyledLink";
-
-export const CampSupplyCostPerPerson = 10;
-export const CampSupplyCapacityPerPerson = 40;
-
-export function getCampSupplyCapacity(
-  partyMemberCount: number,
-  hasCarriage: boolean
-) {
-  return (
-    partyMemberCount * CampSupplyCapacityPerPerson + (hasCarriage ? 300 : 0)
-  );
-}
+import { getCampSupplyCapacity } from "./CampSupplyLogic";
 
 const CampSuppliesWrapper = styled.div`
   ${ClickableSurface};

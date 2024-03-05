@@ -12,7 +12,10 @@ import { database } from "../utils/firebase/Firebase";
 import { snapshotsToValues } from "../utils/firebase/SnapshotFormatter";
 import { Character } from "../utils/types/Character";
 import { Party } from "../utils/types/Party";
-import { CampSupplyCostPerPerson, getCampSupplyCapacity } from "./CampSupplies";
+import {
+  CampSupplyCostPerPerson,
+  getCampSupplyCapacity,
+} from "./CampSupplyLogic";
 import { Button } from "../shared/buttons/Button";
 import { Checkbox } from "../shared/buttons/Checkbox";
 
@@ -50,20 +53,17 @@ function setCampSupplies(
 }
 
 function addCampSupplies(
-  currentCampSupplies: number = 0,
+  currentCampSupplies = 0,
   addedCampSupplies: number | string = 0
 ) {
   return currentCampSupplies + Number(addedCampSupplies);
 }
 
-function getRestCost(partyMemberCount: number = 1) {
+function getRestCost(partyMemberCount = 1) {
   return CampSupplyCostPerPerson * partyMemberCount;
 }
 
-function restWithCampSupplies(
-  currentCampSupplies: number = 0,
-  partyMemberCount: number = 1
-) {
+function restWithCampSupplies(currentCampSupplies = 0, partyMemberCount = 1) {
   const newCampSupplies = currentCampSupplies - getRestCost(partyMemberCount);
   if (newCampSupplies < 0) {
     const unsatiatedCharacters = Math.ceil(

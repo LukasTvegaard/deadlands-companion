@@ -2,7 +2,7 @@ import { Edge } from "../../utils/enums";
 import { Character } from "../../utils/types/Character";
 import { ArcaneBackground, getArcaneBackground } from "./ArcaneBackgroundLogic";
 
-const someKeyInObject = (keys: string[], object: Record<string, any>) => {
+const someKeyInObject = (keys: string[], object: Record<string, unknown>) => {
   return keys.some((key) => key in object);
 };
 

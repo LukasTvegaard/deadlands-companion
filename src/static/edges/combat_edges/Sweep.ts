@@ -7,7 +7,7 @@ import {
   Attribute,
 } from "../../../utils/enums";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
-import { EdgeDetailType } from "./../../../utils/interfaces/EdgeDetail";
+import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 
 const StatRequirements: StatRequirement[] = [
   { stat: Attribute.Strength, dieType: DieType.D8 },

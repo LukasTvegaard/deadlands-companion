@@ -12,7 +12,7 @@ import {
   Skill,
   Unskilled,
 } from "../../utils/enums";
-import { LocationKey, Locations } from "../../utils/Location";
+import { Locations } from "../../utils/Location";
 import { getRoll } from "../character-logic/roll-logic/RollLogic";
 import { InfoAndResources } from "./InfoAndResources";
 import {
@@ -44,7 +44,7 @@ export const CharacterSheet = () => {
 
   return (
     <Page pageName="Character Sheet" prevLocation={Locations.CharacterMenu}>
-      <InfoAndResources locationKey={LocationKey.CharacterSheet} />
+      <InfoAndResources />
       <ListTile title={"Derived Stats"}>
         <DerivedStatsContainer>
           <SingleValueRow
