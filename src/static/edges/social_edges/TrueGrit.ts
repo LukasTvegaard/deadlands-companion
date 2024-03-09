@@ -5,8 +5,10 @@ import {
   EdgeCategory,
   Rank,
 } from "../../../utils/enums";
+import { DerivedStat } from "../../../utils/enums/DerivedStat";
 import { EdgeDetailType } from "../../../utils/interfaces/EdgeDetail";
 import { SkillRequirement, StatRequirement } from "../../../utils/types";
+import { EffectVariant } from "../../../utils/types/Effect";
 
 const StatRequirements: StatRequirement[] = [
   { stat: Attribute.Spirit, dieType: DieType.D8 },
@@ -32,5 +34,11 @@ export const TrueGrit: EdgeDetailType = {
   stat_requirements: StatRequirements,
   skill_requirements: SkillRequirements,
   edge_requirements: EdgeRequirements,
-  effects: [],
+  effects: [
+    {
+      target: DerivedStat.Grit,
+      effectVariant: EffectVariant.ModifyFlat,
+      value: 1,
+    },
+  ],
 };
