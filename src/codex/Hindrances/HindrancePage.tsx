@@ -1,4 +1,3 @@
-import { styled } from "styled-components";
 import Page from "../../shared/page/Page";
 import { Locations } from "../../utils/Location";
 import { HindranceList } from "../../static/hindrances/HindranceList";
@@ -7,6 +6,7 @@ import { Search } from "../../shared/Search";
 import { useState } from "react";
 import { HindranceDetailType } from "../../utils/interfaces/HindranceDetail";
 import { Header } from "../shared/Header";
+import styled from "styled-components";
 
 const HindranceGroupsWrapper = styled.div`
   display: flex;

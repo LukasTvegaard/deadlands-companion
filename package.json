@@ -14,7 +14,8 @@
     "styled-components": "^6.1.8",
     "typeface-arbutus": "^1.1.13",
     "typeface-roboto": "^1.1.13",
-    "typeface-rye": "^1.1.13"
+    "typeface-rye": "^1.1.13",
+    "use-long-press": "^3.2.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
