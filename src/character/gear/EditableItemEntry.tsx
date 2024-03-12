@@ -3,11 +3,10 @@ import styled, { css } from "styled-components";
 import { Theme } from "../../Theme";
 import { CustomItem, CustomItemData } from "../../utils/types/CustomItem";
 import { Modal, TextArea } from "react-aria-components";
-import { ref, remove, set } from "firebase/database";
-import { database } from "../../utils/firebase/Firebase";
 import { CharacterContext } from "../../DeadlandsCompanion";
 import { Button } from "../../shared/buttons/Button";
 import { useLongPress } from "use-long-press";
+import { deleteCustomitem, updateCustomItem } from "./CustomItemService";
 
 const EditableItemEntryWrapper = styled.div`
   display: flex;
@@ -77,21 +76,17 @@ const EditableItemEntry: React.FC<EditableItemEntryProps> = ({ item }) => {
     if (item.title !== editedName) setEditedName(item.title);
   }, [item.title]);
 
-  const itemPath = `characters/${characterContext.id}/customItems/${item.id}`;
-
   const commitEdit = (newName: string, newDesc: string) => {
     setIsEditable(false);
     const updatedItem: CustomItemData = {
       title: newName,
       description: newDesc,
     };
-    const db = database();
-    set(ref(db, itemPath), updatedItem);
+    updateCustomItem(characterContext.id, item.id, updatedItem);
   };
 
   const deleteItem = () => {
-    const db = database();
-    remove(ref(db, itemPath));
+    deleteCustomitem(characterContext.id, item.id);
   };
 
   const longPressHandler = useLongPress(() => {

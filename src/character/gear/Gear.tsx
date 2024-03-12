@@ -11,6 +11,7 @@ import { Theme } from "../../Theme";
 import { CustomItemData } from "../../utils/types/CustomItem";
 import { push, ref } from "firebase/database";
 import { database } from "../../utils/firebase/Firebase";
+import { addCustomItem } from "./CustomItemService";
 
 const GearListWrapper = styled.div`
   display: flex;
@@ -48,15 +49,7 @@ export const Gear = () => {
   const items = mapToItemList();
 
   const addItem = () => {
-    const itemToCreate: CustomItemData = {
-      title: "New Item",
-      description: "",
-    };
-    const db = database();
-    push(
-      ref(db, `characters/${characterContext?.id}/customItems`),
-      itemToCreate
-    );
+    addCustomItem(characterContext.id);
   };
 
   return (
