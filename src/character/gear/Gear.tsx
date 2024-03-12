@@ -51,7 +51,7 @@ export const Gear = () => {
       Coming soon...
       <TitleRow>
         <h4>Custom Items</h4>
-        <IconButton icon={Icons.Add} onClick={addItem} />
+        <IconButton transparent icon={Icons.Add} onClick={addItem} />
       </TitleRow>
       <GearListWrapper>
         {items.map((item) => (

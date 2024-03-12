@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import styled, { css } from "styled-components";
+import React, { useContext, useState } from "react";
+import styled from "styled-components";
 import { Theme } from "../../Theme";
-import { CustomItem, CustomItemData } from "../../utils/types/CustomItem";
-import { Modal, TextArea } from "react-aria-components";
+import { CustomItem } from "../../utils/types/CustomItem";
+import { Modal } from "react-aria-components";
 import { CharacterContext } from "../../DeadlandsCompanion";
 import { Button } from "../../shared/buttons/Button";
 import { useLongPress } from "use-long-press";
-import { deleteCustomitem, updateCustomItem } from "./CustomItemService";
+import { deleteCustomitem } from "./CustomItemService";
+import EditCustomItem from "./EditCustomItem";
 
 const EditableItemEntryWrapper = styled.div`
   display: flex;
@@ -47,12 +48,6 @@ const ButtonsWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-const StyledInput = styled.input`
-  padding: 4px;
-  border-radius: 4px;
-  border: none;
-`;
-
 type EditableItemEntryProps = {
   item: CustomItem;
 };
@@ -60,22 +55,7 @@ const EditableItemEntry: React.FC<EditableItemEntryProps> = ({ item }) => {
   const characterContext = useContext(CharacterContext);
   const [editable, setIsEditable] = useState(false);
   const [expanded, setIsExpanded] = useState(false);
-  const [editedName, setEditedName] = useState(item.title);
-  const [editedDesc, setEditedDesc] = useState(item.description);
   const [showDeletionModal, setShowDeletionModal] = useState(false);
-
-  useEffect(() => {
-    if (item.title !== editedName) setEditedName(item.title);
-  }, [item.title]);
-
-  const commitEdit = (newName: string, newDesc: string) => {
-    setIsEditable(false);
-    const updatedItem: CustomItemData = {
-      title: newName,
-      description: newDesc,
-    };
-    updateCustomItem(characterContext.id, item.id, updatedItem);
-  };
 
   const deleteItem = () => {
     deleteCustomitem(characterContext.id, item.id);
@@ -113,22 +93,11 @@ const EditableItemEntry: React.FC<EditableItemEntryProps> = ({ item }) => {
       {deletionConfirmationModal}
       <ItemWrapper>
         {editable ? (
-          <ItemWrapper>
-            <label htmlFor="itemTitle">Title</label>
-            <StyledInput
-              id="itemTitle"
-              name="itemTitle"
-              value={editedName}
-              onChange={(e) => setEditedName(e.target.value)}
-            />
-            <label htmlFor="itemDescription">Description</label>
-            <TextArea
-              id="itemDescription"
-              name="itemDescription"
-              value={editedDesc}
-              onChange={(e) => setEditedDesc(e.target.value)}
-            />
-          </ItemWrapper>
+          <EditCustomItem
+            characterId={characterContext.id}
+            item={item}
+            exitEditMode={() => setIsEditable(false)}
+          />
         ) : (
           <ItemWrapper>
             <ItemTitle>{item.title}</ItemTitle>
@@ -144,24 +113,6 @@ const EditableItemEntry: React.FC<EditableItemEntryProps> = ({ item }) => {
           </ItemWrapper>
         )}
       </ItemWrapper>
-      {editable && (
-        <ButtonsWrapper>
-          <Button
-            text="Cancel"
-            customcolor={Theme.Error[100]}
-            onClick={() => {
-              setIsEditable(!editable);
-            }}
-          />
-          <Button
-            text="Save"
-            customcolor={Theme.Stamina}
-            onClick={() => {
-              commitEdit(editedName, editedDesc);
-            }}
-          />
-        </ButtonsWrapper>
-      )}
     </EditableItemEntryWrapper>
   );
 };
