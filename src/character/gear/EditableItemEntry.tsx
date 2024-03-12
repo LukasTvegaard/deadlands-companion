@@ -107,7 +107,11 @@ const EditableItemEntry: React.FC<EditableItemEntryProps> = ({ item }) => {
       <ModalContents>
         <div>Delete "{item.title}"?</div>
         <ButtonsWrapper>
-          <Button text="Cancel" onClick={() => setShowDeletionModal(false)} />
+          <Button
+            secondary
+            text="Cancel"
+            onClick={() => setShowDeletionModal(false)}
+          />
           <Button
             customcolor={Theme.Error[100]}
             text="Yes"

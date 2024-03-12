@@ -63,7 +63,11 @@ export const Gear = () => {
     <Page pageName="Gear" prevLocation={Locations.CharacterMenu}>
       <Money />
       <TitleRow>
-        <h4>Gear List</h4>
+        <h4>Gear</h4>
+      </TitleRow>
+      Coming soon...
+      <TitleRow>
+        <h4>Custom Items</h4>
         <button onClick={addItem}>
           <Icon icon={Icons.Add} height={24} width={24} />
         </button>
