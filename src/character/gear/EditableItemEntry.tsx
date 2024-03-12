@@ -13,14 +13,8 @@ const EditableItemEntryWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   border-radius: 4px;
-  ${({}) => css`
-    background-color: ${Theme.Surface[300]};
-  `}
+  background-color: ${Theme.Surface[300]};
 `;
-type EditableItemEntryProps = {
-  item: CustomItem;
-};
-
 const ModalContents = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,11 +45,6 @@ const ButtonsWrapper = styled.div`
   padding: 4px;
   border-radius: 8px;
   justify-content: flex-end;
-  button {
-    padding: 4px;
-    border-radius: 4px;
-    border: none;
-  }
 `;
 
 const StyledInput = styled.input`
@@ -64,6 +53,9 @@ const StyledInput = styled.input`
   border: none;
 `;
 
+type EditableItemEntryProps = {
+  item: CustomItem;
+};
 const EditableItemEntry: React.FC<EditableItemEntryProps> = ({ item }) => {
   const characterContext = useContext(CharacterContext);
   const [editable, setIsEditable] = useState(false);
