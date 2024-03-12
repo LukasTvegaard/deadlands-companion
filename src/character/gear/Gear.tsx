@@ -1,8 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Page from "../../shared/page/Page";
 import { Locations } from "../../utils/Location";
 import { Money } from "./Money";
 import EditableItemEntry from "./EditableItemEntry";
+import { useContext } from "react";
+import { CharacterContext } from "../../DeadlandsCompanion";
+import { Icon } from "../../icons/Icon";
+import { Icons } from "../../icons/Icons";
+import { Theme } from "../../Theme";
+import { CustomItemData } from "../../utils/types/CustomItem";
+import { push, ref } from "firebase/database";
+import { database } from "../../utils/firebase/Firebase";
 
 const GearListWrapper = styled.div`
   display: flex;
@@ -10,27 +18,59 @@ const GearListWrapper = styled.div`
   gap: 8px;
 `;
 
-export const Gear = () => {
-  const items = [
-    "Ammo",
-    "Weapons",
-    "Armor",
-    "Clothing",
-    "Tools",
-    "Consumables",
-    "Miscellaneous",
-  ];
+const TitleRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  button {
+    padding: 4px;
+    border-radius: 4px;
+    border: none;
+    background-color: transparent;
+  }
+`;
 
-  const onUpdateItem = (name: string) => {};
+export const Gear = () => {
+  const characterContext = useContext(CharacterContext);
+
+  const mapToItemList = () => {
+    if (characterContext.customItems) {
+      return Object.entries(characterContext.customItems).map(([id, item]) => {
+        return { ...item, id };
+      });
+    }
+    return [];
+  };
+
+  const items = mapToItemList();
+
+  const addItem = () => {
+    const itemToCreate: CustomItemData = {
+      title: "New Item",
+      description: "",
+    };
+    const db = database();
+    push(
+      ref(db, `characters/${characterContext?.id}/customItems`),
+      itemToCreate
+    );
+  };
 
   return (
     <Page pageName="Gear" prevLocation={Locations.CharacterMenu}>
       <Money />
-      Coming soon...
-      <h4>Gear List</h4>
+      <TitleRow>
+        <h4>Gear List</h4>
+        <button onClick={addItem}>
+          <Icon icon={Icons.Add} height={24} width={24} />
+        </button>
+      </TitleRow>
       <GearListWrapper>
         {items.map((item) => (
-          <EditableItemEntry name={item} onNameChange={onUpdateItem} />
+          <EditableItemEntry key={item.id} item={item} />
         ))}
       </GearListWrapper>
     </Page>

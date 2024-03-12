@@ -1,5 +1,6 @@
 import { Attribute, DieType, Edge, Rank, Skill } from "../enums";
 import { Weapon } from "../enums/Weapon";
+import { CustomItem } from "./CustomItem";
 import { Effect } from "./Effect";
 
 type WeaponRecord = {
@@ -27,5 +28,6 @@ export type Character = {
   weapons?: Record<Weapon, WeaponRecord>;
   powers?: Record<string, number>; // Stores current powerpoints as value, but only used for weird scientists.
   gear?: Record<string, true>;
+  customItems?: Record<string, CustomItem>;
   effects?: Effect[];
 };
