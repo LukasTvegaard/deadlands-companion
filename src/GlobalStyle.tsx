@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   #root {
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
   }
