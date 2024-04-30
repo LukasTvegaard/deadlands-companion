@@ -27,7 +27,7 @@ const getDerivedStatWithEffects = (
 };
 
 export const getToughness = (character: Character) => {
-  const vigorRoll = getRoll(Attribute.Vigor, character);
+  const vigorRoll = getRoll(Attribute.Vigor, character, [], true);
   const vigorValue = dieTypeToValue(vigorRoll.dice) + vigorRoll.modifier;
   const baseToughness = Math.floor(vigorValue / 2) + 2;
 
@@ -39,7 +39,7 @@ export const getToughness = (character: Character) => {
 };
 
 export const getParry = (character: Character): number => {
-  const fightingRoll = getRoll(Skill.Fighting, character);
+  const fightingRoll = getRoll(Skill.Fighting, character, [], true);
   const fightingValue =
     dieTypeToValue(fightingRoll.dice) + fightingRoll.modifier;
   const baseParry = Math.floor(fightingValue / 2) + 2;

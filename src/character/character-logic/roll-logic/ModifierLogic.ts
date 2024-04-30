@@ -31,10 +31,13 @@ function getWoundModifier(character: Character): number {
 
 export function getBaseModifier(
   rollDie: DieType,
-  character: Character
+  character: Character,
+  ignorePenalties: boolean
 ): number {
+  const dieTypeModifier = getBaseModifierFromDieType(rollDie) ?? 0;
+  if (ignorePenalties) return dieTypeModifier;
+
   const woundModifier = getWoundModifier(character);
   const fatigue = character.fatigue;
-  const dieTypeModifier = getBaseModifierFromDieType(rollDie) ?? 0;
   return dieTypeModifier - woundModifier - fatigue;
 }

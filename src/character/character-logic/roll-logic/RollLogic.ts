@@ -24,9 +24,10 @@ const getRollDieType = (
 const getModifier = (
   rollDie: DieType,
   character: Character,
-  effects: Effect[]
+  effects: Effect[],
+  ignorePenalties: boolean
 ) => {
-  const baseModifier = getBaseModifier(rollDie, character);
+  const baseModifier = getBaseModifier(rollDie, character, ignorePenalties);
 
   const effectModifier = getEffectTotal(effects, EffectVariant.ModifyFlat);
 
@@ -40,7 +41,8 @@ type RollResult = {
 export const getRoll = (
   rollTarget: Rollable,
   character: Character,
-  contextEffects: Effect[] = []
+  contextEffects: Effect[] = [],
+  ignorePenalties: boolean = false
 ): RollResult => {
   const relevantEffects = getRelevantEffectsForEffectable(
     rollTarget,
@@ -49,7 +51,12 @@ export const getRoll = (
   const effects = [...relevantEffects, ...contextEffects];
   const rollDie = getRollDieType(rollTarget, character, effects);
 
-  const rollModifier = getModifier(rollDie, character, effects);
+  const rollModifier = getModifier(
+    rollDie,
+    character,
+    effects,
+    ignorePenalties
+  );
 
   return { dice: rollDie, modifier: rollModifier };
 };
