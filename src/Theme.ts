@@ -37,4 +37,15 @@ export const Theme = {
   Health: "#9C2542",
   Stamina: "#319177",
   PowerPoints: "#2E5894",
+  Spacing: {
+    xsmall: "4px",
+    small: "8px",
+    medium: "16px",
+    large: "32px",
+  },
+  BorderRadius: {
+    small: "4px",
+    medium: "8px",
+    large: "16px",
+  },
 };

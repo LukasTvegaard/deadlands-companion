@@ -1,5 +1,5 @@
 import { ref, set } from "firebase/database";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { styled } from "styled-components";
 
 import { CharacterContext } from "../../../DeadlandsCompanion";
@@ -19,6 +19,9 @@ import { Character } from "../../../utils/types/Character";
 import { useObject } from "react-firebase-hooks/database";
 import { snapshotToValue } from "../../../utils/firebase/SnapshotFormatter";
 import { Button } from "../../../shared/buttons/Button";
+import { AddBuffModal } from "./AddBuffModal";
+import { addTemporaryEffect } from "../../../services/temporary-effects-service";
+import { FlexRow } from "../../../codex/shared/FlexRow";
 
 const ResourceSegment = styled.div`
   display: flex;
@@ -60,6 +63,7 @@ const changeCurrentPowerPoints = ({
 export const EditResources = () => {
   const loggedInCharacter = useContext(CharacterContext);
   const routeParams = useParams();
+  const [showAddBuffModal, setShowAddBuffModal] = useState(false);
   const characterQuery =
     loggedInCharacter.isDM && routeParams.id
       ? ref(database(), `characters/${routeParams.id}`)
@@ -70,7 +74,9 @@ export const EditResources = () => {
       ? snapshotToValue<Character>(characterSnapshot)
       : loggedInCharacter;
 
-  const { id, wounds, fatigue, currentPowerPoints } = character;
+  const { id, wounds, fatigue, currentPowerPoints, temporaryEffects } =
+    character;
+
   const maxHealth = 4;
   const maxStamina = 3;
 
@@ -105,6 +111,14 @@ export const EditResources = () => {
       pageName={`Recharge ${character.firstName}`}
       prevLocation={Locations.CharacterMenu}
     >
+      {showAddBuffModal ? (
+        <AddBuffModal
+          onClose={() => setShowAddBuffModal(false)}
+          onTemporaryEffectAdded={(temporaryEffect) =>
+            addTemporaryEffect({ characterKey: id, temporaryEffect })
+          }
+        />
+      ) : null}
       <ResourceSegment>
         Health
         <ButtonCounterWrapper>
@@ -155,12 +169,27 @@ export const EditResources = () => {
           </ButtonCounterWrapper>
         </ResourceSegment>
       ) : null}
+      <ResourceSegment>
+        Temporary Effects:
+        {Boolean(temporaryEffects?.length)
+          ? temporaryEffects!.map((temporaryEffect) => (
+              <FlexRow>
+                {temporaryEffect.name} ({temporaryEffect.duration} rounds)
+              </FlexRow>
+            ))
+          : " none"}
+        <IconButton
+          onClick={() => setShowAddBuffModal(true)}
+          icon={Icons.Add}
+          text={"Add Temporary Effect"}
+        />
+      </ResourceSegment>
       <IconButton
         icon={Icons.Campfire}
         viewbox="0 0 1080 1296"
         onClick={fullRest}
         text="Full Rest"
-      ></IconButton>
+      />
     </Page>
   );
 };

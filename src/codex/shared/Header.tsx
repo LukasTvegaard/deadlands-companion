@@ -11,7 +11,7 @@ const HeaderStyle = styled(FlexRow)`
 
 type HeaderProps = {
   children: React.ReactNode;
-  gap?: number;
+  gap?: string;
 };
 export const Header = ({ children, gap }: HeaderProps) => {
   return <HeaderStyle $gap={gap}>{children}</HeaderStyle>;

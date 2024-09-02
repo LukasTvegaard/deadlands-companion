@@ -2,6 +2,7 @@ import { Attribute, DieType, Edge, Rank, Skill } from "../enums";
 import { Weapon } from "../enums/Weapon";
 import { CustomItem } from "./CustomItem";
 import { Effect } from "./Effect";
+import { TemporaryEffect } from "./TemporaryEffect";
 
 type WeaponRecord = {
   ammo: number;
@@ -30,4 +31,5 @@ export type Character = {
   gear?: Record<string, true>;
   customItems?: Record<string, CustomItem>;
   effects?: Effect[];
+  temporaryEffects?: TemporaryEffect[];
 };
