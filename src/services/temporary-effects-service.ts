@@ -10,6 +10,7 @@ export const addTemporaryEffect = (
   temporaryEffect: TemporaryEffect
 ) => {
   const db = database();
+  if (temporaryEffect.name == "" || temporaryEffect.duration === 0) return;
   return set(
     ref(db, `${getBaseRoute(characterKey)}/${temporaryEffect.name}`),
     temporaryEffect

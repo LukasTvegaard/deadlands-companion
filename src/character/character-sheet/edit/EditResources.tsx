@@ -30,10 +30,21 @@ import {
 import { FlexRow } from "../../../codex/shared/FlexRow";
 import { TextElement } from "../../../shared/text/Text";
 
-const TemporaryEffectList = styled.ul({
-  display: "flex",
-  flexDirection: "column",
+const TemporaryEffectsTable = styled.ul({
+  display: "table",
+  borderCollapse: "collapse",
+  textAlign: "left",
   gap: Theme.Spacing.small,
+  td: {
+    padding: Theme.Spacing.small,
+    border: `1px solid ${Theme.Surface[200]}`,
+    "&.item-name": {
+      width: "70%",
+    },
+    "&.item-duration": {
+      width: "30%",
+    },
+  },
   li: {
     p: {
       overflow: "hidden",
@@ -192,13 +203,21 @@ export const EditResources = () => {
       <ResourceSegment>
         Temporary Effects:
         {Boolean(temporaryEffects) ? (
-          <TemporaryEffectList>
+          <TemporaryEffectsTable>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Duration</th>
+              </tr>
+            </thead>
             {dataObjectToList(temporaryEffects!).map((temporaryEffect) => (
-              <li key={temporaryEffect.name + temporaryEffect.duration}>
-                <FlexRow>
+              <tr key={temporaryEffect.name + temporaryEffect.duration}>
+                <td className="item-name">
                   <TextElement title={temporaryEffect.name}>
                     {temporaryEffect.name}
                   </TextElement>
+                </td>
+                <td className="item-duration">
                   <FlexRow $gap={Theme.Spacing.small}>
                     <TextElement title={temporaryEffect.name}>
                       {temporaryEffect.duration}
@@ -226,10 +245,10 @@ export const EditResources = () => {
                       }
                     />
                   </FlexRow>
-                </FlexRow>
-              </li>
+                </td>
+              </tr>
             ))}
-          </TemporaryEffectList>
+          </TemporaryEffectsTable>
         ) : (
           " none"
         )}
