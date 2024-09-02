@@ -2,7 +2,7 @@ import { notNullishAndPredicate } from "../../utils/NotNullPredicate";
 import { Power } from "../../utils/enums/Power";
 import { Character } from "../../utils/types/Character";
 import { PowerDetailType } from "../../utils/types/PowerDetailType";
-import { Powers } from "./ListOfPowers";
+import { Powers } from "./PowerList";
 
 export const getPowerDetailByKey = (
   key: Power | undefined
