@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Modal } from "../../../shared/Modal";
 import { Button } from "../../../shared/buttons/Button";
 import { FlexRow } from "../../../codex/shared/FlexRow";
 import { TextInput } from "../../../shared/inputs/TextInput";
 import { TemporaryEffect } from "../../../utils/types/TemporaryEffect";
+import { Modal } from "react-aria-components";
 
 type Props = {
   onTemporaryEffectAdded: (temporaryEffect: TemporaryEffect) => void;
@@ -17,7 +17,7 @@ export const AddBuffModal: React.FC<Props> = ({
   const [duration, setDuration] = useState(1);
 
   return (
-    <Modal>
+    <Modal onOpenChange={onClose} isOpen={true}>
       <TextInput
         value={name}
         type="text"
