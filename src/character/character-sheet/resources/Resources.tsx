@@ -10,6 +10,8 @@ import { StyledLink } from "../../../shared/StyledLink";
 import { Theme } from "../../../Theme";
 import { ClickableSurface } from "../../../shared/ClickableSurface";
 import { maxHealth, maxStamina } from "../../../shared/Constants";
+import { dataObjectToList } from "../../../utils/firebase/DataFormatting";
+import { TextElement } from "../../../shared/text/Text";
 
 const ResourcesWrapper = styled.div`
   ${ClickableSurface};
@@ -45,7 +47,8 @@ const ResourceSegment = styled.div<ResourceSegmentProps>`
 export const Resources = () => {
   const character = useContext(CharacterContext);
 
-  const { wounds, fatigue, currentPowerPoints } = character;
+  const { wounds, fatigue, currentPowerPoints, temporaryEffects } = character;
+  const temporaryEffectsList = dataObjectToList(temporaryEffects ?? {});
 
   return (
     <StyledLink to={`/character/sheet/edit/resource`}>
@@ -82,6 +85,12 @@ export const Resources = () => {
               />
             </ResourceSegment>
           ) : null}
+          {temporaryEffectsList.length > 0 && (
+            <ResourceSegment>
+              <TextElement>Temporary Effects:</TextElement>
+              {temporaryEffectsList.map((effect) => effect.name).join(", ")}
+            </ResourceSegment>
+          )}
         </ResourcesStyle>
       </ResourcesWrapper>
     </StyledLink>

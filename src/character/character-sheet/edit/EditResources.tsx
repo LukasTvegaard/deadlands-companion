@@ -30,6 +30,12 @@ import {
 import { FlexRow } from "../../../codex/shared/FlexRow";
 import { TextElement } from "../../../shared/text/Text";
 
+const PageContens = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  gap: Theme.Spacing.medium,
+});
+
 const TemporaryEffectsTable = styled.ul({
   display: "table",
   borderCollapse: "collapse",
@@ -52,6 +58,14 @@ const TemporaryEffectsTable = styled.ul({
       whiteSpace: "nowrap",
     },
   },
+});
+
+const DurationRowControls = styled.div({
+  display: "flex",
+  flexDirection: "row",
+  gap: Theme.Spacing.small,
+  justifyContent: "flex-end",
+  alignItems: "center",
 });
 
 const ResourceSegment = styled.div`
@@ -142,128 +156,132 @@ export const EditResources = () => {
       pageName={`Recharge ${character.firstName}`}
       prevLocation={Locations.CharacterMenu}
     >
-      {showAddBuffModal ? (
-        <AddBuffModal
-          onClose={() => setShowAddBuffModal(false)}
-          onTemporaryEffectAdded={(temporaryEffect) =>
-            addTemporaryEffect(id, temporaryEffect)
-          }
-        />
-      ) : null}
-      <ResourceSegment>
-        Health
-        <ButtonCounterWrapper>
-          <Button
-            text="X"
-            customcolor={Theme.Health}
-            onClick={() => updateWounds(0)}
+      <PageContens>
+        {showAddBuffModal ? (
+          <AddBuffModal
+            onClose={() => setShowAddBuffModal(false)}
+            onTemporaryEffectAdded={(temporaryEffect) =>
+              addTemporaryEffect(id, temporaryEffect)
+            }
           />
-          <ResourceCounter
-            total={maxHealth}
-            remaining={maxHealth - wounds}
-            color={Theme.Health}
-            onResourceSegmentClick={updateWounds}
-          />
-        </ButtonCounterWrapper>
-      </ResourceSegment>
-      <ResourceSegment>
-        Stamina
-        <ButtonCounterWrapper>
-          <Button
-            text="X"
-            customcolor={Theme.Stamina}
-            onClick={() => updateFatigue(0)}
-          />
-          <ResourceCounter
-            total={maxStamina}
-            remaining={maxStamina - fatigue}
-            color={Theme.Stamina}
-            onResourceSegmentClick={updateFatigue}
-          />
-        </ButtonCounterWrapper>
-      </ResourceSegment>
-      {showPowerPoints ? (
+        ) : null}
         <ResourceSegment>
-          Power Points:
+          Health
           <ButtonCounterWrapper>
             <Button
               text="X"
-              customcolor={Theme.PowerPoints}
-              onClick={() => updatePowerPoints(0)}
+              customcolor={Theme.Health}
+              onClick={() => updateWounds(0)}
             />
             <ResourceCounter
-              total={maxPowerPoints}
-              remaining={currentPowerPoints}
-              color={Theme.PowerPoints}
-              onResourceSegmentClick={updatePowerPoints}
+              total={maxHealth}
+              remaining={maxHealth - wounds}
+              color={Theme.Health}
+              onResourceSegmentClick={updateWounds}
             />
           </ButtonCounterWrapper>
         </ResourceSegment>
-      ) : null}
-      <ResourceSegment>
-        Temporary Effects:
-        {Boolean(temporaryEffects) ? (
-          <TemporaryEffectsTable>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Duration</th>
-              </tr>
-            </thead>
-            {dataObjectToList(temporaryEffects!).map((temporaryEffect) => (
-              <tr key={temporaryEffect.name + temporaryEffect.duration}>
-                <td className="item-name">
-                  <TextElement title={temporaryEffect.name}>
-                    {temporaryEffect.name}
-                  </TextElement>
-                </td>
-                <td className="item-duration">
-                  <FlexRow $gap={Theme.Spacing.small}>
-                    <TextElement title={temporaryEffect.name}>
-                      {temporaryEffect.duration}
-                    </TextElement>
-                    <IconButton
-                      iconSize={16}
-                      icon={Icons.ChevronDown}
-                      onClick={() =>
-                        tickTemporaryEffectDuration(
-                          character.id,
-                          temporaryEffect,
-                          true
-                        )
-                      }
-                    />
-                    <IconButton
-                      iconSize={16}
-                      icon={Icons.ChevronUp}
-                      onClick={() =>
-                        tickTemporaryEffectDuration(
-                          character.id,
-                          temporaryEffect,
-                          false
-                        )
-                      }
-                    />
-                  </FlexRow>
-                </td>
-              </tr>
-            ))}
-          </TemporaryEffectsTable>
-        ) : (
-          " none"
-        )}
+        <ResourceSegment>
+          Stamina
+          <ButtonCounterWrapper>
+            <Button
+              text="X"
+              customcolor={Theme.Stamina}
+              onClick={() => updateFatigue(0)}
+            />
+            <ResourceCounter
+              total={maxStamina}
+              remaining={maxStamina - fatigue}
+              color={Theme.Stamina}
+              onResourceSegmentClick={updateFatigue}
+            />
+          </ButtonCounterWrapper>
+        </ResourceSegment>
+        {showPowerPoints ? (
+          <ResourceSegment>
+            Power Points:
+            <ButtonCounterWrapper>
+              <Button
+                text="X"
+                customcolor={Theme.PowerPoints}
+                onClick={() => updatePowerPoints(0)}
+              />
+              <ResourceCounter
+                total={maxPowerPoints}
+                remaining={currentPowerPoints}
+                color={Theme.PowerPoints}
+                onResourceSegmentClick={updatePowerPoints}
+              />
+            </ButtonCounterWrapper>
+          </ResourceSegment>
+        ) : null}
         <IconButton
-          onClick={() => setShowAddBuffModal(true)}
-          icon={Icons.Add}
-          text={"Add Temporary Effect"}
+          icon={Icons.Campfire}
+          viewbox="0 0 1080 1296"
+          onClick={fullRest}
+          text="Full Rest"
         />
-      </ResourceSegment>
-      <IconButton
-        icon={Icons.Campfire}
-        viewbox="0 0 1080 1296"
-        onClick={fullRest}
-        text="Full Rest"
-      />
+        <ResourceSegment>
+          <FlexRow>
+            <TextElement>Temporary Effects</TextElement>
+            <IconButton
+              onClick={() => setShowAddBuffModal(true)}
+              icon={Icons.Add}
+              text={"Add"}
+            />
+          </FlexRow>
+          {Boolean(temporaryEffects) ? (
+            <TemporaryEffectsTable>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Duration</th>
+                </tr>
+              </thead>
+              {dataObjectToList(temporaryEffects!).map((temporaryEffect) => (
+                <tr key={temporaryEffect.name + temporaryEffect.duration}>
+                  <td className="item-name">
+                    <TextElement title={temporaryEffect.name}>
+                      {temporaryEffect.name}
+                    </TextElement>
+                  </td>
+                  <td className="item-duration">
+                    <DurationRowControls>
+                      <TextElement title={temporaryEffect.name}>
+                        {temporaryEffect.duration}
+                      </TextElement>
+                      <IconButton
+                        iconSize={16}
+                        icon={Icons.ChevronDown}
+                        onClick={() =>
+                          tickTemporaryEffectDuration(
+                            character.id,
+                            temporaryEffect,
+                            true
+                          )
+                        }
+                      />
+                      <IconButton
+                        iconSize={16}
+                        icon={Icons.ChevronUp}
+                        onClick={() =>
+                          tickTemporaryEffectDuration(
+                            character.id,
+                            temporaryEffect,
+                            false
+                          )
+                        }
+                      />
+                    </DurationRowControls>
+                  </td>
+                </tr>
+              ))}
+            </TemporaryEffectsTable>
+          ) : (
+            " none"
+          )}
+        </ResourceSegment>
+      </PageContens>
     </Page>
   );
 };

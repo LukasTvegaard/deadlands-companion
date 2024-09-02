@@ -27,14 +27,18 @@ export const AddBuffModal: React.FC<Props> = ({
 
   const [errors, setErrors] = useState<string[]>([]);
 
-  const validate = () => {
-    if (name === "" || duration === 0) return false;
-    return true;
+  const getFormErrors = () => {
+    const errs = [];
+    if (!name) errs.push("Please fill in the name field");
+    if (!duration) errs.push("Please fill in the duration field");
+    if (name.includes("/")) errs.push("Name cannot contain '/'");
+    return errs;
   };
 
   const onAddTemporaryEffect = (effectName: string, effectDuration: number) => {
-    if (!validate()) {
-      setErrors(["Please fill in all fields"]);
+    const errors = getFormErrors();
+    if (errors.length) {
+      setErrors(errors);
       return;
     }
     onBuffAdded({ name: effectName, duration: effectDuration });
@@ -46,6 +50,7 @@ export const AddBuffModal: React.FC<Props> = ({
       <ModalContents>
         <TextInput
           required
+          autoFocus
           value={name}
           type="text"
           onChange={(e) => setName(e.target.value)}
@@ -53,6 +58,7 @@ export const AddBuffModal: React.FC<Props> = ({
           placeholder="input buff name"
         />
         <TextInput
+          required
           value={duration}
           type="number"
           onChange={(e) => setDuration(Number.parseInt(e.target.value))}
