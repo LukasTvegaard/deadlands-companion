@@ -37,4 +37,4 @@ export const Powers: PowerDetails = {
   [Power.Telekinesis]: Telekinesis,
 };
 
-export const PowerList: PowerDetailType[] = Object.values(Powers);
+export const ListOfPowers: PowerDetailType[] = Object.values(Powers);

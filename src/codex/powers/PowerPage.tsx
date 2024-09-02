@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import Page from "../../shared/page/Page";
 import { Locations } from "../../utils/Location";
 import { Tile } from "../shared/Tile";
-import { PowerList } from "../../static/powers/PowerList";
+import { ListOfPowers } from "../../static/powers/ListOfPowers";
 
 const PowerGroupsWrapper = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const PowerPage = () => {
   return (
     <Page pageName="Powers" prevLocation={Locations.CodexMenu}>
       <PowerGroupsWrapper>
-        {PowerList.map((power) => {
+        {ListOfPowers.map((power) => {
           return (
             <Tile
               key={power.key}
