@@ -34,6 +34,13 @@ const TemporaryEffectList = styled.ul({
   display: "flex",
   flexDirection: "column",
   gap: Theme.Spacing.small,
+  li: {
+    p: {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+    },
+  },
 });
 
 const ResourceSegment = styled.div`
@@ -189,12 +196,16 @@ export const EditResources = () => {
             {dataObjectToList(temporaryEffects!).map((temporaryEffect) => (
               <li key={temporaryEffect.name + temporaryEffect.duration}>
                 <FlexRow>
-                  <TextElement>
-                    {temporaryEffect.name} ({temporaryEffect.duration} rounds)
+                  <TextElement title={temporaryEffect.name}>
+                    {temporaryEffect.name}
                   </TextElement>
                   <FlexRow $gap={Theme.Spacing.small}>
-                    <Button
-                      text="Tick down"
+                    <TextElement title={temporaryEffect.name}>
+                      {temporaryEffect.duration}
+                    </TextElement>
+                    <IconButton
+                      iconSize={16}
+                      icon={Icons.ChevronDown}
                       onClick={() =>
                         tickTemporaryEffectDuration(
                           character.id,
@@ -203,8 +214,9 @@ export const EditResources = () => {
                         )
                       }
                     />
-                    <Button
-                      text="Tick up"
+                    <IconButton
+                      iconSize={16}
+                      icon={Icons.ChevronUp}
                       onClick={() =>
                         tickTemporaryEffectDuration(
                           character.id,
