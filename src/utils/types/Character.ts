@@ -31,5 +31,5 @@ export type Character = {
   gear?: Record<string, true>;
   customItems?: Record<string, CustomItem>;
   effects?: Effect[];
-  temporaryEffects?: TemporaryEffect[];
+  temporaryEffects?: Record<string, TemporaryEffect>;
 };

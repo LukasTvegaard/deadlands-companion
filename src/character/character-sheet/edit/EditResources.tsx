@@ -17,11 +17,24 @@ import { useParams } from "react-router-dom";
 import { Theme } from "../../../Theme";
 import { Character } from "../../../utils/types/Character";
 import { useObject } from "react-firebase-hooks/database";
-import { snapshotToValue } from "../../../utils/firebase/SnapshotFormatter";
+import {
+  dataObjectToList,
+  snapshotToValue,
+} from "../../../utils/firebase/DataFormatting";
 import { Button } from "../../../shared/buttons/Button";
 import { AddBuffModal } from "./AddBuffModal";
-import { addTemporaryEffect } from "../../../services/temporary-effects-service";
+import {
+  addTemporaryEffect,
+  tickBuffDurationDown as tickTemporaryEffectDuration,
+} from "../../../services/temporary-effects-service";
 import { FlexRow } from "../../../codex/shared/FlexRow";
+import { TextElement } from "../../../shared/text/Text";
+
+const TemporaryEffectList = styled.ul({
+  display: "flex",
+  flexDirection: "column",
+  gap: Theme.Spacing.small,
+});
 
 const ResourceSegment = styled.div`
   display: flex;
@@ -115,7 +128,7 @@ export const EditResources = () => {
         <AddBuffModal
           onClose={() => setShowAddBuffModal(false)}
           onTemporaryEffectAdded={(temporaryEffect) =>
-            addTemporaryEffect({ characterKey: id, temporaryEffect })
+            addTemporaryEffect(id, temporaryEffect)
           }
         />
       ) : null}
@@ -171,13 +184,43 @@ export const EditResources = () => {
       ) : null}
       <ResourceSegment>
         Temporary Effects:
-        {Boolean(temporaryEffects?.length)
-          ? temporaryEffects!.map((temporaryEffect) => (
-              <FlexRow>
-                {temporaryEffect.name} ({temporaryEffect.duration} rounds)
-              </FlexRow>
-            ))
-          : " none"}
+        {Boolean(temporaryEffects) ? (
+          <TemporaryEffectList>
+            {dataObjectToList(temporaryEffects!).map((temporaryEffect) => (
+              <li key={temporaryEffect.name + temporaryEffect.duration}>
+                <FlexRow>
+                  <TextElement>
+                    {temporaryEffect.name} ({temporaryEffect.duration} rounds)
+                  </TextElement>
+                  <FlexRow $gap={Theme.Spacing.small}>
+                    <Button
+                      text="Tick down"
+                      onClick={() =>
+                        tickTemporaryEffectDuration(
+                          character.id,
+                          temporaryEffect,
+                          true
+                        )
+                      }
+                    />
+                    <Button
+                      text="Tick up"
+                      onClick={() =>
+                        tickTemporaryEffectDuration(
+                          character.id,
+                          temporaryEffect,
+                          false
+                        )
+                      }
+                    />
+                  </FlexRow>
+                </FlexRow>
+              </li>
+            ))}
+          </TemporaryEffectList>
+        ) : (
+          " none"
+        )}
         <IconButton
           onClick={() => setShowAddBuffModal(true)}
           icon={Icons.Add}

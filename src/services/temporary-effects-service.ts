@@ -3,17 +3,12 @@ import { database } from "../utils/firebase/Firebase";
 import { TemporaryEffect } from "../utils/types/TemporaryEffect";
 
 const getBaseRoute = (characterKey: string) =>
-  `characters/${characterKey}/temporary-effects`;
+  `characters/${characterKey}/temporaryEffects`;
 
-export type ChangeTemporaryEffectInput = {
-  characterKey: string;
-  temporaryEffect: TemporaryEffect;
-};
-
-export const addTemporaryEffect = ({
-  characterKey,
-  temporaryEffect,
-}: ChangeTemporaryEffectInput) => {
+export const addTemporaryEffect = (
+  characterKey: string,
+  temporaryEffect: TemporaryEffect
+) => {
   const db = database();
   return set(
     ref(db, `${getBaseRoute(characterKey)}/${temporaryEffect.name}`),
@@ -21,13 +16,18 @@ export const addTemporaryEffect = ({
   );
 };
 
-export const tickBuffDurationDown = ({
-  characterKey,
-  temporaryEffect,
-}: ChangeTemporaryEffectInput) => {
+export const tickBuffDurationDown = (
+  characterKey: string,
+  temporaryEffect: TemporaryEffect,
+  tickDown: boolean
+) => {
   const db = database();
 
-  const buffDuration = Math.max(temporaryEffect.duration - 1, 0);
+  const targetDuration = tickDown
+    ? temporaryEffect.duration - 1
+    : temporaryEffect.duration + 1;
+
+  const buffDuration = Math.max(targetDuration, 0);
   if (buffDuration === 0)
     return set(
       ref(db, `${getBaseRoute(characterKey)}/${temporaryEffect.name}`),

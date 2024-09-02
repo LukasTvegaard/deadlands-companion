@@ -9,7 +9,7 @@ import Page from "../shared/page/Page";
 import { Spinner } from "../shared/spinner/Spinner";
 import { set } from "../utils/firebase/DataAccess";
 import { database } from "../utils/firebase/Firebase";
-import { snapshotsToValues } from "../utils/firebase/SnapshotFormatter";
+import { snapshotsToValues } from "../utils/firebase/DataFormatting";
 import { Character } from "../utils/types/Character";
 import { Party } from "../utils/types/Party";
 import {
