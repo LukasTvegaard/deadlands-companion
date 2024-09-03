@@ -74,6 +74,14 @@ import { TrademarkWeaponFightingImproved } from "./combat_edges/TrademarkWeaponF
 import { TrademarkWeaponShooting } from "./combat_edges/TrademarkWeaponShooting";
 import { TrademarkWeaponShootingImproved } from "./combat_edges/TrademarkWeaponShootingImproved";
 import { TwoFisted } from "./combat_edges/TwoFisted";
+import { Command } from "./leadership_edges/Command";
+import { CommandPresence } from "./leadership_edges/CommandPresence";
+import { Fervor } from "./leadership_edges/Fervor";
+import { HoldTheLine } from "./leadership_edges/HoldTheLine";
+import { Inspire } from "./leadership_edges/Inspire";
+import { LeaderOfMen } from "./leadership_edges/LeaderOfMen";
+import { NaturalLeader } from "./leadership_edges/NaturalLeader";
+import { Tactician } from "./leadership_edges/Tactician";
 import { Alchemy } from "./power_edges/Alchemy";
 import { BornToKill } from "./power_edges/BornToKill";
 import { DealersChoice } from "./power_edges/DealersChoice";
@@ -220,6 +228,16 @@ export const Edges: EdgeDetails = {
   [Edge.TrademarkWeaponShooting]: TrademarkWeaponShooting,
   [Edge.TrademarkWeaponShootingImproved]: TrademarkWeaponShootingImproved,
   [Edge.TwoFisted]: TwoFisted,
+
+  // Leadership edges
+  [Edge.Command]: Command,
+  [Edge.CommandPresence]: CommandPresence,
+  [Edge.Fervor]: Fervor,
+  [Edge.HoldTheLine]: HoldTheLine,
+  [Edge.Inspire]: Inspire,
+  [Edge.LeaderOfMen]: LeaderOfMen,
+  [Edge.NaturalLeader]: NaturalLeader,
+  [Edge.Tactician]: Tactician,
 
   // Power edges
   [Edge.NewPower]: NewPower,

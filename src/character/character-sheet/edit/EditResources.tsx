@@ -228,44 +228,46 @@ export const EditResources = () => {
                   <th>Duration</th>
                 </tr>
               </thead>
-              {Object.values(temporaryEffects!).map((temporaryEffect) => (
-                <tr key={temporaryEffect.name + temporaryEffect.duration}>
-                  <td className="item-name">
-                    <TextElement title={temporaryEffect.name}>
-                      {temporaryEffect.name}
-                    </TextElement>
-                  </td>
-                  <td className="item-duration">
-                    <DurationRowControls>
+              <tbody>
+                {Object.values(temporaryEffects!).map((temporaryEffect) => (
+                  <tr key={temporaryEffect.name + temporaryEffect.duration}>
+                    <td className="item-name">
                       <TextElement title={temporaryEffect.name}>
-                        {temporaryEffect.duration}
+                        {temporaryEffect.name}
                       </TextElement>
-                      <IconButton
-                        iconSize={16}
-                        icon={Icons.ChevronDown}
-                        onClick={() =>
-                          tickTemporaryEffectDuration(
-                            character.id,
-                            temporaryEffect,
-                            true
-                          )
-                        }
-                      />
-                      <IconButton
-                        iconSize={16}
-                        icon={Icons.ChevronUp}
-                        onClick={() =>
-                          tickTemporaryEffectDuration(
-                            character.id,
-                            temporaryEffect,
-                            false
-                          )
-                        }
-                      />
-                    </DurationRowControls>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                    <td className="item-duration">
+                      <DurationRowControls>
+                        <TextElement title={temporaryEffect.name}>
+                          {temporaryEffect.duration}
+                        </TextElement>
+                        <IconButton
+                          iconSize={16}
+                          icon={Icons.ChevronDown}
+                          onClick={() =>
+                            tickTemporaryEffectDuration(
+                              character.id,
+                              temporaryEffect,
+                              true
+                            )
+                          }
+                        />
+                        <IconButton
+                          iconSize={16}
+                          icon={Icons.ChevronUp}
+                          onClick={() =>
+                            tickTemporaryEffectDuration(
+                              character.id,
+                              temporaryEffect,
+                              false
+                            )
+                          }
+                        />
+                      </DurationRowControls>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </TemporaryEffectsTable>
           ) : (
             " none"

@@ -13,7 +13,7 @@ export const LuckGreat: EdgeDetailType = {
   name: "Luck (Great)",
   category: EdgeCategory.Background,
   description:
-    "The players draws two extra Bennies instead of one at the start of each session.",
+    "The players draws two extra Fate Chips instead of one at the start of each session.",
   description_short: "Additional one extra Fate Chip each session.",
   rank_requirement: Rank.Novice,
   stat_requirements: StatRequirements,
