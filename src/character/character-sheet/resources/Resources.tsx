@@ -10,7 +10,6 @@ import { StyledLink } from "../../../shared/StyledLink";
 import { Theme } from "../../../Theme";
 import { ClickableSurface } from "../../../shared/ClickableSurface";
 import { maxHealth, maxStamina } from "../../../shared/Constants";
-import { dataObjectToList } from "../../../utils/firebase/DataFormatting";
 import { TextElement } from "../../../shared/text/Text";
 
 const ResourcesWrapper = styled.div`
@@ -48,7 +47,7 @@ export const Resources = () => {
   const character = useContext(CharacterContext);
 
   const { wounds, fatigue, currentPowerPoints, temporaryEffects } = character;
-  const temporaryEffectsList = dataObjectToList(temporaryEffects ?? {});
+  const temporaryEffectsList = Object.values(temporaryEffects ?? {});
 
   return (
     <StyledLink to={`/character/sheet/edit/resource`}>

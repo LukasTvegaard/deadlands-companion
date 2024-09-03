@@ -17,12 +17,9 @@ import { useParams } from "react-router-dom";
 import { Theme } from "../../../Theme";
 import { Character } from "../../../utils/types/Character";
 import { useObject } from "react-firebase-hooks/database";
-import {
-  dataObjectToList,
-  snapshotToValue,
-} from "../../../utils/firebase/DataFormatting";
+import { snapshotToValue } from "../../../utils/firebase/DataFormatting";
 import { Button } from "../../../shared/buttons/Button";
-import { AddBuffModal } from "./AddBuffModal";
+import { AddTemporaryEffectModal } from "./AddTemporaryEffectModal";
 import {
   addTemporaryEffect,
   tickBuffDurationDown as tickTemporaryEffectDuration,
@@ -36,7 +33,7 @@ const PageContens = styled.div({
   gap: Theme.Spacing.medium,
 });
 
-const TemporaryEffectsTable = styled.ul({
+const TemporaryEffectsTable = styled.table({
   display: "table",
   borderCollapse: "collapse",
   textAlign: "left",
@@ -49,13 +46,6 @@ const TemporaryEffectsTable = styled.ul({
     },
     "&.item-duration": {
       width: "30%",
-    },
-  },
-  li: {
-    p: {
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      whiteSpace: "nowrap",
     },
   },
 });
@@ -158,7 +148,7 @@ export const EditResources = () => {
     >
       <PageContens>
         {showAddBuffModal ? (
-          <AddBuffModal
+          <AddTemporaryEffectModal
             onClose={() => setShowAddBuffModal(false)}
             onTemporaryEffectAdded={(temporaryEffect) =>
               addTemporaryEffect(id, temporaryEffect)
@@ -230,7 +220,7 @@ export const EditResources = () => {
               text={"Add"}
             />
           </FlexRow>
-          {Boolean(temporaryEffects) ? (
+          {temporaryEffects ? (
             <TemporaryEffectsTable>
               <thead>
                 <tr>
@@ -238,7 +228,7 @@ export const EditResources = () => {
                   <th>Duration</th>
                 </tr>
               </thead>
-              {dataObjectToList(temporaryEffects!).map((temporaryEffect) => (
+              {Object.values(temporaryEffects!).map((temporaryEffect) => (
                 <tr key={temporaryEffect.name + temporaryEffect.duration}>
                   <td className="item-name">
                     <TextElement title={temporaryEffect.name}>
