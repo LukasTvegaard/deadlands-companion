@@ -1,6 +1,8 @@
 import { ref, set, update } from "firebase/database";
 import { database } from "../utils/firebase/Firebase";
 import { TemporaryEffect } from "../utils/types/TemporaryEffect";
+import { useObjectVal } from "react-firebase-hooks/database";
+import { Character } from "../utils/types/Character";
 
 const getBaseRoute = (characterKey: string) =>
   `characters/${characterKey}/temporaryEffects`;

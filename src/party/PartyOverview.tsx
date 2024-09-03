@@ -18,6 +18,8 @@ import styled from "styled-components";
 import { snapshotsToValues } from "../utils/firebase/DataFormatting";
 import { PartyMemberTile } from "./PartyMemberTile";
 import { CampSupplies } from "./CampSupplies";
+import { FlexRow } from "../codex/shared/FlexRow";
+import { Theme } from "../Theme";
 
 const GroupContainer = styled.div`
   display: grid;
@@ -47,6 +49,7 @@ const PartyEmptyState = ({ character }: { character: Character }) => {
 
 export const PartyOverview = () => {
   const character = useContext(CharacterContext);
+  const isDM = character.isDM;
   const partyId = character.partyId || null;
   const partyRef = ref(database(), `parties/${partyId}`);
   const [party, loading] = useObjectVal<Party>(partyRef);
@@ -70,14 +73,12 @@ export const PartyOverview = () => {
         <PartyEmptyState character={character} />
       ) : (
         <div>
-          {character.isDM ? (
+          {isDM ? (
             <ListTitle>
               {party.name}
-              {character.isDM ? (
-                <StyledLink to={"edit"}>
-                  <IconButton secondary icon={Icons.Pen} />
-                </StyledLink>
-              ) : null}
+              <StyledLink to={"edit"}>
+                <IconButton secondary icon={Icons.Pen} />
+              </StyledLink>
             </ListTitle>
           ) : null}
           <CampSupplies

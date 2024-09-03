@@ -3,11 +3,11 @@ import { TemporaryEffect } from "../utils/types/TemporaryEffect";
 import { Theme } from "../Theme";
 import { TextElement } from "./text/Text";
 
-const EffectPill = styled.div<{ isHarmful: boolean }>(({ isHarmful }) => ({
+const EffectPill = styled.div<{ $isHarmful: boolean }>(({ $isHarmful }) => ({
   display: "flex",
   alignItems: "center",
   gap: Theme.Spacing.small,
-  backgroundColor: isHarmful ? Theme.Health : Theme.Stamina,
+  backgroundColor: $isHarmful ? Theme.Health : Theme.Stamina,
   padding: "4px 8px",
   borderRadius: Theme.BorderRadius.large,
 }));
@@ -29,7 +29,7 @@ type Props = {
 };
 export const TemporaryEffectIndicator: React.FC<Props> = ({ tempEffect }) => {
   return (
-    <EffectPill isHarmful={tempEffect.isHarmful}>
+    <EffectPill $isHarmful={tempEffect.isHarmful}>
       <TextElement>{tempEffect.name}</TextElement>
       <DurationBubble>{tempEffect.duration}</DurationBubble>
     </EffectPill>

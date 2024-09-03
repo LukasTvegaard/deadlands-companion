@@ -196,19 +196,7 @@ export const EditResources = () => {
         <ResourceSegment>
           <FlexRow>
             <TextElement>Temporary Effects</TextElement>
-            <FlexRow $gap={Theme.Spacing.medium}>
-              <IconButton
-                iconSize={16}
-                growToParent
-                onClick={() => setShowAddBuffModal(true)}
-                icon={Icons.ChevronDown}
-                text={"Round"}
-              />
-              <Button
-                onClick={() => setShowAddBuffModal(true)}
-                text={"+ Add"}
-              />
-            </FlexRow>
+            <Button onClick={() => setShowAddBuffModal(true)} text={"+ Add"} />
           </FlexRow>
           <TextElement>Friendly</TextElement>
           {friendlyEffects.length > 0 ? (

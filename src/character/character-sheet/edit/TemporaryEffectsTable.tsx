@@ -17,8 +17,8 @@ const StyledTable = styled.table({
   display: "table",
   textAlign: "right",
   gap: Theme.Spacing.small,
+  borderSpacing: Theme.Spacing.small,
   td: {
-    padding: Theme.Spacing.small,
     width: "5%",
     "&.item-name": {
       width: "85%",
