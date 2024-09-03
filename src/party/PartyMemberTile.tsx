@@ -12,27 +12,7 @@ import { StyledLink } from "../shared/StyledLink";
 import { TextElement } from "../shared/text/Text";
 import { FlexRow } from "../codex/shared/FlexRow";
 import { TemporaryEffect } from "../utils/types/TemporaryEffect";
-
-const EffectIndicator = styled.div({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  height: "100%",
-  flex: 1,
-  padding: Theme.Spacing.small,
-  borderRadius: Theme.BorderRadius.small,
-  backgroundColor: Theme.Secondary[200],
-  fontSize: "0.8em",
-  overflow: "hidden",
-  p: {
-    height: "100%",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-    maxWidth: "100%",
-  },
-});
+import { TemporaryEffectsRow } from "./TemporaryEffectsRow";
 
 type PartyMemberTileStyleProps = {
   $clickable: boolean;
@@ -71,8 +51,6 @@ const InnerTile = ({ character, isDM }: PartyMemberTileProps) => {
     compareEffects
   );
 
-  const limitedEffects = tempEffects.slice(0, 3);
-  const leftOvers = tempEffects.length - limitedEffects.length;
   return (
     <PartyMemberTileStyle $clickable={isDM}>
       <FlexRow>
@@ -98,21 +76,11 @@ const InnerTile = ({ character, isDM }: PartyMemberTileProps) => {
           color={Theme.PowerPoints}
         />
       ) : null}
-      {limitedEffects.length > 0 && (
-        <FlexRow $gap={Theme.Spacing.xsmall}>
-          {limitedEffects.map((effect) => (
-            <EffectIndicator key={effect.name + effect.duration}>
-              <TextElement title={effect.name}>
-                {effect.duration}: {effect.name}
-              </TextElement>
-            </EffectIndicator>
-          ))}
-          {leftOvers > 0 && (
-            <EffectIndicator>
-              <TextElement>+{leftOvers} more</TextElement>
-            </EffectIndicator>
-          )}
-        </FlexRow>
+      {tempEffects.length > 0 && (
+        <>
+          <TextElement>Temporary Effects</TextElement>
+          <TemporaryEffectsRow tempEffects={tempEffects} />{" "}
+        </>
       )}
     </PartyMemberTileStyle>
   );

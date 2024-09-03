@@ -17,7 +17,7 @@ export const addTemporaryEffect = (
   );
 };
 
-export const tickBuffDurationDown = (
+export const tickTemporaryEffectDuration = (
   characterKey: string,
   temporaryEffect: TemporaryEffect,
   tickDown: boolean

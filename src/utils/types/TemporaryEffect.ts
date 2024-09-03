@@ -1,5 +1,5 @@
 export type TemporaryEffect = {
   name: string;
   duration: number;
-  isHarmful?: boolean;
+  isHarmful: boolean;
 };
