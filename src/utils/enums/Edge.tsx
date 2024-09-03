@@ -153,6 +153,16 @@ export enum Edge {
   WeaponMaster = "WeaponMaster",
   MasterOfArms = "MasterOfArms",
 
+  // Leadership edges
+  Command = "Command",
+  CommandPresence = "CommandPresence",
+  Fervor = "Fervor",
+  HoldTheLine = "HoldTheLine",
+  Inspire = "Inspire",
+  LeaderOfMen = "LeaderOfMen",
+  NaturalLeader = "NaturalLeader",
+  Tactician = "Tactician",
+
   // Huckster edges
   DealersChoice = "DealersChoice",
   HighRoller = "HighRoller",

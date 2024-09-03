@@ -25,7 +25,7 @@ export const CommonBond: EdgeDetailType = {
     perfectly or not, they've just formed a close and
     common bond during their epic adventures.
     A character with this Edge may freely give
-    his Bennies to any other Wild Card he can
+    his Fate Chips to any other Wild Card he can
     communicate with. This represents the character
     giving his verbal or spiritual support to the ally.
     The player should say what his character is

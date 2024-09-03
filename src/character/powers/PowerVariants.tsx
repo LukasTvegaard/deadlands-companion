@@ -4,7 +4,7 @@ import { FlexRow } from "../../codex/shared/FlexRow";
 import { Button } from "../../shared/buttons/Button";
 
 import { getRoll } from "../character-logic/roll-logic/RollLogic";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { EffectVariant } from "../../utils/types/Effect";
 import { SingleDiceRow, SingleValueRow } from "../../shared/rows/SingleDiceRow";
 import { Theme } from "./../../Theme";
@@ -27,6 +27,7 @@ import { characterHasEdge } from "../../static/edges/EdgeUtil";
 import { Attribute, Edge } from "../../utils/enums";
 import { dieTypeToValue } from "../../utils/enums/DieType";
 import { rankToValue } from "../../utils/enums/Rank";
+import { SelectTargetsModal } from "./SelectTargetsModal";
 
 const VariantStyle = styled.div`
   background-color: ${Theme.Surface[300]};
@@ -164,12 +165,30 @@ export const PowerVariants = ({
   powerDetail,
   isWeirdScientist,
 }: PowerVariantProps) => {
+  const [selectTargetsModalVariant, setSelectTargetsModalVariant] =
+    useState<PowerVariant | null>(null);
+
   const character = useContext(CharacterContext);
   const spellcastingSkill = getSpellcastingSkill(character);
   const singleVariantPower = powerDetail.variants.length === 1;
 
   return (
     <GroupContainer>
+      {selectTargetsModalVariant ? (
+        <SelectTargetsModal
+          powerVariant={selectTargetsModalVariant}
+          currentPowerPoints={character.currentPowerPoints}
+          onClose={() => setSelectTargetsModalVariant(null)}
+          activatePower={(powerPointCost) => {
+            activatePower(
+              character,
+              powerDetail,
+              powerPointCost,
+              isWeirdScientist
+            );
+          }}
+        />
+      ) : null}
       {powerDetail.variants
         .filter((variant) => filterVariants(variant, character))
         .map((variant) => {
@@ -248,12 +267,15 @@ export const PowerVariants = ({
                     <Button
                       text={`Cast (${variant.powerPointCost} PP)`}
                       onClick={() =>
-                        activatePower(
-                          character,
-                          powerDetail,
-                          variant.powerPointCost,
-                          isWeirdScientist
-                        )
+                        isUtilityPower(variant) &&
+                        variant.addTargetPowerPointCost
+                          ? setSelectTargetsModalVariant(variant)
+                          : activatePower(
+                              character,
+                              powerDetail,
+                              variant.powerPointCost,
+                              isWeirdScientist
+                            )
                       }
                       disabled={
                         !powerHasPowerPoints(
