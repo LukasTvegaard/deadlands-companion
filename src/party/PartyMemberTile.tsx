@@ -9,6 +9,10 @@ import {
   shouldShowPowerPoints,
 } from "../character/character-logic/PowerPointLogic";
 import { StyledLink } from "../shared/StyledLink";
+import { TextElement } from "../shared/text/Text";
+import { FlexRow } from "../codex/shared/FlexRow";
+import { TemporaryEffect } from "../utils/types/TemporaryEffect";
+import { TemporaryEffectsRow } from "./TemporaryEffectsRow";
 
 type PartyMemberTileStyleProps = {
   $clickable: boolean;
@@ -36,10 +40,22 @@ type PartyMemberTileProps = {
   character: Character;
   isDM: boolean;
 };
+const compareEffects = (a: TemporaryEffect, b: TemporaryEffect) => {
+  if (a.duration === b.duration) {
+    return a.name.localeCompare(b.name);
+  }
+  return a.duration - b.duration;
+};
 const InnerTile = ({ character, isDM }: PartyMemberTileProps) => {
+  const tempEffects = Object.values(character.temporaryEffects ?? {}).toSorted(
+    compareEffects
+  );
+
   return (
     <PartyMemberTileStyle $clickable={isDM}>
-      <div>{getCharacterFullName(character)}</div>
+      <FlexRow>
+        <TextElement>{getCharacterFullName(character)}</TextElement>
+      </FlexRow>
       <ResourceCounter
         total={maxHealth}
         remaining={maxHealth - character.wounds}
@@ -60,6 +76,12 @@ const InnerTile = ({ character, isDM }: PartyMemberTileProps) => {
           color={Theme.PowerPoints}
         />
       ) : null}
+      {tempEffects.length > 0 && (
+        <>
+          <TextElement>Temporary Effects</TextElement>
+          <TemporaryEffectsRow tempEffects={tempEffects} />{" "}
+        </>
+      )}
     </PartyMemberTileStyle>
   );
 };

@@ -1,14 +1,19 @@
 import styled, { css } from "styled-components";
 
-type FlexRowProps = {
-  $gap?: number;
+type FlexProps = {
+  $gap?: string;
 };
-export const FlexRow = styled.div<FlexRowProps>`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  ${({ $gap }) =>
-    css`
-      gap: ${$gap ? `${$gap}px` : `0px`};
-    `}
-`;
+
+export const FlexRow = styled.div<FlexProps>(({ $gap }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gap: $gap ? $gap : "0px",
+}));
+
+export const FlexCol = styled.div<FlexProps>(({ $gap }) => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  gap: $gap ? $gap : "0px",
+}));

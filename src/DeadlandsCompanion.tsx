@@ -24,8 +24,6 @@ import { Weapons } from "./character/weapons/Weapons";
 import { CodexMenu } from "./codex/CodexMenu";
 import { EdgeDetailPage } from "./codex/edges/EdgeDetailPage";
 import { EdgePage } from "./codex/edges/EdgePage";
-import { HindranceDetailPage } from "./codex/Hindrances/HindranceDetailPage";
-import { HindrancePage } from "./codex/Hindrances/HindrancePage";
 import { WeaponDetailPage } from "./codex/weapons/WeaponDetailPage";
 import { WeaponPage } from "./codex/weapons/WeaponPage";
 import { Footer } from "./Footer";
@@ -42,6 +40,8 @@ import { EditMoney } from "./character/gear/EditMoney";
 import { Powers } from "./character/powers/Powers";
 import { PowerPage } from "./codex/powers/PowerPage";
 import { PowerDetailPage } from "./codex/powers/PowerDetailPage";
+import { HindrancePage } from "./codex/Hindrances/HindrancePage";
+import { HindranceDetailPage } from "./codex/Hindrances/HindranceDetailPage";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 

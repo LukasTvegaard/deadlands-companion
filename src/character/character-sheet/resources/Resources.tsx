@@ -10,6 +10,8 @@ import { StyledLink } from "../../../shared/StyledLink";
 import { Theme } from "../../../Theme";
 import { ClickableSurface } from "../../../shared/ClickableSurface";
 import { maxHealth, maxStamina } from "../../../shared/Constants";
+import { TextElement } from "../../../shared/text/Text";
+import { TemporaryEffectsRow } from "../../../party/TemporaryEffectsRow";
 
 const ResourcesWrapper = styled.div`
   ${ClickableSurface};
@@ -33,6 +35,7 @@ type ResourceSegmentProps = {
 const ResourceSegment = styled.div<ResourceSegmentProps>`
   display: flex;
   flex-direction: column;
+  gap: 4px;
   width: ${(props) => props.width || "100%"};
   ${(props) =>
     props.$rightAlign &&
@@ -45,7 +48,8 @@ const ResourceSegment = styled.div<ResourceSegmentProps>`
 export const Resources = () => {
   const character = useContext(CharacterContext);
 
-  const { wounds, fatigue, currentPowerPoints } = character;
+  const { wounds, fatigue, currentPowerPoints, temporaryEffects } = character;
+  const temporaryEffectsList = Object.values(temporaryEffects ?? {});
 
   return (
     <StyledLink to={`/character/sheet/edit/resource`}>
@@ -73,7 +77,7 @@ export const Resources = () => {
           </div>
           {shouldShowPowerPoints(character) ? (
             <ResourceSegment>
-              Power Points:
+              Power Points
               <ResourceCounter
                 total={getMaxPowerPoints(character)}
                 remaining={currentPowerPoints}
@@ -82,6 +86,12 @@ export const Resources = () => {
               />
             </ResourceSegment>
           ) : null}
+          {temporaryEffectsList.length > 0 && (
+            <ResourceSegment>
+              <TextElement>Temporary Effects</TextElement>
+              <TemporaryEffectsRow tempEffects={temporaryEffectsList} />
+            </ResourceSegment>
+          )}
         </ResourcesStyle>
       </ResourcesWrapper>
     </StyledLink>

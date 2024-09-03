@@ -12,7 +12,7 @@ import { ButtonRow } from "../shared/rows/ButtonRow";
 import { getCharacterFullName } from "../character/character-logic/InfoLogic";
 import { ListTitle } from "../shared/text/ListTitle";
 import { set } from "../utils/firebase/DataAccess";
-import { snapshotsToValues } from "../utils/firebase/SnapshotFormatter";
+import { snapshotsToValues } from "../utils/firebase/DataFormatting";
 
 const setPartyId = (characterId: string, partyId: string | null) => {
   const partyIdRef = ref(database(), `characters/${characterId}/partyId`);

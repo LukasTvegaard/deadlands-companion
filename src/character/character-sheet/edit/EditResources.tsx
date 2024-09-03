@@ -1,5 +1,5 @@
 import { ref, set } from "firebase/database";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { styled } from "styled-components";
 
 import { CharacterContext } from "../../../DeadlandsCompanion";
@@ -17,8 +17,21 @@ import { useParams } from "react-router-dom";
 import { Theme } from "../../../Theme";
 import { Character } from "../../../utils/types/Character";
 import { useObject } from "react-firebase-hooks/database";
-import { snapshotToValue } from "../../../utils/firebase/SnapshotFormatter";
+import { snapshotToValue } from "../../../utils/firebase/DataFormatting";
 import { Button } from "../../../shared/buttons/Button";
+import { AddTemporaryEffectModal } from "./AddTemporaryEffectModal";
+
+import { FlexRow } from "../../../codex/shared/FlexRow";
+import { TextElement } from "../../../shared/text/Text";
+import _ from "lodash";
+import { addTemporaryEffect } from "../../../services/temporary-effects-service";
+import { TemporaryEffectsTable } from "./TemporaryEffectsTable";
+
+const PageContens = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  gap: Theme.Spacing.medium,
+});
 
 const ResourceSegment = styled.div`
   display: flex;
@@ -60,6 +73,7 @@ const changeCurrentPowerPoints = ({
 export const EditResources = () => {
   const loggedInCharacter = useContext(CharacterContext);
   const routeParams = useParams();
+  const [showAddBuffModal, setShowAddBuffModal] = useState(false);
   const characterQuery =
     loggedInCharacter.isDM && routeParams.id
       ? ref(database(), `characters/${routeParams.id}`)
@@ -70,7 +84,16 @@ export const EditResources = () => {
       ? snapshotToValue<Character>(characterSnapshot)
       : loggedInCharacter;
 
-  const { id, wounds, fatigue, currentPowerPoints } = character;
+  const { id, wounds, fatigue, currentPowerPoints, temporaryEffects } =
+    character;
+
+  const tempEffectsList = Object.values(temporaryEffects ?? {});
+
+  const [harmfulEffects, friendlyEffects] = _.partition(
+    tempEffectsList,
+    (effect) => effect.isHarmful
+  );
+
   const maxHealth = 4;
   const maxStamina = 3;
 
@@ -105,62 +128,96 @@ export const EditResources = () => {
       pageName={`Recharge ${character.firstName}`}
       prevLocation={Locations.CharacterMenu}
     >
-      <ResourceSegment>
-        Health
-        <ButtonCounterWrapper>
-          <Button
-            text="X"
-            customcolor={Theme.Health}
-            onClick={() => updateWounds(0)}
+      <PageContens>
+        {showAddBuffModal ? (
+          <AddTemporaryEffectModal
+            onClose={() => setShowAddBuffModal(false)}
+            onTemporaryEffectAdded={(temporaryEffect) =>
+              addTemporaryEffect(id, temporaryEffect)
+            }
           />
-          <ResourceCounter
-            total={maxHealth}
-            remaining={maxHealth - wounds}
-            color={Theme.Health}
-            onResourceSegmentClick={updateWounds}
-          />
-        </ButtonCounterWrapper>
-      </ResourceSegment>
-      <ResourceSegment>
-        Stamina
-        <ButtonCounterWrapper>
-          <Button
-            text="X"
-            customcolor={Theme.Stamina}
-            onClick={() => updateFatigue(0)}
-          />
-          <ResourceCounter
-            total={maxStamina}
-            remaining={maxStamina - fatigue}
-            color={Theme.Stamina}
-            onResourceSegmentClick={updateFatigue}
-          />
-        </ButtonCounterWrapper>
-      </ResourceSegment>
-      {showPowerPoints ? (
+        ) : null}
         <ResourceSegment>
-          Power Points:
+          Health
           <ButtonCounterWrapper>
             <Button
               text="X"
-              customcolor={Theme.PowerPoints}
-              onClick={() => updatePowerPoints(0)}
+              customcolor={Theme.Health}
+              onClick={() => updateWounds(0)}
             />
             <ResourceCounter
-              total={maxPowerPoints}
-              remaining={currentPowerPoints}
-              color={Theme.PowerPoints}
-              onResourceSegmentClick={updatePowerPoints}
+              total={maxHealth}
+              remaining={maxHealth - wounds}
+              color={Theme.Health}
+              onResourceSegmentClick={updateWounds}
             />
           </ButtonCounterWrapper>
         </ResourceSegment>
-      ) : null}
-      <IconButton
-        icon={Icons.Campfire}
-        viewbox="0 0 1080 1296"
-        onClick={fullRest}
-        text="Full Rest"
-      ></IconButton>
+        <ResourceSegment>
+          Stamina
+          <ButtonCounterWrapper>
+            <Button
+              text="X"
+              customcolor={Theme.Stamina}
+              onClick={() => updateFatigue(0)}
+            />
+            <ResourceCounter
+              total={maxStamina}
+              remaining={maxStamina - fatigue}
+              color={Theme.Stamina}
+              onResourceSegmentClick={updateFatigue}
+            />
+          </ButtonCounterWrapper>
+        </ResourceSegment>
+        {showPowerPoints ? (
+          <ResourceSegment>
+            Power Points
+            <ButtonCounterWrapper>
+              <Button
+                text="X"
+                customcolor={Theme.PowerPoints}
+                onClick={() => updatePowerPoints(0)}
+              />
+              <ResourceCounter
+                total={maxPowerPoints}
+                remaining={currentPowerPoints}
+                color={Theme.PowerPoints}
+                onResourceSegmentClick={updatePowerPoints}
+              />
+            </ButtonCounterWrapper>
+          </ResourceSegment>
+        ) : null}
+        <IconButton
+          icon={Icons.Campfire}
+          viewbox="0 0 1080 1296"
+          onClick={fullRest}
+          text="Full Rest"
+        />
+        <ResourceSegment>
+          <FlexRow>
+            <TextElement>Temporary Effects</TextElement>
+            <Button onClick={() => setShowAddBuffModal(true)} text={"+ Add"} />
+          </FlexRow>
+          <TextElement>Friendly</TextElement>
+          {friendlyEffects.length > 0 ? (
+            <TemporaryEffectsTable
+              tempEffectsList={friendlyEffects}
+              characterId={character.id}
+            />
+          ) : (
+            "None"
+          )}
+          <TextElement>Harmful</TextElement>
+          {harmfulEffects.length > 0 ? (
+            <TemporaryEffectsTable
+              tempEffectsList={harmfulEffects}
+              characterId={character.id}
+            />
+          ) : (
+            "None"
+          )}
+        </ResourceSegment>
+      </PageContens>
     </Page>
   );
 };
