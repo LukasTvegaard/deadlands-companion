@@ -7,6 +7,7 @@ import { Modal } from "react-aria-components";
 import styled from "styled-components";
 import { Theme } from "../../../Theme";
 import { TextElement } from "../../../shared/text/Text";
+import { Checkbox } from "../../../shared/buttons/Checkbox";
 
 const ModalContents = styled.div({
   display: "flex",
@@ -24,6 +25,7 @@ export const AddTemporaryEffectModal: React.FC<Props> = ({
 }) => {
   const [name, setName] = useState("");
   const [duration, setDuration] = useState(1);
+  const [isHarmful, setIsHarmful] = useState(false);
 
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -35,13 +37,21 @@ export const AddTemporaryEffectModal: React.FC<Props> = ({
     return errs;
   };
 
-  const onAddTemporaryEffect = (effectName: string, effectDuration: number) => {
+  const onAddTemporaryEffect = (
+    effectName: string,
+    effectDuration: number,
+    isHarmful: boolean
+  ) => {
     const errors = getFormErrors();
     if (errors.length) {
       setErrors(errors);
       return;
     }
-    onBuffAdded({ name: effectName, duration: effectDuration });
+    onBuffAdded({
+      name: effectName,
+      duration: effectDuration,
+      isHarmful: isHarmful,
+    });
     onClose();
   };
 
@@ -65,6 +75,13 @@ export const AddTemporaryEffectModal: React.FC<Props> = ({
           label="Duration"
           placeholder="input duration in rounds"
         />
+        <FlexRow>
+          <TextElement>Harmful Effect</TextElement>
+          <Checkbox
+            isSelected={isHarmful}
+            onChange={(e) => setIsHarmful(!isHarmful)}
+          />
+        </FlexRow>
         {errors.map((error) => (
           <TextElement key={error} color={Theme.Error[300]}>
             {error}
@@ -75,7 +92,7 @@ export const AddTemporaryEffectModal: React.FC<Props> = ({
           <Button
             text="Add"
             onClick={() => {
-              onAddTemporaryEffect(name, duration);
+              onAddTemporaryEffect(name, duration, isHarmful);
             }}
           />
         </FlexRow>

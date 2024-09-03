@@ -11,6 +11,7 @@ import { Theme } from "../../../Theme";
 import { ClickableSurface } from "../../../shared/ClickableSurface";
 import { maxHealth, maxStamina } from "../../../shared/Constants";
 import { TextElement } from "../../../shared/text/Text";
+import { TemporaryEffectsRow } from "../../../party/TemporaryEffectsRow";
 
 const ResourcesWrapper = styled.div`
   ${ClickableSurface};
@@ -34,6 +35,7 @@ type ResourceSegmentProps = {
 const ResourceSegment = styled.div<ResourceSegmentProps>`
   display: flex;
   flex-direction: column;
+  gap: 4px;
   width: ${(props) => props.width || "100%"};
   ${(props) =>
     props.$rightAlign &&
@@ -75,7 +77,7 @@ export const Resources = () => {
           </div>
           {shouldShowPowerPoints(character) ? (
             <ResourceSegment>
-              Power Points:
+              Power Points
               <ResourceCounter
                 total={getMaxPowerPoints(character)}
                 remaining={currentPowerPoints}
@@ -86,8 +88,8 @@ export const Resources = () => {
           ) : null}
           {temporaryEffectsList.length > 0 && (
             <ResourceSegment>
-              <TextElement>Temporary Effects:</TextElement>
-              {temporaryEffectsList.map((effect) => effect.name).join(", ")}
+              <TextElement>Temporary Effects</TextElement>
+              <TemporaryEffectsRow tempEffects={temporaryEffectsList} />
             </ResourceSegment>
           )}
         </ResourcesStyle>

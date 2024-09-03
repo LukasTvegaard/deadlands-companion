@@ -4,14 +4,17 @@ import { Icons } from "../../icons/Icons";
 import { Theme } from "../../Theme";
 import { SharedButtonStyle } from "./Button";
 
-const IconButtonStyle = styled(SharedButtonStyle)`
-  gap: 8px;
-  &:active {
-    path {
-      fill: ${Theme.Primary[400]};
-    }
-  }
-`;
+const IconButtonStyle = styled(SharedButtonStyle)<{ $growToParent: boolean }>(
+  ({ $growToParent }) => ({
+    gap: "8px",
+    flex: $growToParent ? 1 : 0,
+    "&:active": {
+      path: {
+        fill: Theme.Primary[400],
+      },
+    },
+  })
+);
 
 const IconButtonText = styled.div`
   color: #fff;
@@ -27,6 +30,7 @@ type IconButtonProps = {
   transparent?: boolean;
   viewbox?: string;
   onClick?: () => void;
+  growToParent?: boolean;
 };
 export const IconButton = ({
   icon,
@@ -38,12 +42,14 @@ export const IconButton = ({
   transparent,
   viewbox,
   onClick,
+  growToParent = false,
 }: IconButtonProps) => {
   return (
     <IconButtonStyle
       $transparent={transparent}
       $secondary={secondary}
       $negative={negative}
+      $growToParent={growToParent}
       onClick={onClick}
     >
       <Icon

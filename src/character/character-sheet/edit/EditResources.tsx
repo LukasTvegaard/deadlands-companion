@@ -20,42 +20,17 @@ import { useObject } from "react-firebase-hooks/database";
 import { snapshotToValue } from "../../../utils/firebase/DataFormatting";
 import { Button } from "../../../shared/buttons/Button";
 import { AddTemporaryEffectModal } from "./AddTemporaryEffectModal";
-import {
-  addTemporaryEffect,
-  tickBuffDurationDown as tickTemporaryEffectDuration,
-} from "../../../services/temporary-effects-service";
+
 import { FlexRow } from "../../../codex/shared/FlexRow";
 import { TextElement } from "../../../shared/text/Text";
+import _ from "lodash";
+import { addTemporaryEffect } from "../../../services/temporary-effects-service";
+import { TemporaryEffectsTable } from "./TemporaryEffectsTable";
 
 const PageContens = styled.div({
   display: "flex",
   flexDirection: "column",
   gap: Theme.Spacing.medium,
-});
-
-const TemporaryEffectsTable = styled.table({
-  display: "table",
-  borderCollapse: "collapse",
-  textAlign: "left",
-  gap: Theme.Spacing.small,
-  td: {
-    padding: Theme.Spacing.small,
-    border: `1px solid ${Theme.Surface[200]}`,
-    "&.item-name": {
-      width: "70%",
-    },
-    "&.item-duration": {
-      width: "30%",
-    },
-  },
-});
-
-const DurationRowControls = styled.div({
-  display: "flex",
-  flexDirection: "row",
-  gap: Theme.Spacing.small,
-  justifyContent: "flex-end",
-  alignItems: "center",
 });
 
 const ResourceSegment = styled.div`
@@ -111,6 +86,13 @@ export const EditResources = () => {
 
   const { id, wounds, fatigue, currentPowerPoints, temporaryEffects } =
     character;
+
+  const tempEffectsList = Object.values(temporaryEffects ?? {});
+
+  const [harmfulEffects, friendlyEffects] = _.partition(
+    tempEffectsList,
+    (effect) => effect.isHarmful
+  );
 
   const maxHealth = 4;
   const maxStamina = 3;
@@ -189,7 +171,7 @@ export const EditResources = () => {
         </ResourceSegment>
         {showPowerPoints ? (
           <ResourceSegment>
-            Power Points:
+            Power Points
             <ButtonCounterWrapper>
               <Button
                 text="X"
@@ -214,63 +196,25 @@ export const EditResources = () => {
         <ResourceSegment>
           <FlexRow>
             <TextElement>Temporary Effects</TextElement>
-            <IconButton
-              onClick={() => setShowAddBuffModal(true)}
-              icon={Icons.Add}
-              text={"Add"}
-            />
+            <Button onClick={() => setShowAddBuffModal(true)} text={"+ Add"} />
           </FlexRow>
-          {temporaryEffects ? (
-            <TemporaryEffectsTable>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Duration</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.values(temporaryEffects!).map((temporaryEffect) => (
-                  <tr key={temporaryEffect.name + temporaryEffect.duration}>
-                    <td className="item-name">
-                      <TextElement title={temporaryEffect.name}>
-                        {temporaryEffect.name}
-                      </TextElement>
-                    </td>
-                    <td className="item-duration">
-                      <DurationRowControls>
-                        <TextElement title={temporaryEffect.name}>
-                          {temporaryEffect.duration}
-                        </TextElement>
-                        <IconButton
-                          iconSize={16}
-                          icon={Icons.ChevronDown}
-                          onClick={() =>
-                            tickTemporaryEffectDuration(
-                              character.id,
-                              temporaryEffect,
-                              true
-                            )
-                          }
-                        />
-                        <IconButton
-                          iconSize={16}
-                          icon={Icons.ChevronUp}
-                          onClick={() =>
-                            tickTemporaryEffectDuration(
-                              character.id,
-                              temporaryEffect,
-                              false
-                            )
-                          }
-                        />
-                      </DurationRowControls>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </TemporaryEffectsTable>
+          <TextElement>Friendly</TextElement>
+          {friendlyEffects.length > 0 ? (
+            <TemporaryEffectsTable
+              tempEffectsList={friendlyEffects}
+              characterId={character.id}
+            />
           ) : (
-            " none"
+            "None"
+          )}
+          <TextElement>Harmful</TextElement>
+          {harmfulEffects.length > 0 ? (
+            <TemporaryEffectsTable
+              tempEffectsList={harmfulEffects}
+              characterId={character.id}
+            />
+          ) : (
+            "None"
           )}
         </ResourceSegment>
       </PageContens>
