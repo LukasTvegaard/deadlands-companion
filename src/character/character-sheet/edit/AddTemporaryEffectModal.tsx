@@ -18,7 +18,7 @@ type Props = {
   onTemporaryEffectAdded: (temporaryEffect: TemporaryEffect) => void;
   onClose: () => void;
 };
-export const AddBuffModal: React.FC<Props> = ({
+export const AddTemporaryEffectModal: React.FC<Props> = ({
   onTemporaryEffectAdded: onBuffAdded,
   onClose,
 }) => {
@@ -55,7 +55,7 @@ export const AddBuffModal: React.FC<Props> = ({
           type="text"
           onChange={(e) => setName(e.target.value)}
           label="Name"
-          placeholder="input buff name"
+          placeholder="input effect name"
         />
         <TextInput
           required
@@ -71,10 +71,9 @@ export const AddBuffModal: React.FC<Props> = ({
           </TextElement>
         ))}
         <FlexRow>
-          <Button text="Cancel" onClick={onClose} />
+          <Button negative text="Cancel" onClick={onClose} />
           <Button
             text="Add"
-            negative
             onClick={() => {
               onAddTemporaryEffect(name, duration);
             }}

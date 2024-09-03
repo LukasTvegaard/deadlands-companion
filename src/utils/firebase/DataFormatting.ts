@@ -5,14 +5,3 @@ export function snapshotToValue<T>(snapshot: DataSnapshot): T {
   const snapshotVal = snapshot.val();
   return { ...snapshotVal, id: snapshotId };
 }
-
-export function snapshotsToValues<T>(
-  snapshots: DataSnapshot[] | undefined
-): T[] | null {
-  if (!snapshots) return null;
-
-  return snapshots.map((snapshot) => snapshotToValue(snapshot));
-}
-export function dataObjectToList<T>(dataObject: Record<string, T>) {
-  return Object.keys(dataObject).map((key) => dataObject[key]);
-}
