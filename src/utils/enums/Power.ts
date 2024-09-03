@@ -3,6 +3,7 @@ export enum Power {
   Barrier = "Barrier",
   Bolt = "Bolt",
   BoostLowerTrait = "BoostLowerTrait",
+  Burrow = "Burrow",
   Burst = "Burst",
   ElementalManipulationEarth = "ElementalManipulationEarth",
   Healing = "Healing",

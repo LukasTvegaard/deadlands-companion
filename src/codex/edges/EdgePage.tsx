@@ -22,6 +22,7 @@ import { Checkbox } from "../../shared/buttons/Checkbox";
 import { edgeHasRequirements } from "./EdgeRequirementFilterUtil";
 import { CharacterContext } from "../../DeadlandsCompanion";
 import { Character } from "../../utils/types/Character";
+import { Theme } from "../../Theme";
 
 const EdgeGroupsWrapper = styled.div`
   display: flex;
@@ -107,11 +108,11 @@ export const EdgePage = () => {
 
   return (
     <Page pageName="Edges" prevLocation={Locations.CodexMenu}>
-      <Header gap={16}>
+      <Header gap={Theme.Spacing.medium}>
         <Search
           callback={(text) => setSearchString(text)}
           placeholder={"Search for an Edge..."}
-        ></Search>
+        />
         <IconButton
           icon={Icons.Tune}
           viewbox="0 -960 960 960"

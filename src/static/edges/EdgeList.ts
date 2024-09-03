@@ -55,6 +55,7 @@ import { KillerInstinct } from "./combat_edges/KillerInstinct";
 import { LevelHeaded } from "./combat_edges/LevelHeaded";
 import { LevelHeadedImproved } from "./combat_edges/LevelHeadedImproved";
 import { Marksman } from "./combat_edges/Marksman";
+import { MartialArtist } from "./combat_edges/MartialArtist";
 import { MovementOfTheSerpent } from "./combat_edges/MovementOfTheSerpent";
 import { NervesOfSteel } from "./combat_edges/NervesOfSteel";
 import { NervesOfSteelImproved } from "./combat_edges/NervesOfSteelImproved";
@@ -200,7 +201,7 @@ export const Edges: EdgeDetails = {
   [Edge.LevelHeaded]: LevelHeaded,
   [Edge.LevelHeadedImproved]: LevelHeadedImproved,
   [Edge.Marksman]: Marksman,
-  [Edge.MartialArtist]: placeholderEdge,
+  [Edge.MartialArtist]: MartialArtist,
   [Edge.MovementOfTheSerpent]: MovementOfTheSerpent,
   [Edge.NervesOfSteel]: NervesOfSteel,
   [Edge.NervesOfSteelImproved]: NervesOfSteelImproved,

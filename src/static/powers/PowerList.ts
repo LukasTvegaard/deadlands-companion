@@ -4,6 +4,7 @@ import { Armor } from "./Armor";
 import { Barrier } from "./Barrier";
 import { Bolt } from "./Bolt";
 import { BoostLowerTrait } from "./BoostLowerTrait";
+import { Burrow } from "./Burrow";
 import { Burst } from "./Burst";
 import { ElementalManipulationEarth } from "./ElementalManipulation";
 import { Healing } from "./Healing";
@@ -24,6 +25,7 @@ export const Powers: PowerDetails = {
   [Power.Barrier]: Barrier,
   [Power.Bolt]: Bolt,
   [Power.BoostLowerTrait]: BoostLowerTrait,
+  [Power.Burrow]: Burrow,
   [Power.Burst]: Burst,
   [Power.ElementalManipulationEarth]: ElementalManipulationEarth,
   [Power.Healing]: Healing,

@@ -15,7 +15,7 @@ import { ListTitle } from "../shared/text/ListTitle";
 import { IconButton } from "../shared/buttons/IconButton";
 import { Icons } from "../icons/Icons";
 import styled from "styled-components";
-import { snapshotsToValues } from "../utils/firebase/SnapshotFormatter";
+import { snapshotsToValues } from "../utils/firebase/DataFormatting";
 import { PartyMemberTile } from "./PartyMemberTile";
 import { CampSupplies } from "./CampSupplies";
 

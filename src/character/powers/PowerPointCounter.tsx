@@ -19,7 +19,7 @@ export const PowerPointCounter = ({ powerDetail }: PowerPointCounterProps) => {
     maxPowerPoints
   );
   return (
-    <FlexRow $gap={16}>
+    <FlexRow $gap={Theme.Spacing.medium}>
       <ResourceCounter
         total={maxPowerPoints}
         remaining={currentPowerPoints}

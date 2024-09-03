@@ -13,3 +13,6 @@ export function snapshotsToValues<T>(
 
   return snapshots.map((snapshot) => snapshotToValue(snapshot));
 }
+export function dataObjectToList<T>(dataObject: Record<string, T>) {
+  return Object.keys(dataObject).map((key) => dataObject[key]);
+}
