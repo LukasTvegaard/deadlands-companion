@@ -47,9 +47,9 @@ const compareEffects = (a: TemporaryEffect, b: TemporaryEffect) => {
   return a.duration - b.duration;
 };
 const InnerTile = ({ character, isDM }: PartyMemberTileProps) => {
-  const tempEffects = Object.values(character.temporaryEffects ?? {}).toSorted(
-    compareEffects
-  );
+  const tempEffects = character.temporaryEffects
+    ? Object.values(character.temporaryEffects).sort(compareEffects)
+    : [];
 
   return (
     <PartyMemberTileStyle $clickable={isDM}>
