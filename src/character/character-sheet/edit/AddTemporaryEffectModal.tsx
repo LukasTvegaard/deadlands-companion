@@ -79,7 +79,7 @@ export const AddTemporaryEffectModal: React.FC<Props> = ({
           <TextElement>Harmful Effect</TextElement>
           <Checkbox
             isSelected={isHarmful}
-            onChange={(e) => setIsHarmful(!isHarmful)}
+            onChange={() => setIsHarmful(!isHarmful)}
           />
         </FlexRow>
         {errors.map((error) => (
