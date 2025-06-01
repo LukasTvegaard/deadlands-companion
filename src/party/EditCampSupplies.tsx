@@ -18,14 +18,7 @@ import {
 } from "./CampSupplyLogic";
 import { Button } from "../shared/buttons/Button";
 import { Checkbox } from "../shared/buttons/Checkbox";
-
-const CampSuppliesStyle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-  padding-right: 8px;
-`;
+import { CenterRow } from "../shared/rows/CenterRow";
 
 const AddInput = styled.input`
   font-size: 16px;
@@ -162,10 +155,10 @@ export const EditCampSupplies = () => {
         <Spinner />
       ) : party ? (
         <div>
-          <CampSuppliesStyle>
+          <CenterRow>
             <div>Current Camp Supplies:</div>
             <div>{`${campSupplies} / ${campSupplyCapacity}`}</div>
-          </CampSuppliesStyle>
+          </CenterRow>
           {character.isDM ? (
             <Checkbox
               childrenLeft

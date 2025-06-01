@@ -4,10 +4,9 @@ import { Theme } from "../Theme";
 import { Icon } from "../icons/Icon";
 import { Icons } from "../icons/Icons";
 import { StyledLink } from "../shared/StyledLink";
-import { getCampSupplyCapacity } from "./CampSupplyLogic";
 import { CenterRow } from "../shared/rows/CenterRow";
 
-const CampSuppliesWrapper = styled.div`
+const PartyMoneyWrapper = styled.div`
   ${ClickableSurface};
   display: flex;
   align-items: center;
@@ -15,26 +14,16 @@ const CampSuppliesWrapper = styled.div`
   padding: 8px 4px;
 `;
 
-type CampSuppliesProps = {
-  campSupplies?: number;
-  partyMemberCount?: number;
-  hasCarriage?: boolean;
+type PartyMoneyProps = {
+  partyMoney?: number;
 };
-export const CampSupplies = ({
-  campSupplies = 0,
-  partyMemberCount = 1,
-  hasCarriage = false,
-}: CampSuppliesProps) => {
-  const campSupplyCapacity = getCampSupplyCapacity(
-    partyMemberCount,
-    hasCarriage
-  );
+export const PartyMoney = ({ partyMoney = 0 }: PartyMoneyProps) => {
   return (
-    <StyledLink to={`camp-supplies/edit`}>
-      <CampSuppliesWrapper>
+    <StyledLink to={`party-money/edit`}>
+      <PartyMoneyWrapper>
         <CenterRow>
-          <div>Camp Supplies:</div>
-          <div>{`${campSupplies} / ${campSupplyCapacity}`}</div>
+          <div>Party money:</div>
+          <div>{`$${partyMoney}`}</div>
         </CenterRow>
         <Icon
           icon={Icons.ChevronRight}
@@ -42,7 +31,7 @@ export const CampSupplies = ({
           width={24}
           color={Theme.Surface[400]}
         />
-      </CampSuppliesWrapper>
+      </PartyMoneyWrapper>
     </StyledLink>
   );
 };
