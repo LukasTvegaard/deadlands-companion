@@ -6,14 +6,7 @@ import { set } from "../../utils/firebase/DataAccess";
 import { CharacterContext } from "../../DeadlandsCompanion";
 import { Button } from "../../shared/buttons/Button";
 import Page from "../../shared/page/Page";
-
-const CampSuppliesStyle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-  padding-right: 8px;
-`;
+import { CenterRow } from "../../shared/rows/CenterRow";
 
 const InputLabel = styled.div`
   display: flex;
@@ -28,6 +21,7 @@ const AddInput = styled.input`
   width: 175px;
   border-radius: 4px;
   border-width: 1px;
+  margin-bottom: 8px;
 `;
 
 function setMoney(characterKey: string, newMoney: number) {
@@ -69,10 +63,10 @@ export const EditMoney = () => {
       prevLocation={{ path: "/character/gear", name: "Cancel" }}
     >
       <div>
-        <CampSuppliesStyle>
+        <CenterRow>
           <div>Current money:</div>
           <div>{`$${character.currency}`}</div>
-        </CampSuppliesStyle>
+        </CenterRow>
         <div
           style={{
             display: "flex",
@@ -91,7 +85,7 @@ export const EditMoney = () => {
               value={newMoneyValue ?? ""}
               onChange={handleNewMoneyChange}
             />
-            <div style={{ display: "flex", gap: "8px" }}>
+            <div style={{ display: "flex", gap: "16px" }}>
               <Button text={"Add money"} onClick={handleAddMoney}></Button>
               <Button
                 text={"Spend money"}

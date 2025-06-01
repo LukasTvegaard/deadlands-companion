@@ -42,6 +42,7 @@ import { PowerPage } from "./codex/powers/PowerPage";
 import { PowerDetailPage } from "./codex/powers/PowerDetailPage";
 import { HindrancePage } from "./codex/Hindrances/HindrancePage";
 import { HindranceDetailPage } from "./codex/Hindrances/HindranceDetailPage";
+import { EditPartyMoney } from "./party/EditPartyMoney";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
@@ -107,6 +108,7 @@ export const DeadlandsCompanion = ({
           <Route path="create" element={<CreateParty />} />
           <Route path="edit" element={<EditParty />} />
           <Route path="camp-supplies/edit" element={<EditCampSupplies />} />
+          <Route path="party-money/edit" element={<EditPartyMoney />} />
           <Route path=":id/resource" element={<EditResources />} />
           <Route index path="*" element={<PartyOverview />} />
         </Route>

@@ -6,6 +6,7 @@ import { CharacterContext } from "../../DeadlandsCompanion";
 import { StyledLink } from "../../shared/StyledLink";
 import { Icon } from "../../icons/Icon";
 import { Icons } from "../../icons/Icons";
+import { CenterRow } from "../../shared/rows/CenterRow";
 
 const MoneyWrapper = styled.div`
   ${ClickableSurface};
@@ -16,24 +17,16 @@ const MoneyWrapper = styled.div`
   margin-bottom: 8px;
 `;
 
-const MoneyStyle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-  padding-right: 8px;
-`;
-
 export const Money = () => {
   const character = useContext(CharacterContext);
 
   return (
     <StyledLink to={`money`}>
       <MoneyWrapper>
-        <MoneyStyle>
+        <CenterRow>
           <div>Money:</div>
           <div>{`$${character.currency}`}</div>
-        </MoneyStyle>
+        </CenterRow>
         <Icon
           icon={Icons.ChevronRight}
           height={24}

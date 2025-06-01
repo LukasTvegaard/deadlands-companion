@@ -2,9 +2,7 @@ import { equalTo, orderByChild, query, ref } from "firebase/database";
 import { useContext } from "react";
 import { useList, useObjectVal } from "react-firebase-hooks/database";
 
-import { getCharacterFullName } from "../character/character-logic/InfoLogic";
 import { CharacterContext } from "../DeadlandsCompanion";
-import { Button } from "../shared/buttons/Button";
 import Page from "../shared/page/Page";
 import { Spinner } from "../shared/spinner/Spinner";
 import { StyledLink } from "../shared/StyledLink";
@@ -18,34 +16,14 @@ import styled from "styled-components";
 import { snapshotsToValues } from "../utils/firebase/DataFormatting";
 import { PartyMemberTile } from "./PartyMemberTile";
 import { CampSupplies } from "./CampSupplies";
-import { FlexRow } from "../codex/shared/FlexRow";
-import { Theme } from "../Theme";
+import { PartyMoney } from "./PartyMoney";
+import { PartyEmptyState } from "./PartyEmptyState";
 
 const GroupContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 0 24px;
 `;
-
-const PartyEmptyState = ({ character }: { character: Character }) => {
-  if (character.isDM) {
-    return (
-      <>
-        <div>Assemble your campaign party and start your adventure!</div>
-        <StyledLink to={"create"}>
-          <Button text="Create party"></Button>
-        </StyledLink>
-      </>
-    );
-  } else {
-    return (
-      <div>
-        {getCharacterFullName(character)} has not been invited to any parties
-        yet. Ask your DM for an invite!
-      </div>
-    );
-  }
-};
 
 export const PartyOverview = () => {
   const character = useContext(CharacterContext);
@@ -81,6 +59,7 @@ export const PartyOverview = () => {
               </StyledLink>
             </ListTitle>
           ) : null}
+          <PartyMoney partyMoney={party.currency} />
           <CampSupplies
             partyMemberCount={partyCharacters?.length}
             campSupplies={party.campSupplies}
