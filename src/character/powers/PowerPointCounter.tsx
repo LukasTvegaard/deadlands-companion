@@ -12,6 +12,7 @@ type PowerPointCounterProps = {
   powerDetail: PowerDetailType;
 };
 export const PowerPointCounter = ({ powerDetail }: PowerPointCounterProps) => {
+  // TODO: Add additional logic to handle currently created potions. Potions should subtract from both current and max power points,
   const character = useContext(CharacterContext);
   const maxPowerPoints = getMaxPowerPoints(character);
   const currentPowerPoints = Math.min(

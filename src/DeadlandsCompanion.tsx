@@ -43,6 +43,7 @@ import { PowerDetailPage } from "./codex/powers/PowerDetailPage";
 import { HindrancePage } from "./codex/Hindrances/HindrancePage";
 import { HindranceDetailPage } from "./codex/Hindrances/HindranceDetailPage";
 import { EditPartyMoney } from "./party/EditPartyMoney";
+import { Potions } from "./character/potions/Potions";
 
 export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
 
@@ -99,6 +100,7 @@ export const DeadlandsCompanion = ({
             <Route path="edges" element={<EdgesAndHindrances />} />
             <Route path="weapons" element={<Weapons />} />
             <Route path="powers" element={<Powers />} />
+            <Route path="potions" element={<Potions />} />
             <Route path="gear" element={<Gear />} />
             <Route path="gear/money" element={<EditMoney />} />
             <Route path="*" element={<div>Under construction...</div>} />

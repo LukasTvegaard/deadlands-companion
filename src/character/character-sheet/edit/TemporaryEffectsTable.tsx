@@ -36,40 +36,50 @@ export const TemporaryEffectsTable: React.FC<Props> = ({
 }) => {
   return (
     <StyledTable>
-      {tempEffectsList.map((temporaryEffect) => (
-        <tr key={temporaryEffect.name + temporaryEffect.duration}>
-          <td className="item-name">
-            <EffectPill isHarmful={temporaryEffect.isHarmful}>
+      <tbody>
+        {tempEffectsList.map((temporaryEffect) => (
+          <tr key={temporaryEffect.name + temporaryEffect.duration}>
+            <td className="item-name">
+              <EffectPill isHarmful={temporaryEffect.isHarmful}>
+                <TextElement title={temporaryEffect.name}>
+                  {temporaryEffect.name}
+                </TextElement>
+              </EffectPill>
+            </td>
+            <td>
+              <IconButton
+                iconSize={16}
+                icon={Icons.ChevronDown}
+                onClick={() =>
+                  tickTemporaryEffectDuration(
+                    characterId,
+                    temporaryEffect,
+                    true
+                  )
+                }
+              />
+            </td>
+            <td className="item-duration">
               <TextElement title={temporaryEffect.name}>
-                {temporaryEffect.name}
+                {temporaryEffect.duration}
               </TextElement>
-            </EffectPill>
-          </td>
-          <td>
-            <IconButton
-              iconSize={16}
-              icon={Icons.ChevronDown}
-              onClick={() =>
-                tickTemporaryEffectDuration(characterId, temporaryEffect, true)
-              }
-            />
-          </td>
-          <td className="item-duration">
-            <TextElement title={temporaryEffect.name}>
-              {temporaryEffect.duration}
-            </TextElement>
-          </td>
-          <td>
-            <IconButton
-              iconSize={16}
-              icon={Icons.ChevronUp}
-              onClick={() =>
-                tickTemporaryEffectDuration(characterId, temporaryEffect, false)
-              }
-            />
-          </td>
-        </tr>
-      ))}
+            </td>
+            <td>
+              <IconButton
+                iconSize={16}
+                icon={Icons.ChevronUp}
+                onClick={() =>
+                  tickTemporaryEffectDuration(
+                    characterId,
+                    temporaryEffect,
+                    false
+                  )
+                }
+              />
+            </td>
+          </tr>
+        ))}
+      </tbody>
     </StyledTable>
   );
 };

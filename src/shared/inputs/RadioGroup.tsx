@@ -54,16 +54,21 @@ const RadioGroupStyled = styled(RadioGroup)`
   }
 `;
 
+type RadioGroupOption = {
+  value: string;
+  label: string;
+};
+
 interface MyRadioGroupProps extends Omit<RadioGroupProps, "children"> {
-  options: string[];
+  options: RadioGroupOption[];
 }
 
 export function DLRadioGroup({ options, ...props }: MyRadioGroupProps) {
   return (
     <RadioGroupStyled aria-labelledby="radio-group-label" {...props}>
-      {options.map((groupType) => (
-        <Radio key={groupType} value={groupType}>
-          {groupType}
+      {options.map((option) => (
+        <Radio key={option.value} value={option.value}>
+          {option.label}
         </Radio>
       ))}
     </RadioGroupStyled>

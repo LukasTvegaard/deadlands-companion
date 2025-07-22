@@ -18,6 +18,7 @@ export const CharacterMenu = () => {
         {getArcaneBackground(character) ? (
           <IndexLink to="powers" label={"Powers"} />
         ) : null}
+        {/*<IndexLink to="potions" label={"Potions"} />*/}
 
         <IndexLink to="gear" label={"Gear"} />
         <IndexLink to="edges" label={"Edges & Hindrances"} />
