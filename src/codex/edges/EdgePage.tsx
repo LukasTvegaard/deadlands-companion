@@ -144,7 +144,10 @@ export const EdgePage = () => {
               <DLRadioGroup
                 value={groupingBy}
                 onChange={handleGroupingByChange}
-                options={Object.values(EdgeGroupingType)}
+                options={Object.values(EdgeGroupingType).map((groupType) => ({
+                  value: groupType,
+                  label: groupType,
+                }))}
               ></DLRadioGroup>
             </div>
           </div>

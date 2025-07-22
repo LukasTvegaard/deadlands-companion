@@ -7,6 +7,7 @@ export enum Weapon {
   ColtPeacemakerDouble = "ColtPeacemakerDouble",
   ElectricRapier = "ElectricRapier",
   GatlingPistol = "GatlingPistol",
+  HastelisWarClub = "HastelisWarClub",
   HellstrommesCane = "HellstrommesCane",
   HornOfAlquahata = "HornOfAlquahata",
   Tomahawk = "Tomahawk",
