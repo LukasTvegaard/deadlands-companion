@@ -22,8 +22,7 @@ const setPartyId = (characterId: string, partyId: string | null) => {
 type PartyMemberRowBase = {
   character: Character;
 };
-interface PartyMemberRowProps extends PartyMemberRowBase {}
-const PartyMemberRow = ({ character }: PartyMemberRowProps) => {
+const PartyMemberRow = ({ character }: PartyMemberRowBase) => {
   const characterName = getCharacterFullName(character);
 
   const removePartyMember = () => {
