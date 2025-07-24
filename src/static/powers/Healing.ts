@@ -8,7 +8,7 @@ import { StandardRangeMelee } from "../weapons/Range";
 
 const heal: PowerVariantHealing = {
   type: PowerType.Healing,
-  name: "Heal",
+  name: "Healing",
   powerPointCost: 3,
   activationModifier: 0,
   targets: 1,

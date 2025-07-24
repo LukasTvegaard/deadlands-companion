@@ -47,6 +47,16 @@ const ExtensionsPotionPill = styled(PotionPill)`
   background-color: ${Theme.Primary[200]};
 `;
 
+function onConsumePotion(potion: Potion) {
+  if (
+    window.confirm(
+      `Are you sure you want to use Potion of ${potion.powerVariant}?`
+    )
+  ) {
+    consumePotion(potion);
+  }
+}
+
 type PotionRowProps = {
   potion: Potion;
   partyCharacters: Character[];
@@ -74,7 +84,7 @@ export const PotionRow = ({ potion, partyCharacters }: PotionRowProps) => {
             <Button
               text={"Use"}
               disabled={potion.possessedBy !== character.id}
-              onClick={() => consumePotion(potion)}
+              onClick={() => onConsumePotion(potion)}
             />
             <Button
               text={"Give"}
