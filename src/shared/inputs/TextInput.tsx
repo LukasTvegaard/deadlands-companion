@@ -5,6 +5,7 @@ import { FlexCol } from "../../codex/shared/FlexRow";
 export const StyledInput = styled.input({
   padding: Theme.Spacing.small,
   borderRadius: Theme.BorderRadius.small,
+  fontSize: "16px",
   border: "none",
 });
 

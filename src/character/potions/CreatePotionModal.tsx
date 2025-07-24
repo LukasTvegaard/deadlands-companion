@@ -58,6 +58,8 @@ export const CreatePotionModal = ({
     character.id
   );
 
+  const extensionsFormatted = Number.isNaN(extensions) ? 0 : extensions;
+
   function onPowerSelection(powerKey: string) {
     setSelectedPower(powerKey);
     setSelectedPowerVariant(null); // Reset variant when power changes
@@ -114,9 +116,11 @@ export const CreatePotionModal = ({
   );
   const maxPotionPowerPoints = totalPotionPowerPoints - usedPotionPowerPoints;
   const basePowerPointCost = selectedPowerDetailVariant?.powerPointCost ?? 0;
+
   const extensionsCost =
-    isExtendable && extensions
-      ? (selectedPowerDetailVariant.extensionPowerPointCost ?? 0) * extensions
+    isExtendable && extensionsFormatted
+      ? (selectedPowerDetailVariant.extensionPowerPointCost ?? 0) *
+        extensionsFormatted
       : 0;
   const powerPointCost = basePowerPointCost + extensionsCost;
 
@@ -128,7 +132,7 @@ export const CreatePotionModal = ({
         power: selectedPowerDetail.key,
         powerVariant: selectedPowerDetailVariant.name,
         isRaise,
-        extensions,
+        extensions: extensionsFormatted,
         possessedBy: possessionTarget,
         createdBy: character.id,
         powerPointCost,
@@ -170,12 +174,10 @@ export const CreatePotionModal = ({
                     style={{ width: "60px" }}
                     value={extensions}
                     type="number"
+                    inputMode="numeric"
                     min={0}
                     onChange={(e) => {
-                      const value = Number(e.target.value);
-                      if (!Number.isNaN(value)) {
-                        setExtensions(value);
-                      }
+                      setExtensions(Number.parseInt(e.target.value, 10));
                     }}
                   />
                 </FlexRow>
