@@ -35,6 +35,8 @@ const ResourceGrid = styled.div<ResourceGridProps>`
 type ResourceSegmentProps = {
   $clickable?: boolean;
   $empty?: boolean;
+  $stagedForUse?: boolean;
+  $locked?: boolean;
 };
 const ResourceSegment = styled.div<ResourceSegmentProps>`
   position: relative;
@@ -57,6 +59,17 @@ const ResourceSegment = styled.div<ResourceSegmentProps>`
     css`
       background-color: transparent;
       border-right: 1px solid ${props.color};
+    `}
+  ${(props) =>
+    props.$locked &&
+    css`
+      background-color: #43a047;
+      border-color: #43a047;
+    `}
+  ${(props) =>
+    props.$stagedForUse &&
+    css`
+      filter: brightness(1.6);
     `}
   &:first-child {
     border-top-left-radius: 8px;
@@ -101,6 +114,8 @@ const ResourceText = styled.div<ResourceTextProps>`
 
 type ResourceCounterProps = {
   total: number;
+  locked?: number;
+  stagedForUse?: number;
   remaining: number;
   color: string;
   noRemainingText?: string;
@@ -108,11 +123,14 @@ type ResourceCounterProps = {
 };
 export const ResourceCounter = ({
   total,
+  locked = 0,
+  stagedForUse,
   remaining,
   noRemainingText,
   color,
   onResourceSegmentClick,
 }: ResourceCounterProps) => {
+  const max = total - locked;
   const clickable = !!onResourceSegmentClick;
 
   const handleResourceSegmentClick = (val: number): void => {
@@ -121,7 +139,15 @@ export const ResourceCounter = ({
     }
   };
 
-  const totalResourcesList = [...Array(total).keys()].map((val) => val + 1);
+  const maxResourcesList = [...Array(max).keys()].map((val) => val + 1);
+  const lockedResourcesList = [...Array(locked).keys()].map((val) => val + 1);
+
+  const remainingResourcesList = [...Array(remaining).keys()].map(
+    (val) => val + 1
+  );
+  const stagedForUseResourcesList = !stagedForUse
+    ? []
+    : remainingResourcesList.slice(-stagedForUse);
 
   return (
     <ResourceCounterWrapper>
@@ -131,17 +157,22 @@ export const ResourceCounter = ({
         </ResourceBorder>
       ) : (
         <ResourceGrid $clickable={clickable}>
-          {totalResourcesList.map((val) => {
+          {maxResourcesList.map((val) => {
             const showTotalValue = val === remaining;
             const showFivePartValue = clickable && val % 5 === 0;
             const isEmpty = val > remaining;
-            const leftAlign = !clickable && total > 0 && val / total < 0.12;
+            const isStagedForUse = stagedForUseResourcesList.includes(val);
+            const leftAlign =
+              !clickable &&
+              total > 0 &&
+              (val === 1 || val === 2 || val / total < 0.12);
             return (
               <ResourceSegment
                 key={val}
                 color={color}
                 $clickable={clickable}
                 $empty={isEmpty}
+                $stagedForUse={isStagedForUse}
                 onClick={() => handleResourceSegmentClick(val)}
               >
                 {showTotalValue ? (
@@ -156,6 +187,13 @@ export const ResourceCounter = ({
               </ResourceSegment>
             );
           })}
+          {lockedResourcesList.map((val) => (
+            <ResourceSegment
+              key={"locked-" + val}
+              color={color}
+              $locked={true}
+            ></ResourceSegment>
+          ))}
         </ResourceGrid>
       )}
     </ResourceCounterWrapper>

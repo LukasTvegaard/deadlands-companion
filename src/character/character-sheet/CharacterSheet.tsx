@@ -24,6 +24,7 @@ import {
   getToughness,
 } from "../character-logic/DerivedStatLogic";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";
+import { Spacer } from "../../shared/Spacer";
 
 const GroupContainer = styled.div`
   display: grid;
@@ -73,7 +74,7 @@ export const CharacterSheet = () => {
           ></SingleDiceRow>
         </DerivedStatsContainer>
       </ListTile>
-      <br />
+      <Spacer />
       <GroupContainer>
         <ListTile title="Attributes" editLink="edit/attribute">
           {character.attributes

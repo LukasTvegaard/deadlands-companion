@@ -24,13 +24,18 @@ export const GivePotionModal = ({
       label: getCharacterFullName(character),
     })) || [];
 
+  function onGivePotion(value: string) {
+    givePotion(potion, value);
+    onClose();
+  }
+
   return (
     <Modal onOpenChange={onClose} isOpen={true} isDismissable>
-      Potion of {powerDetail?.name}
+      Give Potion of {powerDetail?.name} To:
       <DLRadioGroup
         value={potion.possessedBy}
         options={partyCharacterOptions}
-        onChange={(value: string) => givePotion(potion, value)}
+        onChange={onGivePotion}
       />
     </Modal>
   );
