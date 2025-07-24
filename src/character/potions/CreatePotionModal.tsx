@@ -171,9 +171,12 @@ export const CreatePotionModal = ({
                     value={extensions}
                     type="number"
                     min={0}
-                    onChange={(e) =>
-                      setExtensions(Number.parseInt(e.target.value))
-                    }
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+                      if (!Number.isNaN(value)) {
+                        setExtensions(value);
+                      }
+                    }}
                   />
                 </FlexRow>
               </RowContainer>

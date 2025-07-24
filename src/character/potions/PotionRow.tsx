@@ -83,7 +83,7 @@ export const PotionRow = ({ potion, partyCharacters }: PotionRowProps) => {
             />
           </FlexRow>
         </FlexRow>
-        {notPossessedByCharacter ? (
+        {possessedBy && notPossessedByCharacter ? (
           <TextElement>
             Possessed by: {getCharacterFullName(possessedBy)}
           </TextElement>
