@@ -33,7 +33,8 @@ export const createPotion = async (potionData: PotionData) => {
     `characters/${potionData.createdBy}/powers/${potionData.power}`
   );
   runTransaction(potionPowerRef, (prevPoints) => {
-    return (prevPoints || 0) - potionData.powerPointCost;
+    const newVal = Math.max(0, (prevPoints || 0) - potionData.powerPointCost);
+    return newVal;
   });
 };
 

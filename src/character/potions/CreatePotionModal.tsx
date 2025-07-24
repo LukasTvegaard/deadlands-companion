@@ -23,6 +23,7 @@ import { PowerType } from "../../utils/types/PowerDetailType";
 import { StyledInput } from "../../shared/inputs/TextInput";
 import { TextElement } from "../../shared/text/Text";
 import { createPotion } from "./PotionsService";
+import { ModalTitle } from "../../shared/text/ModalTitle";
 
 const RowContainer = styled.div`
   border-top: 1px solid ${Theme.Surface[600]};
@@ -140,7 +141,7 @@ export const CreatePotionModal = ({
   return (
     <Modal onOpenChange={onClose} isOpen={true} isDismissable>
       <FlexCol $gap={Theme.Spacing.small}>
-        Create New Potion
+        <ModalTitle>Create New Potion</ModalTitle>
         <FlexRow $gap={Theme.Spacing.small}>
           Power:
           <Select

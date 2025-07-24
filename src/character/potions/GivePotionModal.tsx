@@ -5,6 +5,7 @@ import { getPowerDetailByKey } from "../../static/powers/PowerUtil";
 import { getCharacterFullName } from "../character-logic/InfoLogic";
 import { DLRadioGroup } from "../../shared/inputs/RadioGroup";
 import { givePotion } from "./PotionsService";
+import { ModalTitle } from "../../shared/text/ModalTitle";
 
 type GivePotionModalProps = {
   potion: Potion;
@@ -31,7 +32,7 @@ export const GivePotionModal = ({
 
   return (
     <Modal onOpenChange={onClose} isOpen={true} isDismissable>
-      Give Potion of {powerDetail?.name} To:
+      <ModalTitle>Give Potion of {powerDetail?.name} To</ModalTitle>
       <DLRadioGroup
         value={potion.possessedBy}
         options={partyCharacterOptions}
