@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { CharacterContext } from "../../DeadlandsCompanion";
 import Page from "../../shared/page/Page";
@@ -13,36 +13,19 @@ import { snapshotsToValues } from "../../utils/firebase/DataFormatting";
 import { Character } from "../../utils/types/Character";
 import { Button } from "../../shared/buttons/Button";
 import { PotionRow } from "./PotionRow";
-import { Power } from "../../utils/enums/Power";
-import { Potion } from "../../utils/types/Potion";
-
-const mockPotions: Potion[] = [
-  {
-    id: "potion1",
-    power: Power.Smite,
-    isRaise: true,
-    createdBy: "-NaOe2uwRuZAw9LZ1xdi",
-    possessedBy: "-NaOe2uwRuZAw9LZ1xdi",
-    powerPointCost: 5,
-  },
-  {
-    id: "potion2",
-    power: Power.Healing,
-    isRaise: false,
-    createdBy: "-NaOe2uwRuZAw9LZ1xdi",
-    possessedBy: "-NjiDk_0VVFVEADPVps3",
-    powerPointCost: 3,
-  },
-];
+import { CreatePotionModal } from "./CreatePotionModal";
+import { Spinner } from "../../shared/spinner/Spinner";
 
 export const Potions = () => {
+  const [createPotionModalOpen, setCreatePotionModalOpen] = useState(false);
+
   const character = useContext(CharacterContext);
   const potions = character.potions
     ? Object.entries(character.potions).map(([id, potionData]) => ({
         ...potionData,
         id,
       }))
-    : mockPotions;
+    : [];
   const isAlchemist = characterHasEdge(Edge.Alchemy, character);
 
   const partyId = character.partyId || null;
@@ -59,20 +42,39 @@ export const Potions = () => {
       (character) => !character.isDM
     ) ?? [];
 
-  console.log(partyCharacters, partyCharactersLoading);
-
   return (
     <Page pageName="Potions" prevLocation={Locations.CharacterMenu}>
-      <ListTile title={"Potions"} dark>
-        {potions.map((potion) => (
-          <PotionRow
-            key={potion.id}
-            potion={potion}
-            partyCharacters={partyCharacters}
-          />
-        ))}
-      </ListTile>
-      {isAlchemist ? <Button text={"Create Potion"} /> : null}
+      {partyCharactersLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          {createPotionModalOpen ? (
+            <CreatePotionModal
+              partyCharacters={partyCharacters}
+              onClose={() => setCreatePotionModalOpen(false)}
+            />
+          ) : null}
+          <ListTile title={"Potions"} dark>
+            {potions.length > 0 ? (
+              potions.map((potion) => (
+                <PotionRow
+                  key={potion.id}
+                  potion={potion}
+                  partyCharacters={partyCharacters}
+                />
+              ))
+            ) : (
+              <div>You don't have any potions...</div>
+            )}
+          </ListTile>
+          {isAlchemist ? (
+            <Button
+              text={"Create Potion"}
+              onClick={() => setCreatePotionModalOpen(true)}
+            />
+          ) : null}
+        </>
+      )}
     </Page>
   );
 };

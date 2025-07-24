@@ -6,8 +6,8 @@ import { Theme } from "../../../Theme";
 import { TemporaryEffect } from "../../../utils/types/TemporaryEffect";
 import { tickTemporaryEffectDuration } from "../../../services/temporary-effects-service";
 
-const EffectPill = styled.div<{ isHarmful: boolean }>(({ isHarmful }) => ({
-  backgroundColor: isHarmful ? Theme.Health : Theme.Stamina,
+const EffectPill = styled.div<{ $isHarmful: boolean }>(({ $isHarmful }) => ({
+  backgroundColor: $isHarmful ? Theme.Health : Theme.Stamina,
   color: "#fff",
   padding: `${Theme.Spacing.small} ${Theme.Spacing.medium}`,
   borderRadius: Theme.BorderRadius.large,
@@ -40,7 +40,7 @@ export const TemporaryEffectsTable: React.FC<Props> = ({
         {tempEffectsList.map((temporaryEffect) => (
           <tr key={temporaryEffect.name + temporaryEffect.duration}>
             <td className="item-name">
-              <EffectPill isHarmful={temporaryEffect.isHarmful}>
+              <EffectPill $isHarmful={temporaryEffect.isHarmful}>
                 <TextElement title={temporaryEffect.name}>
                   {temporaryEffect.name}
                 </TextElement>

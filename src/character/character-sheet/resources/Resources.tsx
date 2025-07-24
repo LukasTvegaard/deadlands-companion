@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CharacterContext } from "../../../DeadlandsCompanion";
 import {
-  getMaxPowerPoints,
+  getTotalPowerPoints,
   shouldShowPowerPoints,
 } from "../../character-logic/PowerPointLogic";
 import { ResourceCounter } from "./ResourceCounter";
@@ -79,7 +79,7 @@ export const Resources = () => {
             <ResourceSegment>
               Power Points
               <ResourceCounter
-                total={getMaxPowerPoints(character)}
+                total={getTotalPowerPoints(character)}
                 remaining={currentPowerPoints}
                 noRemainingText="Out of Power Points"
                 color={Theme.PowerPoints}

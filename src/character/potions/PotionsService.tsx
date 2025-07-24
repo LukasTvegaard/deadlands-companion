@@ -1,28 +1,95 @@
+import { push, ref, remove, runTransaction } from "firebase/database";
+import { database } from "../../utils/firebase/Firebase";
 import { Potion, PotionData } from "../../utils/types/Potion";
+import { set } from "../../utils/firebase/DataAccess";
 
 export const createPotion = async (potionData: PotionData) => {
+  const db = database();
+
+  // Add the potion to the creator's potion list.
+  const creatorPotionsRef = ref(
+    db,
+    `characters/${potionData.createdBy}/potions`
+  );
+  const newPotionRef = push(creatorPotionsRef);
+  set<PotionData>(newPotionRef, potionData);
+
+  // If targetCharacterId is not the creator, add the potion to the target character's potion list.
+  // IMPORTANT: When adding the potion, set is used rather than push to ensure the potion ID is consistent.
+  if (
+    potionData.possessedBy &&
+    potionData.possessedBy !== potionData.createdBy
+  ) {
+    const targetPotionsRef = ref(
+      db,
+      `characters/${potionData.possessedBy}/potions/${newPotionRef.key}`
+    );
+    set<PotionData>(targetPotionsRef, potionData);
+  }
+
   // Reduce the creator's current power points by the potion's powerPointCost.
-  console.log("Created potion: ", potionData);
-  return null;
+  const potionPowerRef = ref(
+    db,
+    `characters/${potionData.createdBy}/powers/${potionData.power}`
+  );
+  runTransaction(potionPowerRef, (prevPoints) => {
+    const newVal = Math.max(0, (prevPoints || 0) - potionData.powerPointCost);
+    return newVal;
+  });
 };
 
 export const givePotion = async (potion: Potion, targetCharacterId: string) => {
+  const db = database();
+
   // If potion is not currently possessed by the creator, remove the potion from the person currently possessing it.
+  if (potion.possessedBy && potion.possessedBy !== potion.createdBy) {
+    const currentPossessionRef = ref(
+      db,
+      `characters/${potion.possessedBy}/potions/${potion.id}`
+    );
+    remove(currentPossessionRef);
+  }
 
   // If targetCharacterId is not the creator, add the potion to the target character's potion list.
-  // IMPORTANT: When adding the potion, use set rather than push to ensure the potion ID is consistent.
-  // The potion ID should be the same for both the creator and the person who possesses it.
+  // IMPORTANT: When adding the potion, set is used rather than push to ensure the potion ID is consistent.
+  if (targetCharacterId !== potion.createdBy) {
+    const newOwnerPotionsRef = ref(
+      db,
+      `characters/${targetCharacterId}/potions/${potion.id}`
+    );
+    set<PotionData>(newOwnerPotionsRef, {
+      ...potion,
+      possessedBy: targetCharacterId,
+    });
+  }
 
-  // Update the possessedby field of the creator's replica of the potion to the target character's ID.
-
-  console.log(`Giving potion ${potion.id} to character ${targetCharacterId}`);
-  return null;
+  // Update the possessedBy field of the creator's replica of the potion to the target character's ID.
+  const creatorPotionRef = ref(
+    db,
+    `characters/${potion.createdBy}/potions/${potion.id}`
+  );
+  set(creatorPotionRef, {
+    ...potion,
+    possessedBy: targetCharacterId,
+  });
 };
 
 export const consumePotion = async (potion: Potion) => {
-  // If potion is not currently possessed by the creator, remove the potion from the creator as well.
+  const db = database();
 
-  // Remove the potion from the consumer's potion list.
-  console.log(`Using potion ${potion.id}`);
-  return null;
+  // Remove the potion from the creator's potion list.
+  const potionRef = ref(
+    db,
+    `characters/${potion.createdBy}/potions/${potion.id}`
+  );
+  remove(potionRef);
+
+  // If potion is not currently possessed by the creator, remove the potion from the consumer as well.
+  if (potion.possessedBy && potion.possessedBy !== potion.createdBy) {
+    const targetPotionRef = ref(
+      db,
+      `characters/${potion.possessedBy}/potions/${potion.id}`
+    );
+    remove(targetPotionRef);
+  }
 };

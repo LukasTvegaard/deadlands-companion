@@ -9,7 +9,7 @@ import Page from "../../../shared/page/Page";
 import { database } from "../../../utils/firebase/Firebase";
 import { Locations } from "../../../utils/Location";
 import {
-  getMaxPowerPoints,
+  getTotalPowerPoints,
   shouldShowPowerPoints,
 } from "../../character-logic/PowerPointLogic";
 import { ResourceCounter } from "../resources/ResourceCounter";
@@ -98,7 +98,7 @@ export const EditResources = () => {
   const maxStamina = 3;
 
   const showPowerPoints = shouldShowPowerPoints(character);
-  const maxPowerPoints = getMaxPowerPoints(character);
+  const maxPowerPoints = getTotalPowerPoints(character);
 
   const updateWounds = (newRemainingHealth: number) => {
     const newWounds = maxHealth - newRemainingHealth;

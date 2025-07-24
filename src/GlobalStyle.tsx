@@ -66,6 +66,7 @@ export const GlobalStyle = createGlobalStyle`
       border: 1px solid #3f3f3f;
       outline: none;
       max-width: 300px;
+      margin-top: -68px;
       padding: 16px;
 
       &[data-entering] {

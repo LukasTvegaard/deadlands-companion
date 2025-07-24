@@ -5,7 +5,7 @@ import { getCharacterFullName } from "../character/character-logic/InfoLogic";
 import { ResourceCounter } from "../character/character-sheet/resources/ResourceCounter";
 import { maxHealth, maxStamina } from "../shared/Constants";
 import {
-  getMaxPowerPoints,
+  getTotalPowerPoints,
   shouldShowPowerPoints,
 } from "../character/character-logic/PowerPointLogic";
 import { StyledLink } from "../shared/StyledLink";
@@ -70,7 +70,7 @@ const InnerTile = ({ character, isDM }: PartyMemberTileProps) => {
       />
       {shouldShowPowerPoints(character) ? (
         <ResourceCounter
-          total={getMaxPowerPoints(character)}
+          total={getTotalPowerPoints(character)}
           remaining={character.currentPowerPoints}
           noRemainingText="Out of Power Points"
           color={Theme.PowerPoints}

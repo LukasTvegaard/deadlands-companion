@@ -9,6 +9,7 @@ import { Edge } from "../../utils/enums";
 import { EdgeHindranceRow } from "./EdgeHindranceRow";
 import { Hindrances } from "../../static/hindrances/HindranceList";
 import { Hindrance } from "../../utils/enums/Hindrance";
+import { Spacer } from "../../shared/Spacer";
 
 export const EdgesAndHindrances = () => {
   const character = useContext(CharacterContext);
@@ -29,7 +30,7 @@ export const EdgesAndHindrances = () => {
             })
           : null}
       </ListTile>
-      <br />
+      <Spacer />
       <ListTile
         title={"Hindrances"}
         editLink={`${Locations.HindrancePage.path}`}
