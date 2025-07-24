@@ -4,7 +4,6 @@ import { Theme } from "../../Theme";
 export const ModalTitle = styled.p`
   margin: 0;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 14px;
   color: ${Theme.Primary[500]};
-  margin-bottom: ${Theme.Spacing.small};
 `;

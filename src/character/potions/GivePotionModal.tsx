@@ -1,11 +1,14 @@
 import { Modal } from "react-aria-components";
+
+import { FlexCol } from "../../codex/shared/FlexRow";
+import { DLRadioGroup } from "../../shared/inputs/RadioGroup";
+import { ModalTitle } from "../../shared/text/ModalTitle";
+import { getPowerDetailByKey } from "../../static/powers/PowerUtil";
+import { Theme } from "../../Theme";
 import { Character } from "../../utils/types/Character";
 import { Potion } from "../../utils/types/Potion";
-import { getPowerDetailByKey } from "../../static/powers/PowerUtil";
 import { getCharacterFullName } from "../character-logic/InfoLogic";
-import { DLRadioGroup } from "../../shared/inputs/RadioGroup";
 import { givePotion } from "./PotionsService";
-import { ModalTitle } from "../../shared/text/ModalTitle";
 
 type GivePotionModalProps = {
   potion: Potion;
@@ -32,12 +35,14 @@ export const GivePotionModal = ({
 
   return (
     <Modal onOpenChange={onClose} isOpen={true} isDismissable>
-      <ModalTitle>Give Potion of {powerDetail?.name} To</ModalTitle>
-      <DLRadioGroup
-        value={potion.possessedBy}
-        options={partyCharacterOptions}
-        onChange={onGivePotion}
-      />
+      <FlexCol $gap={Theme.Spacing.small}>
+        <ModalTitle>Give Potion of {powerDetail?.name} To</ModalTitle>
+        <DLRadioGroup
+          value={potion.possessedBy}
+          options={partyCharacterOptions}
+          onChange={onGivePotion}
+        />
+      </FlexCol>
     </Modal>
   );
 };
