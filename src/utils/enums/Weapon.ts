@@ -10,6 +10,9 @@ export enum Weapon {
   HastelisWarClub = "HastelisWarClub",
   HellstrommesCane = "HellstrommesCane",
   HornOfAlquahata = "HornOfAlquahata",
+  LeMatGrapeshotDouble = "LematGrapeshotDouble",
+  LeMatGrapeshotShotgun = "LematGrapeshotShotgun",
+  Swordcane = "Swordcane",
   Tomahawk = "Tomahawk",
   UnhallowedBlade = "UnhallowedBlade",
 }
