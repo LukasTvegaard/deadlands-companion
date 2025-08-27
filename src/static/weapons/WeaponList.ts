@@ -12,7 +12,7 @@ import { HastelisWarClub } from "./HastelisWarClub";
 import { HellstrommesCane } from "./HellstrommesCane";
 import { HornOfAlquahata } from "./HornOfAlquahata";
 import { LeMatGrapeshotDouble } from "./LeMatGrapeshotDouble";
-import { LeMatGrapeshotShotgun } from "./LematGrapeshotShotgun";
+import { LeMatGrapeshotShotgun } from "./LeMatGrapeshotShotgun";
 import { SwordCane } from "./SwordCane";
 import { Tomahawk } from "./Tomahawk";
 import { UnhallowedBlade } from "./UnhallowedBlade";
