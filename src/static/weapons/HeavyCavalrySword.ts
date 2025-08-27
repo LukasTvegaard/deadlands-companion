@@ -1,13 +1,12 @@
 import { Attribute, DieType, Skill } from "../../utils/enums";
 import { Weapon } from "../../utils/enums/Weapon";
-import { Effect, EffectVariant } from "../../utils/types/Effect";
+import { Effect } from "../../utils/types/Effect";
 import { StandardRangeMelee } from "./Range";
 import {
   NoAmmoWeaponDetail,
   WeaponAttack,
   WeaponType,
 } from "../../utils/types/WeaponDetailType";
-import { DerivedStat } from "../../utils/enums/DerivedStat";
 
 const attacks: WeaponAttack[] = [
   {
@@ -16,7 +15,7 @@ const attacks: WeaponAttack[] = [
     attackModifier: 0,
     rateOfFire: 1,
     damage: {
-      dieTypes: [Attribute.Strength, DieType.D4],
+      dieTypes: [Attribute.Strength, DieType.D8],
       damageModifier: 0,
     },
     ammoCost: 0,
@@ -24,17 +23,11 @@ const attacks: WeaponAttack[] = [
   },
 ];
 
-const effects: Effect[] = [
-  {
-    target: DerivedStat.Parry,
-    effectVariant: EffectVariant.ModifyFlat,
-    value: 1,
-  },
-];
+const effects: Effect[] = [];
 
-export const SwordCane: NoAmmoWeaponDetail = {
-  key: Weapon.Swordcane,
-  name: "Sword Cane",
+export const HeavyCavalrySword: NoAmmoWeaponDetail = {
+  key: Weapon.HeavyCavalrySword,
+  name: "Heavy Cavalry Sword",
   type: WeaponType.NoAmmo,
   armorPen: 0,
   attacks: attacks,

@@ -9,6 +9,7 @@ import { ColtPeacemakerSingle } from "./ColtPeacemakerSingle";
 import { ElectricRapier } from "./ElectricRapier";
 import { GatlingPistol } from "./GatlingPistol";
 import { HastelisWarClub } from "./HastelisWarClub";
+import { HeavyCavalrySword } from "./HeavyCavalrySword";
 import { HellstrommesCane } from "./HellstrommesCane";
 import { HornOfAlquahata } from "./HornOfAlquahata";
 import { LeMatGrapeshotDouble } from "./LeMatGrapeshotDouble";
@@ -30,6 +31,7 @@ export const Weapons: WeaponDetails = {
   [Weapon.ElectricRapier]: ElectricRapier,
   [Weapon.GatlingPistol]: GatlingPistol,
   [Weapon.HastelisWarClub]: HastelisWarClub,
+  [Weapon.HeavyCavalrySword]: HeavyCavalrySword,
   [Weapon.HellstrommesCane]: HellstrommesCane,
   [Weapon.HornOfAlquahata]: HornOfAlquahata,
   [Weapon.LeMatGrapeshotDouble]: LeMatGrapeshotDouble,
