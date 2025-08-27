@@ -11,6 +11,9 @@ import { GatlingPistol } from "./GatlingPistol";
 import { HastelisWarClub } from "./HastelisWarClub";
 import { HellstrommesCane } from "./HellstrommesCane";
 import { HornOfAlquahata } from "./HornOfAlquahata";
+import { LeMatGrapeshotDouble } from "./LeMatGrapeshotDouble";
+import { LeMatGrapeshotShotgun } from "./LematGrapeshotShotgun";
+import { SwordCane } from "./SwordCane";
 import { Tomahawk } from "./Tomahawk";
 import { UnhallowedBlade } from "./UnhallowedBlade";
 
@@ -29,6 +32,9 @@ export const Weapons: WeaponDetails = {
   [Weapon.HastelisWarClub]: HastelisWarClub,
   [Weapon.HellstrommesCane]: HellstrommesCane,
   [Weapon.HornOfAlquahata]: HornOfAlquahata,
+  [Weapon.LeMatGrapeshotDouble]: LeMatGrapeshotDouble,
+  [Weapon.LeMatGrapeshotShotgun]: LeMatGrapeshotShotgun,
+  [Weapon.Swordcane]: SwordCane,
   [Weapon.Tomahawk]: Tomahawk,
   [Weapon.UnhallowedBlade]: UnhallowedBlade,
 };
