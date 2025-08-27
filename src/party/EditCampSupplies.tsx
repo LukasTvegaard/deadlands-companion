@@ -4,7 +4,6 @@ import { useContext, useState } from "react";
 import { useList, useObjectVal } from "react-firebase-hooks/database";
 import styled from "styled-components";
 
-import { CharacterContext } from "../DeadlandsCompanion";
 import Page from "../shared/page/Page";
 import { Spinner } from "../shared/spinner/Spinner";
 import { set } from "../utils/firebase/DataAccess";
@@ -19,6 +18,7 @@ import {
 import { Button } from "../shared/buttons/Button";
 import { Checkbox } from "../shared/buttons/Checkbox";
 import { CenterRow } from "../shared/rows/CenterRow";
+import { CharacterContext } from "../CharacterContext";
 
 const AddInput = styled.input`
   font-size: 16px;

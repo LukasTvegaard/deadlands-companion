@@ -3,7 +3,6 @@ import { partition } from "lodash";
 import { useContext } from "react";
 import { useList } from "react-firebase-hooks/database";
 
-import { CharacterContext } from "../DeadlandsCompanion";
 import Page from "../shared/page/Page";
 import { Spinner } from "../shared/spinner/Spinner";
 import { database } from "../utils/firebase/Firebase";
@@ -13,6 +12,7 @@ import { getCharacterFullName } from "../character/character-logic/InfoLogic";
 import { ListTitle } from "../shared/text/ListTitle";
 import { set } from "../utils/firebase/DataAccess";
 import { snapshotsToValues } from "../utils/firebase/DataFormatting";
+import { CharacterContext } from "../CharacterContext";
 
 const setPartyId = (characterId: string, partyId: string | null) => {
   const partyIdRef = ref(database(), `characters/${characterId}/partyId`);

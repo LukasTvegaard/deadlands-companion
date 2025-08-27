@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { styled } from "styled-components";
-import { CharacterContext } from "../../DeadlandsCompanion";
 import {
   getCharacterClass,
   getCharacterFullName,
@@ -8,6 +7,7 @@ import {
 import { Theme } from "../../Theme";
 import { StyledLink } from "../../shared/StyledLink";
 import { ClickableSurface } from "../../shared/ClickableSurface";
+import { CharacterContext } from "../../CharacterContext";
 
 const CharacterInfoWrapper = styled.div`
   ${ClickableSurface};

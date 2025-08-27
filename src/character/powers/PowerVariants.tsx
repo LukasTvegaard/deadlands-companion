@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import { FlexRow } from "../../codex/shared/FlexRow";
 import { Button } from "../../shared/buttons/Button";
 

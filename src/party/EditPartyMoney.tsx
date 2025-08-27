@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import { database } from "../utils/firebase/Firebase";
 import { set } from "../utils/firebase/DataAccess";
-import { CharacterContext } from "../DeadlandsCompanion";
 import { Button } from "../shared/buttons/Button";
 import Page from "../shared/page/Page";
 import { useObjectVal } from "react-firebase-hooks/database";
@@ -13,6 +12,7 @@ import { PartyEmptyState } from "./PartyEmptyState";
 import { getCharacterFullName } from "../character/character-logic/InfoLogic";
 import { CenterRow } from "../shared/rows/CenterRow";
 import { RowStyle } from "../shared/rows/Row.styled";
+import { CharacterContext } from "../CharacterContext";
 
 const InputLabel = styled.div`
   display: flex;

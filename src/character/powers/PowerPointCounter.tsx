@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import { Button } from "../../shared/buttons/Button";
 import { FlexRow } from "../../codex/shared/FlexRow";
 import { PowerDetailType } from "../../utils/types/PowerDetailType";

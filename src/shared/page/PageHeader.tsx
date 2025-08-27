@@ -4,8 +4,8 @@ import { Theme } from "./../../Theme";
 import { IconButton } from "../buttons/IconButton";
 import { Icons } from "../../icons/Icons";
 import { useContext } from "react";
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { StyledNavLink } from "../StyledLink";
+import { CharacterContext } from "../../CharacterContext";
 
 const PageHeaderStyle = styled.div`
   display: flex;

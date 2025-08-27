@@ -20,9 +20,9 @@ import { Label, Modal } from "react-aria-components";
 import { DLRadioGroup } from "../../shared/inputs/RadioGroup";
 import { Checkbox } from "../../shared/buttons/Checkbox";
 import { edgeHasRequirements } from "./EdgeRequirementFilterUtil";
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { Character } from "../../utils/types/Character";
 import { Theme } from "../../Theme";
+import { CharacterContext } from "../../CharacterContext";
 
 const EdgeGroupsWrapper = styled.div`
   display: flex;

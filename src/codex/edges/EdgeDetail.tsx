@@ -1,4 +1,3 @@
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { Edge } from "../../utils/enums";
 import { EdgeDetailType } from "../../utils/interfaces/EdgeDetail";
 import { useContext } from "react";
@@ -19,6 +18,7 @@ import {
   hasSkillRequirement,
   hasStatRequirement,
 } from "./EdgeRequirementFilterUtil";
+import { CharacterContext } from "../../CharacterContext";
 
 const RequirementBlock = styled.div`
   margin-bottom: 12px;

@@ -9,8 +9,8 @@ import { WeaponAttacks } from "./WeaponAttacks";
 import { Checkbox } from "../../shared/buttons/Checkbox";
 import { setTrademarkWeapon } from "./WeaponDataAccess";
 import { useContext } from "react";
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { FlexRow } from "../../codex/shared/FlexRow";
+import { CharacterContext } from "../../CharacterContext";
 
 const WeaponRowStyle = styled.div`
   display: flex;

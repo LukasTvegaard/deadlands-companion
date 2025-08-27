@@ -7,7 +7,7 @@ import { database } from "../utils/firebase/Firebase";
 import { styled } from "styled-components";
 import { set } from "../utils/firebase/DataAccess";
 import { Party } from "../utils/types/Party";
-import { CharacterContext } from "../DeadlandsCompanion";
+import { CharacterContext } from "../CharacterContext";
 
 type SetPartyInput = Omit<Party, "id">;
 

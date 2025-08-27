@@ -1,4 +1,3 @@
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { useContext } from "react";
 import { database } from "../../utils/firebase/Firebase";
 import { ref, set } from "firebase/database";
@@ -6,6 +5,7 @@ import { WeaponDetailType } from "../../utils/types/WeaponDetailType";
 import { characterHasWeapon } from "../../static/weapons/WeaponUtil";
 import { Weapon } from "../../utils/enums/Weapon";
 import { Button } from "../../shared/buttons/Button";
+import { CharacterContext } from "../../CharacterContext";
 
 const addWeapon = (characterKey: string, weaponKey: Weapon) => {
   const db = database();

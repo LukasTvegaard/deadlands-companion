@@ -1,6 +1,6 @@
 import { AmmoWeaponDetail } from "../../utils/types/WeaponDetailType";
 import { useContext } from "react";
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import { updateAmmo } from "./WeaponDataAccess";
 import { Button } from "../../shared/buttons/Button";
 import { Icon } from "../../icons/Icon";

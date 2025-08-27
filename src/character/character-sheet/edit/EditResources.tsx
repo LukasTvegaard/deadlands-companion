@@ -2,7 +2,7 @@ import { ref, set } from "firebase/database";
 import { useContext, useState } from "react";
 import { styled } from "styled-components";
 
-import { CharacterContext } from "../../../DeadlandsCompanion";
+import { CharacterContext } from "../../../CharacterContext";
 import { Icons } from "../../../icons/Icons";
 import { IconButton } from "../../../shared/buttons/IconButton";
 import Page from "../../../shared/page/Page";

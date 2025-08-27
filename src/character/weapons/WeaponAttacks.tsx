@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { FlexRow } from "../../codex/shared/FlexRow";
 import { Button } from "../../shared/buttons/Button";
 import {
@@ -19,6 +18,7 @@ import { getDamage } from "../character-logic/roll-logic/DamageLogic";
 import { Character } from "../../utils/types/Character";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";
 import { Edge } from "../../utils/enums";
+import { CharacterContext } from "../../CharacterContext";
 
 const Attack = styled.div`
   background-color: ${Theme.Surface[300]};

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import Page from "../../shared/page/Page";
 import { ListTile } from "../../shared/tiles/ListTile";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";
