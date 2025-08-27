@@ -1,7 +1,7 @@
 import { ref, set } from "firebase/database";
 import { useContext } from "react";
 
-import { CharacterContext } from "../../../DeadlandsCompanion";
+import { CharacterContext } from "../../../CharacterContext";
 import Page from "../../../shared/page/Page";
 import {
   DieType,

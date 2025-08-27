@@ -4,7 +4,7 @@ import { GivePotionModal } from "./GivePotionModal";
 import { Button } from "../../shared/buttons/Button";
 import { Character } from "../../utils/types/Character";
 import { consumePotion } from "./PotionsService";
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import { getCharacterFullName } from "../character-logic/InfoLogic";
 import { FlexCol, FlexRow } from "../../codex/shared/FlexRow";
 import { Theme } from "../../Theme";

@@ -1,4 +1,3 @@
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { useContext } from "react";
 import { database } from "../../utils/firebase/Firebase";
 import { ref, set } from "firebase/database";
@@ -6,6 +5,7 @@ import { characterHasPower } from "../../static/powers/PowerUtil";
 import { PowerDetailType } from "../../utils/types/PowerDetailType";
 import { Power } from "../../utils/enums/Power";
 import { Button } from "../../shared/buttons/Button";
+import { CharacterContext } from "../../CharacterContext";
 
 const addPower = (characterKey: string, powerKey: Power) => {
   const db = database();

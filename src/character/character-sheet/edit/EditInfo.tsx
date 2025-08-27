@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { CharacterContext } from "../../../DeadlandsCompanion";
+import { CharacterContext } from "../../../CharacterContext";
 import Page from "../../../shared/page/Page";
 import { styled } from "styled-components";
 import { Button } from "../../../shared/buttons/Button";

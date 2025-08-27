@@ -2,7 +2,6 @@ import { equalTo, orderByChild, query, ref } from "firebase/database";
 import { useContext } from "react";
 import { useList, useObjectVal } from "react-firebase-hooks/database";
 
-import { CharacterContext } from "../DeadlandsCompanion";
 import Page from "../shared/page/Page";
 import { Spinner } from "../shared/spinner/Spinner";
 import { StyledLink } from "../shared/StyledLink";
@@ -18,6 +17,7 @@ import { PartyMemberTile } from "./PartyMemberTile";
 import { CampSupplies } from "./CampSupplies";
 import { PartyMoney } from "./PartyMoney";
 import { PartyEmptyState } from "./PartyEmptyState";
+import { CharacterContext } from "../CharacterContext";
 
 const GroupContainer = styled.div`
   display: grid;

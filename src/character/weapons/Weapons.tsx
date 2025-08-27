@@ -1,6 +1,5 @@
 import { useContext } from "react";
 
-import { CharacterContext } from "../../DeadlandsCompanion";
 import Page from "../../shared/page/Page";
 import { ListTile } from "../../shared/tiles/ListTile";
 import { Locations } from "../../utils/Location";
@@ -9,6 +8,7 @@ import { getCharacterWeaponDetails } from "../../static/weapons/WeaponUtil";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";
 import { Edge } from "../../utils/enums";
 import { Resources } from "../character-sheet/resources/Resources";
+import { CharacterContext } from "../../CharacterContext";
 
 export const Weapons = () => {
   const character = useContext(CharacterContext);

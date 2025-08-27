@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ClickableSurface } from "../../shared/ClickableSurface";
 import { Theme } from "../../Theme";
 import { useContext } from "react";
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import { StyledLink } from "../../shared/StyledLink";
 import { Icon } from "../../icons/Icon";
 import { Icons } from "../../icons/Icons";

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import Page from "../../shared/page/Page";
 import { ListTile } from "../../shared/tiles/ListTile";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";

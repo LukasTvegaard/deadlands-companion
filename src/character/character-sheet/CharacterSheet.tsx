@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { styled } from "styled-components";
 
-import { CharacterContext } from "../../DeadlandsCompanion";
 import Page from "../../shared/page/Page";
 import { SingleDiceRow, SingleValueRow } from "../../shared/rows/SingleDiceRow";
 import { ListTile } from "../../shared/tiles/ListTile";
@@ -25,6 +24,7 @@ import {
 } from "../character-logic/DerivedStatLogic";
 import { characterHasEdge } from "../../static/edges/EdgeUtil";
 import { Spacer } from "../../shared/Spacer";
+import { CharacterContext } from "../../CharacterContext";
 
 const GroupContainer = styled.div`
   display: grid;

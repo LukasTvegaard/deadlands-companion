@@ -2,9 +2,9 @@ import Page from "../shared/page/Page";
 import { Index } from "../shared/index/Index";
 import { IndexLink } from "../shared/index/IndexLink";
 import { useContext } from "react";
-import { CharacterContext } from "../DeadlandsCompanion";
 import { getArcaneBackground } from "./character-logic/ArcaneBackgroundLogic";
 import { Resources } from "./character-sheet/resources/Resources";
+import { CharacterContext } from "../CharacterContext";
 
 export const CharacterMenu = () => {
   const character = useContext(CharacterContext);

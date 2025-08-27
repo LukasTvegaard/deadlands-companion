@@ -1,12 +1,12 @@
 import { ref, set } from "firebase/database";
 import { useContext } from "react";
 
-import { CharacterContext } from "../../../DeadlandsCompanion";
 import { DiceRow } from "../../../shared/rows/DiceRow";
 import Page from "../../../shared/page/Page";
 import { Attribute, DieType } from "../../../utils/enums";
 import { database } from "../../../utils/firebase/Firebase";
 import { Locations } from "../../../utils/Location";
+import { CharacterContext } from "../../../CharacterContext";
 
 type ChangeAttributeDieTypeInput = {
   characterKey: string;

@@ -1,5 +1,4 @@
 import { ref } from "firebase/database";
-import React from "react";
 import { useObjectVal } from "react-firebase-hooks/database";
 import {
   createBrowserRouter,
@@ -44,8 +43,7 @@ import { HindrancePage } from "./codex/Hindrances/HindrancePage";
 import { HindranceDetailPage } from "./codex/Hindrances/HindranceDetailPage";
 import { EditPartyMoney } from "./party/EditPartyMoney";
 import { Potions } from "./character/potions/Potions";
-
-export const CharacterContext = React.createContext<Character>({} as Character); // Little bit of a hack since CharacterContext is only ever used with a defined Character value.
+import { CharacterContext } from "./CharacterContext";
 
 const Layout = ({ isDM }: { isDM?: boolean }) => {
   useScrollRestoration();

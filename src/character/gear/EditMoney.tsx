@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import { database } from "../../utils/firebase/Firebase";
 import { set } from "../../utils/firebase/DataAccess";
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import { Button } from "../../shared/buttons/Button";
 import Page from "../../shared/page/Page";
 import { CenterRow } from "../../shared/rows/CenterRow";

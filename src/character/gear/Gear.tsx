@@ -4,7 +4,7 @@ import { Locations } from "../../utils/Location";
 import { Money } from "./Money";
 import EditableItemEntry from "./EditableItemEntry";
 import { useContext } from "react";
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import { Icons } from "../../icons/Icons";
 import { addCustomItem } from "./CustomItemService";
 import { IconButton } from "../../shared/buttons/IconButton";

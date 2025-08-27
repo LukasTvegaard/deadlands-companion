@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Theme } from "../../Theme";
 import { CustomItem } from "../../utils/types/CustomItem";
 import { Modal } from "react-aria-components";
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import { Button } from "../../shared/buttons/Button";
 import { useLongPress } from "use-long-press";
 import { deleteCustomitem } from "./CustomItemService";

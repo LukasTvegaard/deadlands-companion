@@ -2,11 +2,11 @@ import { styled } from "styled-components";
 
 import { Button } from "../shared/buttons/Button";
 import { useContext, useState } from "react";
-import { CharacterContext } from "../DeadlandsCompanion";
 import { database } from "../utils/firebase/Firebase";
 import { ref, remove } from "firebase/database";
 import { getCharacterFullName } from "../character/character-logic/InfoLogic";
 import { Theme } from "../Theme";
+import { CharacterContext } from "../CharacterContext";
 
 type DeleteCharacterInput = {
   characterId: string;

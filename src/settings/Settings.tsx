@@ -3,10 +3,10 @@ import { Button } from "../shared/buttons/Button";
 import Page from "../shared/page/Page";
 import { signOutWithGoogle } from "../utils/firebase/Firebase";
 import { useContext, useState } from "react";
-import { CharacterContext } from "../DeadlandsCompanion";
 import { DeleteCharacterModal } from "./DeleteCharacterModal";
 import { getCharacterFullName } from "../character/character-logic/InfoLogic";
 import { Locations } from "../utils/Location";
+import { CharacterContext } from "../CharacterContext";
 
 const SettingsStyle = styled.div`
   display: flex;

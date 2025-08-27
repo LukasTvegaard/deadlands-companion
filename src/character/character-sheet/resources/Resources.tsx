@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CharacterContext } from "../../../DeadlandsCompanion";
+import { CharacterContext } from "../../../CharacterContext";
 import {
   getTotalPowerPoints,
   shouldShowPowerPoints,

@@ -4,9 +4,9 @@ import { getEnumByString } from "../../utils/enums/EnumUtil";
 import { getRoll } from "../character-logic/roll-logic/RollLogic";
 import Page from "../../shared/page/Page";
 import { useContext } from "react";
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { Rollable, rollableIsSkill } from "../../utils/types/Rollable";
 import { Locations } from "../../utils/Location";
+import { CharacterContext } from "../../CharacterContext";
 
 /** DEPRECATED */
 const getRollTarget = (key: string | undefined): Rollable | undefined => {

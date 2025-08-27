@@ -6,7 +6,7 @@ import { Modal } from "react-aria-components";
 import { Character } from "../../utils/types/Character";
 import { getCharacterFullName } from "../character-logic/InfoLogic";
 import { useContext, useState } from "react";
-import { CharacterContext } from "../../DeadlandsCompanion";
+import { CharacterContext } from "../../CharacterContext";
 import { getCharacterPowerDetails } from "../../static/powers/PowerUtil";
 import { Select } from "../../codex/shared/Select";
 import { Theme } from "../../Theme";

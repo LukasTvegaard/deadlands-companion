@@ -1,4 +1,3 @@
-import { CharacterContext } from "../../DeadlandsCompanion";
 import { useContext } from "react";
 import { database } from "../../utils/firebase/Firebase";
 import { ref, set } from "firebase/database";
@@ -6,6 +5,7 @@ import { Hindrance } from "../../utils/enums/Hindrance";
 import { HindranceDetailType } from "../../utils/interfaces/HindranceDetail";
 import { characterHasHindrance } from "../../static/hindrances/HindranceUtil";
 import { Button } from "../../shared/buttons/Button";
+import { CharacterContext } from "../../CharacterContext";
 
 const addHindrance = (characterKey: string, hindranceKey: Hindrance) => {
   const db = database();
