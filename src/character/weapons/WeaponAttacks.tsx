@@ -214,6 +214,9 @@ export const WeaponAttacks = ({ weaponDetail }: WeaponAttackProps) => {
                     ? "Melee"
                     : attack.rangeLong === "Cone"
                     ? "Cone"
+                    : attack.rangeShort === attack.rangeMedium &&
+                      attack.rangeMedium === attack.rangeLong
+                    ? `${attack.rangeShort}`
                     : `${attack.rangeShort} / ${attack.rangeMedium} / ${attack.rangeLong}`
                 }
               />

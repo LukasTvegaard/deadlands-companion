@@ -45,7 +45,7 @@ const attacks: WeaponAttack[] = [
     name: "Shoot (Long)",
     damage: {
       ...LeMatShotgunBase.damage,
-      dieTypes: [DieType.D6, DieType.D6, DieType.D6],
+      dieTypes: [DieType.D6],
     },
     rangeShort: 20,
     rangeMedium: 20,
