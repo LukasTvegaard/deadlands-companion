@@ -70,13 +70,13 @@ const NotesWrapper = styled.div`
 `;
 
 const isAttackPower = (
-  powerVariant: PowerVariant
+  powerVariant: PowerVariant,
 ): powerVariant is PowerVariantAttack => {
   return powerVariant.type === PowerType.Attack;
 };
 
 const isUtilityPower = (
-  powerVariant: PowerVariant
+  powerVariant: PowerVariant,
 ): powerVariant is PowerVariantUtility => {
   return powerVariant.type === PowerType.Utility;
 };
@@ -94,7 +94,7 @@ const getRateOfFire = (variant: PowerVariant): number => {
 const getCurrentPowerPoints = (
   character: Character,
   powerDetail: PowerDetailType,
-  isWeirdScientist: boolean
+  isWeirdScientist: boolean,
 ): number => {
   if (isWeirdScientist) {
     return powerDetail.currentPowerPoints;
@@ -105,7 +105,7 @@ const getCurrentPowerPoints = (
 
 const powerHasPowerPoints = (
   powerPointCost: number,
-  currentPowerPoints: number
+  currentPowerPoints: number,
 ): boolean => {
   return powerPointCost <= currentPowerPoints;
 };
@@ -114,19 +114,19 @@ const activatePower = (
   character: Character,
   powerDetail: PowerDetailType,
   powerPointCost: number,
-  isWeirdScientist: boolean
+  isWeirdScientist: boolean,
 ) => {
   const currentPowerPoints = getCurrentPowerPoints(
     character,
     powerDetail,
-    isWeirdScientist
+    isWeirdScientist,
   );
   const newPowerPoints = currentPowerPoints - powerPointCost;
   if (isWeirdScientist) {
     updateWeirdSciencePowerPoints(
       character.id,
       powerDetail.key,
-      newPowerPoints
+      newPowerPoints,
     );
   } else {
     updateCharacterPowerPoints(character.id, newPowerPoints);
@@ -184,7 +184,7 @@ export const PowerVariants = ({
               character,
               powerDetail,
               powerPointCost,
-              isWeirdScientist
+              isWeirdScientist,
             );
           }}
         />
@@ -226,8 +226,8 @@ export const PowerVariants = ({
                       isAttackPower(variant)
                         ? "Rate of Fire"
                         : isUtilityPower(variant)
-                        ? "Duration"
-                        : "Targets"
+                          ? "Duration"
+                          : "Targets"
                     }
                     value={rateOfFire}
                     noBorder={singleVariantPower}
@@ -256,10 +256,10 @@ export const PowerVariants = ({
                     variant.rangeLong === 0
                       ? "Touch"
                       : variant.rangeLong === "Cone"
-                      ? "Cone"
-                      : typeof variant.rangeLong === "number"
-                      ? `${variant.rangeShort} / ${variant.rangeMedium} / ${variant.rangeLong}`
-                      : getRangeFromAttribute(variant.rangeLong, character)
+                        ? "Cone"
+                        : typeof variant.rangeLong === "number"
+                          ? `${variant.rangeShort} / ${variant.rangeMedium} / ${variant.rangeLong}`
+                          : getRangeFromAttribute(variant.rangeLong, character)
                   }
                 />
                 <ButtonWrapper>
@@ -274,7 +274,7 @@ export const PowerVariants = ({
                               character,
                               powerDetail,
                               variant.powerPointCost,
-                              isWeirdScientist
+                              isWeirdScientist,
                             )
                       }
                       disabled={
@@ -283,8 +283,8 @@ export const PowerVariants = ({
                           getCurrentPowerPoints(
                             character,
                             powerDetail,
-                            isWeirdScientist
-                          )
+                            isWeirdScientist,
+                          ),
                         )
                       }
                     />
@@ -301,7 +301,7 @@ export const PowerVariants = ({
                           character,
                           powerDetail,
                           variant.extensionPowerPointCost ?? 0,
-                          isWeirdScientist
+                          isWeirdScientist,
                         )
                       }
                       disabled={
@@ -310,8 +310,8 @@ export const PowerVariants = ({
                           getCurrentPowerPoints(
                             character,
                             powerDetail,
-                            isWeirdScientist
-                          )
+                            isWeirdScientist,
+                          ),
                         )
                       }
                     />

@@ -6,6 +6,7 @@ import { Bolt } from "./Bolt";
 import { BoostLowerTrait } from "./BoostLowerTrait";
 import { Burrow } from "./Burrow";
 import { Burst } from "./Burst";
+import { DrainPowerPoints } from "./DrainPowerPoints";
 import { ElementalManipulationEarth } from "./ElementalManipulation";
 import { Healing } from "./Healing";
 import { Hunch } from "./Hunch";
@@ -27,6 +28,7 @@ export const Powers: PowerDetails = {
   [Power.BoostLowerTrait]: BoostLowerTrait,
   [Power.Burrow]: Burrow,
   [Power.Burst]: Burst,
+  [Power.DrainPowerPoints]: DrainPowerPoints,
   [Power.ElementalManipulationEarth]: ElementalManipulationEarth,
   [Power.Healing]: Healing,
   [Power.Hunch]: Hunch,
