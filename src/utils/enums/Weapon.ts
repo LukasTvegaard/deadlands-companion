@@ -6,6 +6,8 @@ export enum Weapon {
   ColtPeacemakerSingle = "ColtPeacemakerSingle",
   ColtPeacemakerDouble = "ColtPeacemakerDouble",
   ElectricRapier = "ElectricRapier",
+  FlyingCrescent = "FlyingCrescent",
+  FlyingGuillotine = "FlyingGuillotine",
   GatlingPistol = "GatlingPistol",
   HastelisWarClub = "HastelisWarClub",
   HeavyCavalrySword = "HeavyCavalrySword",
